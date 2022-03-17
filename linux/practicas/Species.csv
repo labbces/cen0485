@@ -1,0 +1,23 @@
+Species_full_name	Sp_ID	NCBI_TaxID	SuperGroup	Groups	Sort	SourceDBName	SourceDBURL	SourceDBversion
+Arabidopsis lyrata	ALY	59689	Embryophyta	Eudicot	7000	JGI/DOE	http://genomeportal.jgi-psf.org/Araly1/Araly1.download.ftp.html	1.0
+Arabidopsis thaliana	ATH	3702	Embryophyta	Eudicot	7000	TAIR	http://www.arabidopsis.org	8.0
+Cyanidioschyzon merolae	CME	45157	Rhodophyta	Bangiophyceae	1000	CME GP	http://merolae.biol.s.u-tokyo.ac.jp	20070710
+Chlorella sp. NC64A	CNC64A	310507	Chlorophyta	Chlorophyceae	3000	JGI/DOE	http://genomeportal.jgi-psf.org/ChlNC64A_1/ChlNC64A_1.download.ftp.html	1.0
+Carica papaya	CPA	3649	Embryophyta	Eudicot	7000	The Hawaii Papaya Genome Project	ftp://asgpb.mhpcc.hawaii.edu/papaya/annotation/	
+Chlamydomonas reinhardtii	CRE4	3055	Chlorophyta	Chlorophyceae	3000	JGI/DOE	http://genome.jgi-psf.org/Chlre4/Chlre4.home.html	4.0
+Coccomyxa sp. C-169	CVU	574566	Chlorophyta	Chlorophyceae	3000	JGI/DOE	http://genomeportal.jgi-psf.org/Chlvu1/Chlvu1.download.ftp.html	1.0
+Galdieria sulphuraria	GSU	130081	Rhodophyta	Bangiophyceae	1000	GS GP	http://genomics.msu.edu/galdieria/	1.0
+Micromonas pusilla CCMP1545	MPU	564608	Chloropyhta	Prasinophyceae	2000	JGI/DOE	http://genome.jgi-psf.org/MicpuC2/MicpuC2.download.ftp.html	2.0
+Micromonas sp. RCC299	MPU299	296587	Chloropyhta	Prasinophyceae	2000	JGI/DOE	http://genome.jgi-psf.org/MicpuN3/MicpuN3.download.ftp.html	3.0
+Ostreococcus lucimarinus	OLU	242159	Chloropyhta	Prasinophyceae	2000	JGI/DOE	http://genome.jgi-psf.org/Ost9901_3/Ost9901_3.home.html	2.0
+Oryza sativa subsp. indica	OSAI	39946	Embryophyta	Monocot	6000	BGI	http://www.genomics.org.cn	20050118
+Oryza sativa subsp. japonica	OSAJ	39947	Embryophyta	Monocot	6000	TIGR	http://www.tigr.org/tdb/e2k1/osa1/	6.0
+Ostreococcus tauri	OTA	70448	Chloropyhta	Prasinophyceae	2000	JGI/DOE	http://genome.jgi-psf.org/Ostta4/Ostta4.home.html	2.0
+Physcomitrella patens	PPA	3218	Embryophyta	Bryophyte	4000	JGI/DOE	http://genome.jgi-psf.org/Phypa1_1/Phypa1_1.home.html	1.1
+Populus trichocarpa	PTR	3694	Embryophyta	Eudicot	7000	JGI/DOE	http://genome.jgi-psf.org/Poptr1_1/Poptr1_1.home.html	1.1
+Sorghum bicolor	SBI	4558	Embryophyta	Monocot	6000	JGI/DOE	http://genome.jgi-psf.org/Sorbi1/Sorbi1.download.ftp.html	4.0
+Selaginella moellendorffii	SMO	88036	Embryophyta	Lycopodiophyta	5000	JGI/DOE	http://genome.jgi-psf.org/Selmo1/	1.0
+Thalassiosira pseudonana	TPS	35128	Bacillariophyta	Coscinodiscophyceae	500			
+Volvox carteri	VCA	3067	Chloropyhta	Chlorophyceae	3000			
+Vitis vinifera	VVIa	29760	Embryophyta	Eudicot	7000	Genoscope	http://www.genoscope.cns.fr/spip/Vitis-vinifera-e.html	1.0
+Zea mays	ZMA	4577	Embryophyta	Monocot	6000	MaizeSequence.org 	 http://www.maizesequence.org	3b.50

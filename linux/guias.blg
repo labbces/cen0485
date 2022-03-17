@@ -1,0 +1,47 @@
+This is BibTeX, Version 0.99c (Web2C 7.5.7)
+The top-level auxiliary file: guias.aux
+The style file: genetics.bst
+Database file #1: bibliografia.bib
+Warning--empty pages in Bourne2004
+You've used 26 entries,
+            2828 wiz_defined-function locations,
+            789 strings with 10348 characters,
+and the built_in function-call counts, 16966 in all, are:
+= -- 1422
+> -- 755
+< -- 16
++ -- 348
+- -- 195
+* -- 1491
+:= -- 2449
+add.period$ -- 52
+call.type$ -- 26
+change.case$ -- 194
+chr.to.int$ -- 26
+cite$ -- 27
+duplicate$ -- 1271
+empty$ -- 1263
+format.name$ -- 281
+if$ -- 3375
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 218
+newline$ -- 108
+num.names$ -- 105
+pop$ -- 472
+preamble$ -- 1
+purify$ -- 167
+quote$ -- 0
+skip$ -- 467
+stack$ -- 0
+substring$ -- 863
+swap$ -- 710
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 231
+warning$ -- 1
+while$ -- 117
+width$ -- 0
+write$ -- 313
+(There was 1 warning)

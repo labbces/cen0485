@@ -1,0 +1,150 @@
+\begin{thebibliography}{26}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{{\sc Abascal} {\em et~al.\/}(2005){\sc Abascal}, {\sc Zardoya} and
+  {\sc Posada}}]{Abascal2005}
+{\sc Abascal, F.}, {\sc R.~Zardoya}, and {\sc D.~Posada}, 2005 Prot{T}est:
+  selection of best-fit models of protein evolution.
+\newblock Bioinformatics {\bf 21}: 2104--2105.
+
+\bibitem[{{\sc Arvidsson} {\em et~al.\/}(2008){\sc Arvidsson}, {\sc
+  Kwasniewski}, {\sc Ria\~{n}o Pach\'{o}n} and {\sc
+  Mueller-Roeber}}]{Arvidsson2008}
+{\sc Arvidsson, S.}, {\sc M.~Kwasniewski}, {\sc D.~M. Ria\~{n}o Pach\'{o}n},
+  and {\sc B.~Mueller-Roeber}, 2008 Quantprime--a flexible tool for reliable
+  high-throughput primer design for quantitative pcr.
+\newblock BMC Bioinformatics {\bf 9}: 465.
+
+\bibitem[{{\sc Bourne}(2004)}]{Bourne2004}
+{\sc Bourne, P.~E.}, 2004 The future of bioinformatics.
+\newblock In {\em 2nd Asia-Pacific Bioinformatics Conference (APBC2004)\/}.
+
+\bibitem[{{\sc Edgar}(2004)}]{Edgar2004}
+{\sc Edgar, R.~C.}, 2004 Muscle: a multiple sequence alignment method with
+  reduced time and space complexity.
+\newblock BMC Bioinformatics {\bf 5}: 113.
+
+\bibitem[{{\sc Finn} {\em et~al.\/}(2010){\sc Finn}, {\sc Mistry}, {\sc Tate},
+  {\sc Coggill}, {\sc Heger} {\em et~al.\/}}]{Finn2010}
+{\sc Finn, R.~D.}, {\sc J.~Mistry}, {\sc J.~Tate}, {\sc P.~Coggill}, {\sc
+  A.~Heger}, {\em et~al.\/}, 2010 The pfam protein families database.
+\newblock Nucleic Acids Res {\bf 38}: D211--D222.
+
+\bibitem[{{\sc Kyte} and {\sc Doolittle}(1982)}]{Kyte1982}
+{\sc Kyte, J.}, and {\sc R.~F. Doolittle}, 1982 A simple method for displaying
+  the hydropathic character of a protein.
+\newblock J Mol Biol {\bf 157}: 105--132.
+
+\bibitem[{{\sc Lemey} {\em et~al.\/}(2009){\sc Lemey}, {\sc Salemi} and {\sc
+  Vandamme}}]{Lemey2009}
+{\sc Lemey, P.}, {\sc M.~Salemi}, and {\sc A.-M. Vandamme}, editors, 2009 {\em
+  The Phylogenetic Handbook\/}.
+\newblock Cambridge University Press.
+
+\bibitem[{{\sc Leonard} {\em et~al.\/}(2007){\sc Leonard}, {\sc Littlejohn} and
+  {\sc Baxevanis}}]{Leonard2007}
+{\sc Leonard, S.~A.}, {\sc T.~G. Littlejohn}, and {\sc A.~D. Baxevanis}, 2007
+  Common file formats.
+\newblock Curr Protoc Bioinformatics {\bf Appendix 1}: Appendix 1B.
+
+\bibitem[{{\sc Mizrachi}(2008)}]{Mizrachi2008}
+{\sc Mizrachi, I.~K.}, 2008 Managing sequence data.
+\newblock Methods Mol Biol {\bf 452}: 3--27.
+
+\bibitem[{{\sc Mullis} and {\sc Faloona}(1987)}]{Mullis1987}
+{\sc Mullis, K.~B.}, and {\sc F.~A. Faloona}, 1987 Specific synthesis of dna in
+  vitro via a polymerase-catalyzed chain reaction.
+\newblock Methods Enzymol {\bf 155}: 335--350.
+
+\bibitem[{{\sc Needleman} and {\sc Wunsch}(1970)}]{Needleman1970}
+{\sc Needleman, S.~B.}, and {\sc C.~D. Wunsch}, 1970 A general method
+  applicable to the search for similarities in the amino acid sequence of two
+  proteins.
+\newblock J Mol Biol {\bf 48}: 443--453.
+
+\bibitem[{{\sc Notredame}(2007)}]{Notredame2007}
+{\sc Notredame, C.}, 2007 Recent evolutions of multiple sequence alignment
+  algorithms.
+\newblock PLoS Comput Biol {\bf 3}: e123.
+
+\bibitem[{{\sc Notredame} {\em et~al.\/}(2000){\sc Notredame}, {\sc Higgins}
+  and {\sc Heringa}}]{Notredame2000}
+{\sc Notredame, C.}, {\sc D.~G. Higgins}, and {\sc J.~Heringa}, 2000 T-coffee:
+  A novel method for fast and accurate multiple sequence alignment.
+\newblock J Mol Biol {\bf 302}: 205--217.
+
+\bibitem[{{\sc Posada}(2006)}]{Posada2006}
+{\sc Posada, D.}, 2006 Modeltest server: a web-based tool for the statistical
+  selection of models of nucleotide substitution online.
+\newblock Nucleic Acids Res {\bf 34}: W700--W703.
+
+\bibitem[{{\sc Posada} and {\sc Crandall}(1998)}]{Posada1998}
+{\sc Posada, D.}, and {\sc K.~Crandall}, 1998 M{ODELTEST}: testing the model of
+  {DNA} substitution.
+\newblock Bioinformatics {\bf 14}: 817--8.
+
+\bibitem[{{\sc Posada} and {\sc Crandall}(2001)}]{Posada2001}
+{\sc Posada, D.}, and {\sc K.~Crandall}, 2001 Selecting models of nucleotide
+  substitution: an application to human immunodeficiency virus 1 ({HIV}-1).
+\newblock Mol {B}iol {E}vol {\bf 18}: 897--906.
+
+\bibitem[{{\sc Rozen} and {\sc Skaletsky}(2000)}]{Rozen2000}
+{\sc Rozen, S.}, and {\sc H.~Skaletsky}, 2000 Primer3 on the www for general
+  users and for biologist programmers.
+\newblock Methods Mol Biol {\bf 132}: 365--386.
+
+\bibitem[{{\sc Sawyer} {\em et~al.\/}(2005){\sc Sawyer}, {\sc Wu}, {\sc
+  Emerman} and {\sc Malik}}]{Sawyer2005}
+{\sc Sawyer, S.~L.}, {\sc L.~I. Wu}, {\sc M.~Emerman}, and {\sc H.~S. Malik},
+  2005 Positive selection of primate trim5alpha identifies a critical
+  species-specific retroviral restriction domain.
+\newblock Proc Natl Acad Sci U S A {\bf 102}: 2832--2837.
+
+\bibitem[{{\sc Schneider} and {\sc Stephens}(1990)}]{Schneider1990}
+{\sc Schneider, T.~D.}, and {\sc R.~Stephens}, 1990 Sequence logos: a new way
+  to display consensus sequences.
+\newblock Nucleic {A}cids {R}es {\bf 18}: 6097--100.
+
+\bibitem[{{\sc Smith} and {\sc Waterman}(1981)}]{Smith1981}
+{\sc Smith, T.~F.}, and {\sc M.~S. Waterman}, 1981 Identification of common
+  molecular subsequences.
+\newblock J Mol Biol {\bf 147}: 195--197.
+
+\bibitem[{{\sc Stein}(2008)}]{Stein2008}
+{\sc Stein, L.~D.}, 2008 Bioinformatics: alive and kicking.
+\newblock Genome Biol {\bf 9}: 114.
+
+\bibitem[{{\sc Sullivan} and {\sc Joyce}(2005)}]{Sullivan2005}
+{\sc Sullivan, J.}, and {\sc P.~Joyce}, 2005 M{ODEL} {SELECTION} {IN}
+  {PHYLOGENETICS}.
+\newblock Annual {R}eview of {E}cology, {E}volution, and {S}ystematics {\bf
+  36}: 445--466.
+
+\bibitem[{{\sc Tamura} {\em et~al.\/}(2007){\sc Tamura}, {\sc Dudley}, {\sc
+  Nei} and {\sc Kumar}}]{Tamura2007}
+{\sc Tamura, K.}, {\sc J.~Dudley}, {\sc M.~Nei}, and {\sc S.~Kumar}, 2007
+  M{EGA}4: {M}olecular {E}volutionary {G}enetics {A}nalysis ({MEGA}) software
+  version 4.0.
+\newblock Mol {B}iol {E}vol {\bf 24}: 1596--1599.
+
+\bibitem[{{\sc Thompson} {\em et~al.\/}(1994){\sc Thompson}, {\sc Higgins} and
+  {\sc Gibson}}]{Thompson1994}
+{\sc Thompson, J.~D.}, {\sc D.~G. Higgins}, and {\sc T.~J. Gibson}, 1994
+  C{LUSTAL} {W}: improving the sensitivity of progressive multiple sequence
+  alignment through sequence weighting, position-specific gap penalties and
+  weight matrix choice.
+\newblock Nucleic {A}cids {R}es {\bf 22}: 4673--4680.
+
+\bibitem[{{\sc Wernersson} and {\sc Pedersen}(2003)}]{Wernersson2003}
+{\sc Wernersson, R.}, and {\sc A.~G. Pedersen}, 2003 Revtrans: Multiple
+  alignment of coding dna from aligned amino acid sequences.
+\newblock Nucleic Acids Res {\bf 31}: 3537--3539.
+
+\bibitem[{{\sc Wilson} {\em et~al.\/}(2009){\sc Wilson}, {\sc Pethica}, {\sc
+  Zhou}, {\sc Talbot}, {\sc Vogel} {\em et~al.\/}}]{Wilson2009}
+{\sc Wilson, D.}, {\sc R.~Pethica}, {\sc Y.~Zhou}, {\sc C.~Talbot}, {\sc
+  C.~Vogel}, {\em et~al.\/}, 2009 Superfamily--sophisticated comparative
+  genomics, data mining, visualization and phylogeny.
+\newblock Nucleic Acids Res {\bf 37}: D380--D386.
+
+\end{thebibliography}
