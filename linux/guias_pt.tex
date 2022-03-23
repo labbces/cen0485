@@ -53,7 +53,7 @@ Portanto, semelhante à biologia molecular, a bioinformática hoje constitui uma
 \begin{figure}[h]
 \centering
    \includegraphics[height=5cm]{Figs/Bioinformatica.png}
-  \caption[{\textquestiondown}Que es la bioinformática?]{\label{bioinf}La bioinformática es la disciplina que surge de la interacción de tres ciencias básicas: Biología, Matemáticas, y Ciencias de la computación. Cuando algunas de ellas dominan a las restantes se obtiene otra disciplina diferente de la bioinformática, por ejemplo, si matemática y biología son mas importantes obtenemos biomatemáticas. Es importante que las tres ciencias base esten balanceadas para realizar proyectos de bioinformática.}
+  \caption[O que é bioinformática?]{\label{bioinf} A bioinformática é a disciplina que surge da interação de três ciências básicas: Biologia, Matemática e Ciência da Computação. Quando alguns deles dominam o resto, outra disciplina diferente da bioinformática é obtida, por exemplo, se matemática e biologia são mais importantes, obtemos biomatemáticos. É importante que as três ciências-base sejam equilibradas para realizar projetos de bioinformática.}
 \end{figure}
 
 Neste curso nos concentraremos na análise de dados biológicos, utilizando, na maioria dos casos, ferramentas de livre acesso, a maioria das quais têm melhor desempenho em sistemas operacionais Unix\footnote{Linux, MacOSX, BSD, etc. Se você quiser tentar ter uma cópia em sua casa ou escritório de qualquer um desses sistemas operacionais, recomendo que você use o VirtualBox (ou outra tecnologia de virtualização), para instalar, por exemplo, o Linux dentro do sistema operacional existente, por exemplo, o Windows XP; Claro que é se você tem um camputador com pelo menos dois Núcleos e 2GB de RAM, caso contrário é mais conveniente ter um sistema dual boot.}.
@@ -279,12 +279,12 @@ VISWIILVG !label{fastaendseq}
 
 \subsection{GenBank}
 
-El formato GenBank\footnote{\url{http://www.ncbi.nlm.nih.gov/Sitemap/samplerecord.html}}\footnote{\url{ftp://ftp.ncbi.nih.gov/genbank/release.notes/gb172.release.notes}} es usado por el ``National Center for Biotechnology Information'' (NCBI\footnote{\url{http://www.ncbi.nlm.nih.gov/}}), el mayor repositorio de secuencias, tanto de ácidos nucleicos como de proteínas, a nivel mundial. El NCBI junto con el, EMBL\footnote{\url{http://www.ebi.ac.uk/embl/}} y el DDBJ\footnote{\url{http://www.ddbj.nig.ac.jp/}},  mantienen en forma conjunta ``The International Nucleotide Sequence Database'' \citep{Mizrachi2008}.
+O formato GenBank\footnote{\url{http://www.ncbi.nlm.nih.gov/Sitemap/samplerecord.html}}\footnote{\url{ftp://ftp.ncbi.nih.gov/genbank/release.notes/gb172.release.notes}} é usado pelo ``National Center for Biotechnology Information'' (NCBI\footnote{\url{http://www.ncbi.nlm.nih.gov/}}), o maior repositório de sequências, tanto ácidos nucleicos quanto proteínas, em todo o mundo. O NCBI juntamente com o EMBL\footnote{\url{http://www.ebi.ac.uk/embl/}} e o DDBJ\footnote{\url{http://www.ddbj.nig.ac.jp/}},  manter em conjunto ``The International Nucleotide Sequence Database'' \citep{Mizrachi2008}.
 
-Una entrada en este formato está compuesta por dos partes. La primera parte consiste de las posiciones 1 a 10, y generalmente contiene el nombre del campo, e.g., \Verb+LOCUS+, \Verb+DEFINITION+, \Verb+ACCESSION+ o \Verb+SOURCE+. La segunda parte de cada entrada contiene la información para el campo correspondiente. Cada entrada termina con el símbolo ``\Verb+\\+'' (Línea~\ref{endgenbank}). Puede encontrar mayor información sobre este tipo de archivo siguiendo el enlace \url{http://www.ncbi.nlm.nih.gov/Sitemap/samplerecord.html}
+Uma entrada neste formato é composta por duas partes. A primeira parte consiste em posições de 1 a 10, e geralmente contém o nome do campo, e.g., \Verb+LOCUS+, \Verb+DEFINITION+, \Verb+ACCESSION+ o \Verb+SOURCE+. A segunda parte de cada entrada contém as informações para o campo correspondente. Cada entrada termina com o símbolo ``\Verb+\\+'' (Linha~\ref{endgenbank}). Você pode encontrar mais informações sobre este tipo de arquivo seguindo o link \url{http://www.ncbi.nlm.nih.gov/Sitemap/samplerecord.html}
 
 
-\begin{Verbatim}[commandchars=!\{\},numbers=left,firstnumber=last,label=Secuencia en formato GenBank,frame=topline,fontsize=\tiny]
+\begin{Verbatim}[commandchars=!\{\},numbers=left,firstnumber=last,label=Sequência em formato GenBank,frame=topline,fontsize=\tiny]
 LOCUS       BAE98952                 429 aa            linear   PLN 27-JUL-2006
 DEFINITION  putative NAC domain protein [Arabidopsis thaliana].
 ACCESSION   BAE98952
@@ -350,15 +350,15 @@ ORIGIN
 // !label{endgenbank}
 \end{Verbatim} 
 
-\subsection{Algunas operaciones básicas con secuencias en formato Fasta}
+\subsection{Algumas operações básicas com sequências no formato Fasta}
 
-En lo que resta de esta sección, y la siguiente, solo usaremos secuencias en formato Fasta. Por favor verifique que las secuencias de \textit{A. thaliana} en el archivo \Verb+TAIR9_pep_20090619+ están en este formato. Puede usar el comando ``\Verb+head nombre_archivo+'', o el comando ``\Verb+less nombre_archivo+''\footnote{Para salir de \Verb+less+ presione ``\Verb+q+''}.
+Para o restante desta seção, e para a próxima, usaremos apenas sequências no formato Fasta. Por favor, verifique se as sequências de \textit{A. thaliana} no arquivo \Verb+TAIR9_pep_20090619+ estão neste formato. Você pode usar o comando ``\Verb+head nome_arquivo+'', ou o comando ``\Verb+less nome_arquivo+''\footnote{Para sair de \Verb+less+ pressione ``\Verb+q+''}.
 
-{\textquestiondown}Algunas vez ha tenido que contar el número de secuencias o cambiar el identificador de secuencias en formato Fasta? Si se trata de una docena de secuencias, esto se podría hacer fácilmente en cualquier editor de textos, pero cuando son miles de secuencias la opción del editor de textos dejar de ser viable. Afortunadamente algunos comandos de Unix nos permiten realizar estas tareas simples de forma rápida.
+Você já teve que contar o número de sequências ou alterar o identificador de sequência no formato Fasta? Se for uma dúzia de sequências, isso poderia facilmente ser feito em qualquer editor de texto, mas quando há milhares de sequências a opção do editor de texto deixa de ser viável. Felizmente, alguns comandos Unix nos permitem executar essas tarefas simples rapidamente.
 
-Como observó en la línea~\ref{grepsimple}, el comando ``\Verb+grep+'' nos podría ser de ayuda para contar el número de secuencias en un archivo Fasta. el modificador ``\Verb+-c+'' cuenta el número de líneas que contienen un patrón dado en un archivo, y podemos aprovechar el hecho de que en un archivo Fasta el símbolo ``\Verb+>+'' aparece una única vez por cada secuencia, como se muestra en la línea~\ref{contarseqs}.
+Como viu na linha~\ref{grepsimple}, o comando ``\Verb+grep+'' poderia nos ajudar a contar o número de sequências em um arquivo Fasta. o interruptor ``\Verb+-c+'' conta o número de linhas contendo um determinado padrão em um arquivo, e podemos tirar proveito do fato de que em um arquivo Fasta o símbolo ``\Verb+>+'' aparece apenas uma vez para cada sequência como mostrado na linha~\ref{contarseqs}.
 
-\begin{Verbatim}[commandchars=!\{\},numbers=left,firstnumber=last,label=Usando comandos Unix con archivos Fasta,frame=topline,fontsize=\scriptsize]
+\begin{Verbatim}[commandchars=!\{\},numbers=left,firstnumber=last,label=Usando comandos Unix com arquivos Fasta,frame=topline,fontsize=\scriptsize]
 !textcolor{red}{[user@server:~]$} cd ~/dia1/
 !textcolor{red}{[user@server:~/dia1]$} ls -l
 total 70992
@@ -375,7 +375,7 @@ LDLDPYASSNTNTIVSFVESFFDSHRDSWIRKLRLDLGYHHDKYDLMSWIDAATTRRIQH
 !textcolor{red}{[user@server:~/dia1]$}
 \end{Verbatim} 
 
-En otras ocasiones es importante modificar el identificador de cada secuencia, de forma que este incluya, por ejemplo, una abreviatura que represente el nombre de la especie a la que pertenece la secuencia. Nuevamente Unix nos permite hacer este cambio muy rápido usando el comando \Verb+sed+ como se muestra en la línea~\ref{sedsp}.
+Em outras ocasiões é importante modificar o identificador de cada sequência, de modo que inclua, por exemplo, uma abreviação que represente o nome da espécie a que a sequência pertence. Novamente Unix nos permite fazer essa mudança muito rapidamente usando o comando \Verb+sed+ como mostrado na linha~\ref{sedsp}.
 
 \chapter{Búsquedas en bases de datos biológicas}
 
