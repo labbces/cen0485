@@ -46,9 +46,9 @@
 
 A bioinformática é uma disciplina que surge da interação entre biologia, estatística e ciência da computação. (Figura~\ref{bioinf}. Seus principais objetivos são a gestão e análise de grandes volumes de dados, principalmente o produto de novas tecnologias em biologia molecular, como genômica, proteômica e metabolômica, especialmente hoje com o advento de novas tecnologias de sequenciamento de ácidos nucleicos que estão revolucionando a forma como estudamos os genomas. Outro aspecto importante inclui o desenvolvimento de novos métodos computacionais, algoritmos e/ou softwares para a análise desses dados. 
 
-Según Philip Bourne (UCSD), ``la bioinformática se ha convertido en el interprete del lenguaje genómico del ADN y está intentando descifrar lenguajes mas complejos en los que las proteínas son los sustantivos, las interacciones son la sintaxis, las rutas metabólicas son las oraciones y los sistemas vivos son el volumen completo'' \citep{Bourne2004}.
+De acordo com Philip Bourne (UCSD), ``a bioinformática tornou-se a intérprete da linguagem genômica do DNA e está tentando decifrar linguagens mais complexas em que as proteínas são os substantivos, as interações são a sintaxe, as vias metabólicas são frases e os sistemas vivos são o volume completo'' \citep{Bourne2004}.
 
-Por lo tanto, de forma similar a la biología molecular, la bioinformática constituye hoy en día una caja de herramientas que todo investigador en biología tiene que manejar \citetext{\citealp{Stein2008} presenta un punto de vista muy interesante}.
+Portanto, semelhante à biologia molecular, a bioinformática hoje constitui uma caixa de ferramentas que todo pesquisador de biologia tem que lidar \citetext{\citealp{Stein2008} apresenta um ponto de vista muito interessante}.
 
 \begin{figure}[h]
 \centering
@@ -56,36 +56,36 @@ Por lo tanto, de forma similar a la biología molecular, la bioinformática cons
   \caption[{\textquestiondown}Que es la bioinformática?]{\label{bioinf}La bioinformática es la disciplina que surge de la interacción de tres ciencias básicas: Biología, Matemáticas, y Ciencias de la computación. Cuando algunas de ellas dominan a las restantes se obtiene otra disciplina diferente de la bioinformática, por ejemplo, si matemática y biología son mas importantes obtenemos biomatemáticas. Es importante que las tres ciencias base esten balanceadas para realizar proyectos de bioinformática.}
 \end{figure}
 
-En este curso nos concentraremos en el análisis de datos biológicos, usando, en la mayoría de los casos, herrameintas de libre acceso, la mayoría de las cuales se desempeñan mejor en sistemas operativos tipo Unix\footnote{Linux, MacOSX, BSD, etc. Si quiere intentar tener una copia en su casa u oficina de alguno de esos sistemas operativos, recomiendo que use VirtualBox (u otra tecnología de virtualización), para instalar por ejemplo Linux dentro del sistema operativo existente, e.g., Windows XP; claro esto es si tiene un camputador con por lo menos dos Cores y 2GB de RAM, de lo contrario es mas conveniente tener un sistema Dual boot.}.
+Neste curso nos concentraremos na análise de dados biológicos, utilizando, na maioria dos casos, ferramentas de livre acesso, a maioria das quais têm melhor desempenho em sistemas operacionais Unix\footnote{Linux, MacOSX, BSD, etc. Se você quiser tentar ter uma cópia em sua casa ou escritório de qualquer um desses sistemas operacionais, recomendo que você use o VirtualBox (ou outra tecnologia de virtualização), para instalar, por exemplo, o Linux dentro do sistema operacional existente, por exemplo, o Windows XP; Claro que é se você tem um camputador com pelo menos dois Núcleos e 2GB de RAM, caso contrário é mais conveniente ter um sistema dual boot.}.
 
-\chapter{Herramientas de Unix útiles en bioinformática}
-\section{Introducción al sistema Unix}
+\chapter{Ferramentas Unix úteis em bioinformática}
+\section{Introdução ao sistema Unix}
 
-El sistema operativo\footnote{Más información en \url{http://en.wikipedia.org/wiki/Operating_system}} es el conjunto to programas (``software'') que sirve como interfaz entre la máquina (``hardware'') y el usuario, y que le permite a este último ejecutar aplicaciones. Los sistemas operativos mas comunes son: Windows (XP, Vista), Unix y MacOS X. Sistemas operativos tipo Unix (e.g., Linux) son usados principalmente en servidores, pero su uso en estaciones de trabajo y escritorios está en aumento.  Las principales características de Unix son: multi-tarea, multi-usuario y portabilidad\footnote{Se refiere a que programas creados en diferentes Unixes pueden correr en uno u otro generalmente sin problema.}. La mayoría de Unixes hoy en día tienen una interfaz gráfica amigable al usuario, desde la cual se pueden llevar a cabo casi todas las tareas de uso diario, como  crear documentos, imprimir y navegar internet. Además de esta interfaz gráfica, existe una interfaz en línea de comandos que le permite al usuario ejecutar tareas mucho mas complejas y poderosas. A continuación vamos a aprender a usar la línea de comandos y algunos comandos que facilitan el manejo de archivos de gran tamaño, usando Linux como sistema operativo. Una guía sobre el uso de varios de esos comandos está disponible en el Apéndice~\ref{unixguide}\footnote{Guías para otros programas usados comunmente en bioinformática están disponibles en \url{http://www.embnet.org/en/QuickGuides}}.
+O sistema operativo\footnote{Mais informações em \url{http://en.wikipedia.org/wiki/Operating_system}} é o conjunto de programas (``software'') que serve como uma interface entre a máquina ('hardware') e o usuário, e que permite que este último execute aplicativos. Os sistemas operacionais mais comuns são: Windows (XP, Vista), Unix e MacOS X. Sistemas operacionais semelhantes ao Unix (por exemplo, Linux) são usados principalmente em servidores, mas seu uso em estações de trabalho e desktops está em ascensão.  As principais características do Unix são: multitarefas, multi-usuário e portabilidade\footnote{Refere-se a quais programas criados em diferentes Unixes podem ser executados em um ou outro geralmente sem problemas.}. A maioria dos Unixes hoje tem uma interface gráfica fácil de usar, a partir da qual você pode realizar quase todas as tarefas de uso diário, como criar documentos, imprimir e navegar na Internet. Além dessa interface gráfica, há uma interface de linha de comando que permite ao usuário executar tarefas muito mais complexas e poderosas. Em seguida, aprenderemos como usar a linha de comando e alguns comandos que facilitam o manuseio de arquivos grandes, usando o Linux como sistema operacional. orientação sobre o uso de vários desses comandos está disponível no apêndice~\ref{unixguide}\footnote{Guias para outros programas comumente usados em bioinformática estão disponíveis em \url{http://www.embnet.org/en/QuickGuides}}.
 
-\subsection{La línea de comandos}
+\subsection{A linha de comando}
 
-A la línea de comandos se accede a través de un programa interprete llamado ``shell''\footnote{\url{http://en.wikipedia.org/wiki/Unix_shell}}.  Existen varios tipos de ``shell'' en Unix. en la mayoría de distribuciones Linux la ``shell'' bash viene instalada por defecto. Para usar la ``shell'' o línea de comandos de su computador, inicie el programa \textbf{Terminal}, que tiene un icono similar al que se muestra en la Figura~\ref{terminalico}.
+A linha de comando é acessada através de um programa de interpretação chamado ``shell''\footnote{\url{http://en.wikipedia.org/wiki/Unix_shell}}.  Existem vários tipos de ``shell'' em Unix. Na maioria das distribuições Linux o ``shell'' bash é instalado por padrão. Para usar o ``shell'' ou linha de comando do seu computador, inicie o programa \textbf{Terminal}, que tem um ícone semelhante ao mostrado na Figura~\ref{terminalico}.
 
 \begin{figure}[ht]
 \centering
    \includegraphics[width=3cm]{Figs/terminalico.png}
-  \caption{\label{terminalico}Icono del programa Terminal}
+  \caption{\label{terminalico}Ícone do programa da terminal}
 \end{figure}
 
-Al hacer click (o doble click, dependiendo de su configuración) en el icono iniciará el programa \textbf{Terminal}, similar al que se muestra en la Figura~\ref{terminal}. Esta aplicación le da acceso a la línea de comandos de Linux a través de un \textit{prompt}, que le indica que el sistema está esperando sus instrucciones. En la Figura~\ref{terminal}, el \textit{prompt} consiste de la cadena de  caracteres \Verb+[user@server]$+, la cual consiste del nombre del usuario que esta usando el programa \textbf{Terminal}, seguido del nombre de la máquina, y el símbolo dolar, inmediatamente despues hay un cursor parpadeante a la espera de sus comandos. 
+Clicando (uma ou duas vezes, dependendo da configuração) iniciará o programa \textbf{Terminal}, semelhante ao mostrado na Figura~\ref{terminal}. Este aplicativo da acesso à linha de comando Linux através de um \textit{prompt}, que informa que o sistema está esperando suas instruções. Na Figura~\ref{terminal}, o \textit{prompt} consiste na string \Verb+[user@server]$+, que consiste no nome do usuário que está usando o programa \textbf{Terminal}, seguido pelo nome da máquina e pelo símbolo do dólar, imediatamente após tem um cursor piscando esperando por seus comandos.
 
 \begin{figure}[ht]
 \centering
    \includegraphics[width=10cm]{Figs/terminal.png}
-  \caption{\label{terminal}Terminal en Linux}
+  \caption{\label{terminal}Terminal no Linux}
 \end{figure}
 
-El \textit{prompt} puede ser modificado alterando la variable de sistema \Verb+PS1+\footnote{\url{http://tldp.org/HOWTO/Bash-Prompt-HOWTO/c141.html}}. Vamos a cambiar el \textit{prompt} para asegurarnos que todos tenemos el mismo.
+O \textit{prompt} pode ser modificado alterando a variável do sistema \Verb+PS1+\footnote{\url{http://tldp.org/HOWTO/Bash-Prompt-HOWTO/c141.html}}. Vamos alterar o \textit{prompt} para ter certeza de que todos temos o mesmo.
 
-En la sesión de \textbf{Terminal} ejecute los comandos como se muestran en el listado \textit{Cambiando el prompt}. En la línea~\ref{saveprompt} salvamos el prompt en la nueva variable \Verb+SAVE+, en caso de que necesitemos recuperarlo. En línea\ref{changeprompt} modificamos el \textit{prompt} actual, \Verb+\u+\footnote{Lista de modificadores de \textit{prompt} en bash: \url{http://tldp.org/HOWTO/Bash-Prompt-HOWTO/bash-prompt-escape-sequences.html}}, indica a nuestra ``shell'' mostrar el usuario actual, \Verb+\h+, muestra el nombre de la máquina y \Verb+\w+, muestra el directorio actual, el resto de caracteres se muestran sin ninguna modificación\footnote{Ejercicio opcional: {\textquestiondown}Cómo hacer permanente el cambio de \textit{prompt}?}. Compare su nuevo \textit{prompt} (línea~\ref{describeprompt}) con el antiguo (línea~\ref{promptini}), el símbolo \Verb+~+ hace referencia a su directorio casa, o directorio de usuario, en el sistema (vea Sección~\ref{casadir})
+Na sessão  \textbf{Terminal} execute os comandos conforme mostrado na lista \textit{Alterando prompt}. Na linha~\ref{saveprompt} salvamos O prompt na nova variável \Verb+SAVE+, caso precisemos recuperá-lo. Na linha \ref{changeprompt} modificamos o \textit{prompt} atual, \Verb+\u+\footnote{Lista de modificadores de \textit{prompt} no bash: \url{http://tldp.org/HOWTO/Bash-Prompt-HOWTO/bash-prompt-escape-sequences.html}}, indica a nossa ``shell'' mostrar o usuario atual, \Verb+\h+, mostra o nome da  máquina e \Verb+\w+, mostra o diretório atual, o resto de caracteres são exibidos sem qualquer modificação\footnote{Exercício opcional: {\textquestiondown}Como tornar permanente a alteração de \textit{prompt}?}. Compare seu novo \textit{prompt} (línea~\ref{describeprompt}) com o antiguo (línea~\ref{promptini}), o símbolo \Verb+~+ refere-se ao diretório da sua casa ou ao diretório do usuário, no sistema  (vea Sección~\ref{casadir})
 
-\begin{Verbatim}[commandchars=!\{\},numbers=left,label=Cambiando el prompt,frame=topline,fontsize=\scriptsize]
+\begin{Verbatim}[commandchars=!\{\},numbers=left,label=Alterando o prompt,frame=topline,fontsize=\scriptsize]
 !textcolor{red}{[user@server]$} !label{promptini}
 !textcolor{red}{[user@server]$} echo $PS1 !label{printprompt}
 [\u@\h]$
@@ -94,9 +94,9 @@ En la sesión de \textbf{Terminal} ejecute los comandos como se muestran en el l
 !textcolor{red}{[user@server:~]$} !label{describeprompt}
 \end{Verbatim} 
 
-Ahora que conoce su \textit{prompt} y sabe como manipularlo, vamos a empezar a interactuar con el sistema a través de comandos. Para iniciar, ejecute el comando que se muestra en la línea~\ref{wgetini}, \Verb+wget+ es un programa para descargar archivos de la red . Las líneas \ref{wgetinistart} a \ref{wgetinistop} muestran la salida típica de este comando, puede diferir ligeramente de la que se muestre en su \textbf{Terminal}. Cuando este comando termine, ejecute el que se muestra en la línea~\ref{tarini}, que descomprime el archivo que acabó de descargar.
+Vamos começar interagir com o sistema através de comandos. para começar a executar o comando mostrado na linha~\ref{wgetini}, \Verb+wget+ é um programa para baixar arquivos da rede. A linha \ref{wgetinistart} ate \ref{wgetinistop} mostram a saida tipica deste comando, pode mudar levemente do que se amostra no seu \textbf{Terminal}. quando este comando termina executar o mostrado na linha~\ref{tarini}, que abre o arquivo que você acabou de baixar.
 
-\begin{Verbatim}[commandchars=!\{\},numbers=left,firstnumber=last,label=Descarga de archivos,frame=topline,fontsize=\scriptsize]
+\begin{Verbatim}[commandchars=!\{\},numbers=left,firstnumber=last,label=Baixando arquivos, frame=topline,fontsize=\scriptsize]
 !textcolor{red}{[user@server:~]$} wget http://molbio00.bio.uni-potsdam.de/tmp/file1.tgz !label{wgetini}
 --2009-07-27 12:56:25--  http://molbio00.bio.uni-potsdam.de/tmp/file1.tgz !label{wgetinistart}
 Resolving molbio00.bio.uni-potsdam.de... 141.89.197.45
@@ -112,21 +112,21 @@ Saving to: `file1.tgz'
 !textcolor{red}{[user@server:~]$} tar xzf file1.tgz !label{tarini}
 \end{Verbatim} 
 
-\subsection{Su casa y el árbol de directorios\label{casadir}}
+\subsection{Sua casa e árvore diretórios\label{casadir}}
 
-Cada usuario en un sistema Unix tiene reservado un espacio, generalmente dentro del directorio ``\Verb+/home+'', en un subdirectorio que tiene el mismo nombre del usuario, e.g., para el usuario ``diriano'' su directorio personal es ``\Verb+/home/diriano+'', y recibe el nombre de directorio ``casa'', o directorio de usuario.  La primera vez que inicia una sesión en Linux o en \textbf{Terminal}, se encuentra en su directorio casa. Si en algún momento no sabe en donde está, puede usar el comando que se muestra en la línea \ref{pwd} para ubicar la ruta dentro del árbol de directorios en la que se encuentra. Es importante que note que los directorios utilizan el carácter ``\Verb+/+'' para referirse a una ruta de subdirectorios anidados, como se muestra en la línea~\ref{currdir} en el listado \textit{Navegando el árbol de directorios}.
+Cada usuário em um sistema Unix tem um espaço reservado, geralmente dentro do diretório ``\Verb+/home+'', em um subdiretório que tem o mesmo nome do usuário, e.g., para o usuário ''diriano'' seu diretório pessoal é ``\Verb+/home/diriano+'', e é chamado de diretório ''home'' ou diretório de usuário.  A primeira vez que você faz login no Linux ou \textbf{Terminal}, está localizado em seu diretório home. se a qualquer momento você não sabe onde você está, você pode usar o comando mostrado na linha \ref{pwd} para localizar o caminho dentro da árvore do diretório em que está localizada. é importante que você note que diretórios usam o caracter ``\Verb+/+'' para se referir a um caminho subdiretório aninhado como mostrado na linha~\ref{currdir} no listado \textit{Navegando pela árvore de diretórios}.
 
-El árbol de directorios se refiere a la organización anidada de directorios en el sistema de archivos (Figura~\ref{arboldir}), similar a la organización de directorios en Microsoft Windows\texttrademark que se puede visualizar con el \textbf{Explorador de Windows}.
+A árvore diretório refere-se à organização aninhada de diretórios no sistema de arquivos (Figura~\ref{arboldir}), semelhante à organização de diretórios no Microsoft Windows\texttrademark que pode ser visto com o \textbf{Windows Explorer}.
 
 \begin{figure}[ht]
 \centering
    \includegraphics[width=4cm]{Figs/arboldir.png}
-  \caption{\label{arboldir}Árbol de directorios en Linux}
+  \caption{\label{arboldir}Árvore de diretórios no Linux}
 \end{figure}
 
-Con el comando ``listar'' (Línea~\ref{ls}) muestra los directorios y archivos que se encuentran en el directorio actual. Este comando recibe argumentos/opciones que permiten obtener mas información sobre archivos y directorios. Una de las opciones más usadas es `\Verb+-l+' (``menos ele''; Línea\ref{lsl}), cuya salida se muestra en las líneas \ref{lslout11} a \ref{lslout22}, donde se muestra la lista de directorios en la ubicación actual, junto con los permisos sobre esos directorios, el número de subdirectorios, tamaño, fecha de ultima modificación y nombre.
+Com o comando ``listar'' (Línea~\ref{ls}) exibe os diretórios e arquivos que estão no diretório atual. Este comando recebe argumentos/opções que permitem obter mais informações sobre arquivos e diretórios. Uma das opções mais utilizadas é `\Verb+-l+' (``menos ele''; Linha\ref{lsl}), cuja saída é exibida nas linhas \ref{lslout11} ate \ref{lslout22}, onde a lista de diretórios no local atual é exibida, juntamente com permissões nesses diretórios, o número de subdiretórios, tamanho, data da última modificação e nome.
 
-\begin{Verbatim}[commandchars=!\{\},numbers=left,firstnumber=last,label=Navegando al árbol de directorios,frame=topline,fontsize=\scriptsize]
+\begin{Verbatim}[commandchars=!\{\},numbers=left,firstnumber=last,label=Navegando pela árvore de diretórios,frame=topline,fontsize=\scriptsize]
 !textcolor{red}{[user@server:~]$} pwd !label{pwd}
 /home/user !label{currdir}
 !textcolor{red}{[user@server:~]$} ls  !label{ls}
@@ -140,23 +140,23 @@ drwxr-xr-x  2 user  group  68 Aug  5 09:02 dia2/ !label{lslout22}
 !textcolor{red}{[user@server:~]$} cd /home/user/dia2/ !label{cdabsolutepath}
 \end{Verbatim} 
 
-Como se mencionó anteriormente, los sistemas Unix son multiusuario, lo que implica que debe existir un sistema de permisos en el sistema de archivos, para por ejemplo evitar perdidas accidentales de datos, e.g., que un usuario elimine datos de otro. En la línea~\ref{lslout2}, se muestran los permisos del directorio \Verb+dia2+ en la primera cadena de caracteres antes del primer espacio. El primer carácter indica si estamos ante n directorio (\Verb+d+), un archivo (\Verb+-+), o un enlace (\Verb+l+). Los siguientes 9 caracteres están divididos en 3 grupos de 3 caracteres cada uno, como se muestra en la Figura~\ref{permisos}\footnote{Ejercicio opcional: {\textquestiondown}Cómo cambiar los permisos de un archivo o directorio?}.
+Como mencionado acima, os sistemas Unix são multi-usuários, o que implica que deve haver um sistema de permissão no sistema de arquivos, para evitar perdas acidentais de dados, e.g., que um usuário delete dados de outro. Na linha~\ref{lslout2} as permissões de diretório são exibidas \Verb+dia2+ na primeira corda antes do primeiro espaço. O primeiro caractere indica se estamos em n diretório (\Verb+d+), um arquivo (\Verb+-+), ou um link (\Verb+l+). os 9 caracteres a seguir são divididos em 3 grupos de 3 caracteres cada, como mostrado na figura~\ref{permisos}\footnote{Exercício opcional: {\textquestiondown}Como alterar as permissões de um arquivo ou diretório?}.
 
 \begin{figure}[ht]
 \centering
    \includegraphics[width=5cm]{Figs/permisos.png}
-  \caption[Sistema de permisos en Linux]{\label{permisos}Sistema de permisos en Linux. r: permiso de lectura; w: permiso de escritura; x: permiso de ejecución.}
+  \caption[Sistema de permissão no Linux]{\label{permisos}Sistema de permissão no Linux. r: permissão de leitura; w: permissão de escrita; x: permissão de Execução.}
 \end{figure}
 
-Ya sabemos como mostrar información sobre los directorios y archivos en la ubicación actual.  Para cambiar de directorio usamos el comando `\Verb+cd nombre_directorio+', como se muestra en la línea~\ref{cddia}. Si desea subir un nivel en la jerarquía de directorio, ejecute el comando \Verb+cd ..+, otra opción es usar la ruta absoluta del directorio al que se quiere llegar, como se muestra en la línea~\ref{cdabsolutepath}. Vuelva al subdirectorio \Verb+/home/usuario/dia1+.
+Já sabemos como exibir informações sobre diretórios e arquivos na localização atual. Para alterar o diretório usamos o comando `\Verb+cd nome_direitorio+', como se mostra na linha~\ref{cddia}. se você quiser subir um nível na hierarquia do diretório executar o comando \Verb+cd ..+, outra opção é usar o caminho absoluto do diretório que você quer alcançar, como mostrado na linha~\ref{cdabsolutepath}. Retornar ao subdiretório \Verb+/home/usuario/dia1+.
 
-Antes de continuar, quisiera presentar el comando mas importante de cualquier sistema Unix, es el comando ``manual'', que muestra información sobre el uso de los diferentes comandos, por favor úsenlo cada vez que tengan alguna duda sobre las opciones o la sintaxis de algún comando, e.g., \Verb+man ls+.
+Antes de continuar, eu gostaria de introduzir o comando mais importante de qualquer sistema Unix, é o comando ``manual'', que mostra informações sobre o uso dos diferentes comandos, por favor, use-os sempre que você tiver alguma dúvida sobre as opções ou sintaxe de qualquer comando, e.g., \Verb+man ls+.
 
-\subsection{Organizando archivos}
+\subsection{Organizando arquivos}
 
-Las operaciones más comunes con archivos son: copiar, mover y borrar.  La sintaxis de los comandos para mover o copiar es la misma: ``comando origen destino''.  Por ejemplo suponga que tiene un archivo llamado ``test1.txt'' en su directorio home y lo quiere mover al directorio ``\Verb+~/dia1/+'', tendría que ejecutar el comando que se muestra en la línea~\ref{movertest}. Puede crear y remover directorios (vacíos) usando los comandos \Verb+mkdir+ y \Verb+rmdir+, respectivamente.
+As operações mais comuns com arquivos são: copiar, mover e excluir. A sintaxe dos comandos para mover ou copiar é a mesma: ``comando fonte destino''. Por exemplo, suponha que você tem um arquivo chamado ''test1.txt'' em seu diretório home e você quer movê-lo para o diretório``\Verb+~/dia1/+'', você teria que executar o comando mostrado na linha~\ref{movertest}. Você pode criar e remover diretórios (vazios) usando os comandos \Verb+mkdir+ y \Verb+rmdir+, respectivamente.
 
-\begin{Verbatim}[commandchars=!\{\},numbers=left,firstnumber=last,label=Organizando archivos y directorios,frame=topline,fontsize=\scriptsize]
+\begin{Verbatim}[commandchars=!\{\},numbers=left,firstnumber=last,label=Organizando aquivos e direitorios,frame=topline,fontsize=\scriptsize]
 !textcolor{red}{[user@server:~]$} cd
 !textcolor{red}{[user@server:~]$} ls -l
 total 0  !label{lslout1}
@@ -178,20 +178,20 @@ drwxr-xr-x  2 user  group  68 Aug  5 09:02 dia2/
 !textcolor{red}{[user@server:~]$}
 \end{Verbatim} 
 
-\subsection{Algunas operaciones básicas con archivos}
-Usando algunos comandos de UNIX podemos obtener información sobre archivos, y la información que ellos contienen,  de forma rápida y eficiente, muchas veces no es necesario abrir el archivo, que puede ser de varios megabytes, para obtener esa información.
+\subsection{Algumas operações básicas com arquivos}
+Usando alguns comandos UNIX podemos obter informações sobre arquivos, e as informações que eles contêm, de forma rápida e eficiente, muitas vezes não é necessário abrir o arquivo, que pode ter vários megabytes, para obter essas informações.
 
-En el subdirectorio ``\Verb+~/dia1/+'', encuentra el archivo ``TAIR9\_pep\_20090619'', que corresponde a la base de datos de secuencias de proteínas predichas en el genoma de la planta modelo \textit{Arabidopsis thaliana}. Para saber cuantas líneas tiene este archivo, ejecute el comando que se muestra en la línea~\ref{wc}.
+No subdiretório``\Verb+~/dia1/+'', encontra o arquivo ``TAIR9\_pep\_20090619'', que corresponde ao banco de dados de sequências proteicas previstas no genoma da planta modelo \textit{Arabidopsis thaliana}. para saber quantas linhas este arquivo tem execute o comando mostrado na linha~\ref{wc}.
 
-{\textquestiondown}A que se deben las diferencias en las salidas de los comandos ejecutados en las líneas~\ref{wc}~y~\ref{wcl}\footnote{Revise la página de manual: \Verb+man wc+}?
+Porque as diferenças nas saídas dos comandos executados nas linhas~\ref{wc}~e~\ref{wcl}\footnote{Revise a página do manual: \Verb+man wc+}?
 
-Como se muestra en la línea~\ref{tamanoarapep}, el tamaño de esta base de datos de secuencias es de $18'173.159$ bytes. Para saber a cuanto corresponde esto en una unidad mas amigable use el comando que se muestra en la línea~\ref{lslh}.
+Como mostrado na linha~\ref{tamanoarapep}, o tamanho deste banco de dados é de $18.173.159$ bytes. Para saber o quanto isso corresponde em uma unidade mais amigável use o comando mostrado na linha~\ref{lslh}.
 
-En la mayoría de ocasiones es importante ver como luce el archivo, ya sea en su comienzo o final, pero debido al gran tamaño de los archivos con los que se trabaja normalmente, no es conveniente abrir el archivo con ningún editor de textos, ya que esto podría reducir el tiempo de respuesta del computador.  Los comandos que se muestran en las líneas~\ref{head10}~y~\ref{tail10}, muestran las 10 primeras y últimas líneas en el archivo, respectivamente.
+Na maioria dos casos é importante ver como o arquivo é, seja no seu início ou no final, mas devido ao grande tamanho dos arquivos com os quais você normalmente trabalha, não é conveniente abrir o arquivo com qualquer editor de texto, pois isso poderia reduzir o tempo de resposta do computador. Os comandos exibidos nas linhas~\ref{head10}~y~\ref{tail10}, mostram a primeira e últimas 10 linhas no arquivo, respectivamente.
 
-Usando el comando \Verb+grep+, como se muestra en la línea~\ref{grepsimple}, puede obtener un listado de las líneas en el archivo de interés que contienen un patrón dado, i.e., una cadena de texto específica.
+Usando o comando \Verb+grep+, como mostrado na linha~\ref{grepsimple}, você pode obter uma lista das linhas no arquivo de interesse que contêm um determinado padrão, i.e., uma sequência de texto específica.
 
-\begin{Verbatim}[commandchars=!\{\},numbers=left,firstnumber=last,label=Operaciones básicas con archivos,frame=topline,fontsize=\scriptsize]
+\begin{Verbatim}[commandchars=!\{\},numbers=left,firstnumber=last,label=Operações básicas com arquivos,frame=topline,fontsize=\scriptsize]
 !textcolor{red}{[user@server:~]$} cd dia1/
 !textcolor{red}{[user@server:~/dia1]$} ls -l
 total 35496
@@ -234,9 +234,9 @@ A*
 >AT1G44020.1 | Symbols:  | DC1 domain-containing protein
 \end{Verbatim} 
 
-No siempre en bioinformática tratamos con secuencias, en muchas ocasiones tenemos datos en forma tabular, donde los campos están separados por algún carácter definido, e.g., tabulación o comas. En la mayoría de los casos esto implica almacenar y manejar los datos usando un sistema de bases de datos, como MySQL.  Sin embargo, es importante hacerse a una idea de los resultados antes de integrarlos en el sistema de bases de datos, una opción que ha aparecido recientemente, dirigida a biólogos que trabajan con grandes cantidades de datos, es el Scriptome\footnote{\url{http://sysbio.harvard.edu/csb/resources/computational/scriptome/UNIX/}}, en el cual el autor ofrece una colección de ``scripts'' de PERL que se pueden ejecutar en la línea de comandos. En la líneas~\ref{scriptomeexample1}~a~\ref{scriptomeexample2} se ve un ejemplo en que se cambian todos los caracteres a mayúsculas, el comando se tiene que ejecutar en una única línea, aquí se muestra en líneas separadas solo para facilitar su visualización.
+Nem sempre na bioinformática lidamos com sequências, em muitos casos temos dados em forma tabular, onde os campos são separados por algum caractere definido, por exemplo, Guias ou vírgulas. Na maioria dos casos, isso envolve armazenar e gerenciar os dados usando um sistema de banco de dados, como o MySQL. No entanto, é importante ter uma ideia dos resultados antes de integrá-los ao sistema de banco de dados, uma opção que apareceu recentemente, voltada para biólogos que trabalham com grandes quantidades de dados, é o Scriptome\footnote{\url{http://sysbio.harvard.edu/csb/resources/computational/scriptome/UNIX/}}, em que o autor oferece uma coleção de scripts PERL que podem ser executados na linha de comando. Nas linhas~\ref{scriptomeexample1}~ate~\ref{scriptomeexample2} pode ver um exemplo onde todos os caracteres são alterados para maiúsdia, o comando tem que ser executado em uma única linha, aqui é mostrado em linhas separadas apenas para facilitar sua visualização.
 
-\begin{Verbatim}[commandchars=!\{\},numbers=left,firstnumber=last,label=Ejemplo de Scriptome,frame=topline,fontsize=\scriptsize]
+\begin{Verbatim}[commandchars=!\{\},numbers=left,firstnumber=last,label=Exemplo do Scriptome,frame=topline,fontsize=\scriptsize]
 !textcolor{red}{[user@server:~/dia1]$} perl -e ' while(<>) !{print lc($_);!} \  !label{scriptomeexample1}
 warn "Changed $. lines to lower case\n" ' \
 !textcolor{blue}{TAIR9_pep_20090619} > !textcolor{blue}{TAIR9_pep_20090619.lc}    !label{scriptomeexample2}
@@ -252,19 +252,19 @@ mvggkkktkicdkvsheedrisqlpepliseilfhlstkdsvrtsalstkwrylwqsvpg
 !textcolor{red}{[user@server:~/dia1]$} 
 \end{Verbatim} 
 
-En la línea~\ref{grepsimple} usó el símbolo ``\Verb+|+'' o ``barra vertical'', o ``tubería'' en UNIX, le permite conectar comandos, de forma que la salida del formato a la izquierda de la barra vertical sirve de entrada al comando que está a la derecha de la barra. Y en la línea~\ref{scriptomeexample2} usó el símbolo ``\Verb+>+'' para re-direccionar la salida estándar del comando hacia un archivo.
+Na linha ~\ref{grepsimple} foi usado o símbolo ``\Verb+|+'' ou ``barra vertical'', ou ``pipe'' no UNIX, permite conectar comandos, de modo que a saída da esquerda da barra vertical sirva de entrada para o comando à direita da barra. Na linha~\ref{scriptomeexample2} foi usado o símbolo ``\Verb+>+'' para redirecionar a saída padrão do comando para um arquivo.
 
-\section{Formatos de secuencias\label{sequenceformats}}
+\section{Formatos de sequência\label{sequenceformats}}
 
-Existen diferentes formatos para secuencias, generalmente en texto plano. Lo que significa que se pueden ver y editar con cualquier editor de texto, como \Verb+vi+ o \Verb+pico+. Algunos de estos formatos son más comunes que otros y muchos programas de bioinformática aceptan varios de los formatos más comunes \citep{Leonard2007}.
+Existem diferentes formatos para sequências, geralmente em texto simples. O que significa que eles podem ser vistos e editados com qualquer editor de texto, como \Verb+vi+ o \Verb+pico+. alguns desses formatos são mais comuns do que outros e muitos programas de bioinformática aceitam vários dos formatos mais comuns. \citep{Leonard2007}.
 
-Todos los formatos de secuencias tienen una característica (campo) en común: un identificador para cada secuencia. De forma que esta pueda ser reconocida de forma unívoca.
+Todos os formatos de sequência têm uma característica (campo) em comum: um identificador para cada sequência. Para que possa ser reconhecido inequivocamente.
 
 \subsection{Fasta}
 
-El formato más sencillo es conocido como  Fasta\footnote{\url{http://www.ncbi.nlm.nih.gov/blast/fasta.shtml}}. En el cual una entrada, secuencia, se puede dividir en dos partes: La línea de identificación, que \textbf{debe} comenzar con el símbolo ``\Verb+>+'' y seguida inmediatamente del identificador de la secuencia (Ver línea~\ref{fastaid}), que puede ser cualquier cadena de caracteres sin espacios. Las líneas inmediatamente después del identificador corresponden a la secuencia propiamente dicha (Líneas~\ref{fastastartseq}-\ref{fastaendseq}).
+O formato mais simples é conhecido como Fasta\footnote{\url{http://www.ncbi.nlm.nih.gov/blast/fasta.shtml}}. Em que uma entrada, sequência, pode ser dividida em duas partes: A linha de identificação, que \textbf{deve} começar com símbolo ``\Verb+>+'' e imediatamente seguido pelo identificador de sequência (Ver linha~\ref{fastaid}), qpode ser qualquer sequência de caracteres sem espaços. As linhas imediatamente após o identificador correspondem à sequência em si (Líneas~\ref{fastastartseq}-\ref{fastaendseq}).
 
-Fasta es el formato de secuencias más comúnmente usado en aplicaciones bioinformáticas.
+Fasta é o formato de sequência mais usado em aplicações na bioinformática.
  
 \begin{Verbatim}[commandchars=!\{\},numbers=left,firstnumber=last,label=Secuencia en formato FastA,frame=topline,fontsize=\scriptsize]
 >gi|110742030|dbj|BAE98952.1| putative NAC domain protein [Arabidopsis thaliana] !label{fastaid}
