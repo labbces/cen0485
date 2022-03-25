@@ -95,17 +95,17 @@ En la sesión de \textbf{Terminal} ejecute los comandos como se muestran en el l
 Ahora que conoce su \textit{prompt} y sabe como manipularlo, vamos a empezar a interactuar con el sistema a través de comandos. Para iniciar, ejecute el comando que se muestra en la línea~\ref{wgetini}, \Verb+wget+ es un programa para descargar archivos de la red . Las líneas \ref{wgetinistart} a \ref{wgetinistop} muestran la salida típica de este comando, puede diferir ligeramente de la que se muestre en su \textbf{Terminal}. Cuando este comando termine, ejecute el que se muestra en la línea~\ref{tarini}, que descomprime el archivo que acabó de descargar.
 
 \begin{Verbatim}[commandchars=!\{\},numbers=left,firstnumber=last,label=Descarga de archivos,frame=topline,fontsize=\scriptsize]
-!textcolor{red}{[user@server:~]$} wget http://molbio00.bio.uni-potsdam.de/tmp/file1.tgz !label{wgetini}
---2009-07-27 12:56:25--  http://molbio00.bio.uni-potsdam.de/tmp/file1.tgz !label{wgetinistart}
-Resolving molbio00.bio.uni-potsdam.de... 141.89.197.45
-Connecting to molbio00.bio.uni-potsdam.de|141.89.197.45|:80... connected.
+!textcolor{red}{[user@server:~]$} wget https://github.com/labbces/cen0485/blob/main/linux/practicas/file1.tar.gz !label{wgetini}
+--2022-03-24 11:52:38--  https://github.com/labbces/cen0485/blob/main/linux/practicas/file1.tar.gz !label{wgetinistart}
+Resolving github.com (github.com)... 20.201.28.151
+Connecting to github.com (github.com)|20.201.28.151|:443... connected.
 HTTP request sent, awaiting response... 200 OK
-Length: 2413 (2.4K) [application/x-tar]
-Saving to: `file1.tgz'
+Length: unspecified [text/html]
+Saving to: ‘file1.tar.gz’
 
-100%[=========================== // ==>] 2,413       --.-K/s   in 0.006s
+file1.tar.gz                                          [  <=>                                                                                                      ] 124,60K   258KB/s    in 0,5s    
 
-2009-07-27 12:56:25 (368 KB/s) - `file1.tgz' saved [2413/2413] !label{wgetinistop}
+2022-03-24 11:58:33 (258 KB/s) - ‘file1.tar.gz’ saved [127594] !label{wgetinistop}
 
 !textcolor{red}{[user@server:~]$} tar xzf file1.tgz !label{tarini}
 \end{Verbatim} 
