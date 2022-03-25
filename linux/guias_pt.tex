@@ -97,15 +97,22 @@ Na sessão  \textbf{Terminal} execute os comandos conforme mostrado na lista \te
 Vamos começar interagir com o sistema através de comandos. para começar a executar o comando mostrado na linha~\ref{wgetini}, \Verb+wget+ é um programa para baixar arquivos da rede. A linha \ref{wgetinistart} ate \ref{wgetinistop} mostram a saida tipica deste comando, pode mudar levemente do que se amostra no seu \textbf{Terminal}. quando este comando termina executar o mostrado na linha~\ref{tarini}, que abre o arquivo que você acabou de baixar.
 
 \begin{Verbatim}[commandchars=!\{\},numbers=left,firstnumber=last,label=Baixando arquivos, frame=topline,fontsize=\scriptsize]
-!textcolor{red}{[user@server:~]$} wget https://github.com/labbces/cen0485/blob/main/linux/practicas/file1.tar.gz !label{wgetini}
---2022-03-24 11:52:38--  https://github.com/labbces/cen0485/blob/main/linux/practicas/file1.tar.gz !label{wgetinistart}
+!textcolor{red}{[user@server:~]$} wget https://github.com/labbces/cen0485/raw/main/linux/practicas/file1.tar.gz !label{wgetini}
+--2022-03-25 16:26:12--  https://github.com/labbces/cen0485/raw/main/linux/practicas/file1.tar.gz !label{wgetinistart}
 Resolving github.com (github.com)... 20.201.28.151
 Connecting to github.com (github.com)|20.201.28.151|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://raw.githubusercontent.com/labbces/cen0485/main/linux/practicas/file1.tar.gz [following]
+--2022-03-25 16:26:18--  https://raw.githubusercontent.com/labbces/cen0485/main/linux/practicas/file1.tar.gz
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.108.133, 185.199.109.133, 185.199.111.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.108.133|:443... connected.
 HTTP request sent, awaiting response... 200 OK
-Length: unspecified [text/html]
+Length: 73501 (72K) [application/octet-stream]
 Saving to: ‘file1.tar.gz’
-file1.tar.gz                                          [  <=>                                                                                                      ] 124,60K   258KB/s    in 0,5s    
-2022-03-24 11:58:33 (258 KB/s) - ‘file1.tar.gz’ saved [127594] !label{wgetinistop}
+
+file1.tar.gz                                      100%[==========================================================================================================>]  71,78K   141KB/s    in 0,5s    
+
+2022-03-25 16:26:19 (141 KB/s) - ‘file1.tar.gz’ saved [73501/73501] !label{wgetinistop}
 
 !textcolor{red}{[user@server:~]$} tar xzf file1.tgz !label{tarini}
 \end{Verbatim} 
