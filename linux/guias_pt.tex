@@ -382,129 +382,131 @@ LDLDPYASSNTNTIVSFVESFFDSHRDSWIRKLRLDLGYHHDKYDLMSWIDAATTRRIQH
 
 Em outras ocasiões é importante modificar o identificador de cada sequência, de modo que inclua, por exemplo, uma abreviação que represente o nome da espécie a que a sequência pertence. Novamente Unix nos permite fazer essa mudança muito rapidamente usando o comando \Verb+sed+ como mostrado na linha~\ref{sedsp}.
 
-\chapter{Búsquedas en bases de datos biológicas}
+\chapter{Buscas em banco de dados biológicos}
 
-Este capítulo corresponde a una versión modificada de una guía original de la profesora Silvia Restrepo.
+Este capítulo corresponde a uma versão modificada de um guia original da professora Silvia Restrepo
 
-\section{NCBI – Bases de datos y búsqueda de información}
+\section{NCBI – Bancos de dados e busca de informações}
 
-El Centro Nacional de Información en Biotecnología, NCBI por sus siglas en inglés, es una institución pública de los Estados Unidos de América, que salvaguarda toda la información sobre los genomas de varias especies, así como la mayor base de datos pública sobre secuencias de ADN y proteínas.  Su página principal de red esta ubicada el siguiente enlace: \url{http://www.ncbi.nlm.nih.gov/}
+O National Center for Biotechnology Information, NCBI pela sigla em inglês, é uma instituição pública dos Estados Unidos da América, que guarda todas as informações sobre os genomas de várias espécies, bem como o maior banco de dados público sobre sequências de DNA e proteínas. Sua página principal da rede está localizada no seguinte link:
+\url{http://www.ncbi.nlm.nih.gov/}
 
-Esta página conecta con todos los datos disponibles en sus servidores (PubMed, ALL Databases (Entrez), Blast, OMIM, Books, TaxBrowser, Structure), como se observa en la Figura \ref{screenshotNCBI}. Aunque Entrez está listado como uno de los servicios, en realidad casi todos ellos dependen directamente de Entrez.  Por ejemplo, PubMed y Taxonomy están íntimamente ligados al Entrez.
+Este site conecta todos os dados disponíveis em seus servidores (PubMed, TODOS os bancos de dados (Entrez), Blast, OMIM, Books, TaxBrowser, Structure), conforme mostrado na Figura \ref{screenshotNCBI}. Embora o Entrez esteja listado como um dos serviços, na realidade quase todos eles dependem diretamente do Entrez. Por exemplo, PubMed e Taxonomy estão intimamente ligados ao Entrez. 
 
 \begin{figure}[ht]
 \centering
    \includegraphics[width=15cm]{Figs/NCBIStart.png}
-  \caption{\label{screenshotNCBI}Página de inicio NCBI}
+  \caption{\label{screenshotNCBI}Página inicial do NCBI}
 \end{figure}
 
-\subsection{Iniciemos una visita a sus bases de datos}
+\subsection{Vamos começar uma visita aos seus bancos de dados}
 
-Como primera medida, entremos en PubMed.  Esta base de datos contiene información sobre publicaciones científicas, y sus registros han sido compilados por el NLM (librería nacional de medicina), con colaboración de los editores. Allí encontrará la mayoría de referencias que necesite, incluyendo el resumen (Abstract) y en algunos casos la publicación de forma gratuita. 
+Como primeiro passo, vamos entrar no PubMed. Esta base de dados contém informações sobre publicações científicas, e seus registros foram compilados pela NLM (National Library of Medicine), com a colaboração dos editores. Lá você encontrará a maioria das referências necessárias, incluindo o resumo (Abstract) e em alguns casos a publicação gratuita. 
 
-Para obtener ayuda sobre como efectuar búsquedas, refiérase al siguiente enlace:  \url{http://www.ncbi.nlm.nih.gov/bookshelf/br.fcgi?book=helppubmed}
+Para obter ajuda sobre como realizar buscas consulte o seguinte link:  \url{http://www.ncbi.nlm.nih.gov/bookshelf/br.fcgi?book=helppubmed}
 
-Las páginas tienen un menú de bases de datos en una barra superior, las búsquedas deben colocarse en la ventanilla que se muestra en la Figura \ref{screenshotsearchbox}.
+As páginas possuem um menu de banco de dados em uma barra superior, as pesquisas devem ser colocadas na janela mostrada na Figura \ref{screenshotsearchbox}.
 
 \begin{figure}[ht]
 \centering
    \includegraphics[width=15cm]{Figs/NCBISearchBox.png}
-  \caption{\label{screenshotsearchbox}Ventanilla de búsqueda en el NCBI}
+  \caption{\label{screenshotsearchbox}Janela de busca do NCBI }
 \end{figure}
  
- Una búsqueda debe tomar un formato similar a este:
+Uma busca deve ter um formato semelhante a este:
 
 \begin{quote}
-``\textbf{palabraclave}''[field] \textbf{operador lógico}  ``\textbf{palabraclave}''[field] \ldots
+``\textbf{palavrachave}''[field] \textbf{operador lógico}  ``\textbf{palavrachave}''[field] \ldots
 \end{quote}
 
-Donde \textbf{palabra clave} es la palabra que sirve para identificar un registro (record) según el campo (field) usado.  Por ejemplo, una palabra clave puede ser "garcía" en el campo de "autores". \textbf{Operador lógico} es cualquiera de estos operadores boleanos: AND, OR, NOT, BUT, etc.  Cuando reemplace con sus propios términos claves en el formato de arriba, recuerde que los campos deben estar entre paréntesis cuadrados [ ], pero los operadores van solos (sin los símbolos, "" ), adicionalmente, las comillas en la palabra claves son opcionales, pero cumplen la función de forzar una búsqueda con la palabra exacta en vez de ser flexible.
+Onde \textbf{palavra chave} é a palavra utilizada para identificar um registro (record) de acordo com o campo (field) utilizado. Por exemplo, uma palavra chave pode ser "Silva" no campo "authors". \textbf{Operador lógico} é qualquer um destes operadores booleanos: AND, OR, NOT, BUT, etc. Ao substituir por suas próprias palavras-chave no formato acima, lembre-se de que os campos devem estar entre colchetes [ ], mas os operadores são independentes (sem os símbolos, "" ), além disso, as aspas na palavra chave são opcionais, mas cumprem a função de forçar uma busca com a palavra exata ao invés de serem flexíveis. 
 
-Por ejemplo, si quiero buscar todos los artículos de 1999 publicados por García y demás en la revista Science, uso el siguiente comando: García[AU] AND 1999[DP] AND "science"[TA].  Entre más información entre en la búsqueda, mayor restringida será la respuesta, (por ejemplo, si incluyo más autores).
+Por exemplo, se eu quiser pesquisar todos os artigos de 1999 publicados por Silva et al na revista Science, eu uso o seguinte comando: "Silva"[AU] AND 1999[DP] AND "science"[TA]. Quanto mais informações forem inseridas na busca, mais restrita será a resposta (por exemplo, se eu incluir mais autores). 
 
-Los campos (fields) más comunes que se pueden preguntar en PubMed son los siguientes:
+Os campos mais comuns que podem ser solicitados no PubMed são os seguintes:
 
 \begin{description}
-\item[All Fields [ALL]]  Includes all searchable PubMed fields. However, only terms where there is no match found in one of the Translation tables or Indexes via the Automatic Term Mapping process will be searched in All Fields. PubMed ignores stopwords from search queries. 
-\item[Author Name [AU]] Various limits on the number of author names included in the MEDLINE citation have existed over the years (see NLM policy on author names). MEDLINE does not list the full name. The format to search for an author name is: last name followed by a space and up to the first two initials followed by a space and a suffix abbreviation, if applicable, all without periods or a comma after the last name (e.g., fauci as or o'brien jc jr). Initials and suffixes may be omitted when searching. PubMed automatically truncates on an author's name to account for varying initials, e.g., o'brien j [au] will retrieve o'brien ja, o'brien jb, o'brien jc jr, as well as o'brien j. To turn off this automatic truncation, enclose the author's name in double quotes and qualify with [au] in brackets, e.g., "o'brien j" [au] to retrieve just o'brien j. 
-\item[EC/RN Number [RN]] Number assigned by the Enzyme Commission to designate a particular enzyme or by the Chemical Abstracts Service (CAS) for Registry Numbers. 
-\item[Entrez Date [EDAT]] Date the citation was added to the PubMed database. Citations are displayed in Entrez Date order which is last in, first out. Dates or date ranges must be entered using the format YYYY/MM/DD [edat], e.g. 1998/04/06 [edat] . The month and day are optional (e.g., 1998 [edat] or 1998/03 [edat]). To enter a date range, insert a colon (:) between each date (e.g., 1996:1997 [edat] or 1998/01:1998/04 [edat]). 
-\item[Issue [IP]] The number of the journal issue in which the article is published. 
-\item[Journal Title [TA]] The journal title abbreviation, full journal name, or ISSN number.
+\item[All Fields [ALL]]  Inclui todos os campos pesquisáveis do PubMed. No entanto, apenas os termos em que não houver correspondência encontrada em uma das tabelas ou índices de tradução por meio do processo de Mapeamento Automático de Termos serão pesquisados em Todos os Campos. PubMed ignora palavras irrelevantes de consultas de pesquisa.  
+\item[Author Name [AU]] Vários limites no número de nomes de autores incluídos na citação MEDLINE existiram ao longo dos anos (consulte a política NLM sobre nomes de autores). MEDLINE não lista o nome completo. O formato para pesquisar o nome do autor é: sobrenome seguido de espaço e até as duas primeiras iniciais seguidas de espaço e abreviação do sufixo, se for o caso, tudo sem pontos ou vírgula após o sobrenome (por exemplo, fauci as ou o'brien jc jr). Iniciais e sufixos podem ser omitidos durante a pesquisa. O PubMed trunca automaticamente o nome de um autor para levar em conta as iniciais variadas, por exemplo, o'brien j [au] recuperará o'brien ja, o'brien jb, o'brien jc jr, bem como o'brien j. Para desativar esse truncamento automático, coloque o nome do autor entre aspas duplas e qualifique com [au] entre colchetes, por exemplo, "o'brien j" [au] para recuperar apenas o'brien j. 
+\item[EC/RN Number [RN]] Número atribuído pela Enzyme Commission para designar uma enzima específica ou pelo Chemical Abstracts Service (CAS) para números de registro.  
+\item[Entrez Date [EDAT]] Data em que a citação foi adicionada ao banco de dados PubMed. As citações são exibidas na ordem Entrez Date, que é o último a entrar, o primeiro a sair. As datas ou intervalos de datas devem ser inseridos usando o formato AAAA/MM/DD [edat], ex. 1998/04/06 [ed.] . O mês e o dia são opcionais (por exemplo, 1998 [edat] ou 1998/03 [edat]). Para inserir um intervalo de datas, insira dois pontos (:) entre cada data (por exemplo, 1996:1997 [edat] ou 1998/01:1998/04 [edat])
+\item[Issue [IP]] O número do número da revista em que o artigo é publicado.  
+\item[Journal Title [TA]] A abreviatura do título do periódico, nome completo do periódico ou número ISSN .
 \item[Language [LA]] 
-\item[Publication Date [DP]] The date that the article was published. Dates or date ranges must be searched using the format YYYY/MM/DD [dp], e.g. 1998/03/06 [dp] . The month and day are optional (e.g., 1998 [dp] or 1998/03 [dp]). To enter a date range, insert a colon (:) between each date (e.g., 1996:1998 [dp] or 1998/01:1998/04 [dp]). 
-\item[Substance Name [NM]] The name of a chemical discussed in the article. Synonyms to the Supplementary Concept Substance Name will automatically map when qualified with [nm]. This field was implemented in mid-1980. Many chemical names are searchable as MeSH terms before that date. 
-\item[Text Words [TW]] Includes all words and numbers in the title and abstract, and MeSH terms, subheadings, chemical substance names, personal name as subject, and MEDLINE Secondary Source (SI) field. The Personal Name of Subject field can also be searched directly using the search field tag [ps], e.g., nightingale f [ps]. 
-\item[Title Words [TI]] Words and numbers included in the title of a citation. 
-\item[Title/Abstract Words [TIAB]] Words and numbers included in the title and abstract of a citation. 
-\item[Unique Identifiers [UID]] PubMed Unique Identifier PMID and MEDLINE Unique Identifier UI .
-\item[Volume [VI]] The number of the journal volume in which an article is published. 
+\item[Publication Date [DP]] A data em que o artigo foi publicado. As datas ou intervalos de datas devem ser pesquisados usando o formato AAAA/MM/DD [dp], ex. 1998/03/06 [dp] . O mês e o dia são opcionais (por exemplo, 1998 [dp] ou 1998/03 [dp]). Para inserir um intervalo de datas, insira dois pontos (:) entre cada data (por exemplo, 1996:1998 [dp] ou 1998/01:1998/04 [dp]). 
+O nome de um produto químico discutido no artigo. Sinônimos para o Nome da Substância do Conceito Complementar serão mapeados automaticamente quando qualificados com [nm]. Este campo foi implementado em meados de 1980. Muitos nomes químicos são pesquisáveis como termos MeSH antes dessa data.
+\item[Text Words [TW]] Inclui todas as palavras e números no título e resumo, e termos MeSH, subtítulos, nomes de substâncias químicas, nome pessoal como assunto e campo MEDLINE Secondary Source (SI). O campo Nome pessoal do assunto também pode ser pesquisado diretamente usando a tag do campo de pesquisa [ps], por exemplo, rouxinol f [ps]. 
+\item[Title Words [TI]] Palavras e números incluídos no título de uma citação. 
+\item[Title/Abstract Words [TIAB]] Palavras e números incluídos no título e resumo de uma citação.
+\item[Unique Identifiers [UID]]
+\item[Volume [VI]] O número do volume da revista em que um artigo é publicado. 
 \end{description}
 
-Ahora vamos a la página donde se encuentra ENTREZ. Para ello seleccione ALL DATABASES en la ventanilla de bases de datos de la página principal. Entrez es un sistema de búsqueda de secuencias almacenadas en las bases de datos. 
-Se pueden hacer preguntas sofisticadas para obtener un conjunto de secuencias que sean de interés propio, por ejemplo, puedo pedir que muestre todas las secuencias genómicas de Arabidopsis que fueron incluidas en la base de datos entre los años 97' y 99' que además contengan anotación (en la tabla de "features") sobre regiones promotoras. La Figura \ref{screenshotentrez} muestra la página de entrada al servidor de Entrez.
+Agora vamos no site onde o ENTREZ está localizado. Para fazer isso, selecione TODOS OS BANCOS DE DADOS na janela do banco de dados na página principal. Entrez é um sistema de busca de sequências armazenadas em bancos de dados.
+Consultas sofisticadas podem ser solicitadas para obter um conjunto de sequências de seu interesse, por exemplo, posso pedir para exibir todas as sequências genômicas de Arabidopsis que foram incluídas no banco de dados entre os anos 97' e 99' que também contêm anotação (em a tabela "features") nas regiões promotoras. A Figura \ref{screenshotentrez} mostra a página de login do servidor Entrez.
 
 \begin{figure}[ht]
 \centering
    \includegraphics[width=15cm]{Figs/screenshotEntrez.png}
-  \caption{\label{screenshotentrez}Página principal de Entrez}
+  \caption{\label{screenshotentrez}Página inicial do Entrez}
 \end{figure}
 
-Así en una sola página podemos realizar búsquedas simultáneamente en todas las bases de datos o seleccionar una sola base de datos y hacer una búsqueda por base de datos.
+Assim, em um único site podemos realizar buscas simultaneamente em todas as bases de dados ou selecionar uma única base de dados e realizar uma busca por base de dados. 
 
-En la casilla de búsqueda, se pueden preguntar secuencias usando sus números identificadores (como el gi-number o con el número de accesión).  También se pueden formular preguntas más complicadas utilizando la sintaxis de entrez, similar a como vimos PubMed: 
+Na caixa de busca, as sequências podem ser consultadas usando seus números identificadores (como o gi-number ou com o número de acesso). Questões mais complicadas também podem ser formuladas usando a sintaxe entrez, semelhante a como vimos o PubMed: 
 
 \begin{quote}
-``\textbf{palabraclave}''[field] \textbf{operador lógico} ``\textbf{palabraclave}''[field] \ldots
+``\textbf{palavrachave}''[field] \textbf{operador lógico} ``\textbf{palavrachave}''[field] \ldots
 \end{quote}
 
-Para obtener mayor información sobre Entrez puede seguir el enlace: 
+Para mais informações sobre o Entrez você pode seguir o link:
 \url{http://www.ncbi.nlm.nih.gov/bookshelf/br.fcgi?book=helpentrez&part=EntrezHelp}
 
 {\color{red}
-\subsubsection{Ejercicios}
+\subsubsection{Exercícios}
 
 \begin{enumerate}
-\item ¿Cuál es la clasificación taxonómica del alga \textit{Chlamydomonas reinhardtii}, y qué otras plantas son cercanas, de tal manera que puedan usarse como fuente de marcadores. Cuantas secuencias de proteínas están presentes en GenBank para la especie \textit{Chlamydomonas reinhardtii}?
-\item Vaya a la página de PubMed y consiga las referencias que traten sobre la biología molecular y/o genética de la yuca (\textit{Manihot esculenta}).  ¿Cuántas fueron publicadas en  los últimos dos años y de qué laboratorios (o regiones geográficas) son sus autores? Explique cómo realizó la búsqueda. Hint: GoPubMed \url{http://www.gopubmed.org/}
-\item Use Entrez para encontrar todas las secuencias tipo EST (Expressed Sequence Tag) de arroz que han sido depositados en la base de datos.
+\item Qual é a classificação taxonômica da alga \textit{Chlamydomonas reinhardtii}?, e quais outras plantas estão próximas, para que possam ser usadas como fonte de marcadores?. Quantas sequências de proteínas estão presentes no GenBank para a espécie \textit{Chlamydomonas reinhardtii}? 
+\item Acesse a página do PubMed e obtenha as referências que tratam da biologia molecular e/ou genética da mandioca (\textit{Manihot esculenta}). Quantos foram publicados nos últimos dois anos e de quais laboratórios (ou regiões geográficas) são os autores? Explique como você pesquisou. Dica: GoPubMed \url{http://www.gopubmed.org/}
+\item Use o Entrez para encontrar todas as sequências EST (Expressed Sequence Tag) de arroz que foram depositadas no banco de dados.
 \end{enumerate}
 }
 
-Revise la descripción de los principales formatos de secuencias en la sección \ref{sequenceformats}.
+Revise a descrição dos principais formatos de sequências na seção
+\ref{sequenceformats}.
 
-\subsubsection{¿Qué bases de datos encontramos en el NCBI?}
+\subsubsection{Quais bancos de dados encontramos no NCBI?}
 
-El NCBI posee un gran número de bases de datos. La más conocida en GenBank que contiene todas las secuencias nucleotídicas. GenPept contiene las secuencias de proteínas. Otras bases de datos son Genome, Structure, PubMed
+O NCBI possui um grande número de bancos de dados. O mais conhecido no GenBank que contém todas as sequências de nucleotídeos. GenPept contém as sequências de proteínas. Outras bases de dados são Genome, Structure, PubMed
 
-En GenBank las secuencias están organizadas en 17 divisiones, 11 tradicionales y 6 Bulk
-En las tradicionales las secuencias han sido mandadas directamente por los investigadores, están caracterizadas y las divisiones son:
+No GenBank as sequências estão organizadas em 17 divisões, 11 tradicionais e 6 Bulk
+Nas tradicionais, as sequências foram enviadas diretamente pelos pesquisadores, são caracterizadas e as divisões são:
 
 \begin{description}
-\item[PRI] primates
+\item[PRI] primatas
 \item[PLN] plantas
-\item[BCT] Bacterias
-\item[INV] Invertebrados
+\item[BCT] bactérias
+\item[INV] invertebrados
 \item[ROD] Roedores
-\item[VRL] Virales
-\item[VRT] otros vertebrados
+\item[VRL] Viral
+\item[VRT] outros vertebrados
 \item[MAM] Mamíferos (Ej. ROD + PRI)
 \item[PHG] Fagos
-\item[SYN] Sintéticos (vectores de clonacion, etc)
-\item[UNA] sin anotación
+\item[SYN] Sintético (vetores de clonagem, etc)
+\item[UNA] sem anotação 
 \end{description}
 
 
-Las Bulk consisten en secuencias mandadas en grupo via email o ftp, inexactas y poco caracterizadas, son:
+O Bulk consiste em sequências enviadas em grupos via email ou ftp, imprecisas e mal caracterizadas, são elas: 
 
 \begin{description}
-\item[dbEST] Base de datos de ESTs, Expressed Sequence Tags
-\item[dbSTS] Sequence-tagged sites: son cortos landmarks genómicos para los cuales hay información de secuencia y de mapa 
-\item[dbGSS] Genomic survey sequences. Contiene: datos de secuencia paso único del genoma, secuencias terminales de BAC, YAC y cosmidos, secuencias de exones
-\item[dbHTGS] High-Throughput Genomic Sequences. Fue creada para guardar información de la secuenciación de genomas que no estaba terminada ni curada pero para darla a conocer a la comunidad científica tan pronto como estuviera disponible
+\item[dbEST] Banco de dados EST, tags de sequência expressa
+\item[dbSTS] Sequence-tagged sites: são marcos genômicos curtos para os quais há informações de sequência e mapa. 
+\item[dbGSS] Genomic survey sequences. Contém: dados de sequência do genoma de etapa única, sequências terminais BAC, YAC e cosmídeos, sequências de éxon
+\item[dbHTGS] High-Throughput Genomic Sequences. Ele foi criado para salvar informações de sequenciamento de genoma que não foram finalizadas ou curadas, mas para torná-las conhecidas da comunidade científica assim que estiverem disponíveis.
 \end{description}
 
-y además se tienen bases de datos para:
+e também existem bancos de dados para:
 
 \begin{description}
 \item[HTC] High Throughput cDNA
@@ -513,13 +515,13 @@ y además se tienen bases de datos para:
 
 \subsubsection{RefSeq}
 
-Especial énfasis queremos hacer en una base de datos de NCBI llamada RefSeq. Esta base de datos fue creada para obtener una colección biológicamente no-redundante de secuencias de ADN, ARN y proteínas. Cada RefSeq (secuencia de referencia) representa una molécula única que ocurre naturalmente en un organismo. Esta base de datos es de tipo curada por investigadores. Cada molécula no es un resultado de investigación sino es una síntesis de información. 
+Queremos colocar ênfase especial em um banco de dados NCBI chamado RefSeq. Este banco de dados foi criado para obter uma coleção biologicamente não redundante de sequências de DNA, RNA e proteínas. Cada RefSeq (sequência de referência) representa uma molécula única que ocorre naturalmente em um organismo. Esta base de dados é do tipo com curadoria de pesquisadores. Cada molécula não é um resultado de pesquisa, mas sim uma síntese de informações.
 
-Volvamos a la página principal de NCBI y en la ventana de search, dejando all databases escribamos NC\_001139\footnote{asegúrese de incluir el símbolo underscore}. Vemos que en Nucleotide tenemos 1 hit, al igual que en Genome y en Gene tenemos 631.
+Vamos voltar para a página principal do NCBI e na janela de busca, deixando all databases, digite NC\_001139\footnote{certifique-se de incluir o símbolo de sublinhado}. Vemos que em Nucleotide temos 1 hit, assim como em Genome e em Gene temos 631.
 
-Abramos la de Nucleotide: obtenemos un flatfile de secuencia que corresponde a la secuencia completa del cromosoma VII de la levadura. Examinemos un poco el flatfile, \textcolor{red}{¿qué información contiene?}
+Vamos abrir Nucleotide: obtemos um flatfile de sequência  que corresponde à sequência completa do cromossomo VII da levedura. Vamos dar uma olhada no arquivo flatfile, \textcolor{red}{quais informações ele contém?} 
 
-Notemos que los identificadores de esta base de datos cambian y son del tipo 2+6 con dos letras y 6 números, la siguiente tabla nos muestra que significan estas letras:
+Observemos que os identificadores desta base de dados mudam e são do tipo 2+6 com duas letras e 6 números, a tabela a seguir nos mostra o que significam essas letras: 
 
 \begin{tabular}{|c|c|}
 \hline  \multicolumn{2}{|l|}{\textbf{mRNA and Proteins}} \\
@@ -539,89 +541,89 @@ Notemos que los identificadores de esta base de datos cambian y son del tipo 2+6
 \hline 
 \end{tabular} 
 
-\subsection{Recuperación de Secuencias en el NCBI con búsquedas más específicas}
+\subsection{Recuperação de Sequências no NCBI com buscas mais específicas}
 
-\paragraph{CONOCEMOS EL ORGANISMO.} Las búsquedas en NCBI se pueden hacer más dirigidas si conocemos el organismo del cual buscamos información. Entramos a la página inicial de NCBI, vamos a TaxBrowser, ponemos el nombre del organismo que estamos buscando. Cuando lo seleccionamos, a la derecha aparece una tabla de número de secuencias por tipo de molécula o proyecto. Al hacer clic en alguna de ellas, por ejemplo proteínas, nos lleva directamente a las proteínas de ese organismo.
+\paragraph{CONHECEMOS O ORGANISMO.} As pesquisas do NCBI podem ser mais direcionadas se conhece o organismo sobre o qual estamos procurando informações. Entramos na página inicial do NCBI, vamos para TaxBrowser, colocamos o nome do organismo que estamos procurando. Ao selecioná-lo, uma tabela do número de sequências por tipo de molécula ou projeto aparece à direita. Clicar em uma delas, por exemplo proteínas, nos leva diretamente às proteínas daquele organismo. 
 
-\paragraph{CONOCEMOS EL O LOS NÚMEROS DE ACCESO.} Si conoce el número de acceso directamente lo puede poner en la ventana de búsqueda de la página principal de NCBI. Para varias secuencias se ponen los números con la palabra OR entre ellos, por ejemplo AJ487842 or AJ487843. Finalmente para una seguidilla de números de acceso se pone: AJ487842::AJ487851[ACCN]
+\paragraph{NÓS SABEMOS OS NÚMEROS DE ACESSO.} Se você souber o número de acesso diretamente, pode colocá-lo na janela de pesquisa da página principal do NCBI. Para várias sequências os números são colocados com a palavra OR entre eles, por exemplo AJ487842 ou AJ487843. Por fim, para uma sequência de números de acesso, digite: AJ487842::AJ487851[ACCN] 
 
-\paragraph{DIRIGIMOS LA BÚSQUEDA CON LIMITS.} Por ejemplo si quiero buscar las secuencias curadas de mRNA relacionadas con un tipo de cáncer en humanos puedo hacer la siguiente búsqueda: en la ventana de búsqueda pongo COLON CANCER AND NONPOLYPOSIS, busco la base de datos de nucleótidos. Luego en LIMITS selecciono la molécula mRNA y en only from (base de datos) selecciono RefSeq. Luego selecciono arriba la otra pestaña Preview/index y ahí en organismos escribo humans y selecciono AND
+\paragraph{DIRECIONAMOS A PESQUISA COM LIMITES.} Por exemplo, se eu quiser pesquisar as sequências de mRNA curadas relacionadas a um tipo de câncer em humanos, posso fazer a seguinte pesquisa: na janela de pesquisa, coloco COLON CANCER AND NONPOLYPOSIS , eu pesquiso o banco de dados de nucleotídeos. Então em LIMITS seleciono a molécula de mRNA e em only from (banco de dados) seleciono RefSeq. Então eu seleciono a outra janela Preview/index acima e lá em organismos eu escrevo humanos e seleciono AND 
 
-\section{Recuperación de secuencias usando SRS@EBI\label{srs}}
+\section{Recuperação de sequência usando SRS@EBI\label{srs}}
 
-Existe sin embargo una alternativa excelente para la búsqueda de secuencias biológicas, que nos permite controlar casi todos los aspectos de nuestra búsqueda, esta alternativa es el Sistema de Recuperación de Secuencias (SRS). Este sistema fue desarrollado teniendo en mente precisamente esta labor de recuperar secuencias biológicas de una manera efectiva, de allí su diseño y sus capacidades.
+Existe no entanto uma excelente alternativa para a busca de sequências biológicas, que nos permite controlar quase todos os aspectos da nossa busca, esta alternativa é o Sequence Retrieval System (SRS). Este sistema foi desenvolvido com esta tarefa de recuperar eficazmente sequências biológicas em mente, daí o seu design e capacidades. 
 
-En este taller trabajaremos con el SRS ofrecido por el Instituto Europeo de Bioinformática (EBI), \url{http://srs.ebi.ac.uk/}. O entrando al EBI, (\url{http://www.ebi.ac.uk/}) , database~$\rightarrow$~database~browsing se llega a SRS. 
+Neste workshop trabalharemos com o SRS oferecido pelo European Bioinformatics Institute (EBI), \url{http://srs.ebi.ac.uk/}. Ou digitando EBI, (\url{http://www.ebi.ac.uk/}) , database~$\rightarrow$~database~browsing você chega ao SRS. 
 
-Una manera sencilla de consultar el SRS es mediante la casilla Quick Text Search. En dicha casilla es posible realizar búsquedas en diversas bases de datos disponibles en el menú desplegable, como se muestra en la Figura~\ref{screenshoteSRS}
+Uma forma simples de consultar o SRS é através da caixa Quick Text Search. Nesta caixa é possível pesquisar em vários bancos de dados disponíveis no menu suspenso, conforme mostrado na Figura~\ref{screenshotSRS} 
 
 \begin{figure}[ht]
 \centering
    \includegraphics[width=15cm]{Figs/screenshorSRS.png}
-  \caption{\label{screenshoteSRS}Página principal de SRS}
+  \caption{\label{screenshoteSRS}Página inicial do SRS}
 \end{figure}
 
-Por ejemplo seleccionando la opción “Nucleotide Sequences” realizaremos nuestra búsqueda en la base de datos de DNA EMBL (homóloga al genBank y al DDBJ).
+Por exemplo, selecionando a opção “Nucleotide Sequences”, realizaremos nossa busca no banco de dados EMBL DNA (homólogo ao genBank e DDBJ). 
 
-Realice una búsqueda rápida por HIV-1 con diferentes opciones del menú desplegable. Hasta este momento el SRS parece ser bastante menos completo comparado con el sitio web del NCBI, pero ahora empezaremos a comprobar donde radica todo su potencial.
+Faça uma pesquisa rápida pelo HIV-1 com diferentes opções no menu suspenso. Até este ponto, o SRS parece ser um pouco menos completo em comparação com o site do NCBI, mas agora começaremos a ver onde está todo o seu potencial.
 
-Ahora realizaremos una búsqueda avanzada. Seleccione la pestaña Library Page ubicada en la parte superior de su pantalla y se muestra en la Figura~\ref{opcionesSRS}
+Agora vamos realizar uma busca avançada. Selecione a guia Library Page localizada na parte superior da tela e mostrada na Figura~\ref{optionsSRS} 
 
 \begin{figure}[ht]
 \centering
    \includegraphics[width=15cm]{Figs/SRSMenu.png}
-  \caption{\label{opcionesSRS}Opciones SRS}
+  \caption{\label{opcionesSRS}Opções SRS}
 \end{figure}
 
-A continuación será llevado a la sección del SRS donde se describen cada una de las bases de datos que componen el sistema (Figura~\ref{SRSDBs}). Como puede ver el SRS comprende muchas bases de datos a la vez y esa es una de sus principales virtudes, por esta razón al SRS se le conoce algunas veces como una “base de datos de bases de datos”, pues a través de este sistema podemos consultar múltiples bases de datos al mismo tiempo, de acuerdo a nuestras necesidades particulares.
+Você será então levado para a seção SRS onde estão descritos cada um dos bancos de dados que compõem o sistema (Figura~\ref{SRSDBs}). Como você pode ver, o SRS inclui muitos bancos de dados ao mesmo tempo e essa é uma de suas principais virtudes, por isso o SRS às vezes é conhecido como "banco de dados de bancos de dados", pois através deste sistema podemos consultar vários bancos de dados ao mesmo tempo, de acordo com nossas necessidades particulares. 
 
 \begin{figure}[ht]
 \centering
    \includegraphics[width=12cm]{Figs/SRSDBs.png}
-  \caption{\label{SRSDBs}Opciones SRS}
+  \caption{\label{SRSDBs}Opções SRS}
 \end{figure}
 
-Como puede darse cuenta el SRS es similar al sistema ENTREZ del NCBI, en el sentido en que nos permite consultar muchas bases de datos al mismo tiempo, pero esta vez no restringidos únicamente a aquellas con las que cuenta el NCBI sino a virtualmente cualquier base de datos. El número de bases de datos con las que cuenta el SRS depende de cada implementación, es decir el administrador del SRS determina qué bases de datos quiere o no incluir en su sistema
+Como você pode ver, o SRS é semelhante ao sistema NCBI ENTREZ, no sentido de que nos permite consultar muitas bases de dados ao mesmo tempo, mas desta vez não se restringindo apenas àquelas que o NCBI possui, mas a praticamente qualquer base de dados. A quantidade de bancos de dados que o SRS possui depende de cada implementação, ou seja, o administrador do SRS determina quais bancos de dados deseja ou não incluir em seu sistema 
 
-Ubique el cursor del ratón sobre alguna de las entradas, después de unos segundos una casilla de texto explicativo aparecerá. \textcolor{red}{¿Qué tipo de información proveen las bases de datos EMBL (Contig Updates), UniprotKB/Swissprot?}
+Posicione o cursor do mouse sobre qualquer uma das entradas, após alguns segundos aparecerá uma caixa de texto explicativa. \textcolor{red}{Que tipo de informação os bancos de dados EMBL (Contig Updates), UniprotKB/Swissprot fornecem?} 
 
-Al seguir el enlace a cualquiera de estas bases de datos obtendremos mayor información acerca de esta, como el número de entradas presentes, fecha de actualización etc. Sin embargo, por ahora nuestro interés es el de seleccionar algunas bases de datos para realizar nuestras búsquedas. Seleccione las casillas pertenecientes a las bases de datos de ``UniprotKB/Swissprot'' y ``UniprotKB/TrEMBL''. Cerciórese de que estas sean las únicas bases de datos seleccionadas.
+Ao seguir o link para qualquer uma dessas bases de dados obteremos mais informações sobre ela, como o número de entradas presentes, data de atualização, etc. No entanto, por enquanto nosso interesse é selecionar algumas bases de dados para realizar nossas buscas. Marque as caixas para os bancos de dados ``UniprotKB/Swissprot'' e ``UniprotKB/TrEMBL''. Certifique-se de que esses sejam os únicos bancos de dados selecionados. 
 
-A la izquierda de su pantalla encontrará la casilla ``Search Options'' la cual nos permitirá seleccionar el nivel de profundidad de nuestra búsqueda, Por ser esta la primera vez que trabajamos con este sistema seleccionaremos la forma estándar de búsqueda.
+À esquerda de sua tela você encontrará a caixa ``Search Options'' que nos permitirá selecionar o nível de profundidade de nossa busca. Como esta é a primeira vez que trabalhamos com este sistema, selecionaremos o formulário padrão de busca. 
 
-Presione el botón ``\textbf{Standard query Form}'' de la casilla ``\textbf{Search Options}''
+Pressione o botão ``\textbf{Standard query Form}'' na caixa ``\textbf{Search Options}'' 
 
-Esta acción le llevará al formulario estándar de búsqueda en el SRS (Figura~\ref{searchform}). El cual consta de 4 partes fundamentales.
+Esta ação o levará ao formulário de busca SRS padrão (Figura~\ref{searchform}).
 
 \begin{description}
-\item[Fields you can search] Campos de búsqueda, donde podemos entrar nuestros términos de búsqueda de acuerdo a cualquiera de las opciones presentes en los respectivos menúes desplegables.
-\item[Create View] Crear vista, esta opción trabaja en conjunto con la opción 3, y acá podemos definir el tipo de campos que queremos ver en nuestra página de resultados. Para nuestro ejemplo, tenemos interés en seleccionar todas las proteínas de superficie conocidas de Plasmodium falciparum con actividad inmunogénica, relacionadas con el merozoito.
-\item[Result Display Options] Opciones para mostrar los resultados, donde podemos definir el número de resultados que queremos por página, así como el formato de salida, ya sea alguno de los definidos en el menú desplegable o mediante la creación de una vista personalizada (opción ``create view'').
-\item[Search Options] Opciones de búsqueda, donde podemos definir, entre otras cosas, el tipo de conector lógico (booleano) a utilizar para los términos definidos en 1.
+\item[Fields you can search] Campos de busca, onde podemos inserir nossos termos de busca de acordo com qualquer uma das opções presentes nos respectivos menus suspensos. 
+\item[Create View] Criar vista, esta opção funciona em conjunto com a opção 3, e aqui podemos definir o tipo de campos que queremos ver na nossa página de resultados. Para o nosso exemplo, estamos interessados em selecionar todas as proteínas de superfície conhecidas de Plasmodium falciparum com atividade imunogênica, relacionadas ao merozoíto. 
+\item[Result Display Options] Opções para exibir os resultados, onde podemos definir o número de resultados que queremos por página, bem como o formato de saída, seja um dos definidos no menu suspenso ou criando uma visualização personalizada (opção ``create view'').
+\item[Search Options] Opções de busca, onde podemos definir, entre outras coisas, o tipo de conector lógico (Booleano) a ser usado para os termos definidos em 1. 
 \end{description}
 
 
 \begin{figure}[ht]
 \centering
    \includegraphics[width=12cm]{Figs/SearchFormSRS.png}
-  \caption{\label{searchform}Formulario de búsqueda SRS}
+  \caption{\label{searchform}Formulário de pesquisa SRS}
 \end{figure}
 
-Defina estos criterios en la sección ``Fields you can search'' de acuerdo la Figura~\ref{busquedaplasmodium}.
+Defina estes critérios na seção ``Fields you can search'' de acordo com a  Figura~\ref{busquedaplasmodium}.
 
 \begin{figure}[ht]
 \centering
    \includegraphics[width=10cm]{Figs/busquedaSRSplasmodium.png}
-  \caption{\label{busquedaplasmodium}Criterios de búsqueda avanzada}
+  \caption{\label{busquedaplasmodium}Critérios de pesquisa avançados}
 \end{figure}
 
-A continuación presione el botón \textbf{``search''} ubicado en la parte superior de esta sección y espere unos segundos.
+Em seguida, pressione o botão \textbf{``search''} localizado no topo desta seção e aguarde alguns segundos.
 
-Seguramente en este momento ya tenga una visión más exacta de las posibilidades que ofrece el SRS y sus principales diferencias con el sistema Entrez. Primero, pudimos definir exactamente no solamente la base de datos que queríamos consultar, sino las secciones específicas de esta. Además de esto pudimos también definir exactamente los términos de búsqueda en secciones específicas de las entradas, lo cual nos da un completo control sobre los resultados que queremos obtener.
+Com certeza você já tem uma visão mais exata das possibilidades oferecidas pelo SRS e suas principais diferenças com o sistema Entrez. Primeiro, conseguimos definir exatamente não apenas o banco de dados que queríamos consultar, mas as seções específicas dele. Além disso, também conseguimos definir exatamente os termos de pesquisa em seções específicas dos posts, o que nos dá total controle sobre os resultados que queremos obter. 
 
-Juegue un poco con las diferentes opciones de formatos que ofrece el SRS en la sección ``\textbf{Result Display Options}'', del formulario de búsqueda. Intente también creando su propio formato de salida con la opción ``\textbf{Create view}''.
+Brinque com as diferentes opções de formato que o SRS oferece na seção ``\textbf{Result Display Options}'' do formulário de pesquisa. Tente também criar seu próprio formato de saída com a opção ``\textbf{Create view}''. 
 
-\textcolor{red}{Encuentre todas las proteínas nucleares hipotéticas de \textit{Saccharomyces cerevisiae}, y muestre la información en formato fasta}.
+\textcolor{red}{Encontre todas as proteínas nucleares hipotéticas de \textit{Saccharomyces cerevisiae} e exiba a informação em formato fasta}. 
 
 \chapter{Manipulación básica de secuencias}
 
