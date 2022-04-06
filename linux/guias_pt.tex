@@ -1139,61 +1139,78 @@ Una vez se ha calculado la matriz de puntos, encontramos dos secciones de result
 
 \chapter{EMBOSS}
 
-EMBOSS\footnote{\url{http://emboss.sourceforge.net/}},  ``The European Molecular Biology Open Software Suite'', en un paquete gratuito, con código fuente abierto, compuesto de cientos de aplicaciones\footnote{\url{http://emboss.sourceforge.net/apps/release/6.3/emboss/apps/}} que se han desarrollado específicamente para resolver las necesidades de la comunidad de biología molecular.  El tutorial que encuentra a continuación es una parte de los tutoriales disponibles en \url{http://emboss.sourceforge.net/docs/emboss_tutorial/emboss_tutorial.html}, adaptado al uso del la interfaz gráfica desarrollada por el Instituto Pasteur \url{http://mobyle.pasteur.fr/}.
+EMBOSS\footnote{\url{http://emboss.sourceforge.net/}},  ``The European Molecular Biology Open Software Suite'', é um pacote de código aberto gratuito composto por centenas de apps\footnote{\url{http://emboss.sourceforge.net/apps/release/6.6/emboss/apps/}} que foram desenvolvidos especificamente para atender às necessidades da comunidade de biologia molecular. O tutorial que você encontra abaixo faz parte dos tutoriais disponíveis em \url{http://emboss.sourceforge.net/docs/emboss_tutorial/emboss_tutorial.html}
 
-Encuentra una descripción de cada una de las aplicaciones presentes en EMBOSS siguiendo el enlace: \url{http://emboss.sourceforge.net/apps/release/6.3/emboss/apps/}
+Encontre uma descrição de cada um dos aplicativos presentes no EMBOSS seguindo o link: \url{http://emboss.sourceforge.net/apps/release/6.6/emboss/apps/}
 
-Algunas de las áreas cubiertas por aplicaciones de EMBOSS son:
+Algumas das áreas abrangidas pelas aplicações EMBOSS são:
 
 \begin{itemize}
-\item Alineamiento de secuencias
-\item Búsqueda en bases de datos usando patrones
-\item Identificación de motivos de proteínas
-\item Análisis de uso de codones.
+\item Alinhamento de sequência
+\item Pesquisar em bancos de dados usando padrões
+\item Identificação de motivos proteicos
+\item Análise de uso de códons
 \end{itemize}
 
-\section{Recuperando secuencias de bases de datos}
+\section{Recuperando sequências de bancos de dados}
 
-La recuperación de secuencias desde una base de datos depende, obviamente, de las bases de datos que tengamos disponibles.
+A recuperação de sequências de um banco de dados obviamente depende dos bancos de dados que temos disponíveis.
 
-Vamos a recuperar la secuencia del gen ANC092 que esta en la base de datos de proteínas UniProt. Para poder realizar este ejercicio debe ir al sitio web de UniProt \footnote{\url{http://www.uniprot.org/}} y encontrar el identificador adecuado.
+Vamos recuperar a sequência do gene ANAC092 do banco de dados de proteínas UniProt. Para fazer este exercício, você precisa ir ao site UniProt \footnote{\url{http://www.uniprot.org/}} e encontrar o identificador apropriado para baixar a sequência em formato .txt Figura~\ref{link_seq} usando wget (linha~\ref{getuniprot}).
 
-Una vez a encontrado el identificador correspondiente en UniProt, puede ir a sitio de Mobyle@Pasteur que se citó anteriormente.
-
-El programa que nos interesa se llama ``\Verb+seqret+''. Llene los campos siguiendo las indicaciones que se muestran en el Figura~\ref{Seqret1}
+\begin{Verbatim}[commandchars=!\{\},numbers=left,label=obtendo sequência do uniprot,frame=topline,fontsize=\scriptsize]
+!textcolor{red}{[user@server]$} wget https://www.uniprot.org/uniprot/D7MJK1.txt !label{getuniprot}
+--2022-04-06 14:23:06--  https://www.uniprot.org/uniprot/D7MJK1.txt
+Resolving www.uniprot.org (www.uniprot.org)... 193.62.193.81
+Connecting to www.uniprot.org (www.uniprot.org)|193.62.193.81|:443... connected.
+HTTP request sent, awaiting response... 200 
+Length: 4570 (4,5K) [text/plain]
+Saving to: ‘D7MJK1.txt’
+D7MJK1.txt          100%[===================>]   4,46K  --.-KB/s    in 0s      
+2022-04-06 14:23:08 (275 MB/s) - ‘D7MJK1.txt’ saved [4570/4570]
+\end{Verbatim} 
 
 \begin{figure}[ht]
 \centering
-   \includegraphics[width=17cm]{Figs/SeqRet1.png}
-  \caption{\label{Seqret1}Recuperando secuencias de las bases de datos}
+   \includegraphics[width=12cm]{Figs/uniprot.png}
+  \caption{\label{uniprot_site}Recuperando sequências de bancos de dados}
 \end{figure}
 
-Ahora, puede usar el mismo programa para convertir la entrada recuperada de UniProt en formato fasta. \textcolor{red}{¿Cómo lo haría?}
+\begin{figure}[ht]
+\centering
+   \includegraphics[width=12cm]{Figs/get_seq_link.png}
+  \caption{\label{link_seq}Recuperando link de sequências em uniprot}
+\end{figure}
 
-Ya que sabe recuperar secuencias de UniProt, hagamos algunos cálculos sobre esa secuencia, busque el programa \Verb+compseq+, que le permite calcular la composición de palabras de una secuencia. \textcolor{red}{Calcule las frecuencias de dímeros para ANAC092 extraído de UniProt}\footnote{Al entregar su guía estos resultados los debe enviar en un archivo de text plano.}
 
-\section{Selección de marco de lectura abierto}
+O programa que nos interessa chama-se ``\Verb+seqret+''.
 
-Los programas \Verb+getorf+ y \Verb+plotorf+ buscan marcos de lectura abiertos en secuencias de nucleótidos. Siendo un marco de lectura abierto, una cadena (subsecuecnia) de una longitud mínima especificada flanqueada ya sea por dos codones de parada o por un codón de inicio y otro de parada. A pesar de la universalidad del código genético algunos grupos de organismo tienen codones de inicio y de parada diferentes, por esta razón es importante especificar, ya sea, el código genético que se está usando para traducir la secuencia, o los codones de inicio y parada permitidos.
+Agora, você pode usar o mesmo programa para converter a entrada recuperada do UniProt .txt para o formato fasta. \textcolor{red}{Como você faria isso?}
+
+Já que você sabe como recuperar sequências do UniProt, vamos fazer alguns cálculos sobre essa sequência, procure o programa \Verb+compseq+, que permite calcular a composição da palavra de uma sequência. \textcolor{red}{Calcular frequências mais fracas para ANAC092 extraídas do UniProt}\footnote{Ao enviar seu guia esses resultados devem ser enviados em um arquivo de texto plano (.txt).}
+
+\section{Seleção de quadros de leitura aberta}
+
+Os programas \Verb+getorf+ e \Verb+plotorf+ buscam quadros de leitura abertos em sequências de nucleotídeos. Sendo um quadro de leitura aberto, uma sequência (subsequência) de um comprimento mínimo especificado flanqueado por dois códons de parada ou por um códon de partida e parada. Apesar da universalidade do código genético alguns grupos de organismos têm códons diferentes, por isso é importante especificar, seja o código genético que está sendo usado para traduzir a sequência, ou o início e parar códons permitidos.
 
 {
-\color{red}Emplee estos dos programas para encontrar el marco de lectura abierto correcto de la secuencia ``ANAC092\_cDNA.fa''. ¿Encuentra alguna diferencia en los resultados ofrecidos por los dos programas?
+\color{red}Use esses dois programas para encontrar o quadro de leitura aberto correto da sequência ''ANAC092\_cDNA.fa''\footnote{Arquivo \Verb+ANAC092\_cDNA.fa'+ disponível no e-disciplinas}. Você encontra alguma diferença nos resultados oferecidos pelos dois programas? 
 }
 
-\section{Barajar/mezclar secuencias}
 
-Al hacer ciertos tipos de análisis, e.g., búsqueda de sitios de unión a factores de transcripción en secuencias promotoras (``TFBS''), es importante contar con un grupo de secuencias que sirvan como control negativo. De forma tal que los TFBS no aparezcan de forma frecuente en ese control negativo. Una opción muy usada es la de generar secuencias aleatorias que contengan la misma composición monomérica que las secuencias originales. El programa ``shuffleseq'' hace precisamente esto, toma una secuencia ``real'', y mezcla, como si estuviera barajando un mazo de cartas, los monómeros constituyentes, resultando en una secuencia al azar. Cuando se usa este tipo de estrategia, por cada secuencia original se generan ~1000 secuencias aleatorias.
+\section{Embaralhar/misturar Sequências}
 
-\textcolor{red}{Use ``shuffleseq'' para generar dos secuencias aleatorias del ARNr que se encuentra en el archivo \Verb+FN566965.fasta+}.
+Ao fazer certos tipos de análise, por exemplo, procurar sites de vinculação de fatores de transcrição em sequências de promotores (``TFBS''), é importante ter um grupo de sequências que servem como um controle negativo. Para que o TFBS não apareça com frequência neste controle negativo. Uma opção amplamente utilizada é gerar sequências aleatórias que contenham a mesma composição monomérica das sequências originais. O programa ``shuffleseq'' faz exatamente isso, pega uma sequência ``real'' e mistura, como se embaralhando um baralho de cartas, os monômeros constituintes, resultando em uma sequência aleatória. Ao usar este tipo de estratégia, ~1000 sequências aleatórias são geradas para cada sequência original.
 
-\section{Predicción de  regiones hidrofóbicas}
-El programa \Verb+pepwindow+ predice segmentos hidrofóbicos en una proteína, siguiendo la estrategia planteada por \citep{Kyte1982}. Usando ventanas de 19 a 21 residuos las regiones transmembranales se pueden detectar claramente, con valores de indice de hidrofobicidad de 1.6 en la región central.
+\textcolor{red}{Use ``shuffleseq'' para gerar duas sequências aleatórias do rRNA encontradas no arquivo \Verb+FN566965.fasta+ \footnote{Arquivo \Verb+FN566965.fasta+ disponível no e-disciplinas}}.
 
-\textcolor{red}{¿Puede detectar alguna región transmembranal en el gen NTM1\footnote{Archivo \Verb+NTM1.fasta+ disponible en Sicua Plus}?}
+\section{Previsão de regiões hidrofóbicas} O programa \Verb+pepwindow+ prevê segmentos hidrofóbicos em uma proteína, seguindo a estratégia proposta por \citep{Kyte1982}. O uso de janelas de 19 a 21 resíduos regiões transmembranas pode ser claramente detectado, com valores de índice de hidroofobidade de 1,6 na região central.
 
-\section{Alineamientos}
+\textcolor{red}{Pode detectar quaisquer regiões transmembranas no gene NTM1\footnote{Arquivo \Verb+NTM1.fasta+ disponível no e-disciplinas}?}
 
-\textcolor{red}{Describa la función del programa distmat}.
+\section{Alinhamentos}
+
+\textcolor{red}{Descreva a função do programa distmat}.
 
 \chapter{Comparación de secuencias II - Alineamientos pareados}
 
