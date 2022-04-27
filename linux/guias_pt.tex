@@ -1090,11 +1090,11 @@ El archivo\Verb+SaltArabidopsis.txt+ que está disponible en Sicua Plus, tienen 
 
 {\color{red}Use BinGO para identificar los términos GO que aparecen sobre y sub representados para los genes que aparecen en el archivo \Verb+gene_list.txt+. Muestre  el grafo de los términos e interprete los resultados.}
 
-\chapter{Comparación de secuencias I - Matrices de puntos}
+\chapter{Comparação de Sequência I - Matrizes de pontos}
 
-Las matrices de puntos (``Dot Plot'') son herramientas exploratorias para la comparación de cadenas de texto, i.e., secuencias. Entre otros, nos permiten fácilmente encontrar regiones repetidas en una secuencia al compararla contra si misma. También podemos hacernos una idea bastante clara de la estructura de un gen, al comparar la secuencia de su región codificante contra la secuencia del locus en donde se encuentra.
+As matrizes de pontos (``Dot Plot'') são ferramentas exploratórias para comparar strings de texto, ou seja, sequências. Entre outros, eles nos permitem encontrar facilmente regiões repetidas em uma sequência comparando-a com ela mesma. Também podemos ter uma boa ideia da estrutura de um gene comparando a sequência de sua região de codificação com a sequência do locus onde se encontra.
 
-En esta sección usaremos la implentación de matrices de puntos del Instituto Suizo de Bioinformática, conocida como  Dot Let\footnote{\url{http://myhits.isb-sib.ch/cgi-bin/dotlet}}, que vemos en la Figura~\ref{DotLet1}.
+Nesta seção, usaremos a implementação de matrizes de pontos do Instituto Suíço de Bioinformática, conhecida como Dot Let\footnote{\url{http://myhits.isb-sib.ch/cgi-bin/dotlet}}, que vemos na Figura~\ref{DotLet1}.
 
 \begin{figure}[ht]
 \centering
@@ -1102,25 +1102,26 @@ En esta sección usaremos la implentación de matrices de puntos del Instituto S
   \caption{\label{DotLet1}Dot Let @ SIB}
 \end{figure}
 
-Haga una comparación de la secuencia que se encuentra en el archivo \Verb+aqc-MIR399+ contra sí misma. Lo primero que tiene que hacer es pinchar el botón ``Input'', eso abrirá la ventana que se ve en la Figura~\ref{inputDotLet}, dele un nombre a la secuencia y pegue la misma en el cuadro correspondiente.
+Faça uma comparação da sequência encontrada no arquivo \Verb+aqc-MIR399+ com ela mesma. A primeira coisa que você precisa fazer é clicar no botão ``Input'', que abrirá a janela mostrada na Figura~\ref{inputDotLet}, dar um nome à sequência e colá-la na caixa correspondente.
 
 \begin{figure}[ht]
 \centering
    \includegraphics[width=7cm]{Figs/inputDotLet.png}
-  \caption{\label{inputDotLet}Agregar secuencias en Dot Let}
+  \caption{\label{inputDotLet}Adicionar Sequências em Dot Let}
 \end{figure}
 
-De regreso en la ventana de Dot Let vemos que encontramos habilitados dos botones (Figura~\ref{DotLetbotones}), aparecen ahora con el nombre de la secuencia que acabó de agregar. Uno de ellos representa a la secuencia que aparece en la dirección horizontal, el otro a la secuencia que aparece en la dirección vertical.
+De volta à janela Dot Let vemos que encontramos dois botões habilitados (Figura~\ref{DotLetbuttons}), eles agora aparecem com o nome da sequência que você acabou de adicionar. Uma delas representa a sequência que aparece na direção horizontal, a outra a sequência que aparece na direção vertical.
 
 \begin{figure}[ht]
 \centering
    \includegraphics[width=10cm]{Figs/DotLetBotones.png}
-  \caption{\label{DotLetbotones}Botones de control}
+  \caption{\label{DotLetbotones}botões de controle}
 \end{figure}
 
-A la derecha de los botones/listas que identifican a las secuencias, encontramos un lista desplegable, desabilitada por el momento, que nos permite seleccionar la matriz de sustitución. A continuación encontramos una lista desplegable con los tamaños de ventana que se van a uasar para la comparación de las dos secuencias. El siguiente botón nos permite hacer acercamientos, i.e., ``Zoom'', y por último encontramos el botón ``Calcular'', que llena la matriz de puntos.
 
-Una vez se ha calculado la matriz de puntos, encontramos dos secciones de resultados, similar a como aparece en la Figura~\ref{DotLetResultado1}. La región de la izquierda es la matriz propiamente dicha, pixeles oscuros representan puntajes  bajos, i.e., malos. A la izquierda vemos un histograma de la frecuencia de cada puntaje. Manipulando este histograma, con las barras de desplazamiento horizontal (arriba y abajo) podemos modificar la visualización de la matriz de puntos.
+À direita dos botões/listas que identificam as sequências, encontramos uma lista suspensa, atualmente desabilitada, que permite selecionar a matriz de substituição. Em seguida, encontramos uma lista suspensa com os tamanhos de janela que serão usados para a comparação das duas sequências. O próximo botão permite ampliar, ou seja, ``Zoom'', e finalmente encontramos o botão ``Calcular'', que preenche a matriz de pontos.
+
+Uma vez que a matriz de pontos foi calculada, encontramos duas seções de resultados, semelhantes ao que aparece na Figura~\ref{DotLetResultado1}. A região da esquerda é a própria matriz, pixels escuros representam pontuações baixas, ou seja, ruins. À esquerda vemos um histograma da frequência de cada pontuação. Manipulando este histograma, com as barras de rolagem horizontais (para cima e para baixo) podemos modificar a exibição da matriz de pontos.
 
 \begin{figure}[ht]
 \centering
@@ -1130,10 +1131,10 @@ Una vez se ha calculado la matriz de puntos, encontramos dos secciones de result
 
 {\color{red}
 \begin{itemize}
-\item Explique como afecta el tamaño de la ventana la visualización en la matriz de puntos.
-\item ¿Qué significado tiene la linea rosada en el histograma de puntajes?
-\item ¿Qué interpretación puede hacer de las repeticiones invertidas que se pueden detectar en la matriz de puntos?
-\item Compare la secuencia de cDNA y su correspondiente genómica del ANAC092\footnote{Disponible en Sicua Plus}. Describa los resultados.
+\item Explique como o tamanho da janela afeta a exibição na matriz de pontos.
+\item Qual é o significado da linha rosa no histograma de pontuação?
+\item Que interpretação você pode fazer das repetições invertidas que podem ser detectadas na matriz de pontos?
+\item Compare a sequência de cDNA e sua contraparte genômica de ANAC092\footnote{Disponível em e-disciplinas}. Descreva os resultados.
 \end{itemize}
 }
 
