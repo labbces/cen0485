@@ -1213,100 +1213,100 @@ Ao fazer certos tipos de análise, por exemplo, procurar sites de vinculação d
 
 \textcolor{red}{Descreva a função do programa distmat}.
 
-\chapter{Comparación de secuencias II - Alineamientos pareados}
+\chapter{Comparação de Sequência II - Alinhamentos emparelhados}
 
-Algunos apartes de este capítulo vienen del tutorial que se encuentra siguiendo el enlace: \url{http://emboss.sourceforge.net/docs/emboss_tutorial/emboss_tutorial.pdf}
+Algumas partes deste capítulo vêm do tutorial que está seguindo o link: \url{http://emboss.sourceforge.net/docs/emboss_tutorial/emboss_tutorial.pdf}
 
-Para desarrollar los ejercicios siga el enlace \url{http://mobyle.pasteur.fr/cgi-bin/portal.py}
+Para fazer os exercícios siga o link \url{http://mobyle.pasteur.fr/cgi-bin/portal.py}
 
-\section{Matrices de sustitución}
+\section{Matrizes de substituição}
 
-En el archivo \Verb+EPAM250.txt+ encontrará la matriz de sustitución PAM250.
+no arquivo archivo \Verb+EPAM250.txt+ você vai encontrar a matriz de substituição PAM250.
 
 %Check: http://cnx.org/content/m11062/latest/
 
 {
 \color{red}
 \begin{itemize}
-\item ¿Quiénes, y cómo, crearon la familia de matrices de sustitución PAM?
-\item ¿Dónde se encuentran los puntajes mas altos? Explique.
-\item ¿Cuál es la sustitución con el mayor puntaje?
-\item ¿Por qué las identidades  no tienen siempre el mismo puntaje?
+\item Quem, e como, criou a família PAM de matrizes de substituição?
+\item Onde estão as maiores pontuações? Explicar.
+\item Qual é a substituição com a maior pontuação?
+\item Por que as identidades não têm sempre a mesma pontuação?
 \end{itemize}
 
 }
 
 
-\section{Alineamiento Global}
+\section{Alinhamento Global}
 
-En el alineamiento global el objetivo es comparar las dos secuencias a lo largo de toda su longitud, por lo tanto, es apropiado cuando esperamos que la similitud entre las dos secuencias se extiende a lo largo de toda la secuencia.
+No alinhamento global, o objetivo é comparar as duas sequências ao longo de toda a sua duração, portanto é apropriado quando esperamos que a semelhança entre as duas sequências se estenda ao longo de toda a sequência.
 
-En el paquete EMBOSS encontrará la aplicación \Verb+needle+ que implementa rigurosamente el algoritmo de  Needleman y Wunsch \citep{Needleman1970} para obtener el alineamiento global óptimo por programación dinámica. Esta implementación puede tomar bastante tiempo en obtener el alineamiento cuando las secuencias son largas.
+No pacote EMBOSS você encontrará o aplicativo \Verb+needle+ que implementa rigorosamente o algoritmo de Needleman e Wunsch \citep{Needleman1970} para obter o alinhamento global ideal por programação dinâmica. Esta implementação pode levar algum tempo para obter o alinhamento quando as sequências são longas.
 
-\textcolor{red}{¿Qué otras aplicaciones en EMBOSS le permiten hacer alineamientos globales? ¿Qué las hace diferentes de \Verb+needle+?}
+\textcolor{red}{Quais outros aplicativos no EMBOSS permitem que você faça alinhamentos globais? O que os torna diferentes de \Verb+needle+?}
 
 {\color{red}
 \begin{itemize}
-\item Haga un alineamiento global entre las secuencias de cDNA y genómica del gen ANAC092, que están disponibles en el directorio de la semana pasada en Sicua Plus.
-\item ¿Qué matriz de sustitución y penalización para abrir y extender gaps usó? Explique.
-\item ¿Cuál es el puntaje del alineamiento, su longitud y los porcentajes de identidad y similitud?
-\item Explique la diferencia entre similitud e identidad.
-\item ¿Qué significan los símbolos  \Verb+:+, \Verb+.+ y \Verb+|+?
+\item Faça um alinhamento global entre o cDNA e as sequências genômicas do gene ANAC092, que estão disponíveis no e-disciplinas
+\item Qual ação e a matriz de penalidades para abrir e estender GAPs que você usou? Explicar.
+\item Qual é a pontuação de alinhamento, seu comprimento e os percentuais de identidade e semelhança?
+\item Explique a diferença entre semelhança e identidade.
+\item O que significam os símbolos? \Verb+:+, \Verb+.+ y \Verb+|+?
 \end{itemize}
 }
 
-En los archivos \Verb+ANAC092_pep.fasta+ y \Verb+PpNAC_e_gw1.5.134.1.fasta+ encuentra las secuencias de amino ácidos de dos genes de la familia NAC de factores de transcripción en \textit{Arabidopsis thaliana} y en el musgo \textit{Physcomitrella patens} respectivamente.
+Nos arquivos \Verb+ANAC092_pep.fasta+ y \Verb+PpNAC_e_gw1.5.134.1.fasta+ encontra as sequências de aminoácidos de dois genes da família NAC de fatores de transcrição em \textit{Arabidopsis thaliana} e em musgo \textit{Physcomitrella patens} respectivamente.
 
 {\color{red}
 \begin{itemize}
-\item Haga un alineamiento global entre las secuencias de amino ácidos de las proteínas NAC de \textit{Arabidopsis thaliana} y en el musgo \textit{Physcomitrella patens}.
-\item ¿Qué matriz de sustitución y penalización para abrir y extender gaps usó? Explique.
-\item ¿Cuál es el puntaje del alineamiento, su longitud y los porcentajes de identidad y similitud?
-\item ¿Puede mejorar el alineamiento escogiendo otros parámetros?
+\item Faça um alinhamento global entre as sequências de aminoácidos das proteínas NAC de \textit{Arabidopsis thaliana} e em musgo \textit{Physcomitrella patens}.
+\item Qual ação e a matriz de penalidades para abrir e estender GAPs que você usou? Explicar.
+\item Qual é a pontuação de alinhamento, seu comprimento e os percentuais de identidade e semelhança?
+\item Você pode melhorar o alinhamento escolhendo outros parâmetros?
 \end{itemize}
 }
 
-\section{Alineamientos locales}
+\section{Alinhamentos locais}
 
-Como se mencionó en la sección anterior el alineamiento global alinea a las secuencias a lo largo de toda su longitud. Usted tiene que decidir si esa estrategia es la mas adecuada en cada caso. \textcolor{red}{¿Qué cree que pasaría si compara dos proteínas multidominio que solo comparten un dominio entre ellas?}
+Como mencionado na seção anterior, o alinhamento global alinha sequências ao longo de todo o seu comprimento. Você tem que decidir se essa estratégia é a mais apropriada em cada caso. \textcolor{red}{O que você acha que aconteceria se você comparar duas proteínas multi dominio que só compartilham um domínio entre elas?}
 
-El objetivo del alineamiento local es encontrar regiones de similitud local, y no es necesario incluir las secuencias completas. Este tipo de alineamiento es muy útil para hacer búsquedas en bases de datos, o cuando no se tiene una idea clara sobre la similitud de la secuencia de interés con secuencias de la base de datos.
+O objetivo do alinhamento local é encontrar regiões de similaridade local, e não é necessário incluir as sequências completas. Esse tipo de alinhamento é muito útil para pesquisar bancos de dados, ou quando você não tem uma ideia clara sobre a semelhança da sequência de interesse com sequências no banco de dados.
 
-En el paquete EMBOSS encontrará la aplicación \Verb+water+ que implementa rigurosamente el algoritmo de  smith y Waterman \citep{Smith1981} para obtener el alineamiento local óptimo por programación dinámica. Esta implementación puede tomar bastante tiempo en obtener el alineamiento cuando las secuencias son largas.
+No pacote EMBOSS você encontrará o aplicativo\Verb+water+ que implementa rigorosamente o algoritmo de  smith y Waterman \citep{Smith1981} para obter o alinhamento local ideal por programação dinâmica. Esta implementação pode levar algum tempo para obter o alinhamento quando as sequências são longas.
 
-\textcolor{red}{¿Qué otras aplicaciones en EMBOSS le permiten hacer alineamientos locales? ¿Qué las hace diferentes de \Verb+water+?}
+\textcolor{red}{Que outros aplicativos no EMBOSS permitem que você faça alinhamentos locais? O que os torna diferentes de \Verb+water+?}
 
 {\color{red}
 \begin{itemize}
-\item Haga un alineamiento local entre las secuencias de amino ácidos de las proteínas NAC de \textit{Arabidopsis thaliana} y en el musgo \textit{Physcomitrella patens}, que usó en la sección anterior.
-\item ¿Qué matriz de sustitución y penalización para abrir y extender gaps usó? Explique.
-\item ¿Cuál es el puntaje del alineamiento, su longitud y los porcentajes de identidad y similitud?
-\item ¿Puede mejorar el alineamiento escogiendo otros parámetros?
-\item ¿Qué diferencias hay entre el alineamiento global y el local de estas dos secuencias?
+\item Faça um alinhamento local entre as sequências de aminoácidos das proteínas NAC de \textit{Arabidopsis thaliana} e no musgo \textit{Physcomitrella patens}, que você usou na seção anterior.
+\item Qual ação e a matriz de penalidades para abrir e estender lacunas que você usou? Explicar.
+\item Qual é a pontuação de alinhamento, seu comprimento e os percentuais de identidade e semelhança?
+\item Você pode melhorar o alinhamento escolhendo outros parâmetros?
+\item Quais são as diferenças entre o alinhamento global e local dessas duas sequências?
 \end{itemize}
 }
 
-\section{Significancia de los alineamientos}
+\section{Significado dos alinhamentos}
 
-No importa que secuencias le de a los programas de alineamiento, ellos siempre crearan un alineamiento.
+Não importa quais sequências você dá aos programas de alinhamento, eles sempre criarão um alinhamento.
 
-Tome la secuencias de amino ácidos ANAC092 y use el programa \Verb+shuffleseq+, y cree dos secuencias aleatorias con la misma composición monomérica de ANAC092. Haga un alineamiento global  y uno local con las dos secuencias.
+Pegue as sequências de aminoácidos ANAC092 e use o programa \Verb+shuffleseq+, e criar duas sequências aleatórias com a mesma composição monomérica de ANAC092. Faça um alinhamento global e local com as duas sequências.
 
 {\color{red}
 \begin{itemize}
-\item ¿Qué matriz de sustitución y penalización para abrir y extender gaps usó? Explique.
-\item ¿Cuál es el puntaje del alineamiento, su longitud y los porcentajes de identidad y similitud?
-\item ¿Puede mejorar el alineamiento escogiendo otros parámetros?
+\item Qual ação e a matriz de penalidades para abrir e estender lacunas que você usou? Explicar.
+\item Qual é a pontuação de alinhamento, seu comprimento e os percentuais de identidade e semelhança?
+\item Você pode melhorar o alinhamento escolhendo outros parâmetros?
 \end{itemize}
 }
 
-Ahora haga un alineamiento local y uno global entre la secuencia de amino ácidos de ANAC092 y una de las versiones al azar.
+Agora faça um alinhamento local e global entre a sequência de aminoácidos do ANAC092 e uma das versões aleatórias.
 
 {\color{red}
 \begin{itemize}
-\item ¿Qué matriz de sustitución y penalización para abrir y extender gaps usó? Explique.
-\item ¿Cuál es el puntaje del alineamiento, su longitud y los porcentajes de identidad y similitud?
-\item ¿Puede mejorar el alineamiento escogiendo otros parámetros?
+\item Qual ação e a matriz de penalidades para abrir e estender lacunas que você usou? Explicar.
+\item Qual é a pontuação de alinhamento, seu comprimento e os percentuais de identidade e semelhança?
+\item Você pode melhorar o alinhamento escolhendo outros parâmetros?
 \end{itemize}
 }
 %
@@ -1335,25 +1335,25 @@ Ahora haga un alineamiento local y uno global entre la secuencia de amino ácido
 
 \chapter{BLAST: \sc{Basic Local Alignment Search Tool}}
 
-Muchos de ustedes conocen la interfaz web de BLAST en el NCBI que se muestra en la Figura~\ref{blastx_input}.  En la primera parte de este tutorial vamos a hacer algunos ejercicios usando esta interfaz. 
+Muitos de vocês conhecem a interface web BLAST no NCBI mostrado na Figura~\ref{blastx_input}.  Na primeira parte deste tutorial vamos fazer alguns exercícios usando esta interface.
 
 \begin{figure}[h!]
 \centering
    \includegraphics[width=10cm]{Figs/blasthomepage.png}
-  \caption{\label{blasthomepage}Tipos de BLAST disponibles en el NCBI}
+  \caption{\label{blasthomepage}Tipos de BLAST disponíveis no NCBI}
 \end{figure}
 
-En SicuaPlus encuentra el archivo \Verb+desconocido.nuc.fa+, que contiene la secuencia de nucleótidos de un transcrito que usted descubrió al analizar la expresión diferencial de genes de \textit{A. thaliana} en respuesta a luz ultravioleta (UV-A), tratamiento en el cual este transcrito era inducido. Copie la secuencia del transcrito y abra la página \url{http://blast.ncbi.nlm.nih.gov/} en el navegador Firefox. Vamos a realizar una búsqueda básica de BLAST, busque en la página una sección como la que aparece en la Figura~\ref{blasthomepage} y seleccione la opción \Verb+blastx+\textcolor{red}{{\textquestiondown}Por qué usar \Verb+blastx+?}
+No e-disciplinas encontra \Verb+desconocido.nuc.fa+, que contém a sequência nucleotídea de uma transcrição que você descobriu analisando a expressão diferencial de \textit{A. thaliana} em resposta à luz ultravioleta (UV-A), tratamento no qual esta transcrição foi induzida. Copie a sequência da transcrição e abra o site \url{http://blast.ncbi.nlm.nih.gov/} no navegador Firefox. Vamos realizar uma pesquisa blast básica, olhar na página para uma seção como a que aparece na Figura~\ref{blasthomepage} e selecionar o \Verb+blastx+\textcolor{red}{{\textquestiondown} Por que usar \Verb+blastx+?}
 
 \begin{figure}[h!]
 \centering
    \includegraphics[width=10cm]{Figs/blastx_input.png}
-  \caption{\label{blastx_input}Interfaz web de NCBI BLAST usando el programa blastx}
+  \caption{\label{blastx_input}Interface web NCBI BLAST usando o programa blastx}
 \end{figure}
 
-En la página de \Verb+blastx+ pegue su secuencia desconocida en el campo ``\textbf{Enter query sequence}'', escriba \textit{Viridiplantae} en el campo ``\textbf{Organism}'', para restringir la búsqueda a las secuencias de plantas verdes (Figura~\ref{blastx_input}). Asegúrese de que la base de datos seleccionada sea la base de datos no redundante de secuencias de proteínas.
+No \Verb+blastx+ cole sua sequência desconhecida no campo ``\textbf{Enter query sequence}'', escreva \textit{Viridiplantae} no campo ``\textbf{Organism}'', para estreitar a busca por sequências de plantas verdes (Figura~\ref{blastx_input}). Certifique-se de que o banco de dados selecionado seja o banco de dados não redundante de sequências proteicas.
 
-En las búsquedas que involucran la traducción en línea de una secuencia de ADN de puede seleccionar el código genético que se usará para hacer la traducción. Asegúrese que el código genético seleccionado en este caso es ``Standard''.
+Em buscas envolvendo a tradução online de uma sequência de DNA você pode selecionar o código genético que será usado para fazer a tradução. Certifique-se de que o código genético selecionado neste caso é ``Standard''.
 
 \begin{figure}[h!]
 \centering
@@ -1449,86 +1449,63 @@ Teniendo la base de datos en el formato adecuado podemos hacer nuestra primera b
 
 \textcolor{red}{Haga la búsqueda con \Verb+blastp+ para la secuencia con número de acceso $XP\_002889081$, solo muestre los primeros 3 hits con e-value igual o menor que $10^{-10}$. Asegúrese de solicitar un formato de salida tabular que incluya la longitud de las secuencias ``Query''y ``Subject''}.
 
-\chapter{Alineamientos múltiples}
+\chapter{Alinhamientos múltiplos}
 
-En teoría los algoritmos de programación dinámica que se describieron anteriormente para el caso de alineamientos pareados se pueden extender para el caso de un número arbitrario de secuencias.  En la práctica, esto resulta muy costoso computacionalmente, por lo que se han desarrollado otros algoritmos que implementan atajos en la búsqueda de los alineamientos óptimos (heurísticas). El desarrollo de algoritmos para el alineamiento múltiple de secuencias es una de las áreas mas dinámicas de la bioinformática.  Actualmente existen decenas de programas que implementan diferentes algoritmos \citetext{vea \citealp{Notredame2007} y \citealp{Lemey2009} para una revisión reciente del tema}.
+Na teoria, os algoritmos de programação dinâmica descritos acima para o caso de alinhamentos emparelhados podem ser estendidos para o caso de um número arbitrário de sequências. Na prática, isso é muito computacionalmente caro, por isso outros algoritmos foram desenvolvidos que implementam atalhos na busca de alinhamentos ideais (heurística). O desenvolvimento de algoritmos para alinhamento de múltiplas sequências é uma das áreas mais dinâmicas da bioinformática. Atualmente existem dezenas de programas que implementam algoritmos diferentes \citetext{olha\citealp{Notredame2007} e \citealp{Lemey2009} para uma revisão recente do tópico}.
 
-En esta sesión vamos a desarrollar la práctica que se presenta en el capítulo 3 de \citealp{Lemey2009}.
+Nesta sessão vamos desenvolver a prática apresentada no capítulo 3 de \citealp{Lemey2009}.
 
-En este ejercicio vamos a alinear las secuencias de los genes TRIM5$\alpha$ de diferentes especies de primates. TRIM5$\alpha$ es un factor de restricción viral que proteje a la mayoría de monos del viejo mundo (Cercopithecidae) de la infección con HIV.Estos datos fueron analizados originalmente por \citealp{Sawyer2005}. Vamos a usar métodos de alineamiento progresivo ({\sc ClustalX}), basado en consistencias ({\sc T-coffee}) y de refinamiento iterativo ({\sc Muscle}) para crear alineamientos múltiples de proteínas y luego vamos a comparar los resultados usando el servidor web {\sc AltaVist}. Vamos a crear los alineamientos de las secuencias de las proteínas, vamos a comparar los diferentes métodos y vamos a generar el alineameinto correspondiente a nivel de nucleótidos, terminando con la inspección y refinamiento manual del alineamiento.
+Vamos alinhar as sequências dos genes TRIM5$\alpha$ de diferentes espécies de primatas. TRIM5$\alpha$ é um fator de restrição viral que protege a maioria dos macacos do velho mundo (Cercopithecidae) da infecção pelo HIV. Esses dados foram originalmente analisados por \citealp{Sawyer2005}. Usaremos métodos de refinamento iterativo ({\sc Muscle}) para criar vários alinhamentos proteicos e, em seguida, comparar os resultados usando {\sc JalView}. Vamos criar os alinhamentos das sequências proteicas, e vamos gerar o alinhamento correspondente no nível nucleotídeo, terminando com a inspeção manual e o refinamento do alinhamento.
 
-\section{Alineando las secuencias de amino ácidos de TRIM5$\alpha$ de primates}
+\section{Alinhando as sequências de aminoácidos de TRIM5$\alfa$ de primatas}
 
-\subsection{{\sc ClustalX}}
+\subsection{{\sc MUSCLE}}
 
-Decargue el archivo \Verb+primatesAA.fasta+ del SicuaPlus, este archivo tiene 22 secuencias en formato fasta. Inicie el programa {\sc ClustalX} que se encuentra instalado localmente en su computador \citep{Thompson1994}. En {\sc ClustalX} abra el archivo con las secuencias usando \Verb+File+ $\longrightarrow$ \Verb+Load sequences+. La interfaz gráfica le permite al usuario navegar sobre las secuencias. Seleccione \Verb+Alignment+ $\longrightarrow$ \Verb+Do complete alignment+. {\sc ClustalX} lleva a cabo el alineamiento progresivo y crea como salidas el árbol guía (con extensión \Verb+dnd+) y el alineamiento en formato Clustal (con extensión \Verb+aln+). Es posible escoger un formato diferente de salida para el alineamiento, siguiendo el menú \Verb+Alignment+ $\longrightarrow$ \Verb+Output Format Options+, seleccionando por ejemplo el formato {\sc Phylip} que puede ser leído por muchos paquetes para inferencia filogenética.
+Para obter o alinhamento das sequencias no arquivo \Verb+primatesAA+.fasta pelo método de refinamento iterativo, usaremos o programa {\sc Muscle} \citep{Edgar2004}. Este programa esta instalado localmente em seu computador.
 
-Recuerde que el árbol guía construido por {\sc ClustalX} no debe ser usado para sacar conclusiones sobre las relaciones evolutivas entre los grupos que se están estudiando.
+\begin{Verbatim}[commandchars=!\{\},numbers=left,label=MUSCLE,frame=topline,fontsize=\scriptsize]
+!textcolor{red}{[user@server]$} conda activate muscle_env
+!textcolor{red}{(muscle_env)[user@server]$} muscle -h
+\end{Verbatim} 
 
-{\sc ClustalX} también permite cambiar algunos de lso parámetros del alineamiento (\Verb+Alignment+ $\longrightarrow$ \Verb+Alignment Parameters+). Desafortunadamente no existen reglas generales para escoger el mejor conjunto de parámetros en un caso particular. La mejor opción consiste en ensayo y error. Si un alineamiento tiene, por ejemplo, muchos gaps largos, el usuario podría intentar incrementar la penalización para abrir gaps y re-hacer el alineamiento. {\sc ClustalX} indica el grado de conservación, revise la parte de abajo de la ventana del alineamiento,, ese nivel de ocnservación puede ser usado para evaluar el alineamiento. Seleccionando \Verb+Quality+ $\longrightarrow$ \Verb+Calculate Low Scoring Segment+\footnote{Siga el enlace \url{http://bips.u-strasbg.fr/fr/Documentation/ClustalX/} para entender como se calculan los segmentos de bajos puntaje.} y \Verb+Quality+ $\longrightarrow$ \Verb+Show Low Scoring Segment+, es posible visualizar aquellas regiones del alineamiento que no son confiables, que podrían removerse o refinarse manualmente. Salve el alineamiento usando \Verb+File+ $\longrightarrow$ \Verb+Save Sequences+ y selecciones {\sc Fasta} como formato de salida, asegurese de cambiar el nombre del archivo de salida para evitar sobre-escribir el archivo original.
+\begin{Verbatim}[commandchars=!\{\},numbers=left,label=MUSCLE,frame=topline,fontsize=\scriptsize]
+!textcolor{red}{(muscle_env)[user@server]}:~$ muscle -align primatesAA.fasta -output primates.afa
 
-\subsection{{\sc T-Coffee}}
+muscle 5.1.linux64 []  4.0Gb RAM, 4 cores
+Built Feb 24 2022 03:16:15
+(C) Copyright 2004-2021 Robert C. Edgar.
+https://drive5.com
 
-Aunque el programa {\sc T-Coffee} se puede instalar localmente en sus computadores, para desarrollar este ejercicio vamos a usar un servidor web. Siga el enalce \url{http://www.tcoffee.org/}. Selecione el formulario de envío regular para {\sc T-Coffee}, allí cargue su archivo, usando \Verb+Upload File+ o pegue las secuencias en la caja de texto de envío. Asegurese que la opción \Verb+Computation mode+ está en \Verb+regular+.  Recuerde que los alineamientos con {\sc T-Coffee} son mas costosos desde el punto de vista computacional, ya que usa un método basado en consistencias, y por lo tanto puede tomar mas tiempo que un alineamiento con {\sc ClustalX} \citep{Notredame2000}. Presiona el boton \Verb+Submit+ para ejecutar el programa. Cuando el procedimiento de alineamiento halla terminado sera direccionado a una nueva página con enlaces a los archivos de salida. Salve el alineamiento en formato fasta en su computador. El archivo \Verb+score_pdf+ contiene una versión del alineamiento coloreada dependiendo de la calidad, este archivo también está disponible en formato {\sc html}.
+Input: 22 seqs, avg length 504, max 551
 
-\subsection{{\sc Muscle}}
+00:00 17Mb   CPU has 4 cores, running 4 threads
+00:04 244Mb   100.0% Calc posteriors
+00:04 246Mb   100.0% Consistency (1/2)
+00:04 246Mb   100.0% Consistency (2/2)
+00:04 246Mb   100.0% UPGMA5           
+00:04 248Mb   100.0% Refining
+\end{Verbatim} 
 
-Para obtener el alineamiento por el método de refinamiento iterativo vamos a usar el programa {\sc Muscle} \citep{Edgar2004}. Este progrma también puede ser instalado localmente en su computador, en esta ocasión vamos a usar el servidor web disponible en el EBI, siga el enlace \url{http://www.ebi.ac.uk/Tools/muscle/index.html}, alli puede cargar su archivo de secuenicas usando la opción \Verb+Upload a file+. Asegurese que la salida aparecerá en formato Fasta. Gurade el archivo de salida en formato fasta en su computador.
 
-\subsection{Comparar los alineamientos usando la herramienta web {\sc AltAVist}}
+\subsection{Visualização e edição de Alinhamentos}
 
-Para evaluar los diferentes alineamientos vamos a usar la herramienta {\sc AltAVist}, siga el enlace \url{http://bibiserv.techfak.uni-bielefeld.de/altavist/}. {\sc AltAVist} compara dos alineamientos alternativos y usa códigos de color par aindicar concordancias y conflictos. Las regiones donde ambos alineamientos coinciden generalmente se consideran mas confiables que las regiones en donde difieren. Esta misma forma de razonamiento se aplica de forma similar al análsis de grupos en árboles filogenéticos que han sido reconstruidos usando varios algoritmos. Grupos presentes en árboles obtenidos con diferentes métodos sonmas confialbes que aquellos que no estan presentes de forma consistente.
+Usaremos o aplicativo \Verb+JalView+ instalado em seus computadores para exibir os alinhamentos. Pode utilizar o arquivo \Verb+primates.afa+ gerado pelo \Verb+MUSCLE+.
+
+Siga o link \url{http://www.jalview.org/examples/editing.html}, se desejar, poderá revisar a documentação completa no link \url{http://www.jalview.org/help.html}.(Figura~\ref{fig:JalView})
 
 \begin{figure}[h!]
 \centering
- \includegraphics[width=9cm]{Figs/AltAVist1.png}
- \caption{\label{fig:AltAVist}Resultados de la comparación de alineamientos con {\sc AltAVist}}
+ \includegraphics[width=15cm]{Figs/JalView.png}
+ \caption{\label{fig:JalView}Tela do JalView}}
 \end{figure}
 
-Para llevar a cabo el análisis siga el enlace anterior y seleccione \Verb+OPTION 2: Enter two+ \Verb+different pre-calculated alignments of a multiple sequence set+. Cargue sus dos alineamientos, empiece por el de {\sc ClustalX} y el de {\sc Muscle}, agregue los títulos correspondientes y presione el botón \Verb+Submit+. En la página de resultados aparecen los dos alineamientos con los residuos coloreados. La Figura~\ref{fig:AltAVist} muestra una de las regiones comparadas. Cuando todos los residuos en una columna son del mismo color , como es en la mayoría de los casos en la Figura~\ref{fig:AltAVist}, los residuos fueron alineados de la misma forma en los dos alineamientos. si un residuo tiene un color diferente, e.g., la arginina "R" para "Howler" en la posición $\pm 50$, está alinado de forma diferente en el segundo alineamiento.
-
-diferentes colores se usan para distinguir diferentes grupos de residuos donde los alineamientos coinciden dentro de los grupos pero no entre grupos. Un ejemplo de esto se puede ver en la Figura~\ref{fig:AltAVist2}: los residuos \Verb+GSLT+ estan alineados por tanto por {\sc ClustalX} como por {\sc Muscle} de la misma forma en las \Verb+AGM+, \Verb+AGM_cDNA+ y \Verb+Tant_cDNA+, pero no con los mismos residuos en otros organismos. De forma similar ocurre para los residuos \Verb+TFPS+ y \Verb+SFPS+ en \Verb+Rhes_cDNA+ y \Verb+Babbon+, respectivamente; eso explica por que tienen color diferente.
-
-\begin{figure}[h!]
-\centering
- \includegraphics[width=9cm]{Figs/AltAVist2.png}
- \caption{\label{fig:AltAVist2}Resultados de la comparación de alineamientos con {\sc AltAVist}}
-\end{figure}
-
-Este tipo de análisis revela que algunos bloques de discrepancias en el alineamiento están concentrados cerca de las regiones con gaps. Por lo tanto, si las regiones con gaps se van a remover\footnote{Esto se suele hacer en los análisis filogenéticos}, es recomendable también borrar las regiones vecinas que tienen alineamientos ambiguos. \textcolor{red}{Haga todas las comparaciones entre los tres alineamientos que obtuvo anteriormente y describa brevemente las diferencias que observa. ¿Qué métodos de alineamientos presentan las mayores diferencias entre si? ¿Qué métodos las menores? Explique su respuesta}
-
-\subsection{Del alineamiento de proteínas al de nucleótidos}
-
-Los programas de alineamiento múltiple que se han mencionado generalmente rompen el marco de lctura cuando se alinean secuencias de ncleótidos. Esto invalidaría, por ejemplo, análisis posteriores  basados en codones, y necctarían de una buena dosis  de edición manual para restaurar los marcos de lectura. Para evitar esto, podemos usar el alineamiento basado en las secuencias de proteínas para generar el alineamiento correspondiente de nucleótidos. Este procedimiento también tiene la ventaja de que  los alineamientos de proteínas son menos ambiguos y mas rápidos de calcular.
-
-Vamos a crear el alineamiento de las secuencias de ADN de TRIM5$\alpha$ usando la herramienta \Verb+RevTrans+ \citep{Wernersson2003}. Siga el enlace \url{http://www.cbs.dtu.dk/services/RevTrans/} y cargue el archivo con las secuencias de nucleótidos y uno de los alineamientos de proteínas. Revise que la opción \Verb+Match DNA and peptide sequences by+ sea igual a \Verb+Name+.
-
-\textcolor{red}{¿Qué característica tienen los gaps en el alineamiento de las secuencias de ADN?\footnote{La característica se deriva de usar el alineamiento de proteínas como guía.}}
-
-\subsection{Editando y visualizando alineamientos}
-
-Vamos a usar la aplicación \Verb+JalView+ que está instalada en sus computadores para visualizar los alineamientos.
-
-Siga el enlace \url{http://www.jalview.org/examples/editing.html}, si lo desea puede revisar la documentación completa en el enlace \url{http://www.jalview.org/help.html}. Identifique las regiones ambiguas del alineamiento (use la información que obtuvo al usar {\sc AltAVist} y eliminelas. \textcolor{red}{Muestre pantallazos de dos regiones que identifique como ambiguas. Explique por que las seleccionó y que región(es) descartó.}
-
-\subsection{Estimando distancias entre las secuencias}
-Cuando el objetivo es inferir las relaciones evolutivas entre las secuencias (o los organismos representados por las secuencias) a partir del alineamiento múltiple y usando un método de distancia\footnote{Hay cuatro grandes familias (métodos) de inferencia filogenética: métodos de distancia, de máxima verosimilitud, bayesianos y de máxima parsimonia.}, es necesario estimar una distancia evolutiva entre ellas. Hay muchos modelos para estimar las distancia evolutivas entre las secuencias, ya sean estas de ADN o de proteínas, por lo tanto es necesario escojer aquel modelo que mejor se ajuste a los datos \citep{Posada2001,Sullivan2005}. Se han desarrollado aplicaciones para automatizar y ayudar en la selección del mejor modelo siguiendo estrategías estadísticas; para secuencias de ADN existe {\sc ModelTest} \citep{Posada1998,Posada2006} y para secuencias de proteínas {\sc ProtTest} \citep{Abascal2005}.
-  
-Para ahorrrar tiempo, para este ejercicio vamos solo a estimar la distancia \textit{p} entre las secuencias que corresponde a la proporción de posiciones diferentes entre cada par de secuencia. En la realidad la distancia \textit{p} sub-estima el número real de sustituciones, ya que ignora el fenómeno de hits múltiples, i.e., que una posición dada puede haber sido sustituida mas de una vez. Los modelos que se mencionaron anteriormente implementan diferentes tipos de correcciones para tener esto en cuenta.
- 
-Vamos a usar la aplicación \Verb+protdist+ de {\sc Phylip}, un paquete para la inferencia de relaciones evolutivas, que está disponible en \url{http://mobyle.pasteur.fr/}. Siga el enlace anterior y busque la aplicación  \Verb+protdist+, selecciones la opción \Verb+File+ y cargue el archivo con su alineamiento múltiple de proteínas. Seleccione \Verb+Similarity table+ para el parámetro \Verb+Distance Model+, los demás parámetros los usamos con sus valores por defecto. Los valores en la matriz resultante indican la proporsición de posiciones identicas para cada par de secuencias. Para obtener la distancia, i.e., la proporción de posiciones diferentes entre cada par se secuencias, solo tenemos que restar el valor de la matriz a la unidad. Otra opción podría ser usar, por ejemplo, el programa MEGA4 \citep{Tamura2007}\footnote{\url{http://www.megasoftware.net/}}, que puede calcular directamente la proporción de posiciones diferentes.
-
-\textcolor{red}{Identifique el par de primates mas cercanos y el par mas lejanos. ¿Cuáles son los valores en la matriz de distancia en los dos casos?}
-
-\chapter{PSSMs, Logos de secuencias y HMMs}
+\chapter{PSSMs, Logo de Sequências e HMMs}
 
 \section{PSSM}
 
-Esta sección es una versión modificada del tutorial que se encuentra siguiendo el enlace \url{http://rsat.ulb.ac.be/rsat/tutorials/tut_PSSM.html}.
+As matrizes de pontuação específicas da posição ``Position-specific scoring matrices'' (PSSMs) oferecem uma maneira sensível de representar a variabilidade em um alinhamento. Os PSSMs são construídos com base no alinhamento múltiplo, por exemplo, dos sites de vinculação de fatores de transcrição.
 
-Las ``Position-specific scoring matrices'' (PSSM) ofrecen una forma sensible de representar la variabilidad en un alineamiento. Las PSSMs se construyen tomando como base el alineamiento múltiple, e.g., de sitios de unión de factores de transcripción.
-
-A continuación se muestra una matriz que fue obtenida de la base de promotores de \textit{Saccharomyces cerevisiae}\footnote{\url{http://rulai.cshl.edu/SCPD/}} y se construyó usando un alineamiento de 12 sitios de unión del factor de transcripción Pho4p de levadura.
+Abaixo está uma matriz que foi obtida a partir da base de promotores de \textit{Saccharomyces cerevisiae}\footnote{\url{http://rulai.cshl.edu/SCPD/}} e construída usando um alinhamento de 12 sites de vinculação do fator de transcrição de levedura Pho4p.
 
 \vskip5pt
 \begin{center}
@@ -1540,59 +1517,58 @@ T &  1 &  1 &  0 &  0 &  0 &  0 & 11 &  5 &  4 &  4\\
 \end{tabular}
 \end{center}
 
-Cada fila representa un residuo (A, C, g o T) y cada columna una posición en el conjunto de secuencias alineadas. Algunas posiciones están perfectamente conservadas en todas las secuencias, mientras que otras presentan algunas alternativas.
+Cada linha representa um resíduo (A, C, G ou T) e cada coluna uma posição no conjunto de sequências alinhadas. Algumas posições são perfeitamente preservadas em todas as sequências, enquanto outras apresentam algumas alternativas.
 
-Cuando se usa este tipo de matrices para hacer búsquedas, las posiciones mas conservadas imponen restricciones mas fuertes que aquellas en que cualquier residuo se puede presentar.
+
+Ao utilizar esses tipos de matrizes para pesquisar, as posições mais conservadas impõem restrições mais fortes do que aquelas em que qualquer resíduo pode ser apresentado.
 
 {\color{red}
-Siga el enlace \url{http://rulai.cshl.edu/cgi-bin/SCPD/getfactor?ABF1,BAF1} y responda:
+Siga o link \url{http://rulai.cshl.edu/cgi-bin/SCPD/getfactor?ABF1,BAF1} e responde:
 \begin{itemize}
-\item ¿Cuál es el tamaño del alfabeto?
-\item ¿Cuál es el ancho de la matriz?
-\item ¿Cuántos sitios de unión de Abf1p están almacenados en la base de datos de promotores de levadura (SCPD)?
-\item ¿Qué programa(s) de EMBOSS podría usar para realizar búsquedas con PSSMs?
+\item Qual é o tamanho do alfabeto?
+\item Qual é a largura da matriz?
+\item Quantos sites de vinculação Abf1p estão armazenados no Banco de Dados de Promotores de Levedura (SCPD)?
+\item Quais programas EMBOSS eu poderia usar para pesquisar com PSSMs?
 \end{itemize}
 }
 
-\section{Logos de secuencias}
+\section{logo de sequências}
 
-Los logos de secuencias son una representación gráfica de los alineamientos múltiples basados en la teoría de la información\footnote{\url{http://www.ccrnp.ncifcrf.gov/~toms/glossary.html\#sequence_logo}}
+Logo de sequência são uma representação gráfica de alinhamentos múltiplos  baseados na teoria das informações\footnote{\url{https://en.wikipedia.org/wiki/Sequence_logo}}
 
-La Figura~\ref{fig:lexALogo} corresponde al logo de secuencias de sitios de unión del factor de transcripción LexA de \textit{Escherichia coli}
+A Figura~\ref{fig:lexALogo} corresponde ao logo da sequência do site de vinculação do fator de transcrição LexA de \textit{Escherichia coli}
 
 \begin{figure}[h!]
 \centering
  \includegraphics[width=9cm]{Figs/lexA.png}
- \caption{\label{fig:lexALogo}Logo de secuencias de los sitios de unión de LexA}
+ \caption{\label{fig:lexALogo}Lexa junte-se ao logo da sequência do site}}
 \end{figure}
 
-La altura del residuo está correlacionada con su frecuencia en el alineamiento múltiple\footnote{Para mayor información consulte: \citealp{Schneider1990}}.
+A altura do resíduo está correlacionada com sua frequência no alinhamento  múltiplo {Para obter mais informações, consulte: \citealp{Schneider1990}}.
 
 {\color{red}
-Siguiendo el enlace \url{http://weblogo.threeplusone.com/}, cree el logo de secuencias de lo sitios de unión del factor de transcripción Abf1p que estudio en la sección anterior. Para poder realizar este ejercicio necesita recuperar todos los sitios de unión de Abf1p disponibles en SCPD.
+Seguindo o link \url{http://weblogo.threeplusone.com/}, crie o logo das sequências dos sites de vinculação do fator de transcrição Abf1p que estudeu na seção anterior. Para realizar este exercício, você precisa recuperar todos os sites de ação do Abf1p disponíveis no SCPD.
 
-¿Qué representa el eje y? i.e., ¿Cómo se calcula el contenido de información de cada posición?
+O que o eixo y representa? ou seja, como o conteúdo das informações de cada posição é calculado?
 }
 
-\section{Modelos Ocultos de Markov: HMMs}
+\section{Modelos ocultos de Markov: HMMs}
 
-Vamos a seguir algunos de los ejemplos/ejercicios que se encuentran siguiendo el enlace \url{http://www.mrc-lmb.cam.ac.uk/rlw/text/bioinfo_tuto/structure.html}
+Mesmo que você não encontre proteínas homólogos ao realizar uma busca com blast, você ainda tem outras opções.
 
-Incluso si no encuentra proteínas homólogas al realizar una búsqueda con BLAST, todavía tiene otras opciones.
+A principal razão pela qual ele não encontra homologues triviais é que pesquisas com sequências usando ferramentas como BLAST têm baixa sensibilidade. O BLAST normalmente não encontra proteínas homólogas que tenham menos de 30\% de identidade. No entanto, algumas proteínas podem ter a mesma estrutura tridimensional e ter apenas 10\% de identidade.
 
-La principal razón por la cual no encuentra homólogos triviales es que las búsquedas con secuencias usando herramientas como BLAST tienen poca sensibilidad. BLAST normalmente no encuentra proteínas homólogas que tengan menos de 30\% de identidad. Sin embargo, algunas proteínas pueden tener la misma estructura tridimensional y tener solo 10\% de identidad.
+Uma estratégia muito útil para encontrar contrapartes distantes é baseada no uso de Modelos Hidden Markov (HMMs). Um HMM nada mais é do que uma maneira de definir motivos ou domínios.
 
-Una estrategia muy útil para encontrar homólogos distantes está basada en el uso de Modelos Ocultos de Markov (HMMs). Un HMM no es mas que una forma de definir motivos o dominios.
+Para criar um HMM tudo o que você precisa é de um alinhamento múltiplo, que será usado para criar uma representação probabilística, que pode então ser usada para procurar sequências relacionadas.
 
-Para crear un HMM todo lo que necesita es un alineamiento múltiple, el cual será usado para crear una representación probabilistica, que puede ser luego usada para buscar secuencias relacionadas.
+Os bancos de dados Pfam \citep{Finn2010} e {\sc Superfamily} \citep{Wilson2009} são coleções de múltiplos alinhamentos para os quais os HMMs foram criados e são usados para anotar sequências proteicas. A maior parte do trabalho dos curadores dessas bases de dados é criar os alinhamentos múltiplos.
 
-Las bases de datos Pfam \citep{Finn2010} y {\sc Superfamily} \citep{Wilson2009} son colecciones de alineamientos múltiples para los cuales se han creado HMMs y son usadas para anotar secuencias de proteínas. La mayoría del trabajo de los curadores de esas bases de datos es crear los alineamientos múltiples.
+\subsection{Procurando os domínios de uma proteína}
 
-\subsection{Buscando los dominios de una proteína}
+Vamos usar a seguinte proteína para fazer uma pesquisa no Pfam:
 
-Vamos a usar la siguiente proteína para hacer una búsqueda en Pfam:
-
-\begin{Verbatim}[commandchars=!\{\},label=proteína desconocida,frame=topline,fontsize=\scriptsize]
+\begin{Verbatim}[commandchars=!\{\},label=proteína desconhecida,frame=topline,fontsize=\scriptsize]
 >seq
 MEYWHYVETTSSGQPLLREGEKDIFIDQSVGLYHGKSKILQRQRGRIFLTSQRIIYIDDAKPTQ
 NSLGLELDDLAYVNYSSGFLTRSPRLILFFKDPSSKDELGKSAETASADVVSTWVCPICMVSNETQGEFTKD
@@ -1601,36 +1577,36 @@ KVRSKLNRLNFHDSRVHIELEKNSLARNKSSHSALSSSSSTGSSTEFVQLSFRKSDGVLFSQATERALENIL
 TEKNKHIFN
 \end{Verbatim} 
 
-Vaya al sitio web de Pfam\footnote{\url{http://pfam.sanger.ac.uk/}} y seleccione ``Sequence search'', pega la secuencia de la proteína de interés en la caja de texto para la búsqueda, luego haga clic en el botón ``go'' para iniciar la búsqueda. La Figura~\ref{PfamResults} muestra la página de resultados.
+Vá para o site de Pfam\footnote{\url{https://pfam.xfam.org/}} e selecione ''Search'' depois "Sequence"  e cole a sequência da proteína de interesse na caixa de texto para a busca e clique no botão ''submmit'' para iniciar a busca. Figura~\ref{PfamResults} exibe a página de resultados.
 
 \begin{figure}[h!]
 \centering
  \includegraphics[width=14cm]{Figs/PfamResults.png}
- \caption{\label{PfamResults}Resultados de una búsqueda en Pfam}
+ \caption{\label{PfamResults}Resultados de Pfam}
 \end{figure}
 
 {\color{red}
 \begin{itemize}
-\item ¿Cuál es la diferencia entre ``Significant Pfam-A matches'' e ``Insignificant Pfam-A matches''?
-\item ¿Qué es Pfam-A? 
-\item ¿Qué es Pfam-B?
+\item ¿Quál é a diferença entre ``Significant Pfam-A matches'' e ``Insignificant Pfam-A matches''?
+\item ¿O que é Pfam-A? 
+\item ¿O que é Pfam-B?
 \end{itemize}
 }
 
-La primera sección de resultados ``Significant Pfam-A matches'', nos informa que hay un solo hit, al modelo ``Vps36\_ESCRT-II'', con un puntaje de $106.7$ y un e-value de $3.1e-31$. También encontramos las coordenadas del dominio, can relación a la proteína de consulta y con relación al modelo.
+A primeira seção de resultados ``Significant Pfam-A matches'', informa-nos que há dois um hits, o modelo ''Vps36\_ESCRT-II'', com uma pontuação de $97.8$ e um e-value de $3.3^{-28}$ e o moduelo  ''Vps36-NZF-N'' com uma pontuação de $66.9$ e um e-value de $8.1^{-19}$. Encontramos também as coordenadas do domínio, em relação à proteína de consulta e em relação ao modelo.
 
-Una de las principales características, y valores agregados de Pfam, es que cada uno de los modelos en Pfam-A ha sido estudiado por un experto que ha definido una serie de puntajes límite para definir hits significativos. El puntaje umbral mas importante corresponde al ``gathering cutoff''. \textcolor{red}{¿Cuál el el Gathering cutoff del modelo ``Vps36\_ESCRT-II''?}
+Uma das principais características, e valores adicionados da Pfam, é que cada um dos modelos da Pfam-A tem sido estudado por um especialista que definiu uma série de limiares para definir hits significativos. A pontuação de limiar mais importante corresponde ao ``gathering cutoff''. \textcolor{red}{Qual é o ``gathering cutoff'' modelo ''Vps36\_ESCRT-II''?}
 
-De clic en el nombre del modelo. Esto lo llevará a una página con información detallada sobre ese modelo particular. Entre otros, puede encontrar en que otras especies esta presente ese modelo (``Species''). Puede descargar el modelo (``Curation'') o el alineamiento múltiple (``Alignments''), entre otra información.
+Clique no nome do modelo. Isso o levará a uma página com informações detalhadas sobre esse modelo em particular. Entre outros, você pode descobrir que outras espécies estão presentes nesse modelo (''Species''). Você pode baixar o modelo ('Curation'') ou o alinhamento múltiplo (''Alignments''), entre outras informações.
 
 {\color{red}
-Use la secuencia de la proteína ANAC092 y determine que dominios están presentes}
+Use a sequência proteica ANAC092 e determine quais domínios estão presentes}
 
-\subsection{Visualización de HMMs}
+\subsection{Visualização de HMMs}
 
-También puede visualizar los HMMs en forma de logos de secuencias. Puede usar la aplicación \Verb+LogoMat-M+ que encuentra en el enlace \url{http://www.sanger.ac.uk/cgi-bin/software/analysis/logomat-m.cgi}.
+Você também pode exibir HMMs na forma de logo de sequências. Você pode usar o aplicativo \Verb+LogoMat-M+ encontrado no link \url{http://www.sanger.ac.uk/cgi-bin/software/analysis/logomat-m.cgi}. Ou no mesmo site do pfam
 
-\textcolor{red}{Muestre el logo del dominio ``zf-C2H2''}
+\textcolor{red}{Exibir o logo do domínio ``zf-C2H2''}
 
 \chapter{Diseño de primers para PCR}
 
@@ -1642,7 +1618,7 @@ La PCR involucra los siguientes pasos:
 
 \begin{description}
 \item[Denaturación] El objetivo de este paso es convertir las moléculas de ADN de doble cadena en cadenas sencillas.
-\item[Anillamiento] Durante este paso los primers hibridan con las hebras molde de cadena sencilla.
+\item[Anillamiento] Durante este paso los primers hibridan con las hebrahttps://www.overleaf.com/project/624c8ebfae55316607b5f12bs molde de cadena sencilla.
 \item[Extensión] La ADN polimerasa extiende los primers.
 \end{description}
 
@@ -1804,6 +1780,81 @@ En la página \Verb+Compete summary+ encuentra información detallada sobre el B
  \includegraphics[width=9cm]{Figs/CODEHOP_resultados.png}
  \caption{\label{fig:CODEHOP_resultados}Detección de BLOCKS en el alineamineto de secuencias de proteínas. Se diseñaran primers para cada BLOCK}
 \end{figure}
+
+\chapter{Montagem de genomas}
+
+A montagem do genoma é uma operação básica em bioinformática baseada em alinhamentos e é uma ferramenta fundamental para estudar a biologia de organismos não modelo.
+
+O processo de montagem do genoma consiste na recuperação da sequência original a partir dos fragmentos de ADN produzidos pelas diferentes tecnologias de sequenciamento (segunda e terceira geração)
+
+Vamos montar o genoma de \emph{Komagataeibacter rhaeticus}\footnote{"NCBI accesion: NZ\_CP050139"} a partir de leituras produzidas por tecnologias de segunda e terceira geração (Illumina e PacBio respeitivamente).
+
+\subsection{Limpar sequencias}
+Tecnologias de segunda geração produzem leituras que devem ser filtradas por critérios de qualidade de leitura, cumprimento, presença de adaptadores, barcodes, contaminantes e artefactos.
+Por enquanto os sequenciadores de terceira geração geralmente fazem esse processo por nós
+
+Temos dois arquivos \Verb+fastq+ com leiturass pareadas de illumina\footnote{"illumina\_.R1.fq"}\footnote{"illumina\_.R2.fq"}
+
+Limpamos eles usando BBduk\footnote{\url{https://jgi.doe.gov/data-and-tools/software-tools/bbtools/bb-tools-user-guide/bbduk-guide/}}
+
+\begin{Verbatim}[commandchars=!\{\}, numbers=left,label= Limpando leituras Illumina com bbduk,frame=topline,fontsize=\scriptsize]
+user@server:$ bbduk.sh in1=illumina_.R1.fq in2=illumina_.R2.fq out1=./bbduk/R1.fq \
+out2=./bbduk/R2.fq minlength=75 qtrim=w trimq=20
+
+\end{Verbatim}
+
+bbduk vai gerar dois arquivos filtados R1.fq e R2.fq na pasta ./bbduk que usaremos na montagem do genoma
+
+\subsection{Montagem de genoma usando dados Illumina}
+Usaremos o software Unicycler\footnote{\url{https://github.com/rrwick/Unicycler}} e os arquivos R1.fq e R2.fq gerados pelo bbduk, na pasta ./bbduk
+
+\begin{Verbatim}[commandchars=!\{\}, numbers=left,label= Montando leituras com Unicycler,frame=topline,fontsize=\scriptsize]
+user@server:$ conda activate unicycler
+user@server:$ unicycler  -1 ./bbduk/bbduk2.R1.fq -2 ./bbduk/bbduk2.R2.fq -o ./unicycler/
+\end{Verbatim}
+
+Agora poder dar uma olhada nos aquivos gerados pelo Unicycler na pasta ./unicycler e usar o programa Bandage\footnote{\url{https://rrwick.github.io/Bandage/}} para visualizar o arquivo assembly.gfa na pasta ./unicycler 
+
+\subsection{Montagem de genoma usando dados PacBio}
+Usaremos o software Flye\footnote{\url{https://github.com/fenderglass/Flye/blob/flye/docs/USAGE.md}} e o arquivo PacBio.fq 
+
+\begin{Verbatim}[commandchars=!\{\}, numbers=left,label= Montando leituras com Flye,frame=topline,fontsize=\scriptsize]
+user@server:$ conda activate flye
+user@server:$ flye --pacbio-corr PacBio.fq -o ./flye -g 3600000
+\end{Verbatim}
+
+Agora poder dar uma olhada nos aquivos gerados pelo Flye na pasta ./flye e usar o programa graphviz\footnote{\url{https://graphviz.org/}} para visualizar o arquivo assembly\_graph.dot na pasta ./unicycler 
+
+\begin{Verbatim}[commandchars=!\{\}, numbers=left,label= Vizualizando montagem com Flye,frame=topline,fontsize=\scriptsize]
+user@server:$ dot -Tpdf ./flye/assembly_graph.dot -o ./flye/assembly_graph.pdf
+\end{Verbatim}
+Olha o arquivo assembly\_graph.pdf na pasta ./flye
+
+\subsection{Avaliando a qualidade das montagens com QUAST}
+Agora vamos utilizar QUAST\footnote{\url{http://quast.sourceforge.net/}} nas montagens de Illumina e PacBio usando os arquivos complete\_genoma.fasta que contém o genoma de referencia do nosso organismo, features.gff3 que possui anotações funcionais do genoma de referência e além disso usaremos a ensablagem de illumina ./unicycler/assembly.fasta e a ensamblagem de PacBio ./flye/scaffolds.fasta
+
+\begin{Verbatim}[commandchars=!\{\}, numbers=left,label= QUAST,frame=topline,fontsize=\scriptsize]
+user@server:$ conda activate quast_env
+user@server:$ quast -o ./quast/illumina -r complete_genoma.fasta -g features.gff3 ./unicycler/assembly.fasta
+\end{Verbatim}
+
+Olha os arquivos gerados pelo quast na pasta ./quast/illumina
+
+\textcolor{red}{Repete o processo com os dados PacBio utilizando o arquivo scaffolds.fasta que se encontra na pasta ./flye e compare os resultados}
+
+\subsection{Avaliando a qualidade das montagens com BUSCO}
+Agora vamos utilizar BUSCO\footnote{\url{https://busco.ezlab.org/busco_userguide.html}} nas montagens de Illumina e PacBio usando os arquivos das ensablagems de illumina ./unicycler/assembly.fasta e a ensamblagem de PacBio ./flye/scaffolds.fasta
+
+\begin{Verbatim}[commandchars=!\{\}, numbers=left,label= BUSCO para dados Illumina,frame=topline,fontsize=\scriptsize]
+user@server:$ conda activate busco_env
+user@server:$ busco -i ./unicycler/assembly.fasta -o illumina -m geno --lineage bacteria_odb10 --out_path ./busco
+\end{Verbatim}
+
+Olha os arquivos gerados pelo quast na pasta ./busco/illumina
+
+\textcolor{red}{Repete o processo com os dados PacBio utilizando o arquivo scaffolds.fasta que se encontra na pasta ./flye e compare os resultados}
+
+
 \bibliography{bibliografia}
 \bibliographystyle{genetics}
 
