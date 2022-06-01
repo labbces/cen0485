@@ -1455,9 +1455,9 @@ Na teoria, os algoritmos de programação dinâmica descritos acima para o caso 
 
 Nesta sessão vamos desenvolver a prática apresentada no capítulo 3 de \citealp{Lemey2009}.
 
-Vamos alinhar as sequências dos genes TRIM5$\alpha$ de diferentes espécies de primatas. TRIM5$\alpha$ é um fator de restrição viral que protege a maioria dos macacos do velho mundo (Cercopithecidae) da infecção pelo HIV. Esses dados foram originalmente analisados por \citealp{Sawyer2005}. Usaremos métodos de refinamento iterativo ({\sc Muscle}) para criar vários alinhamentos proteicos e, em seguida, comparar os resultados usando {\sc JalView}. Vamos criar os alinhamentos das sequências proteicas, e vamos gerar o alinhamento correspondente no nível nucleotídeo, terminando com a inspeção manual e o refinamento do alinhamento.
+Vamos alinhar as sequências dos genes TRIM5 de diferentes espécies de primatas. TRIM5 é um fator de restrição viral que protege a maioria dos macacos do velho mundo (Cercopithecidae) da infecção pelo HIV. Esses dados foram originalmente analisados por \citealp{Sawyer2005}. Usaremos métodos de refinamento iterativo ({\sc Muscle}) para criar vários alinhamentos proteicos e, em seguida, comparar os resultados usando {\sc JalView}. Vamos criar os alinhamentos das sequências proteicas, e vamos gerar o alinhamento correspondente no nível nucleotídeo, terminando com a inspeção manual e o refinamento do alinhamento.
 
-\section{Alinhando as sequências de aminoácidos de TRIM5$\alfa$ de primatas}
+\section{Alinhando as sequências de aminoácidos de TRIM5 de primatas}
 
 \subsection{{\sc MUSCLE}}
 
@@ -1496,7 +1496,7 @@ Siga o link \url{http://www.jalview.org/examples/editing.html}, se desejar, pode
 \begin{figure}[h!]
 \centering
  \includegraphics[width=15cm]{Figs/JalView.png}
- \caption{\label{fig:JalView}Tela do JalView}}
+ \caption{\label{fig:JalView}Tela do JalView}
 \end{figure}
 
 \chapter{PSSMs, Logo de Sequências e HMMs}
@@ -1541,7 +1541,7 @@ A Figura~\ref{fig:lexALogo} corresponde ao logo da sequência do site de vincula
 \begin{figure}[h!]
 \centering
  \includegraphics[width=9cm]{Figs/lexA.png}
- \caption{\label{fig:lexALogo}Lexa junte-se ao logo da sequência do site}}
+ \caption{\label{fig:lexALogo}Lexa junte-se ao logo da sequência do site}
 \end{figure}
 
 A altura do resíduo está correlacionada com sua frequência no alinhamento  múltiplo {Para obter mais informações, consulte: \citealp{Schneider1990}}.
@@ -1785,33 +1785,38 @@ En la página \Verb+Compete summary+ encuentra información detallada sobre el B
 
 \begin{figure}[h!]
 \centering
- \includegraphics[width=6cm]{Figs/montagem_de_genoma.jpeg}
+ \includegraphics[width=7cm]{Figs/montagem_de_genoma.jpeg}
  \caption{\label{fig:fastqc}Montagem de genomas}
 \end{figure}
 
 
 O processo de montagem de genomas consiste na recuperação da sequência original a partir dos fragmentos de ADN produzidos pelo sequenciamento
 
-Vamos montar o genoma de \emph{Komagataeibacter rhaeticus}\footnote{"NCBI accesion: NZ\_CP050139"} a partir de leituras produzidas por duas tecnologias Illumina e PacBio.
+Vamos montar o genoma de \emph{Komagataeibacter rhaeticus}\footnote{NCBI accesion: NZ\_CP050139} a partir de leituras produzidas por duas tecnologias Illumina e PacBio que encontrara na pasta PRATICA\_ENSAMBLAGEM\_DE\_GENOMAS onde tera que descomprimir um arquivo que contem as leituras.
+
+\begin{Verbatim}[commandchars=!\{\}, numbers=left,label= indo na pasta de trabalho, frame=topline,fontsize=\scriptsize]
+(base)user@server:$ cd PRATICA_ENSAMBLAGEM_DE_GENOMAS
+\end{Verbatim}
+
 
 \subsection{Limpar sequencias}
 As tecnologias de segunda geração como Illumina produzem leituras que devem ser filtradas por critérios de qualidade de leitura, cumprimento, presença de adaptadores, barcodes, contaminantes e artefatos.
 Por enquanto os sequenciadores de tecnologias de terceira geração como PacBio geralmente fazem esse processo por nós
 
-Temos dois arquivos \Verb+fastq+ com leituras pareadas de illumina\footnote{"illumina\_.R1.fq"}\footnote{"illumina\_.R2.fq"}
+Temos dois arquivos \Verb+fastq+ com leituras pareadas de illumina\footnote{illumina\_.R1.fq}\footnote{illumina\_.R2.fq}
 
 \begin{itemize}
 \item \textcolor{red}{O Que são leituras pareadas?}
-\item \textcolor{red}{Usando o comando less olha quantas linhas tem cada leitura nos aquivos .fastq e explicar o que contém cada linha}
+\item \textcolor{red}{Explique a organização do formato FASTQ}
 \end{itemize}
-
 
 Limpamos eles usando BBduk\footnote{\url{https://jgi.doe.gov/data-and-tools/software-tools/bbtools/bb-tools-user-guide/bbduk-guide/}}, BBduk pode fazer quality-trimming, filtrado, adapter-trimming, contaminant-filtering usando kmer matching.
 
 \begin{Verbatim}[commandchars=!\{\}, numbers=left,label= Limpando leituras Illumina com bbduk,frame=topline,fontsize=\scriptsize]
 (base)user@server:$ conda activate bbduk_env
-(bbduk_env)user@server:$ bbduk.sh in1=illumina_.R1.fq in2=illumina_.R2.fq out1=./bbduk/R1.fq \
-out2=./bbduk/R2.fq minlength=75 qtrim=w trimq=20
+(bbduk_env)user@server:$ bbduk.sh in1=illumina_R1.fq in2=illumina_R2.fq out1=./bbduk/bbduk.R1.fq \
+out2=./bbduk/bbduk.R2.fq minlength=75 qtrim=w trimq=20
+(bbduk_env)user@server:$ conda deactivate
 \end{Verbatim}
 
 
@@ -1827,6 +1832,7 @@ Agora vamos usar o programa FASTQC\footnote{\url{https://github.com/s-andrews/Fa
 \begin{Verbatim}[commandchars=!\{\}, numbers=left,label= Abrindo o FASTQC,frame=topline,fontsize=\scriptsize]
 (base)user@server:$ conda activate fastqc_env 
 (fastqc_env)user@server:$ fastqc
+(fastqc_env)user@server:$ conda deactivate
 \end{Verbatim}
 
 \begin{itemize}
@@ -1844,20 +1850,23 @@ Usaremos o software Unicycler\footnote{\url{https://github.com/rrwick/Unicycler}
 
 \begin{Verbatim}[commandchars=!\{\}, numbers=left,label= Montando leituras com Unicycler,frame=topline,fontsize=\scriptsize]
 (base)user@server:$ conda activate unicycler_env
-(unicycler_env)user@server:$ unicycler  -1 ./bbduk/bbduk2.R1.fq -2 ./bbduk/bbduk2.R2.fq -o ./unicycler/
+(unicycler_env)user@server:$ unicycler  -1 ./bbduk/bbduk.R1.fq -2 ./bbduk/bbduk.R2.fq -o ./unicycler/
+(unicycler_env)user@server:$ conda deactivate
 \end{Verbatim}
 
-Agora pode dar uma olhada nos aquivos gerados pelo Unicycler na pasta ./unicycler e usar o programa Bandage\footnote{\url{https://rrwick.github.io/Bandage/}} para visualizar o arquivo assembly.gfa na pasta ./unicycler 
+Agora pode dar uma olhada nos aquivos gerados pelo Unicycler na pasta ./unicycler e usar o programa Bandage\footnote{\url{https://rrwick.github.io/Bandage/}}\footnote{\url{https://pubmed.ncbi.nlm.nih.gov/26099265/}} para visualizar o arquivo assembly.gfa
+
 
 \begin{Verbatim}[commandchars=!\{\}, numbers=left,label= Abrindo o Bandage,frame=topline,fontsize=\scriptsize]
 (base)user@server:$ conda activate bandage_env 
 (bandage_env)user@server:$ Bandage
+(bandage_env)user@server:$ conda deactivate
 \end{Verbatim}
 
 \begin{figure}[ht]
 \centering
    \includegraphics[width=12cm]{Figs/bandage.png}
-  \caption[Visualização da montagem do unicycler]{\label{bandage}Tela do Bandage}
+  \caption[Visualização da montagem do unicycler]{\label{bandage}Montagem Illumina}
 \end{figure}
 
 \begin{itemize}
@@ -1871,57 +1880,57 @@ Usaremos o arquivo com leituras PacBio PacBio.fq
 
 \begin{Verbatim}[commandchars=!\{\}, numbers=left,label= Montando leituras com Flye,frame=topline,fontsize=\scriptsize]
 (base)user@server:$ conda activate flye
-(flye_env)user@server:$ flye --pacbio-corr PacBio.fq -o ./flye
+(flye_env)user@server:$ flye --pacbio-hifi PacBio.fq -o ./flye
+(flye_env)user@server:$ conda deactivate
 \end{Verbatim}
 
-Agora poder dar uma olhada nos aquivos gerados pelo Flye na pasta ./flye e usar o programa Bandage para visualizar o arquivo graph\_final.gfa
+Agora poder dar uma olhada nos aquivos gerados pelo Flye na pasta ./flye e usar o programa Bandage para visualizar o arquivo assembly\_graph.gfa
 
 \begin{figure}[ht]
 \centering
    \includegraphics[width=12cm]{Figs/bandage_pacbio.png}
-  \caption[Visualização da montagem do flye]{\label{bandage_pacbio}Tela do Bandage}
+  \caption[Visualização da montagem do flye]{\label{bandage_pacbio}Montagem PacBio}
 \end{figure}
 
 \begin{itemize}
-\item \textcolor{red}{Explique porque as diferenças na topologia gerada pelos gráficos das ensamblagens de Illumina e PacBio}
+\item \textcolor{red}{Explique porque as diferenças nas gráficas geradas pelas duas ensamblagens: Illumina e PacBio}
 \end{itemize}\
 
 
 \subsection{Avaliando a qualidade das montagens com QUAST}
-Agora vamos utilizar QUAST\footnote{\url{http://quast.sourceforge.net/}} para comparar as montages do nossas leituras. No primeiro lugar as leituras Illumina (./unicycler/assembly.fasta) e a montagem do genoma de referencia que se encontra em complete\_genoma.fasta. O arquivo features.gff3 posssui as anotações funcionais do genoma de referência 
-
-\begin{itemize}
-\item \textcolor{red}{Que significa cada coluna no arquivo features.gff3?}
-\end{itemize}
+Agora vamos utilizar QUAST\footnote{\url{http://quast.sourceforge.net/}} para comparar a qualidade das nossas montagenss. No primeiro lugar a montagem de Illumina (./unicycler/assembly.fasta) comparado com a montagem do genoma de referencia que se encontra em complete\_genome.fasta.
 
 \begin{Verbatim}[commandchars=!\{\}, numbers=left,label= QUAST,frame=topline,fontsize=\scriptsize]
 (base)user@server:$ conda activate quast_env
-(quast_env)user@server:$ quast -o ./quast/illumina -r complete_genoma.fasta /
--g features.gff3 ./unicycler/assembly.fasta
+(quast_env)user@server:$ quast -o ./quast/illumina -r complete_genome.fasta ./unicycler/assembly.fasta
+(quast_env)user@server:$ conda deactivate
 \end{Verbatim}
 
 Olha os arquivos gerados pelo quast na pasta ./quast/illumina e analise o arquivo report.html.
-O quast também pode funcionar sem genoma de referencia.
+O quast também pode funcionar sem genoma de referencia no caso que seja necessário.
 
 \begin{itemize}
-\item \textcolor{red}{Rodar o quast sem o genoma de referencia  e sem o arquivo .gff3 para os dados de Illumina. Compare os resultados da tabela no arquivo report.html e explique as diferenças} \textcolor{red} {(lembre que a melhor forma de  facilitar as coisas é organizar os arquivos e pastas de uma maneira logica\footnote{\url{https://www.codementor.io/@nguyentruongky/how-to-organize-the-project-folders-and-files-x8m171gvc}}  e por exemplo ter uma pasta para cada coisa}
-\item \textcolor{red}{Repetir o processo com os dados PacBio utilizando o arquivo scaffolds.fasta que se encontra na pasta ./flye e compare os resultados de Illumina e PacBio usando a referencia (genoma e .gff3) e explique a diferenças no report.html}
+\item \textcolor{red}{Rodar o QUAST sem o genoma de referencia para os dados de Illumina. Compare os resultados da tabela no arquivo report.html e explique as diferenças} \textcolor{red} {(lembre que a melhor forma de  facilitar as coisas é organizar os arquivos e pastas de uma maneira logica\footnote{\url{https://zapier.com/blog/organize-files-folders/}}  e por exemplo ter uma pasta para cada analise}
+\item \textcolor{red}{Repetir o processo com os dados PacBio utilizando o arquivo assembly.fasta que se encontra na pasta ./flye e compare os resultados de Illumina e PacBio usando a referencia explique a diferenças no report.html}
 \end{itemize}
 
 \subsection{Avaliando a qualidade das montagens com BUSCO}.
-O BUSCO\footnote{\url{https://github.com/robsyme/busco}} informa da quantidade de genes orthologos casi-universais de uma copia que se esperaria encontrar na nossa ensamblagem a comparação com o que se encontra em organismos próximos filogeneticamente.
-Vamos avaliar as montagens de Illumina ./unicycler/assembly.fasta
+O BUSCO\footnote{\url{https://github.com/robsyme/busco}} informa da quantidade de genes ortologos de copia única que espera-se encontrar na nossa ensamblagem a comparação com o que se encontra em organismos do mesmo grupo taxonômico.
+Vamos avaliar a montagen de Illumina ./unicycler/assembly.fasta
 
 \begin{Verbatim}[commandchars=!\{\}, numbers=left,label= BUSCO para dados Illumina,frame=topline,fontsize=\scriptsize]
 (base)user@server:$ conda activate busco_env
-(busco_env)user@server:$ busco -i ./unicycler/assembly.fasta -o illumina -m geno --lineage x --out_path ./busco
+(busco_env)user@server:$ busco -i ./unicycler/assembly.fasta -o illumina -m geno \
+--lineage rhodospirillales_odb10 --out_path ./busco
+(busco_env)user@server:$ conda deactivate
 \end{Verbatim}
 
-Olha os arquivos gerados pelo BUSCO na pasta ./busco/illumina e analisa o arquivo short\_summary.\*.illumina.txt.
+Olha os arquivos gerados pelo BUSCO na pasta ./busco/illumina
+
 \begin{itemize}
 \item \textcolor{red}{Que significa a opção --lineage no comando do BUSCO}
 \item \textcolor{red}{Repetir o processo de avaliação de qualidade da montagem com BUSCO utilizando os dados PacBio no arquivo gerado pelo flye scaffolds.fasta que se encontra na pasta ./flye. Compare os resultados e explique as diferenças entre as montagens de leituras illumina e leituras PacBio segundo BUSCO}
-\item \textcolor{red}{Vocé qual ensamblagem usaria e porque?}
+\item \textcolor{red}{Segundo os resultados do BANDAGE, BUSCO e QUAST qual é a melhor montagem e porque}
 \end{itemize}
 \bibliography{bibliografia}
 \bibliographystyle{genetics}
