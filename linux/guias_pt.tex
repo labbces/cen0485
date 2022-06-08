@@ -1929,9 +1929,129 @@ Olha os arquivos gerados pelo BUSCO na pasta ./busco/illumina
 
 \begin{itemize}
 \item \textcolor{red}{Que significa a opção --lineage no comando do BUSCO}
-\item \textcolor{red}{Repetir o processo de avaliação de qualidade da montagem com BUSCO utilizando os dados PacBio no arquivo gerado pelo flye scaffolds.fasta que se encontra na pasta ./flye. Compare os resultados e explique as diferenças entre as montagens de leituras illumina e leituras PacBio segundo BUSCO}
+\item \textcolor{red}{Repetir o processo de avaliação de qualidade da montagem com BUSCO utilizando os dados PacBio no arquivo gerado pelo flye assembly.fasta que se encontra na pasta ./flye. Compare os resultados e explique as diferenças entre as montagens de leituras illumina e leituras PacBio segundo BUSCO}
 \item \textcolor{red}{Segundo os resultados do BANDAGE, BUSCO e QUAST qual é a melhor montagem e porque}
 \end{itemize}
+
+\chapter{Anotação de Genomas}
+
+Depois de ter montado as suas leituras na ensamblagem do genoma, é útil saber quais são as características genômicas dessa ensamblagem. O processo de identificar e rotular essas características é chamado de anotação do genoma.
+
+Neste capitulo vamos anotar a montagem do genoma montado com leituras PacBio feito no capitulo 17
+
+\subsection{Usando prokka para anotar genomas bacterianos}.
+
+Prokka\footnote{\url{https://pubmed.ncbi.nlm.nih.gov/24642063/}}\footnote{\url{https://github.com/tseemann/prokka}}, é uma ferramenta de software de linha de comando para anotação de genomas bacterianos
+
+No primeiro lugar copiamos a ensamblagem feita no capitulo 17 correspondente aos dados de PacBio, esta montagem que você fez, deve-se encontrar em
+
+\sim/PRATICA\_ENSAMBLAGEM\_DE\_GENOMAS/flye/assembly.fasta
+
+A nossa pasta de trabalho de hoje é
+
+\sim/GENOME\_ANNOTATION
+
+Copiamos a ensamblagem na nossa pasta de trabalho
+
+\begin{Verbatim}[commandchars=!\{\}, numbers=left,label= Copiando a ensamblagem para sua anotação,frame=topline,fontsize=\scriptsize]
+(base)user@server:$ cp  ~/PRATICA_ENSAMBLAGEM_DE_GENOMAS/flye/assembly.fasta ~/GENOME_ANNOTATION
+\end{Verbatim}
+
+Nos dirigimos na nossa pasta de trabalho
+
+\begin{Verbatim}[commandchars=!\{\}, numbers=left,label= Indo na pasta de trabalho,frame=topline,fontsize=\scriptsize]
+(base)user@server:$ cd ~/GENOME_ANNOTATION
+\end{Verbatim}
+
+Agora ativamos o ambiente virtual que cotém o prokka e rodamos ele no arquivo assembly.fasta
+
+\begin{Verbatim}[commandchars=!\{\}, numbers=left,label= Rodando prokka ,frame=topline,fontsize=\scriptsize]
+(base)user@server:$ conda activate prokka
+(prokka)user@server:$ prokka --outdir prokka --prefix assembly_pacbio assembly.fasta --force
+(prokka)user@server:$ conda deactivate
+\end{Verbatim}
+
+O prokka gera varios arquivos de saída na pasta
+
+\sim/GENOME\_ANNOTATION/prokka
+
+Da uma olhada neles.
+
+\subsection{Usando IGV para olhar os resultados de prokka}.
+Agora podemos abrir o IGV para vizualizar as anotações no genoma
+\begin{Verbatim}[commandchars=!\{\}, numbers=left,label= Abrindo IGV,frame=topline,fontsize=\scriptsize]
+(base)user@server:$ igv.sh
+\end{Verbatim}
+
+
+Carregamos no IGV\footnote{\url{https://igv.org/}} o arquivo 
+
+
+
+\sim/GENOME\_ANNOTATION/assembly.fasta
+
+e o arquivo
+
+\sim/GENOME\_ANNOTATION/prokka/assembly\_pacbio.gff
+
+\begin{figure}[ht]
+\centering
+   \includegraphics[width=12cm]{Figs/igv_gff.png}
+  \caption[Visualização do arquivo de anotações .gff na ensamblagem]{\label{IGV}Tela IGV}
+\end{figure}
+
+
+\subsection{Rondando blast local}
+
+Agora vamos rodar um blast\footnote{\url{https://blast.ncbi.nlm.nih.gov/Blast.cgi
+}} customizado para olhar coincidencias nas proteinas geradas pelos CDS detetados pelo prokka na nossa ensamblagem e numa base de dados que vamos gerar com sequencias conhecidas do género \emph{Komagataeibacter} ao qual pertence a nossa bactéria.
+
+o arquivo com as sequencias para construir a nossa base de dados encontra-se em 
+
+\sim/GENOME\_ANNOTATION/sequences\_for\_db.fa
+
+\begin{Verbatim}[commandchars=!\{\}, numbers=left,label= Criando base de dados customizada para o blast ,frame=topline,fontsize=\scriptsize]
+(base)user@server:$ mkdir -p ~/GENOME_ANNOTATION/blastDB/
+(base)user@server:$ export BLASTDB=~/GENOME_ANNOTATION/blastDB/
+(base)user@server:$ cd ~/GENOME_ANNOTATION/blastDB/
+(base)user@server:$ makeblastdb -in ./../sequences_for_db.fa -dbtype 'prot' -out myDB
+(base)user@server:$ cd ..
+\end{Verbatim}
+
+\begin{itemize}
+\item Na linha 1 criamos uma pasta chamada blastDB na nossa pasta de trabalho
+\item Na linha 2 fazemos saber ao BLAST que as bases de dados estão na pasta que acabamos de criar 
+\item Na linha 3 nos dirigimos na pasta que acabamos de criar
+\item Na linha 4 criamos uma base de dados customizada com o nome myDB
+\item Na linha 5 voltamos na nossa pasta de trabalho
+\end{itemize}
+
+Agora estamos prontos para rodar o BLAST localmente na nossa base de dados!
+
+\begin{Verbatim}[commandchars=!\{\}, numbers=left,label= Rondando blast local,frame=topline,fontsize=\scriptsize]
+(base)user@server:$ mkdir -p blast
+(base)user@server:$ blastp -db myDB -query ./prokka/assembly_pacbio.faa -out ./blast/out_blast.txt
+\end{Verbatim}
+\begin{itemize}
+\item Na lina 1 criamos uma pasta chamada blast na nossa pasta de trabalho que vai conter a saída do BLAST
+\item Na linha 2 rodamos o BLAST das sequencias das proteínas geradas pelos CDS encontrados pelo prokka na nossa ensamblagem, na nossa base de dados com as proteínas do gênero  \emph{Komagataeibacter}
+\end{itemize}
+
+O BLAST vai gerar um arquivo de saida na em:
+
+
+\sim/GENOME\_ANNOTATION/blast/out\_blast.txt
+
+
+
+o arquivo e o suficientemente grande para matar sua maquina se abre ele tudo de só uma vez
+da uma olhada nele usando o comando less
+
+
+\begin{Verbatim}[commandchars=!\{\}, numbers=left,label= Resultados do BLAST local,frame=topline,fontsize=\scriptsize]
+(base)user@server:$ less ./blast/out_blast.txt
+\end{Verbatim}
+
 \bibliography{bibliografia}
 \bibliographystyle{genetics}
 
