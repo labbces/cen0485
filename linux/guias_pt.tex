@@ -2115,7 +2115,7 @@ done
 (bbduk_env):$ conda deactivate
 \end{Verbatim}
 
-\textcolor{red}{Que porcentagem de leituras foi removido no total?}
+Qual porcentagem de leituras foi removido no total?
 
 Agora pode rodar o FASTQC de novo e olhar verificar as estatísticas de qualidade dos arquivos gerados pelo bbduk
 
@@ -2130,17 +2130,20 @@ No primeiro para rodar o Salmon lugar temos que criar um index com nosso genoma 
 
 O comando anterior debe criar uma pasta chamda salmon\_index em:
 
+\subsection{Rodando o Salmon}.
+
 \sim/PRATICA\_RNASEQ/salmon\_index 
 
 Agora podemos quantificar nossas leituras no index gerado com o genoma de referencia, o seguinte comando executa o Salmon para todos arquivos de cada amostra (R1 e R2) para cada amostra sequencialmente.
 
 \begin{Verbatim}[commandchars=!\{\}, numbers=left,label= Criando Salmon index ,frame=topline,fontsize=\scriptsize]
+(base)user@server: cd  ~/PRATICA_RNASEQ
 (base)user@server:$ mkdir -p Quantification
 (base)user@server:$ cd Quantification
 (base)user@server:$ for sample in $(cut -f1 -d"," ./../metadata.csv | grep SRR); do \
 file_R1=${sample}_1.fastq; \
 file_R2=${sample}_2.fastq; \
-salmon quant --libType A --threads 2 --index \
+salmon quant --libType A --threads 4 --index \
 ./../salmon_index/ \
 --validateMappings --seqBias --posBias --softclip \
 -1 ./../bbduk/${file_R1} \
@@ -2155,24 +2158,18 @@ Os aquivos com a quantificação encontram-se na pasta:
 
 \sim/PRATICA\_RNASEQ/Quantification
 
+Lá encontramos uma pasta para cada amostra, e dentro de cada pasta vários arquivos, o aquivo com a informação da quantificação é o arquivo quant.sf.
 
-Lá encontramos uma pasta para cada amostra, e dentro de cada pasta vários arquivos, o aquivo com a informação da quantificação e o arquivo quant.sf
+Agora que temos feito a quantificação podemos começar a nos fazer preguntas sobre os dados.
 
-Agora que temos feito a quantificação podemos começar a nos fazer preguntas sobre os dados
-
-Vamos usar R\footnote{https://www.r-project.org/}para olhar como mudam os níveis de expressão dos genes para cada condição experimental, R é um software livre para computação estatística e gráficos. para fazer mais amigável nossa interação com o R vamos usar RStudio\footnote{https://www.rstudio.com/} que é um ambiente de desenvolvimento integrado (IDE pelas siglas em ingles) para R.
+Vamos usar R\footnote{https://www.r-project.org/}para olhar como mudam os níveis de expressão dos genes para cada condição experimental, R é um software livre para computação estatística e gráficos. Para fazer mais amigável nossa interação com o R vamos usar RStudio\footnote{https://www.rstudio.com/} que é um ambiente de desenvolvimento integrado (IDE pelas siglas em ingles) para R.
 
 \begin{Verbatim}[commandchars=!\{\}, numbers=left,label= Criando Salmon index ,frame=topline,fontsize=\scriptsize]
-(base)user@server:$ conda activate R4.2
-(R4.2)user@server:$ rstudio
+user@server:$ rstudio
 \end{Verbatim}
 
 
-
-
-Agora usando o Rstudio abra o arquivo RNASeqPratica.R que se encontra na pasta:
-
-\sim/PRATICA\_RNASEQ
+Agora usando o Rstudio continua com a pratica no outro PDF que contem o código em R:
 
 \begin{figure}[h]
 \centering
@@ -2180,101 +2177,7 @@ Agora usando o Rstudio abra o arquivo RNASeqPratica.R que se encontra na pasta:
   \caption[Rstudio tela]{\label{logo_rstudio}}
 \end{figure}
 
-e comece a rodar o script passo a passo.
 
-Primeiro temos que carregar as librarias que o script precisa
-
-\begin{Verbatim}[commandchars=!\{\}, numbers=left,label= Carregando librarias no Rstudio,frame=topline,fontsize=\scriptsize]
-library(DESeq2)
-library(readr)
-library(AnnotationDbi)
-library(org.Hs.eg.db)
-library(ggbeeswarm)
-#library(clusterProfiler)
-library(tximeta)
-#library(ReportingTools, lib.loc = "/home/j/PRACTICA_RNASEQ/library/")
-library(pheatmap)
-library(RColorBrewer)
-library(ggplot2)
-library(GenomicFeatures)
-\end{Verbatim}
-
-\textcolor{red}{o que é uma libraria ou pacote no R?}
-
-Agora carregamos no R os metadados sobre o experimento
-
-\begin{Verbatim}[commandchars=!\{\}, numbers=left,label= Carregando metadados no Rstudio,frame=topline,fontsize=\scriptsize]
-setwd("~/PRACTICA_RNASEQ/")
-targets<-read.table("metadata.csv",
-                    header=T,
-                    sep = ",",
-                    stringsAsFactors=FALSE,
-                    col.names = c("names", "condition", "cell"))
-targets$name<-as.factor(targets$name)
-targets$cell<-as.factor(targets$cell)
-\end{Verbatim}
-
-da uma olhada no objeto targets gerado no R
-
-Agora fazemos una lista com os caminhos dos arquivos quant.sf gerados pelo Salmon
-\begin{Verbatim}[commandchars=!\{\}, numbers=left,label= Fazendo lista de arquivos de quantificação,frame=topline,fontsize=\scriptsize]
-files<-file.path(paste("Quantification/",targets$names,"_salmon/quant.sf",sep=''))
-file.exists(files)
-targets$files<-files
-row.names(targets)<-targets$names
-targets
-\end{Verbatim}
-
-Fazemos um objeto com informação de anotações e conseguimos a informação sobre os transcritos e suas isoformas
-
-\textcolor{red}{o que é uma isoforma de um transcrito e porque é de interesse conhecer as diferentes isoformas de um transcrito}
-
-\begin{Verbatim}[commandchars=!\{\}, numbers=left,label= Fazendo lista de arquivos de quantificação,frame=topline,fontsize=\scriptsize]
-makeLinkedTxome(indexDir="~/PRACTICA_RNASEQ/salmon_index/",
-                source="LocalEnsembl",
-                organism="Homo sapiens",
-                release="38",
-                genome="GRCh38.p13",
-                fasta="~/PRACTICA_RNASEQ/references/gencode.v38.transcripts.fa.gz",
-                gtf="~/PRACTICA_RNASEQ/references/gencode.v38.annotation.gtf.gz",
-                write=FALSE)
-se <- tximeta(targets)
-dim(se)
-head(rownames(se))
-gse <- summarizeToGene(se)
-dim(gse)
-head(rownames(gse))
-colData(gse)
-head(assay(gse))
-rowRanges(gse)
-gse$cell
-gse$condition
-targets
-\end{Verbatim}
-
-Agora carregamos os dados no DESEQ2\footnote{https://bioconductor.org/packages/release/bioc/html/DESeq2.html} um pacote de R para fazer analise de expressão diferencial. Limpamos os dados em termos de eliminar genes que estejam muito pouco expressos ou expressos somente em poucas amostras. Transformamos os counts no espaço de log2 e normalizamos com respeito ao tamanho da libraria.
-
-\begin{Verbatim}[commandchars=!\{\}, numbers=left,label= Carregando dados no DESEQ2 e limpando os dados ,frame=topline,fontsize=\scriptsize]
-dds <- DESeqDataSet(gse, design = ~condition+cell)
-nrow(dds)
-keep <- rowSums(counts(dds)) > 1
-dds <- dds[keep,]
-nrow(dds)
-head(counts(dds),2)
-dds <- estimateSizeFactors(dds)
-head(counts(dds,normalized=TRUE),2)
-colSums(assay(gse))
-keep <- rowSums(counts(dds) >= 5) >= 4
-dds <- dds[keep,]
-nrow(dds)
-rld <- rlog(dds, blind = TRUE)
-head(assay(rld))
-\end{Verbatim}
-
-Agora vizualisamos as distancas entre as diferentes amostras por meio de um heat map
-\begin{Verbatim}[commandchars=!\{\}, numbers=left,label= Carregando librarias no Rstudio,frame=topline,fontsize=\scriptsize]
-
-\end{Verbatim}
 
 \chapter{Genes ortólogos}
 
