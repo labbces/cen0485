@@ -1184,7 +1184,7 @@ D7MJK1.txt          100%[===================>]   4,46K  --.-KB/s    in 0s
 \end{figure}
 
 
-O programa que nos interessa chama-se ``\Verb+seqret+''.
+O programa que nos interessa chama-se ``\Verb+seqret+''. Explore o comando ``\Verb+wossname+'' para buscar programas por palavras chave.
 
 Agora, você pode usar o mesmo programa para converter a entrada recuperada do UniProt .txt para o formato fasta. \textcolor{red}{Como você faria isso?}
 
@@ -1945,11 +1945,11 @@ Prokka\footnote{\url{https://pubmed.ncbi.nlm.nih.gov/24642063/}}\footnote{\url{h
 
 No primeiro lugar copiamos a ensamblagem feita no capitulo 17 correspondente aos dados de PacBio, esta montagem que você fez, deve-se encontrar em
 
-\sim/PRATICA\_ENSAMBLAGEM\_DE\_GENOMAS/flye/assembly.fasta
+\emph{$\sim$/PRATICA\_ENSAMBLAGEM\_DE\_GENOMAS/flye/assembly.fasta}
 
 A nossa pasta de trabalho de hoje é
 
-\sim/GENOME\_ANNOTATION
+\emph{$\sim$/GENOME\_ANNOTATION}
 
 Copiamos a ensamblagem na nossa pasta de trabalho
 
@@ -1973,7 +1973,7 @@ Agora ativamos o ambiente virtual que cotém o prokka e rodamos ele no arquivo a
 
 O prokka gera varios arquivos de saída na pasta
 
-\sim/GENOME\_ANNOTATION/prokka
+\emph{$\sim$/GENOME\_ANNOTATION/prokka}
 
 Da uma olhada neles.
 
@@ -1988,11 +1988,11 @@ Carregamos no IGV\footnote{\url{https://igv.org/}} o arquivo
 
 
 
-\sim/GENOME\_ANNOTATION/assembly.fasta
+\emph{$\sim$/GENOME\_ANNOTATION/assembly.fasta}
 
 e o arquivo
 
-\sim/GENOME\_ANNOTATION/prokka/assembly\_pacbio.gff
+\emph{$\sim$/GENOME\_ANNOTATION/prokka/assembly\_pacbio.gff}
 
 \begin{figure}[ht]
 \centering
@@ -2008,7 +2008,7 @@ Agora vamos rodar um blast\footnote{\url{https://blast.ncbi.nlm.nih.gov/Blast.cg
 
 o arquivo com as sequencias para construir a nossa base de dados encontra-se em 
 
-\sim/GENOME\_ANNOTATION/sequences\_for\_db.fa
+\emph{$\sim$/GENOME\_ANNOTATION/sequences\_for\_db.fa}
 
 \begin{Verbatim}[commandchars=!\{\}, numbers=left,label= Criando base de dados customizada para o blast ,frame=topline,fontsize=\scriptsize]
 (base)user@server:$ mkdir -p ~/GENOME_ANNOTATION/blastDB/
@@ -2040,9 +2040,7 @@ Agora estamos prontos para rodar o BLAST localmente na nossa base de dados!
 O BLAST vai gerar um arquivo de saida na em:
 
 
-\sim/GENOME\_ANNOTATION/blast/out\_blast.txt
-
-
+\emph{$\sim$/GENOME\_ANNOTATION/blast/out\_blast.txt}
 
 o arquivo e o suficientemente grande para matar sua maquina se abre ele tudo de só uma vez
 da uma olhada nele usando o comando less
@@ -2062,7 +2060,7 @@ da uma olhada nele usando o comando less
 
 RNA-Seq é uma técnica de sequenciamento que usa tecnologia de segunda geração para revelar a presença e quantidade de RNA em uma amostra biológica em um dado momento.
 
-Usaremos os dados do PMID: 24926665\footnote{https://pubmed.ncbi.nlm.nih.gov/24926665/}, especificamente os conjuntos de dados mostrados na Tabela 1. Para gerar que o RNA total de dados foi extraído das células humanas primárias do músculo liso das vias aéreas (ASM) de quatro doadores diferentes. As células de cada doador foram tratadas com 1 μM DEX ou com controle veículo por 18 h. Aproximadamente 1 μg de RNA de cada amostra foi usado para gerar RNA-Seq cDNA bibliotecas para sequenciamento usando o TruSeq RNA Sample Prep Kit v2. O sequenciamento foi realizado em um instrumento HiSeq2000 gerando leituras emparelhadas (2x75bp). O principal objetivo do estudo foi obter ideias de como os glicocorticoides suprimem a inflamação no ASM.
+Usaremos os dados do PMID: 24926665\footnote{https://pubmed.ncbi.nlm.nih.gov/24926665/}, especificamente os conjuntos de dados mostrados na Tabela 1. Para gerar que o RNA total de dados foi extraído das células humanas primárias do músculo liso das vias aéreas (ASM) de quatro doadores diferentes. As células de cada doador foram tratadas com 1~{\textmu}M DEX ou com controle veículo por 18 h. Aproximadamente 1~{\textmu}g de RNA de cada amostra foi usado para gerar RNA-Seq cDNA bibliotecas para sequenciamento usando o TruSeq RNA Sample Prep Kit v2. O sequenciamento foi realizado em um instrumento HiSeq2000 gerando leituras emparelhadas (2x75bp). O principal objetivo do estudo foi obter ideias de como os glicocorticoides suprimem a inflamação no ASM.
 
 \section{Amostras}
 \begin{table}[h]
@@ -2132,7 +2130,7 @@ O comando anterior debe criar uma pasta chamda salmon\_index em:
 
 \subsection{Rodando o Salmon}.
 
-\sim/PRATICA\_RNASEQ/salmon\_index 
+\emph{$\sim$/PRATICA\_RNASEQ/salmon\_index}
 
 Agora podemos quantificar nossas leituras no index gerado com o genoma de referencia, o seguinte comando executa o Salmon para todos arquivos de cada amostra (R1 e R2) para cada amostra sequencialmente.
 
@@ -2156,7 +2154,7 @@ O Salmon vai tomar um tempo.
 
 Os aquivos com a quantificação encontram-se na pasta:
 
-\sim/PRATICA\_RNASEQ/Quantification
+\emph{$\sim$/PRATICA\_RNASEQ/Quantification}
 
 Lá encontramos uma pasta para cada amostra, e dentro de cada pasta vários arquivos, o aquivo com a informação da quantificação é o arquivo quant.sf.
 
