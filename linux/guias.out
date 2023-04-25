@@ -1,73 +1,73 @@
-\BOOKMARK [0][-]{chapter.1}{Bases de bioinform\341tica}{}
-\BOOKMARK [0][-]{chapter.2}{Herramientas de Unix \372tiles en bioinform\341tica}{}
-\BOOKMARK [1][-]{section.2.1}{Introducci\363n al sistema Unix}{chapter.2}
-\BOOKMARK [2][-]{subsection.2.1.1}{La l\355nea de comandos}{section.2.1}
-\BOOKMARK [2][-]{subsection.2.1.2}{Su casa y el \341rbol de directorios}{section.2.1}
-\BOOKMARK [2][-]{subsection.2.1.3}{Organizando archivos}{section.2.1}
-\BOOKMARK [2][-]{subsection.2.1.4}{Algunas operaciones b\341sicas con archivos}{section.2.1}
-\BOOKMARK [1][-]{section.2.2}{Formatos de secuencias}{chapter.2}
-\BOOKMARK [2][-]{subsection.2.2.1}{Fasta}{section.2.2}
-\BOOKMARK [2][-]{subsection.2.2.2}{GenBank}{section.2.2}
-\BOOKMARK [2][-]{subsection.2.2.3}{Algunas operaciones b\341sicas con secuencias en formato Fasta}{section.2.2}
-\BOOKMARK [0][-]{chapter.3}{B\372squedas en bases de datos biol\363gicas}{}
-\BOOKMARK [1][-]{section.3.1}{NCBI \205 Bases de datos y b\372squeda de informaci\363n}{chapter.3}
-\BOOKMARK [2][-]{subsection.3.1.1}{Iniciemos una visita a sus bases de datos}{section.3.1}
-\BOOKMARK [2][-]{subsection.3.1.2}{Recuperaci\363n de Secuencias en el NCBI con b\372squedas m\341s espec\355ficas}{section.3.1}
-\BOOKMARK [1][-]{section.3.2}{Recuperaci\363n de secuencias usando SRS@EBI}{chapter.3}
-\BOOKMARK [0][-]{chapter.4}{Manipulaci\363n b\341sica de secuencias}{}
-\BOOKMARK [1][-]{section.4.1}{Limpieza de secuencias}{chapter.4}
-\BOOKMARK [1][-]{section.4.2}{Mapa de restricci\363n}{chapter.4}
-\BOOKMARK [1][-]{section.4.3}{An\341lisis de la composici\363n del ADN}{chapter.4}
-\BOOKMARK [2][-]{subsection.4.3.1}{Contenido de G+C}{section.4.3}
-\BOOKMARK [2][-]{subsection.4.3.2}{Composici\363n monom\351rica y palabras cortas}{section.4.3}
-\BOOKMARK [0][-]{chapter.5}{Creaci\363n de bases de datos relacionales}{}
-\BOOKMARK [0][-]{chapter.6}{B\372squedas en base de datos biol\363gicas - Segunda parte}{}
-\BOOKMARK [1][-]{section.6.1}{PubMed}{chapter.6}
-\BOOKMARK [2][-]{subsection.6.1.1}{Entendiendo la informaci\363n en los registros de PubMed}{section.6.1}
-\BOOKMARK [2][-]{subsection.6.1.2}{Realizando b\372squedas}{section.6.1}
-\BOOKMARK [1][-]{section.6.2}{Descarga por lotes usando Entrez}{chapter.6}
-\BOOKMARK [1][-]{section.6.3}{Recuperar todas las secuencias de un organismo o taxon}{chapter.6}
-\BOOKMARK [1][-]{section.6.4}{Recuperar la informaci\363n publicada sobre un gen}{chapter.6}
-\BOOKMARK [1][-]{section.6.5}{Bases de datos en el European Bioinformatics Institute \(EBI\)}{chapter.6}
-\BOOKMARK [2][-]{subsection.6.5.1}{SRS}{section.6.5}
-\BOOKMARK [2][-]{subsection.6.5.2}{EB-eye}{section.6.5}
-\BOOKMARK [1][-]{section.6.6}{Expasy}{chapter.6}
-\BOOKMARK [1][-]{section.6.7}{Mas ejercicios}{chapter.6}
-\BOOKMARK [0][-]{chapter.7}{Ontolog\355as en bioinform\341tica: Gene Ontology}{}
-\BOOKMARK [1][-]{section.7.1}{Consultas en GO}{chapter.7}
-\BOOKMARK [0][-]{chapter.8}{Introducci\363n al an\341lisis de redes usando Cytoscape}{}
-\BOOKMARK [0][-]{chapter.9}{An\341lisis de enriquecimiento de anotaciones de genes}{}
-\BOOKMARK [0][-]{chapter.10}{Comparaci\363n de secuencias I - Matrices de puntos}{}
-\BOOKMARK [0][-]{chapter.11}{EMBOSS}{}
-\BOOKMARK [1][-]{section.11.1}{Recuperando secuencias de bases de datos}{chapter.11}
-\BOOKMARK [1][-]{section.11.2}{Selecci\363n de marco de lectura abierto}{chapter.11}
-\BOOKMARK [1][-]{section.11.3}{Barajar/mezclar secuencias}{chapter.11}
-\BOOKMARK [1][-]{section.11.4}{Predicci\363n de regiones hidrof\363bicas}{chapter.11}
-\BOOKMARK [1][-]{section.11.5}{Alineamientos}{chapter.11}
-\BOOKMARK [0][-]{chapter.12}{Comparaci\363n de secuencias II - Alineamientos pareados}{}
-\BOOKMARK [1][-]{section.12.1}{Matrices de sustituci\363n}{chapter.12}
-\BOOKMARK [1][-]{section.12.2}{Alineamiento Global}{chapter.12}
-\BOOKMARK [1][-]{section.12.3}{Alineamientos locales}{chapter.12}
-\BOOKMARK [1][-]{section.12.4}{Significancia de los alineamientos}{chapter.12}
-\BOOKMARK [0][-]{chapter.13}{BLAST: Basic Local Alignment Search Tool}{}
-\BOOKMARK [1][-]{section.13.1}{Encontrando la regi\363n gen\363mica de un transcrito.}{chapter.13}
-\BOOKMARK [1][-]{section.13.2}{Blast+ en la l\355nea de comandos}{chapter.13}
-\BOOKMARK [0][-]{chapter.14}{Alineamientos m\372ltiples}{}
-\BOOKMARK [1][-]{section.14.1}{Alineando las secuencias de amino \341cidos de TRIM5 de primates}{chapter.14}
-\BOOKMARK [2][-]{subsection.14.1.1}{ClustalX}{section.14.1}
-\BOOKMARK [2][-]{subsection.14.1.2}{T-Coffee}{section.14.1}
-\BOOKMARK [2][-]{subsection.14.1.3}{Muscle}{section.14.1}
-\BOOKMARK [2][-]{subsection.14.1.4}{Comparar los alineamientos usando la herramienta web AltAVist}{section.14.1}
-\BOOKMARK [2][-]{subsection.14.1.5}{Del alineamiento de prote\355nas al de nucle\363tidos}{section.14.1}
-\BOOKMARK [2][-]{subsection.14.1.6}{Editando y visualizando alineamientos}{section.14.1}
-\BOOKMARK [2][-]{subsection.14.1.7}{Estimando distancias entre las secuencias}{section.14.1}
-\BOOKMARK [0][-]{chapter.15}{PSSMs, Logos de secuencias y HMMs}{}
-\BOOKMARK [1][-]{section.15.1}{PSSM}{chapter.15}
-\BOOKMARK [1][-]{section.15.2}{Logos de secuencias}{chapter.15}
-\BOOKMARK [1][-]{section.15.3}{Modelos Ocultos de Markov: HMMs}{chapter.15}
-\BOOKMARK [2][-]{subsection.15.3.1}{Buscando los dominios de una prote\355na}{section.15.3}
-\BOOKMARK [2][-]{subsection.15.3.2}{Visualizaci\363n de HMMs}{section.15.3}
-\BOOKMARK [0][-]{chapter.16}{Dise\361o de primers para PCR}{}
-\BOOKMARK [1][-]{section.16.1}{Dise\361o de primers usando Quantprime}{chapter.16}
-\BOOKMARK [1][-]{section.16.2}{Crear primers a partir de alineamientos de prote\355nas}{chapter.16}
-\BOOKMARK [0][-]{section*.55}{Apendices}{}
+\BOOKMARK [0][-]{chapter.1}{Bases de bioinform\341tica}{}% 1
+\BOOKMARK [0][-]{chapter.2}{Herramientas de Unix \372tiles en bioinform\341tica}{}% 2
+\BOOKMARK [1][-]{section.2.1}{Introducci\363n al sistema Unix}{chapter.2}% 3
+\BOOKMARK [2][-]{subsection.2.1.1}{La l\355nea de comandos}{section.2.1}% 4
+\BOOKMARK [2][-]{subsection.2.1.2}{Su casa y el \341rbol de directorios}{section.2.1}% 5
+\BOOKMARK [2][-]{subsection.2.1.3}{Organizando archivos}{section.2.1}% 6
+\BOOKMARK [2][-]{subsection.2.1.4}{Algunas operaciones b\341sicas con archivos}{section.2.1}% 7
+\BOOKMARK [1][-]{section.2.2}{Formatos de secuencias}{chapter.2}% 8
+\BOOKMARK [2][-]{subsection.2.2.1}{Fasta}{section.2.2}% 9
+\BOOKMARK [2][-]{subsection.2.2.2}{GenBank}{section.2.2}% 10
+\BOOKMARK [2][-]{subsection.2.2.3}{Algunas operaciones b\341sicas con secuencias en formato Fasta}{section.2.2}% 11
+\BOOKMARK [0][-]{chapter.3}{B\372squedas en bases de datos biol\363gicas}{}% 12
+\BOOKMARK [1][-]{section.3.1}{NCBI \205 Bases de datos y b\372squeda de informaci\363n}{chapter.3}% 13
+\BOOKMARK [2][-]{subsection.3.1.1}{Iniciemos una visita a sus bases de datos}{section.3.1}% 14
+\BOOKMARK [2][-]{subsection.3.1.2}{Recuperaci\363n de Secuencias en el NCBI con b\372squedas m\341s espec\355ficas}{section.3.1}% 15
+\BOOKMARK [1][-]{section.3.2}{Recuperaci\363n de secuencias usando SRS@EBI}{chapter.3}% 16
+\BOOKMARK [0][-]{chapter.4}{Manipulaci\363n b\341sica de secuencias}{}% 17
+\BOOKMARK [1][-]{section.4.1}{Limpieza de secuencias}{chapter.4}% 18
+\BOOKMARK [1][-]{section.4.2}{Mapa de restricci\363n}{chapter.4}% 19
+\BOOKMARK [1][-]{section.4.3}{An\341lisis de la composici\363n del ADN}{chapter.4}% 20
+\BOOKMARK [2][-]{subsection.4.3.1}{Contenido de G+C}{section.4.3}% 21
+\BOOKMARK [2][-]{subsection.4.3.2}{Composici\363n monom\351rica y palabras cortas}{section.4.3}% 22
+\BOOKMARK [0][-]{chapter.5}{Creaci\363n de bases de datos relacionales}{}% 23
+\BOOKMARK [0][-]{chapter.6}{B\372squedas en base de datos biol\363gicas - Segunda parte}{}% 24
+\BOOKMARK [1][-]{section.6.1}{PubMed}{chapter.6}% 25
+\BOOKMARK [2][-]{subsection.6.1.1}{Entendiendo la informaci\363n en los registros de PubMed}{section.6.1}% 26
+\BOOKMARK [2][-]{subsection.6.1.2}{Realizando b\372squedas}{section.6.1}% 27
+\BOOKMARK [1][-]{section.6.2}{Descarga por lotes usando Entrez}{chapter.6}% 28
+\BOOKMARK [1][-]{section.6.3}{Recuperar todas las secuencias de un organismo o taxon}{chapter.6}% 29
+\BOOKMARK [1][-]{section.6.4}{Recuperar la informaci\363n publicada sobre un gen}{chapter.6}% 30
+\BOOKMARK [1][-]{section.6.5}{Bases de datos en el European Bioinformatics Institute \(EBI\)}{chapter.6}% 31
+\BOOKMARK [2][-]{subsection.6.5.1}{SRS}{section.6.5}% 32
+\BOOKMARK [2][-]{subsection.6.5.2}{EB-eye}{section.6.5}% 33
+\BOOKMARK [1][-]{section.6.6}{Expasy}{chapter.6}% 34
+\BOOKMARK [1][-]{section.6.7}{Mas ejercicios}{chapter.6}% 35
+\BOOKMARK [0][-]{chapter.7}{Ontolog\355as en bioinform\341tica: Gene Ontology}{}% 36
+\BOOKMARK [1][-]{section.7.1}{Consultas en GO}{chapter.7}% 37
+\BOOKMARK [0][-]{chapter.8}{Introducci\363n al an\341lisis de redes usando Cytoscape}{}% 38
+\BOOKMARK [0][-]{chapter.9}{An\341lisis de enriquecimiento de anotaciones de genes}{}% 39
+\BOOKMARK [0][-]{chapter.10}{Comparaci\363n de secuencias I - Matrices de puntos}{}% 40
+\BOOKMARK [0][-]{chapter.11}{EMBOSS}{}% 41
+\BOOKMARK [1][-]{section.11.1}{Recuperando secuencias de bases de datos}{chapter.11}% 42
+\BOOKMARK [1][-]{section.11.2}{Selecci\363n de marco de lectura abierto}{chapter.11}% 43
+\BOOKMARK [1][-]{section.11.3}{Barajar/mezclar secuencias}{chapter.11}% 44
+\BOOKMARK [1][-]{section.11.4}{Predicci\363n de regiones hidrof\363bicas}{chapter.11}% 45
+\BOOKMARK [1][-]{section.11.5}{Alineamientos}{chapter.11}% 46
+\BOOKMARK [0][-]{chapter.12}{Comparaci\363n de secuencias II - Alineamientos pareados}{}% 47
+\BOOKMARK [1][-]{section.12.1}{Matrices de sustituci\363n}{chapter.12}% 48
+\BOOKMARK [1][-]{section.12.2}{Alineamiento Global}{chapter.12}% 49
+\BOOKMARK [1][-]{section.12.3}{Alineamientos locales}{chapter.12}% 50
+\BOOKMARK [1][-]{section.12.4}{Significancia de los alineamientos}{chapter.12}% 51
+\BOOKMARK [0][-]{chapter.13}{BLAST: Basic Local Alignment Search Tool}{}% 52
+\BOOKMARK [1][-]{section.13.1}{Encontrando la regi\363n gen\363mica de un transcrito.}{chapter.13}% 53
+\BOOKMARK [1][-]{section.13.2}{Blast+ en la l\355nea de comandos}{chapter.13}% 54
+\BOOKMARK [0][-]{chapter.14}{Alineamientos m\372ltiples}{}% 55
+\BOOKMARK [1][-]{section.14.1}{Alineando las secuencias de amino \341cidos de TRIM5 de primates}{chapter.14}% 56
+\BOOKMARK [2][-]{subsection.14.1.1}{ClustalX}{section.14.1}% 57
+\BOOKMARK [2][-]{subsection.14.1.2}{T-Coffee}{section.14.1}% 58
+\BOOKMARK [2][-]{subsection.14.1.3}{Muscle}{section.14.1}% 59
+\BOOKMARK [2][-]{subsection.14.1.4}{Comparar los alineamientos usando la herramienta web AltAVist}{section.14.1}% 60
+\BOOKMARK [2][-]{subsection.14.1.5}{Del alineamiento de prote\355nas al de nucle\363tidos}{section.14.1}% 61
+\BOOKMARK [2][-]{subsection.14.1.6}{Editando y visualizando alineamientos}{section.14.1}% 62
+\BOOKMARK [2][-]{subsection.14.1.7}{Estimando distancias entre las secuencias}{section.14.1}% 63
+\BOOKMARK [0][-]{chapter.15}{PSSMs, Logos de secuencias y HMMs}{}% 64
+\BOOKMARK [1][-]{section.15.1}{PSSM}{chapter.15}% 65
+\BOOKMARK [1][-]{section.15.2}{Logos de secuencias}{chapter.15}% 66
+\BOOKMARK [1][-]{section.15.3}{Modelos Ocultos de Markov: HMMs}{chapter.15}% 67
+\BOOKMARK [2][-]{subsection.15.3.1}{Buscando los dominios de una prote\355na}{section.15.3}% 68
+\BOOKMARK [2][-]{subsection.15.3.2}{Visualizaci\363n de HMMs}{section.15.3}% 69
+\BOOKMARK [0][-]{chapter.16}{Dise\361o de primers para PCR}{}% 70
+\BOOKMARK [1][-]{section.16.1}{Dise\361o de primers usando Quantprime}{chapter.16}% 71
+\BOOKMARK [1][-]{section.16.2}{Crear primers a partir de alineamientos de prote\355nas}{chapter.16}% 72
+\BOOKMARK [0][-]{section*.55}{Apendices}{}% 73

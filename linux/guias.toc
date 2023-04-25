@@ -1,80 +1,80 @@
-\select@language {spanish}
-\contentsline {chapter}{\numberline {1}Bases de bioinform\IeC {\'a}tica}{9}{chapter.1}
-\contentsline {chapter}{\numberline {2}Herramientas de Unix \IeC {\'u}tiles en bioinform\IeC {\'a}tica}{11}{chapter.2}
-\contentsline {section}{\numberline {2.1}Introducci\IeC {\'o}n al sistema Unix}{11}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}La l\IeC {\'\i }nea de comandos}{11}{subsection.2.1.1}
-\contentsline {subsection}{\numberline {2.1.2}Su casa y el \IeC {\'a}rbol de directorios}{13}{subsection.2.1.2}
-\contentsline {subsection}{\numberline {2.1.3}Organizando archivos}{15}{subsection.2.1.3}
-\contentsline {subsection}{\numberline {2.1.4}Algunas operaciones b\IeC {\'a}sicas con archivos}{16}{subsection.2.1.4}
-\contentsline {section}{\numberline {2.2}Formatos de secuencias}{18}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Fasta}{18}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}GenBank}{18}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}Algunas operaciones b\IeC {\'a}sicas con secuencias en formato Fasta}{20}{subsection.2.2.3}
-\contentsline {chapter}{\numberline {3}B\IeC {\'u}squedas en bases de datos biol\IeC {\'o}gicas}{21}{chapter.3}
-\contentsline {section}{\numberline {3.1}NCBI \IeC {\textendash } Bases de datos y b\IeC {\'u}squeda de informaci\IeC {\'o}n}{21}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Iniciemos una visita a sus bases de datos}{21}{subsection.3.1.1}
-\contentsline {subsubsection}{Ejercicios}{24}{section*.11}
-\contentsline {subsubsection}{\IeC {\textquestiondown }Qu\IeC {\'e} bases de datos encontramos en el NCBI?}{25}{section*.12}
-\contentsline {subsubsection}{RefSeq}{27}{section*.13}
-\contentsline {subsection}{\numberline {3.1.2}Recuperaci\IeC {\'o}n de Secuencias en el NCBI con b\IeC {\'u}squedas m\IeC {\'a}s espec\IeC {\'\i }ficas}{27}{subsection.3.1.2}
-\contentsline {paragraph}{CONOCEMOS EL ORGANISMO.}{27}{section*.14}
-\contentsline {paragraph}{CONOCEMOS EL O LOS N\IeC {\'U}MEROS DE ACCESO.}{28}{section*.15}
-\contentsline {paragraph}{DIRIGIMOS LA B\IeC {\'U}SQUEDA CON LIMITS.}{28}{section*.16}
-\contentsline {section}{\numberline {3.2}Recuperaci\IeC {\'o}n de secuencias usando SRS@EBI}{28}{section.3.2}
-\contentsline {chapter}{\numberline {4}Manipulaci\IeC {\'o}n b\IeC {\'a}sica de secuencias}{33}{chapter.4}
-\contentsline {section}{\numberline {4.1}Limpieza de secuencias}{33}{section.4.1}
-\contentsline {section}{\numberline {4.2}Mapa de restricci\IeC {\'o}n}{35}{section.4.2}
-\contentsline {section}{\numberline {4.3}An\IeC {\'a}lisis de la composici\IeC {\'o}n del ADN}{35}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Contenido de G$+$C}{36}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Composici\IeC {\'o}n monom\IeC {\'e}rica y palabras cortas}{36}{subsection.4.3.2}
-\contentsline {chapter}{\numberline {5}Creaci\IeC {\'o}n de bases de datos relacionales}{37}{chapter.5}
-\contentsline {chapter}{\numberline {6}B\IeC {\'u}squedas en base de datos biol\IeC {\'o}gicas - Segunda parte}{41}{chapter.6}
-\contentsline {section}{\numberline {6.1}PubMed}{41}{section.6.1}
-\contentsline {subsection}{\numberline {6.1.1}Entendiendo la informaci\IeC {\'o}n en los registros de PubMed}{41}{subsection.6.1.1}
-\contentsline {subsection}{\numberline {6.1.2}Realizando b\IeC {\'u}squedas}{42}{subsection.6.1.2}
-\contentsline {section}{\numberline {6.2}Descarga por lotes usando Entrez}{43}{section.6.2}
-\contentsline {section}{\numberline {6.3}Recuperar todas las secuencias de un organismo o taxon}{43}{section.6.3}
-\contentsline {section}{\numberline {6.4}Recuperar la informaci\IeC {\'o}n publicada sobre un gen}{44}{section.6.4}
-\contentsline {section}{\numberline {6.5}Bases de datos en el European Bioinformatics Institute (EBI)}{44}{section.6.5}
-\contentsline {subsection}{\numberline {6.5.1}SRS}{44}{subsection.6.5.1}
-\contentsline {subsection}{\numberline {6.5.2}EB-eye}{44}{subsection.6.5.2}
-\contentsline {section}{\numberline {6.6}Expasy}{45}{section.6.6}
-\contentsline {section}{\numberline {6.7}Mas ejercicios}{45}{section.6.7}
-\contentsline {chapter}{\numberline {7}Ontolog\IeC {\'\i }as en bioinform\IeC {\'a}tica: Gene Ontology}{47}{chapter.7}
-\contentsline {section}{\numberline {7.1}Consultas en GO}{47}{section.7.1}
-\contentsline {chapter}{\numberline {8}Introducci\IeC {\'o}n al an\IeC {\'a}lisis de redes usando Cytoscape}{53}{chapter.8}
-\contentsline {chapter}{\numberline {9}An\IeC {\'a}lisis de enriquecimiento de anotaciones de genes}{55}{chapter.9}
-\contentsline {chapter}{\numberline {10}Comparaci\IeC {\'o}n de secuencias I - Matrices de puntos}{57}{chapter.10}
-\contentsline {chapter}{\numberline {11}EMBOSS}{61}{chapter.11}
-\contentsline {section}{\numberline {11.1}Recuperando secuencias de bases de datos}{61}{section.11.1}
-\contentsline {section}{\numberline {11.2}Selecci\IeC {\'o}n de marco de lectura abierto}{62}{section.11.2}
-\contentsline {section}{\numberline {11.3}Barajar/mezclar secuencias}{63}{section.11.3}
-\contentsline {section}{\numberline {11.4}Predicci\IeC {\'o}n de regiones hidrof\IeC {\'o}bicas}{63}{section.11.4}
-\contentsline {section}{\numberline {11.5}Alineamientos}{63}{section.11.5}
-\contentsline {chapter}{\numberline {12}Comparaci\IeC {\'o}n de secuencias II - Alineamientos pareados}{65}{chapter.12}
-\contentsline {section}{\numberline {12.1}Matrices de sustituci\IeC {\'o}n}{65}{section.12.1}
-\contentsline {section}{\numberline {12.2}Alineamiento Global}{65}{section.12.2}
-\contentsline {section}{\numberline {12.3}Alineamientos locales}{66}{section.12.3}
-\contentsline {section}{\numberline {12.4}Significancia de los alineamientos}{67}{section.12.4}
-\contentsline {chapter}{\numberline {13}BLAST: \sc {Basic Local Alignment Search Tool}}{69}{chapter.13}
-\contentsline {section}{\numberline {13.1}Encontrando la regi\IeC {\'o}n gen\IeC {\'o}mica de un transcrito.}{73}{section.13.1}
-\contentsline {section}{\numberline {13.2}Blast$+$ en la l\IeC {\'\i }nea de comandos}{73}{section.13.2}
-\contentsline {chapter}{\numberline {14}Alineamientos m\IeC {\'u}ltiples}{75}{chapter.14}
-\contentsline {section}{\numberline {14.1}Alineando las secuencias de amino \IeC {\'a}cidos de TRIM5$\alpha $ de primates}{76}{section.14.1}
-\contentsline {subsection}{\numberline {14.1.1}{\sc ClustalX}}{76}{subsection.14.1.1}
-\contentsline {subsection}{\numberline {14.1.2}{\sc T-Coffee}}{76}{subsection.14.1.2}
-\contentsline {subsection}{\numberline {14.1.3}{\sc Muscle}}{77}{subsection.14.1.3}
-\contentsline {subsection}{\numberline {14.1.4}Comparar los alineamientos usando la herramienta web {\sc AltAVist}}{77}{subsection.14.1.4}
-\contentsline {subsection}{\numberline {14.1.5}Del alineamiento de prote\IeC {\'\i }nas al de nucle\IeC {\'o}tidos}{78}{subsection.14.1.5}
-\contentsline {subsection}{\numberline {14.1.6}Editando y visualizando alineamientos}{79}{subsection.14.1.6}
-\contentsline {subsection}{\numberline {14.1.7}Estimando distancias entre las secuencias}{79}{subsection.14.1.7}
-\contentsline {chapter}{\numberline {15}PSSMs, Logos de secuencias y HMMs}{81}{chapter.15}
-\contentsline {section}{\numberline {15.1}PSSM}{81}{section.15.1}
-\contentsline {section}{\numberline {15.2}Logos de secuencias}{82}{section.15.2}
-\contentsline {section}{\numberline {15.3}Modelos Ocultos de Markov: HMMs}{82}{section.15.3}
-\contentsline {subsection}{\numberline {15.3.1}Buscando los dominios de una prote\IeC {\'\i }na}{83}{subsection.15.3.1}
-\contentsline {subsection}{\numberline {15.3.2}Visualizaci\IeC {\'o}n de HMMs}{84}{subsection.15.3.2}
-\contentsline {chapter}{\numberline {16}Dise\IeC {\~n}o de primers para PCR}{85}{chapter.16}
-\contentsline {section}{\numberline {16.1}Dise\IeC {\~n}o de primers usando Quantprime}{87}{section.16.1}
-\contentsline {section}{\numberline {16.2}Crear primers a partir de alineamientos de prote\IeC {\'\i }nas}{90}{section.16.2}
-\contentsline {chapter}{Apendices}{97}{section*.55}
+\babel@toc {spanish}{}
+\contentsline {chapter}{\numberline {1}Bases de bioinformática}{9}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Herramientas de Unix útiles en bioinformática}{11}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Introducción al sistema Unix}{11}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}La línea de comandos}{11}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Su casa y el árbol de directorios}{13}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.3}Organizando archivos}{15}{subsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.1.4}Algunas operaciones básicas con archivos}{16}{subsection.2.1.4}%
+\contentsline {section}{\numberline {2.2}Formatos de secuencias}{18}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Fasta}{18}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}GenBank}{18}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Algunas operaciones básicas con secuencias en formato Fasta}{20}{subsection.2.2.3}%
+\contentsline {chapter}{\numberline {3}Búsquedas en bases de datos biológicas}{21}{chapter.3}%
+\contentsline {section}{\numberline {3.1}NCBI – Bases de datos y búsqueda de información}{21}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Iniciemos una visita a sus bases de datos}{21}{subsection.3.1.1}%
+\contentsline {subsubsection}{Ejercicios}{24}{section*.11}%
+\contentsline {subsubsection}{¿Qué bases de datos encontramos en el NCBI?}{25}{section*.12}%
+\contentsline {subsubsection}{RefSeq}{27}{section*.13}%
+\contentsline {subsection}{\numberline {3.1.2}Recuperación de Secuencias en el NCBI con búsquedas más específicas}{27}{subsection.3.1.2}%
+\contentsline {paragraph}{CONOCEMOS EL ORGANISMO.}{27}{section*.14}%
+\contentsline {paragraph}{CONOCEMOS EL O LOS NÚMEROS DE ACCESO.}{28}{section*.15}%
+\contentsline {paragraph}{DIRIGIMOS LA BÚSQUEDA CON LIMITS.}{28}{section*.16}%
+\contentsline {section}{\numberline {3.2}Recuperación de secuencias usando SRS@EBI}{28}{section.3.2}%
+\contentsline {chapter}{\numberline {4}Manipulación básica de secuencias}{33}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Limpieza de secuencias}{33}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Mapa de restricción}{35}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Análisis de la composición del ADN}{35}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Contenido de G$+$C}{36}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Composición monomérica y palabras cortas}{36}{subsection.4.3.2}%
+\contentsline {chapter}{\numberline {5}Creación de bases de datos relacionales}{37}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Búsquedas en base de datos biológicas - Segunda parte}{41}{chapter.6}%
+\contentsline {section}{\numberline {6.1}PubMed}{41}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Entendiendo la información en los registros de PubMed}{41}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}Realizando búsquedas}{42}{subsection.6.1.2}%
+\contentsline {section}{\numberline {6.2}Descarga por lotes usando Entrez}{43}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Recuperar todas las secuencias de un organismo o taxon}{43}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Recuperar la información publicada sobre un gen}{44}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Bases de datos en el European Bioinformatics Institute (EBI)}{44}{section.6.5}%
+\contentsline {subsection}{\numberline {6.5.1}SRS}{44}{subsection.6.5.1}%
+\contentsline {subsection}{\numberline {6.5.2}EB-eye}{44}{subsection.6.5.2}%
+\contentsline {section}{\numberline {6.6}Expasy}{45}{section.6.6}%
+\contentsline {section}{\numberline {6.7}Mas ejercicios}{45}{section.6.7}%
+\contentsline {chapter}{\numberline {7}Ontologías en bioinformática: Gene Ontology}{47}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Consultas en GO}{47}{section.7.1}%
+\contentsline {chapter}{\numberline {8}Introducción al análisis de redes usando Cytoscape}{53}{chapter.8}%
+\contentsline {chapter}{\numberline {9}Análisis de enriquecimiento de anotaciones de genes}{55}{chapter.9}%
+\contentsline {chapter}{\numberline {10}Comparación de secuencias I - Matrices de puntos}{57}{chapter.10}%
+\contentsline {chapter}{\numberline {11}EMBOSS}{61}{chapter.11}%
+\contentsline {section}{\numberline {11.1}Recuperando secuencias de bases de datos}{61}{section.11.1}%
+\contentsline {section}{\numberline {11.2}Selección de marco de lectura abierto}{62}{section.11.2}%
+\contentsline {section}{\numberline {11.3}Barajar/mezclar secuencias}{63}{section.11.3}%
+\contentsline {section}{\numberline {11.4}Predicción de regiones hidrofóbicas}{63}{section.11.4}%
+\contentsline {section}{\numberline {11.5}Alineamientos}{63}{section.11.5}%
+\contentsline {chapter}{\numberline {12}Comparación de secuencias II - Alineamientos pareados}{65}{chapter.12}%
+\contentsline {section}{\numberline {12.1}Matrices de sustitución}{65}{section.12.1}%
+\contentsline {section}{\numberline {12.2}Alineamiento Global}{65}{section.12.2}%
+\contentsline {section}{\numberline {12.3}Alineamientos locales}{66}{section.12.3}%
+\contentsline {section}{\numberline {12.4}Significancia de los alineamientos}{67}{section.12.4}%
+\contentsline {chapter}{\numberline {13}BLAST: \sc {Basic Local Alignment Search Tool}}{69}{chapter.13}%
+\contentsline {section}{\numberline {13.1}Encontrando la región genómica de un transcrito.}{73}{section.13.1}%
+\contentsline {section}{\numberline {13.2}Blast$+$ en la línea de comandos}{73}{section.13.2}%
+\contentsline {chapter}{\numberline {14}Alineamientos múltiples}{75}{chapter.14}%
+\contentsline {section}{\numberline {14.1}Alineando las secuencias de amino ácidos de TRIM5$\alpha $ de primates}{76}{section.14.1}%
+\contentsline {subsection}{\numberline {14.1.1}{\sc ClustalX}}{76}{subsection.14.1.1}%
+\contentsline {subsection}{\numberline {14.1.2}{\sc T-Coffee}}{76}{subsection.14.1.2}%
+\contentsline {subsection}{\numberline {14.1.3}{\sc Muscle}}{77}{subsection.14.1.3}%
+\contentsline {subsection}{\numberline {14.1.4}Comparar los alineamientos usando la herramienta web {\sc AltAVist}}{77}{subsection.14.1.4}%
+\contentsline {subsection}{\numberline {14.1.5}Del alineamiento de proteínas al de nucleótidos}{78}{subsection.14.1.5}%
+\contentsline {subsection}{\numberline {14.1.6}Editando y visualizando alineamientos}{79}{subsection.14.1.6}%
+\contentsline {subsection}{\numberline {14.1.7}Estimando distancias entre las secuencias}{79}{subsection.14.1.7}%
+\contentsline {chapter}{\numberline {15}PSSMs, Logos de secuencias y HMMs}{81}{chapter.15}%
+\contentsline {section}{\numberline {15.1}PSSM}{81}{section.15.1}%
+\contentsline {section}{\numberline {15.2}Logos de secuencias}{82}{section.15.2}%
+\contentsline {section}{\numberline {15.3}Modelos Ocultos de Markov: HMMs}{82}{section.15.3}%
+\contentsline {subsection}{\numberline {15.3.1}Buscando los dominios de una proteína}{83}{subsection.15.3.1}%
+\contentsline {subsection}{\numberline {15.3.2}Visualización de HMMs}{84}{subsection.15.3.2}%
+\contentsline {chapter}{\numberline {16}Diseño de primers para PCR}{85}{chapter.16}%
+\contentsline {section}{\numberline {16.1}Diseño de primers usando Quantprime}{87}{section.16.1}%
+\contentsline {section}{\numberline {16.2}Crear primers a partir de alineamientos de proteínas}{90}{section.16.2}%
+\contentsline {chapter}{Apendices}{97}{section*.55}%
