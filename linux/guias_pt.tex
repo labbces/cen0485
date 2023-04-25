@@ -17,6 +17,7 @@
 \usepackage{multirow}
 \usepackage{courier}
 \usepackage{rotating}
+\usepackage{dirtytalk}
 
 \onehalfspacing
 
@@ -44,19 +45,19 @@
 \chapter{Bases de bioinformática}
 
 
-A bioinformática é uma disciplina que surge da interação entre biologia, estatística e ciência da computação. (Figura~\ref{bioinf}. Seus principais objetivos são a gestão e análise de grandes volumes de dados, principalmente o produto de novas tecnologias em biologia molecular, como genômica, proteômica e metabolômica, especialmente hoje com o advento de novas tecnologias de sequenciamento de ácidos nucleicos que estão revolucionando a forma como estudamos os genomas. Outro aspecto importante inclui o desenvolvimento de novos métodos computacionais, algoritmos e/ou softwares para a análise desses dados. 
+A bioinformática é uma disciplina que surge da interação entre biologia, estatística e ciência da computação. (Figura~\ref{bioinf}). Seus principais objetivos são a gestão e análise de grandes volumes de dados, principalmente o produto de novas tecnologias em biologia molecular, como genômica, proteômica e metabolômica, especialmente hoje com o advento de novas tecnologias de sequenciamento de ácidos nucleicos que estão revolucionando a forma como estudamos os genomas. Outro aspecto importante inclui o desenvolvimento de novos métodos computacionais, algoritmos e/ou softwares para a análise desses dados. 
 
-De acordo com Philip Bourne (UCSD), ``a bioinformática tornou-se a intérprete da linguagem genômica do DNA e está tentando decifrar linguagens mais complexas em que as proteínas são os substantivos, as interações são a sintaxe, as vias metabólicas são frases e os sistemas vivos são o volume completo'' \citep{Bourne2004}.
+De acordo com Philip Bourne (UCSD), \say{A bioinformática tornou-se a intérprete da linguagem genômica do DNA e está tentando decifrar linguagens mais complexas em que as proteínas são os substantivos, as interações são a sintaxe, as vias metabólicas são frases e os sistemas vivos são o volume completo} \citep{Bourne2004}.
 
-Portanto, semelhante à biologia molecular, a bioinformática hoje constitui uma caixa de ferramentas que todo pesquisador de biologia tem que lidar \citetext{\citealp{Stein2008} apresenta um ponto de vista muito interessante}.
+Portanto, semelhante à biologia molecular, a bioinformática hoje constitui uma caixa de ferramentas que todo pesquisador de biologia tem apreender a usar \citetext{\citealp{Stein2008} apresenta um ponto de vista muito interessante}.
 
 \begin{figure}[h]
 \centering
    \includegraphics[height=5cm]{Figs/Bioinformatica.png}
-  \caption[O que é bioinformática?]{\label{bioinf} A bioinformática é a disciplina que surge da interação de três ciências básicas: Biologia, Matemática e Ciência da Computação. Quando alguns deles dominam o resto, outra disciplina diferente da bioinformática é obtida, por exemplo, se matemática e biologia são mais importantes, obtemos biomatemáticos. É importante que as três ciências-base sejam equilibradas para realizar projetos de bioinformática.}
+  \caption[O que é bioinformática?]{\label{bioinf} A bioinformática é a disciplina que surge da interação de três ciências básicas: Biologia, Matemática/Estatística e Ciências da Computação. Quando alguna delas dominam o resto, outra disciplina diferente da bioinformática é obtida, por exemplo, se matemática e biologia são mais importantes, obtemos biomatemáticos. O importante é que as três ciências-base sejam equilibradas para realizar projetos de bioinformática.}
 \end{figure}
 
-Neste curso nos concentraremos na análise de dados biológicos, utilizando, na maioria dos casos, ferramentas de livre acesso, a maioria das quais têm melhor desempenho em sistemas operacionais Unix\footnote{Linux, MacOSX, BSD, etc. Se você quiser tentar ter uma cópia em sua home ou escritório de qualquer um desses sistemas operacionais, recomendo que você use o VirtualBox (ou outra tecnologia de virtualização), para instalar, por exemplo, o Linux dentro do sistema operacional existente, por exemplo, o Windows XP; Claro que é se você tem um camputador com pelo menos dois Núcleos e 2GB de RAM, caso contrário é mais conveniente ter um sistema dual boot.}.
+Neste curso nos concentraremos na análise de dados biológicos, utilizando, na maioria dos casos, ferramentas de livre acesso, a maioria das quais têm melhor desempenho em sistemas operacionais Unix\footnote{Linux, MacOSX, BSD, etc. Se você quiser tentar ter uma cópia em sua home ou escritório de qualquer um desses sistemas operacionais, recomendo que você use o VirtualBox (ou outra tecnologia de virtualização), para instalar, por exemplo, o Linux dentro do sistema operacional existente, por exemplo, o Windows XP; Claro que é se você tem um camputador com pelo menos dois Núcleos e 2GB de RAM, caso contrário é mais conveniente ter um sistema dual boot.}, é por isso que o próximo capítulo está planejado para desenvolver habilidades básicas nesse sistema operacional.
 
 \chapter{Ferramentas Unix úteis em bioinformática}
 \section{Introdução ao sistema Unix}
@@ -1082,15 +1083,15 @@ Despues de seguir el Tutorial 4: Expression Analysis, responda:
 \end{itemize}
 }
 
-\chapter{Análisis de enriquecimiento de anotaciones de genes}
+% \chapter{Análisis de enriquecimiento de anotaciones de genes}
+% 
+% Siga el tutorial que esta disponible en el enlace:\url{http://www.psb.ugent.be/cbd/papers/BiNGO/Tutorial.html}
+% 
+% El archivo\Verb+SaltArabidopsis.txt+ que está disponible en Sicua Plus, tienen una lista de genes de Arabidopsis que reponden diferencialmente al tratamiento con sal, y que fueron identificados a traves de ensayos usando microarreglos de ADN.
+% 
+% {\color{red}Use BinGO para identificar los términos GO que aparecen sobre y sub representados para los genes que aparecen en el archivo \Verb+gene_list.txt+. Muestre  el grafo de los términos e interprete los resultados.}
 
-Siga el tutorial que esta disponible en el enlace:\url{http://www.psb.ugent.be/cbd/papers/BiNGO/Tutorial.html}
-
-El archivo\Verb+SaltArabidopsis.txt+ que está disponible en Sicua Plus, tienen una lista de genes de Arabidopsis que reponden diferencialmente al tratamiento con sal, y que fueron identificados a traves de ensayos usando microarreglos de ADN.
-
-{\color{red}Use BinGO para identificar los términos GO que aparecen sobre y sub representados para los genes que aparecen en el archivo \Verb+gene_list.txt+. Muestre  el grafo de los términos e interprete los resultados.}
-
-\chapter{Comparação de Sequência I - Matrizes de pontos}
+\chapter{Comparação de Sequências I - Matrizes de pontos}
 
 As matrizes de pontos (``Dot Plot'') são ferramentas exploratórias para comparar strings de texto, ou seja, sequências. Entre outros, eles nos permitem encontrar facilmente regiões repetidas em uma sequência comparando-a com ela mesma. Também podemos ter uma boa ideia da estrutura de um gene comparando a sequência de sua região de codificação com a sequência do locus onde se encontra.
 
@@ -1184,7 +1185,22 @@ D7MJK1.txt          100%[===================>]   4,46K  --.-KB/s    in 0s
 \end{figure}
 
 
-O programa que nos interessa chama-se ``\Verb+seqret+''. Explore o comando ``\Verb+wossname+'' para buscar programas por palavras chave.
+O programa que nos interessa chama-se ``\Verb+seqret+''. Explore o comando ``\Verb+wossname+'' para buscar programas por palavras chave. Lembre-se de carregar o ambiente conda do EMBOOS no seu computador, assim:
+
+\begin{Verbatim}[commandchars=!\{\},firstnumber=last,numbers=left,label=carregando ambiente EMBOSS com conda,frame=topline,fontsize=\scriptsize]
+!textcolor{red}{[user@server]$} conda activate emboss !label{condaEMBOSS}
+!textcolor{red}{(emboss)[user@server]$} !label{condaEMBOSS2}
+\end{Verbatim}
+
+Repare que na linha~\ref{condaEMBOSS2}, seu prompt mudou, e agora aparece o nome do ambiente carregado, i.e., emboss.
+
+Quando terminar de usar os programas de EMBOSS lembre de desactivar o ambiente de conda, como mostrado na linha~\ref{condaEMBOSSDeactivate}:
+
+\begin{Verbatim}[commandchars=!\{\},firstnumber=last,numbers=left,label=encerrando ambiente EMBOSS com conda,frame=topline,fontsize=\scriptsize]
+!textcolor{red}{(emboss)[user@server]$} conda deactivate!label{condaEMBOSSDeactivate}
+!textcolor{red}{[user@server]$} 
+\end{Verbatim}
+
 
 Agora, você pode usar o mesmo programa para converter a entrada recuperada do UniProt .txt para o formato fasta. \textcolor{red}{Como você faria isso?}
 
@@ -1198,10 +1214,9 @@ Os programas \Verb+getorf+ e \Verb+plotorf+ buscam quadros de leitura abertos em
 \color{red}Use esses dois programas para encontrar o quadro de leitura aberto correto da sequência ''ANAC092\_cDNA.fa''\footnote{Arquivo \Verb+ANAC092\_cDNA.fa'+ disponível no e-disciplinas}. Você encontra alguma diferença nos resultados oferecidos pelos dois programas? 
 }
 
-
 \section{Embaralhar/misturar Sequências}
 
-Ao fazer certos tipos de análise, por exemplo, procurar sites de vinculação de fatores de transcrição em sequências de promotores (``TFBS''), é importante ter um grupo de sequências que servem como um controle negativo. Para que o TFBS não apareça com frequência neste controle negativo. Uma opção amplamente utilizada é gerar sequências aleatórias que contenham a mesma composição monomérica das sequências originais. O programa ``shuffleseq'' faz exatamente isso, pega uma sequência ``real'' e mistura, como se embaralhando um baralho de cartas, os monômeros constituintes, resultando em uma sequência aleatória. Ao usar este tipo de estratégia, ~1000 sequências aleatórias são geradas para cada sequência original.
+Ao fazer certos tipos de análise, por exemplo, procurar sitios de ligação a fatores de transcrição em sequências de promotores (``TFBS''), é importante ter um grupo de sequências que servem como um controle negativo. Para que o TFBS não apareça com frequência neste controle negativo. Uma opção amplamente utilizada é gerar sequências aleatórias que contenham a mesma composição monomérica das sequências originais. O programa ``shuffleseq'' faz exatamente isso, pega uma sequência ``real'' e mistura, como se embaralhando um baralho de cartas, os monômeros constituintes, resultando em uma sequência aleatória. Ao usar este tipo de estratégia, ~1000 sequências aleatórias são geradas para cada sequência original.
 
 \textcolor{red}{Use ``shuffleseq'' para gerar duas sequências aleatórias do rRNA encontradas no arquivo \Verb+FN566965.fasta+ \footnote{Arquivo \Verb+FN566965.fasta+ disponível no e-disciplinas}}.
 
@@ -1213,11 +1228,18 @@ Ao fazer certos tipos de análise, por exemplo, procurar sites de vinculação d
 
 \textcolor{red}{Descreva a função do programa distmat}.
 
-\chapter{Comparação de Sequência II - Alinhamentos emparelhados}
+\chapter{Comparação de Sequências II - Alinhamentos de pares de sequências}
 
 Algumas partes deste capítulo vêm do tutorial que está seguindo o link: \url{http://emboss.sourceforge.net/docs/emboss_tutorial/emboss_tutorial.pdf}
 
-Para fazer os exercícios siga o link \url{http://mobyle.pasteur.fr/cgi-bin/portal.py}
+Para fazer os exercícios lembre-se de activar o ambiente conda do EMBOSS como mostra a linha~\ref{activateEMBOSS3}
+
+
+\begin{Verbatim}[commandchars=!\{\},numbers=left,label=carregando ambiente EMBOSS com conda,frame=topline,fontsize=\scriptsize]
+!textcolor{red}{[user@server]$} conda activate emboss !label{activateEMBOSS3}
+!textcolor{red}{(emboss)[user@server]$}
+\end{Verbatim}
+
 
 \section{Matrizes de substituição}
 
@@ -1248,8 +1270,8 @@ No pacote EMBOSS você encontrará o aplicativo \Verb+needle+ que implementa rig
 {\color{red}
 \begin{itemize}
 \item Faça um alinhamento global entre o cDNA e as sequências genômicas do gene ANAC092, que estão disponíveis no e-disciplinas
-\item Qual ação e a matriz de penalidades para abrir e estender GAPs que você usou? Explicar.
-\item Qual é a pontuação de alinhamento, seu comprimento e os percentuais de identidade e semelhança?
+\item Qual matriz de substituições e penalidades para abrir e estender GAPs que você usou? Explicar.
+\item Qual é a pontuação do alinhamento, seu comprimento e as porcentagens de identidade e semelhança?
 \item Explique a diferença entre semelhança e identidade.
 \item O que significam os símbolos? \Verb+:+, \Verb+.+ y \Verb+|+?
 \end{itemize}
@@ -1279,7 +1301,7 @@ No pacote EMBOSS você encontrará o aplicativo\Verb+water+ que implementa rigor
 {\color{red}
 \begin{itemize}
 \item Faça um alinhamento local entre as sequências de aminoácidos das proteínas NAC de \textit{Arabidopsis thaliana} e no musgo \textit{Physcomitrella patens}, que você usou na seção anterior.
-\item Qual ação e a matriz de penalidades para abrir e estender lacunas que você usou? Explicar.
+\item Qual a matriz de subtituição e penalidades para abrir e estender gaps que você usou? Explicar.
 \item Qual é a pontuação de alinhamento, seu comprimento e os percentuais de identidade e semelhança?
 \item Você pode melhorar o alinhamento escolhendo outros parâmetros?
 \item Quais são as diferenças entre o alinhamento global e local dessas duas sequências?
@@ -1290,12 +1312,12 @@ No pacote EMBOSS você encontrará o aplicativo\Verb+water+ que implementa rigor
 
 Não importa quais sequências você dá aos programas de alinhamento, eles sempre criarão um alinhamento.
 
-Pegue as sequências de aminoácidos ANAC092 e use o programa \Verb+shuffleseq+, e criar duas sequências aleatórias com a mesma composição monomérica de ANAC092. Faça um alinhamento global e local com as duas sequências.
+Pegue as sequências de aminoácidos ANAC092 e use o programa \Verb+shuffleseq+, e gere duas sequências aleatórias com a mesma composição monomérica de ANAC092. Faça um alinhamento global e local com as duas sequências.
 
 {\color{red}
 \begin{itemize}
-\item Qual ação e a matriz de penalidades para abrir e estender lacunas que você usou? Explicar.
-\item Qual é a pontuação de alinhamento, seu comprimento e os percentuais de identidade e semelhança?
+\item Qual matriz de substituições e quais penalidades para abrir e estender gaps que você usou? Explicar.
+\item Qual é a pontuação de alinhamento, seu comprimento e as porcentagens de identidade e semelhança?
 \item Você pode melhorar o alinhamento escolhendo outros parâmetros?
 \end{itemize}
 }
@@ -1304,7 +1326,7 @@ Agora faça um alinhamento local e global entre a sequência de aminoácidos do 
 
 {\color{red}
 \begin{itemize}
-\item Qual ação e a matriz de penalidades para abrir e estender lacunas que você usou? Explicar.
+\item Qual matriz de substituições e quais penalidades para abrir e estender gaps que você usou? Explicar.
 \item Qual é a pontuação de alinhamento, seu comprimento e os percentuais de identidade e semelhança?
 \item Você pode melhorar o alinhamento escolhendo outros parâmetros?
 \end{itemize}
@@ -1451,7 +1473,7 @@ Teniendo la base de datos en el formato adecuado podemos hacer nuestra primera b
 
 \chapter{Alinhamientos múltiplos}
 
-Na teoria, os algoritmos de programação dinâmica descritos acima para o caso de alinhamentos emparelhados podem ser estendidos para o caso de um número arbitrário de sequências. Na prática, isso é muito computacionalmente caro, por isso outros algoritmos foram desenvolvidos que implementam atalhos na busca de alinhamentos ideais (heurística). O desenvolvimento de algoritmos para alinhamento de múltiplas sequências é uma das áreas mais dinâmicas da bioinformática. Atualmente existem dezenas de programas que implementam algoritmos diferentes \citetext{olha\citealp{Notredame2007} e \citealp{Lemey2009} para uma revisão recente do tópico}.
+Na teoria, os algoritmos de programação dinâmica descritos acima para o caso de alinhamentos de pares de sequências podem ser estendidos para o caso de um número arbitrário de sequências. Na prática, isso é muito computacionalmente caro, por isso outros algoritmos foram desenvolvidos que implementam atalhos na busca de alinhamentos ideais (heurística). O desenvolvimento de algoritmos para alinhamento de múltiplas sequências é uma das áreas mais dinâmicas da bioinformática. Atualmente existem dezenas de programas que implementam algoritmos diferentes \citetext{olha\citealp{Notredame2007} e \citealp{Lemey2009} para uma revisão recente do tópico}.
 
 Nesta sessão vamos desenvolver a prática apresentada no capítulo 3 de \citealp{Lemey2009}.
 
@@ -2060,7 +2082,7 @@ da uma olhada nele usando o comando less
 
 RNA-Seq é uma técnica de sequenciamento que usa tecnologia de segunda geração para revelar a presença e quantidade de RNA em uma amostra biológica em um dado momento.
 
-Usaremos os dados do PMID: 24926665\footnote{https://pubmed.ncbi.nlm.nih.gov/24926665/}, especificamente os conjuntos de dados mostrados na Tabela 1. Para gerar que o RNA total de dados foi extraído das células humanas primárias do músculo liso das vias aéreas (ASM) de quatro doadores diferentes. As células de cada doador foram tratadas com 1~{\textmu}M DEX ou com controle veículo por 18 h. Aproximadamente 1~{\textmu}g de RNA de cada amostra foi usado para gerar RNA-Seq cDNA bibliotecas para sequenciamento usando o TruSeq RNA Sample Prep Kit v2. O sequenciamento foi realizado em um instrumento HiSeq2000 gerando leituras emparelhadas (2x75bp). O principal objetivo do estudo foi obter ideias de como os glicocorticoides suprimem a inflamação no ASM.
+Usaremos os dados do PMID: 24926665\footnote{https://pubmed.ncbi.nlm.nih.gov/24926665/}, especificamente os conjuntos de dados mostrados na Tabela 1. Para gerar que o RNA total de dados foi extraído das células humanas primárias do músculo liso das vias aéreas (ASM) de quatro doadores diferentes. As células de cada doador foram tratadas com 1~{\textmu}M DEX ou com controle veículo por 18 h. Aproximadamente 1~{\textmu}g de RNA de cada amostra foi usado para gerar RNA-Seq cDNA bibliotecas para sequenciamento usando o TruSeq RNA Sample Prep Kit v2. O sequenciamento foi realizado em um instrumento HiSeq2000 gerando leituras pareadas (2x75bp). O principal objetivo do estudo foi obter ideias de como os glicocorticoides suprimem a inflamação no ASM.
 
 \section{Amostras}
 \begin{table}[h]
