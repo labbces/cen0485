@@ -1486,12 +1486,7 @@ Vamos alinhar as sequências dos genes TRIM5 de diferentes espécies de primatas
 Para obter o alinhamento das sequencias no arquivo \Verb+primatesAA+.fasta pelo método de refinamento iterativo, usaremos o programa {\sc Muscle} \citep{Edgar2004}. Este programa esta instalado localmente em seu computador.
 
 \begin{Verbatim}[commandchars=!\{\},numbers=left,label=MUSCLE,frame=topline,fontsize=\scriptsize]
-!textcolor{red}{[user@server]$} conda activate muscle_env
-!textcolor{red}{(muscle_env)[user@server]$} muscle -h
-\end{Verbatim} 
-
-\begin{Verbatim}[commandchars=!\{\},numbers=left,label=MUSCLE,frame=topline,fontsize=\scriptsize]
-!textcolor{red}{(muscle_env)[user@server]}:~$ muscle -align primatesAA.fasta -output primates.afa
+	!textcolor{red}{(base)[user@server]}:~$ muscle -align primatesAA.fasta -output primates.afa
 
 muscle 5.1.linux64 []  4.0Gb RAM, 4 cores
 Built Feb 24 2022 03:16:15
@@ -1520,6 +1515,14 @@ Siga o link \url{http://www.jalview.org/examples/editing.html}, se desejar, pode
  \includegraphics[width=15cm]{Figs/JalView.png}
  \caption{\label{fig:JalView}Tela do JalView}
 \end{figure}
+
+Para usar o jalview tem que ativar o ambiente conda correspondente como mostra a linha~\ref{activateJALVIEW}:
+
+\begin{Verbatim}[commandchars=!\{\},numbers=left,label=ativando ambiente jalview,frame=topline,fontsize=\scriptsize]
+!textcolor{red}{[user@server]$} conda activate jalview !label{activateJALVIEW}
+!textcolor{red}{(jalview)[user@server]$}
+\end{Verbatim}
+
 
 \chapter{PSSMs, Logo de Sequências e HMMs}
 
