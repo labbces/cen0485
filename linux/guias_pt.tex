@@ -1838,7 +1838,7 @@ Temos dois arquivos \Verb+fastq+ com leituras pareadas de illumina\footnote{illu
 Limpamos eles usando BBduk\footnote{\url{https://jgi.doe.gov/data-and-tools/software-tools/bbtools/bb-tools-user-guide/bbduk-guide/}}, BBduk pode fazer quality-trimming, filtrado, adapter-trimming, contaminant-filtering usando kmer matching.
 
 \begin{Verbatim}[commandchars=!\{\}, numbers=left,label= Limpando leituras Illumina com bbduk,frame=topline,fontsize=\scriptsize]
-(base)user@server:$ conda activate bbduk_env
+(base)user@server:$ conda activate bbmap
 (bbduk_env)user@server:$ bbduk.sh in1=illumina_R1.fq in2=illumina_R2.fq out1=./bbduk/bbduk.R1.fq \
 out2=./bbduk/bbduk.R2.fq minlength=75 qtrim=w trimq=20
 (bbduk_env)user@server:$ conda deactivate
@@ -1852,10 +1852,10 @@ out2=./bbduk/bbduk.R2.fq minlength=75 qtrim=w trimq=20
 
 bbduk vai gerar dois arquivos filtrados bbduk.R1.fq e bbduk.R2.fq na pasta ./bbduk que usaremos na montagem do genoma
 
-Agora vamos usar o programa FASTQC\footnote{\url{https://github.com/s-andrews/FastQC}} para vizualizar o efeito da filtragem do bbduk nas nossas leituras illumina
+Agora vamos usar o programa FASTQC\footnote{\url{https://github.com/s-andrews/FastQC}} para vizualizar o efeito da filtragem do bbduk nas nossas leituras illumina\footnote{Repare que o comando conda deactivate só tem que ser executado depois de realizar a analise com o FastQC!}
 
 \begin{Verbatim}[commandchars=!\{\}, numbers=left,label= Abrindo o FASTQC,frame=topline,fontsize=\scriptsize]
-(base)user@server:$ conda activate fastqc_env 
+(base)user@server:$ conda activate fastqc 
 (fastqc_env)user@server:$ fastqc
 (fastqc_env)user@server:$ conda deactivate
 \end{Verbatim}
@@ -1874,7 +1874,7 @@ Agora vamos usar o programa FASTQC\footnote{\url{https://github.com/s-andrews/Fa
 Usaremos o software Unicycler\footnote{\url{https://github.com/rrwick/Unicycler}} um pipeline de varios softwares para ensamblegem de genomas bacterianos. Vamos ensamblar o genoma usando os arquivos arquivos bbduk.R1.fq e bbduk.R2.fq filtrados que gerou o bbduk
 
 \begin{Verbatim}[commandchars=!\{\}, numbers=left,label= Montando leituras com Unicycler,frame=topline,fontsize=\scriptsize]
-(base)user@server:$ conda activate unicycler_env
+(base)user@server:$ conda activate unicycler
 (unicycler_env)user@server:$ unicycler  -1 ./bbduk/bbduk.R1.fq -2 ./bbduk/bbduk.R2.fq -o ./unicycler/
 (unicycler_env)user@server:$ conda deactivate
 \end{Verbatim}
@@ -1883,7 +1883,7 @@ Agora pode dar uma olhada nos aquivos gerados pelo Unicycler na pasta ./unicycle
 
 
 \begin{Verbatim}[commandchars=!\{\}, numbers=left,label= Abrindo o Bandage,frame=topline,fontsize=\scriptsize]
-(base)user@server:$ conda activate bandage_env 
+(base)user@server:$ conda activate bandage 
 (bandage_env)user@server:$ Bandage
 (bandage_env)user@server:$ conda deactivate
 \end{Verbatim}
@@ -1926,7 +1926,7 @@ Agora poder dar uma olhada nos aquivos gerados pelo Flye na pasta ./flye e usar 
 Agora vamos utilizar QUAST\footnote{\url{http://quast.sourceforge.net/}} para comparar a qualidade das nossas montagenss. No primeiro lugar a montagem de Illumina (./unicycler/assembly.fasta) comparado com a montagem do genoma de referencia que se encontra em complete\_genome.fasta.
 
 \begin{Verbatim}[commandchars=!\{\}, numbers=left,label= QUAST,frame=topline,fontsize=\scriptsize]
-(base)user@server:$ conda activate quast_env
+(base)user@server:$ conda activate quast
 (quast_env)user@server:$ quast -o ./quast/illumina -r complete_genome.fasta ./unicycler/assembly.fasta
 (quast_env)user@server:$ conda deactivate
 \end{Verbatim}
@@ -1944,7 +1944,7 @@ O BUSCO\footnote{\url{https://github.com/robsyme/busco}} informa da quantidade d
 Vamos avaliar a montagen de Illumina ./unicycler/assembly.fasta
 
 \begin{Verbatim}[commandchars=!\{\}, numbers=left,label= BUSCO para dados Illumina,frame=topline,fontsize=\scriptsize]
-(base)user@server:$ conda activate busco_env
+(base)user@server:$ conda activate busco
 (busco_env)user@server:$ busco -i ./unicycler/assembly.fasta -o illumina -m geno \
 --lineage rhodospirillales_odb10 --out_path ./busco
 (busco_env)user@server:$ conda deactivate
