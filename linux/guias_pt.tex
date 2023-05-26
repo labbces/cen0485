@@ -1815,18 +1815,23 @@ En la página \Verb+Compete summary+ encuentra información detallada sobre el B
 \end{figure}
 
 
-O processo de montagem de genomas consiste na recuperação da sequência original a partir dos fragmentos de ADN produzidos pelo sequenciamento
+O processo de montagem de genomas consiste na reconstrução da sequência original de um genoma a partir dos fragmentos de ADN produzidos pelo sequenciador. Lembre que os instrumentos de sequenciamento atuais não conseguem ler cromossomos inteiros na maioria dos casos, particularmente para genomas grandes, i.e., de dezenas de Mbp o maiores.
 
-Vamos montar o genoma de \emph{Komagataeibacter rhaeticus}\footnote{NCBI accesion: NZ\_CP050139} a partir de leituras produzidas por duas tecnologias Illumina e PacBio que encontrara na pasta PRATICA\_ENSAMBLAGEM\_DE\_GENOMAS onde tera que descomprimir um arquivo que contem as leituras.
+Hoje, vamos montar o genoma de \emph{Komagataeibacter rhaeticus}\footnote{NCBI accesion: NZ\_CP050139} a partir de leituras produzidas por duas tecnologias, i.e., Illumina e PacBio. Desqueguerre o arquibo MontagemGenomas.tar.gz do e-Disciplinas, e desempacote/descomprima o arquivo na sua maquina, com isto criará a pasta PRATICA\_ENSAMBLAGEM\_DE\_GENOMAS.
 
 \begin{Verbatim}[commandchars=!\{\}, numbers=left,label= indo na pasta de trabalho, frame=topline,fontsize=\scriptsize]
+(base)user@server:$ cd ~/Downloads
+(base)user@server:$ mv MontagemGenomas.tar.gz ~/
+(base)user@server:$ cd 
+(base)user@server:$ tar xvzf MontagemGenomas.tar.gz
+(base)user@server:$ rm xvzf MontagemGenomas.tar.gz
 (base)user@server:$ cd PRATICA_ENSAMBLAGEM_DE_GENOMAS
 \end{Verbatim}
 
 
 \subsection{Limpar sequencias}
-As tecnologias de segunda geração como Illumina produzem leituras que devem ser filtradas por critérios de qualidade de leitura, cumprimento, presença de adaptadores, barcodes, contaminantes e artefatos.
-Por enquanto os sequenciadores de tecnologias de terceira geração como PacBio geralmente fazem esse processo por nós
+As tecnologias de segunda geração, como Illumina, produzem leituras que devem ser filtradas por critérios de qualidade de leitura, cumprimento, presença de adaptadores, barcodes, contaminantes e artefatos.
+Em contraste, os sequenciadores, e/ou os montadores, de tecnologias de terceira geração, como PacBio, geralmente já fazem automaticamente esse processo.
 
 Temos dois arquivos \Verb+fastq+ com leituras pareadas de illumina\footnote{illumina\_R1.fq}\footnote{illumina\_R2.fq}
 
@@ -1850,9 +1855,9 @@ out2=./bbduk/bbduk.R2.fq minlength=75 qtrim=w trimq=20
 \end{itemize}
 
 
-bbduk vai gerar dois arquivos filtrados bbduk.R1.fq e bbduk.R2.fq na pasta ./bbduk que usaremos na montagem do genoma
+bbduk vai gerar dois arquivos filtrados bbduk.R1.fq e bbduk.R2.fq na pasta ./bbduk. Esse arquivos serão usado na montagem \emph{de novo} do genoma.
 
-Agora vamos usar o programa FASTQC\footnote{\url{https://github.com/s-andrews/FastQC}} para vizualizar o efeito da filtragem do bbduk nas nossas leituras illumina\footnote{Repare que o comando conda deactivate só tem que ser executado depois de realizar a analise com o FastQC!}
+Antes de montar o genoma, vamos usar o programa FASTQC\footnote{\url{https://github.com/s-andrews/FastQC}} para vizualizar o efeito da filtragem do bbduk nas nossas leituras illumina\footnote{Repare que o comando conda deactivate só tem que ser executado depois de realizar a analise com o FastQC!}.
 
 \begin{Verbatim}[commandchars=!\{\}, numbers=left,label= Abrindo o FASTQC,frame=topline,fontsize=\scriptsize]
 (base)user@server:$ conda activate fastqc 
@@ -1871,7 +1876,7 @@ Agora vamos usar o programa FASTQC\footnote{\url{https://github.com/s-andrews/Fa
 \end{figure}
 
 \subsection{Montagem de genoma usando dados Illumina}
-Usaremos o software Unicycler\footnote{\url{https://github.com/rrwick/Unicycler}} um pipeline de varios softwares para ensamblegem de genomas bacterianos. Vamos ensamblar o genoma usando os arquivos arquivos bbduk.R1.fq e bbduk.R2.fq filtrados que gerou o bbduk
+Usaremos o software Unicycler\footnote{\url{https://github.com/rrwick/Unicycler}} um pipeline de varios softwares para montagem de genomas bacterianos. Vamos montar o genoma usando os arquivos \Verb+bbduk.R1.fq+ e \Verb+bbduk.R2.fq+ filtrados, gerados no paso anterior.
 
 \begin{Verbatim}[commandchars=!\{\}, numbers=left,label= Montando leituras com Unicycler,frame=topline,fontsize=\scriptsize]
 (base)user@server:$ conda activate unicycler
@@ -1899,9 +1904,9 @@ Agora pode dar uma olhada nos aquivos gerados pelo Unicycler na pasta ./unicycle
 \end{itemize}
 
 \subsection{Montagem de genoma usando dados PacBio}
-Usaremos o software Flye\footnote{\url{https://github.com/fenderglass/Flye/}}. Flye é uma montadora de novo para leituras de sequenciamento de moléculas únicas, como as produzidas pela PacBio e Oxford Nanopore Technologies.
+Usaremos o software Flye\footnote{\url{https://github.com/fenderglass/Flye/}}. Flye é um montador \emph{de novo} para leituras de sequenciamento de moléculas únicas, como as produzidas pela PacBio e Oxford Nanopore Technologies.
 
-Usaremos o arquivo com leituras PacBio PacBio.fq
+Usaremos o arquivo com leituras PacBio \Verb+PacBio.fq+
 
 \begin{Verbatim}[commandchars=!\{\}, numbers=left,label= Montando leituras com Flye,frame=topline,fontsize=\scriptsize]
 (base)user@server:$ conda activate flye
