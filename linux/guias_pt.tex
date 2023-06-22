@@ -2088,9 +2088,9 @@ da uma olhada nele usando o comando less
   \caption[O que é bioinformática?]{\label{bioinf_excel}}
 \end{figure}
 
-RNA-Seq é uma técnica de sequenciamento que usa tecnologia de segunda geração para revelar a presença e quantidade de RNA em uma amostra biológica em um dado momento.
+RNA-Seq é uma técnica de sequenciamento que usa tecnologias de sequenciamento massivas para revelar a presença e quantidade das moléculas RNA numa amostra biológica em um momento ou condição específicos.
 
-Usaremos os dados do PMID: 24926665\footnote{https://pubmed.ncbi.nlm.nih.gov/24926665/}, especificamente os conjuntos de dados mostrados na Tabela 1. Para gerar que o RNA total de dados foi extraído das células humanas primárias do músculo liso das vias aéreas (ASM) de quatro doadores diferentes. As células de cada doador foram tratadas com 1~{\textmu}M DEX ou com controle veículo por 18 h. Aproximadamente 1~{\textmu}g de RNA de cada amostra foi usado para gerar RNA-Seq cDNA bibliotecas para sequenciamento usando o TruSeq RNA Sample Prep Kit v2. O sequenciamento foi realizado em um instrumento HiSeq2000 gerando leituras pareadas (2x75bp). O principal objetivo do estudo foi obter ideias de como os glicocorticoides suprimem a inflamação no ASM.
+Usaremos os dados do PMID: 24926665\footnote{https://pubmed.ncbi.nlm.nih.gov/24926665/}, especificamente os conjuntos de dados mostrados na Tabela 1. Nessas amostras o RNA foi extraido de células humanas primárias do músculo liso das vias aéreas (Airway Smooth Tissue: ASM) de quatro doadores diferentes. As células de cada doador foram tratadas com 1~{\textmu}M DEX ou com controle veículo por 18 h. Aproximadamente 1~{\textmu}g de RNA de cada amostra foi usado para gerar cDNA, e a partir deste bibliotecas para sequenciamento de RNA (RNA-Seq) usando o kit TruSeq RNA Sample Prep Kit v2. O sequenciamento foi realizado em um instrumento HiSeq2000 gerando leituras pareadas (2x75bp). O principal objetivo do estudo foi obter ideias de como os glicocorticoides suprimem a inflamação no ASM.
 
 \section{Amostras}
 \begin{table}[h]
@@ -2102,7 +2102,7 @@ Accession&Sample&Cell\\
 SRR1039508& Untreated& N61311 \\ \hline 
 SRR1039509& Dexamethasone& N61311\\ \hline
 SRR1039512& Untreated& N052611 \\ \hline 
-SRR1039512& Dexamethasone& N052611\\ \hline
+SRR1039513& Dexamethasone& N052611\\ \hline
 SRR1039516& Untreated& N080611 \\ \hline 
 SRR1039517& Dexamethasone& N080611\\ \hline
 SRR1039520& Untreated& N061011 \\ \hline 
@@ -2113,17 +2113,17 @@ SRR1039521& Dexamethasone& N061011\\ \hline
 
 \subsection{Processamento de dados}.
 
-Agora, você deve primeiro verificar a qualidade das suas leituras com o FastQC e decidir se você precisa fazer algum filtrado de qualidade . O comando a seguir executa fastqc para cada um de seus arquivos (um por um, um após o outro). Pode levar algum tempo, vai la e busca um café.
+Agora, você deve primeiro verificar a qualidade das suas leituras com o FastQC e decidir se você precisa fazer algum filtrado de qualidade. O comando a seguir executa fastqc para cada um de seus arquivos (um por um, um após o outro). Pode levar algum tempo.
 
 \begin{Verbatim}[commandchars=!\{\}, numbers=left,label= Verificação de qualidade nas leituras ,frame=topline,fontsize=\scriptsize]
 (base)user@server:$ mkdir -p QC
-(base)user@server:$ conda activate fastqc_env
+(base)user@server:$ conda activate fastqc
 (fastq_evn)user@server:$ for file in $(ls -1 data/*.fastq.gz); do fastqc --noextract \
 --threads 1 --nogroup -o QC $file; done
 (base)user@server:$ conda deactivate
 \end{Verbatim}
 
-da uma olhada nos arquivos gerados pelos FASTQC na pasta QC
+da uma olhada nos arquivos gerados pelos FASTQC na pasta QC.
 
 Agora utilizamos bbduk para filtrar nossas sequencias
 
@@ -2149,7 +2149,7 @@ Agora pode rodar o FASTQC de novo e olhar verificar as estatísticas de qualidad
 
 Vamos quantificar a expressão genética contra a versão genoma humano GRCh38.p13\footnote{https://www.gencodegenes.org/human/}. Usaremos Salmon\footnote{https://combine-lab.github.io/salmon/} para quantificação da expressão genica.
 
-No primeiro para rodar o Salmon lugar temos que criar um index com nosso genoma de referencia
+Mas antes de executar a quantrificacão das amostras, teremos que criar um indice do genoma de referência para o Salmon.
 
 \begin{Verbatim}[commandchars=!\{\}, numbers=left,label= Criando Salmon index ,frame=topline,fontsize=\scriptsize]
 (base)user@server:$ cd ~/PRATICA_RNASEQ
