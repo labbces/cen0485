@@ -13,7 +13,7 @@ sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_
 sudo apt -y install libblas-dev liblapack-dev libatlas-base-dev gfortran zlib1g-dev libcurl4-openssl-dev libxml2-dev
 sudo apt -y install --no-install-recommends r-base
 
-
+sudo su - cen0485
 #logout and login as new user
 gsettings set org.gnome.desktop.background picture-uri file:////usr/share/backgrounds/FondoCENA.png
 
