@@ -1,8 +1,8 @@
 sudo adduser --quiet cen0485
 sudo usermod -a -G sudo cen0485
 
-sudo apt update
-sudo apt upgrade
+sudo apt -y update
+sudo apt -y upgrade
 sudo apt-get install -y libcurl4-openssl-dev zlib1g-dev libbz2-dev build-essential libudunits2-dev libgdal-dev gdal-bin
 
 #R - From https://cran.r-project.org/bin/linux/ubuntu/#install-r
