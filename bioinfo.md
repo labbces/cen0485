@@ -189,3 +189,30 @@ Vamos começar uma visita aos seus bancos de dados. Como primeiro passo, vamos a
 
 ![Pagina inicial de buscas no NCBI](Figs/NCBIStart.png)
 
+Onde "palavra-chave" é a palavra utilizada para identificar um registro de acordo com o campo utilizado. Por exemplo, uma palavra-chave pode ser "Silva" no campo "authors". Operador lógico é qualquer um destes operadores booleanos: AND, OR, NOT, etc. Ao substituir por suas próprias palavras-chave no formato acima, lembre-se de que os campos devem estar entre colchetes [ ], mas os operadores são independentes (sem os símbolos), além disso, as aspas na palavra-chave são opcionais, mas servem para forçar uma busca pela palavra exata em vez de uma busca flexível. Por exemplo, se eu quiser pesquisar todos os artigos de 1999 publicados por Silva et al. na revista Science, eu uso o seguinte comando: "Silva"[AU] AND 1999[DP] AND "Science"[TA]. Quanto mais informações forem inseridas na busca, mais restrita será a resposta (por exemplo, se eu incluir mais autores). Os campos mais comuns que podem ser solicitados no PubMed são os seguintes:
+
+* __All Fields [ALL]__ inclui todos os campos pesquisáveis do PubMed. Contudo, somente os termos que não encontrarem correspondência em uma das tabelas ou índices de tradução pelo processo de Mapeamento Automático de Termos serão pesquisados em Todos os Campos. O PubMed ignora palavras irrelevantes em consultas de pesquisa.
+
+* __Author Name [AU]__ existe um limite no número de nomes de autores incluídos na citação MEDLINE, que variou ao longo dos anos (veja a política da NLM sobre nomes de autores). O MEDLINE não lista o nome completo. O formato para pesquisar pelo nome do autor é: sobrenome seguido de espaço e até as duas primeiras iniciais, seguido de espaço e abreviação do sufixo, se aplicável, tudo sem pontos ou vírgulas após o sobrenome (por exemplo, Fauci AS ou O’Brien JC Jr). Iniciais e sufixos podem ser omitidos na busca. O PubMed automaticamente trunca o nome de um autor para considerar iniciais variadas, por exemplo, "O’Brien J [AU]" recuperará "O’Brien JA", "O’Brien JB", "O’Brien JC Jr", bem como "O’Brien J". Para desativar esse truncamento automático, coloque o nome do autor entre aspas duplas e qualifique com [au] entre colchetes, por exemplo, "O’Brien J"[AU] para recuperar apenas "O’Brien J".
+
+* __EC/RN Number [RN]__ é o número atribuído pela Enzyme Commission para designar uma enzima específica ou pelo Chemical Abstracts Service (CAS) para números de registro.
+
+* __Entrez Date [EDAT]__ é a data em que a citação foi adicionada ao banco de dados PubMed. As citações são exibidas por ordem de data de entrada, com as mais recentes primeiro. As datas ou intervalos de datas devem ser inseridos no formato AAAA/MM/DD [edat], ex. 1998/04/06 [edat]. O mês e o dia são opcionais (por exemplo, 1998 [edat] ou 1998/03 [edat]). Para intervalos de datas, use dois pontos (:) entre as datas (por exemplo, 1996:1997 [edat] ou 1998/01:1998/04 [edat]).
+
+* __Issue [IP]__ é o número da edição da revista na qual o artigo foi publicado.
+
+* __Journal Title [TA]__ é a abreviatura do título do periódico, o nome completo do periódico ou número ISSN.
+
+* __Language [LA]__ especifica o idioma da publicação.
+
+* __Publication Date [DP]__ é a data em que o artigo foi publicado. As datas ou intervalos de datas devem ser pesquisados usando o formato AAAA/MM/DD [dp], ex. 1998/03/06 [dp]. O mês e o dia são opcionais (por exemplo, 1998 [dp] ou 1998/03 [dp]). Para intervalos de datas, insira dois pontos (:) entre as datas (por exemplo, 1996:1998 [dp] ou 1998/01:1998/04 [dp]).
+
+* __Text Words [TW]__ inclui todas as palavras e números no título e resumo, além de termos MeSH, subtítulos, nomes de substâncias químicas, nome pessoal como assunto e o campo de Fonte Secundária (Secondary Source ID, SI) do MEDLINE. O campo "Nome pessoal como assunto" também pode ser pesquisado diretamente usando a tag de campo de pesquisa [ps], por exemplo, "rouxinol f [ps]".
+
+* __Title Words [TI]__ abrange palavras e números incluídos no título de uma citação.
+
+* __Title/Abstract Words [TIAB]__ engloba palavras e números presentes tanto no título quanto no resumo de uma citação.
+
+* __Unique Identifiers [UID]__ são identificadores únicos atribuídos a cada registro no PubMed.
+
+* __Volume [VI]__ refere-se ao número do volume da revista em que um artigo foi publicado.
