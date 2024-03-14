@@ -1,3 +1,17 @@
+<style>
+blue {
+  color: lightblue;
+}
+
+red {
+  color: red;
+}
+
+green {
+  color: lightgreen;
+}
+</style>
+
 # Introducão à bioinformática - CEN0485 
 Aulas práticas da disciplina ["CEN0485 - Introducão à Bioinformática"](https://uspdigital.usp.br/jupiterweb/obterDisciplina?nomdis=&sgldis=cen0485)
 
@@ -185,7 +199,7 @@ O National Center for Biotechnology Information (NCBI), uma instituição públi
 
 Vamos começar uma visita aos seus bancos de dados. Como primeiro passo, vamos acessar o PubMed. Esta base de dados contém informações sobre publicações científicas, cujos registros foram compilados pela National Library of Medicine (NLM), com a colaboração dos editores. Lá, você encontrará a maioria das referências necessárias, incluindo o resumo (Abstract) e, em alguns casos, o acesso gratuito à publicação. Para obter ajuda sobre como realizar buscas, consulte o seguinte link: http://www.ncbi.nlm.nih.gov/bookshelf/br.fcgi?book=helppubmed. As páginas possuem um menu de banco de dados em uma barra superior, e as pesquisas devem ser inseridas na janela mostrada na figura Uma busca deve seguir um formato semelhante a este:
 
- __palavrachave__[campo] operador lógico __palavrachave__[field] . . .
+__palavrachave__[campo] operador lógico __palavrachave__[field] . . .
 
 ![Pagina inicial de buscas no NCBI](Figs/NCBIStart.png)
 
@@ -220,3 +234,53 @@ Onde "palavra-chave" é a palavra utilizada para identificar um registro de acor
 Agora, vamos acessar o site onde o ENTREZ está localizado. Para fazer isso, selecione "TODOS OS BANCOS DE DADOS" na janela do banco de dados na página principal. O Entrez é um sistema de busca para sequências armazenadas em bancos de dados. Consultas sofisticadas podem ser feitas para obter um conjunto de sequências de seu interesse. Por exemplo, é possível solicitar a exibição de todas as sequências genômicas de Arabidopsis que foram incluídas no banco de dados entre os anos de 1997 e 1999, e que também contêm anotações (na tabela "features") nas regiões promotoras. A seguinte figura mostra a página de login do servidor Entrez.
 
 ![Entrez](linux/Figs/screenshotEntrez.png)
+
+Assim, em um único site, podemos realizar buscas simultaneamente em todas as bases de dados ou selecionar uma única base de dados para realizar uma busca específica. Na caixa de busca, as sequências podem ser consultadas usando seus números identificadores (como o GI number ou o número de acesso). Questões mais complexas também podem ser formuladas usando a sintaxe do Entrez, de maneira semelhante ao que vimos no PubMed:
+  
+__palavrachave__[campo] operador lógico __palavrachave__[field] . . .
+
+Para obter mais informações sobre o Entrez, você pode acessar o link: http://www.ncbi.nlm.nih.gov/bookshelf/br.fcgi?book=helpentrez&part=EntrezHelp.
+
+##### Exercícios
+
+1. <red>Qual é a classificação taxonômica da alga Chlamydomonas reinhardtii e quais outras plantas estão próximas, que possam ser usadas como fonte de marcadores? Quantas sequências de proteínas estão presentes no GenBank para a espécie Chlamydomonas reinhardtii?</red>
+
+2. Acesse a página do PubMed e obtenha referências que tratam da biologia molecular e/ou genética da mandioca (Manihot esculenta). Quantos artigos foram publicados nos últimos dois anos e de quais laboratórios (ou regiões geográficas) são os autores? Explique como você realizou a pesquisa.
+
+3. Utilize o Entrez para encontrar todas as sequências EST (Expressed Sequence Tag) de arroz que foram depositadas no banco de dados.
+
+#### Quais bancos de dados encontramos no NCBI?
+
+O NCBI possui um grande número de bancos de dados, sendo o mais conhecido o GenBank, que contém todas as sequências de nucleotídeos. O GenPept contém as sequências de proteínas. Outras bases de dados incluem Genome, Structure e PubMed. 
+
+##### GenBank
+
+No GenBank, as sequências estão organizadas em 17 divisões, sendo 11 tradicionais e 6 Bulk. Nas divisões tradicionais, as sequências foram enviadas diretamente pelos pesquisadores e são caracterizadas, e as divisões são:
+
+- PRI primatas
+- PLN plantas
+- BCT bactérias
+- INV invertebrados
+- ROD Roedores
+- VRL Viral
+- VRT outros vertebrados
+- MAM Mamíferos (Ej. ROD + PRI)
+- PHG Fagos
+- SYN Sintético (vetores de clonagem, etc)
+- UNA sem anotacãao
+
+O Bulk consiste em sequências enviadas em grupos, por email ou FTP, que podem ser imprecisas e mal caracterizadas. Entre elas estão:
+
+- __dbEST (Banco de Dados de EST, Tags de Sequências Expressas)__: Contém sequências expressas, fornecendo uma visão rápida da expressão gênica em diferentes condições ou tecidos.
+
+- __dbSTS (Sequence-Tagged Sites)__: São marcadores genômicos curtos para os quais existem informações de sequência e de mapa, utilizados em mapeamento genético e localização de genes.
+
+- __dbGSS (Genomic Survey Sequences)__: Inclui dados de sequência de genoma de etapa única, sequências terminais de BAC, YAC e cosmídeos, e sequências de exon, contribuindo para o mapeamento genômico.
+
+- __dbHTGS (High-Throughput Genomic Sequences)__: Foi criado para armazenar informações de sequenciamento de genoma que ainda não foram finalizadas ou curadas, com o objetivo de torná-las disponíveis para a comunidade científica assim que possível.
+
+Também existem bancos de dados específicos para:
+
+- __HTC (High Throughput cDNA)__: Sequências de cDNA geradas em alta escala, úteis para estudos de expressão gênica e identificação de novos genes.
+
+- __PAT (Patent)__: Sequências relacionadas a patentes, incluindo informações genéticas e biotecnológicas importantes para a propriedade intelectual e o desenvolvimento de novas tecnologias.
