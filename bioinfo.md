@@ -177,4 +177,15 @@ As linhas com os identificadores neste arquivo são muito extensas, para muitos 
 sed -r 's/ | .*$//' TAIR10_pep_20101214_updated.mod.fasta > TAIR10_pep_20101214_updated.mod2.fasta
 ```
 
+### Buscas em banco de dados biológicos
+
+#### NCBI – Bancos de dados e busca de informações
+
+O National Center for Biotechnology Information (NCBI), uma instituição pública dos Estados Unidos, é responsável por armazenar informações sobre os genomas de diversas espécies, além de manter o maior banco de dados público de sequências de DNA e proteínas. Sua página principal pode ser acessada pelo seguinte link: http://www.ncbi.nlm.nih.gov/. Este site interliga todos os dados disponíveis em seus servidores, incluindo PubMed, todos os bancos de dados (Entrez), Blast, OMIM, Books, TaxBrowser, Structure, como ilustrado na figura. Embora o Entrez esteja listado como um dos serviços, na realidade, quase todos eles dependem diretamente do Entrez. Por exemplo, PubMed e Taxonomy estão intimamente ligados ao Entrez.
+
+Vamos começar uma visita aos seus bancos de dados. Como primeiro passo, vamos acessar o PubMed. Esta base de dados contém informações sobre publicações científicas, cujos registros foram compilados pela National Library of Medicine (NLM), com a colaboração dos editores. Lá, você encontrará a maioria das referências necessárias, incluindo o resumo (Abstract) e, em alguns casos, o acesso gratuito à publicação. Para obter ajuda sobre como realizar buscas, consulte o seguinte link: http://www.ncbi.nlm.nih.gov/bookshelf/br.fcgi?book=helppubmed. As páginas possuem um menu de banco de dados em uma barra superior, e as pesquisas devem ser inseridas na janela mostrada na figura Uma busca deve seguir um formato semelhante a este:
+
+ __palavrachave__[campo] operador lógico __palavrachave__[field] . . .
+
+![Pagina inicial de buscas no NCBI](Figs/NCBIStart.png)
 
