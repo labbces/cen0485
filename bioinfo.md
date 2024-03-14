@@ -280,3 +280,13 @@ Vamos retornar à página principal do NCBI e, na janela de busca, deixando "all
 Ao abrir Nucleotide, obtemos um flatfile de sequência que corresponde à sequência completa do cromossomo VII da levedura. Ao examinar o arquivo flatfile, podemos ver que ele contém várias informações. ![exercicio](linux/Figs/f03c15.png)Quais são elas?
 
 É importante notar que os identificadores nesta base de dados mudam e são do tipo 2+6, com duas letras seguidas de 6 números. A tabela a seguir nos mostrará o que essas letras significam:
+
+![Identificadores no RefSeq](linux/Figs/RefSeqIdentifiers.png)
+
+#### Recuperação de Sequências no NCBI com Buscas Mais Específicas
+
+Se conhecemos o organismo, as buscas no NCBI podem ser mais direcionadas. Acessando a página inicial do NCBI, vamos para o TaxBrowser e inserimos o nome do organismo que estamos procurando. Ao selecioná-lo, uma tabela com o número de sequências por tipo de molécula ou projeto aparece à direita. Clicar em uma das opções, como proteínas, nos direciona diretamente às proteínas daquele organismo.
+
+Se sabemos os números de acesso, podemos inseri-los diretamente na janela de pesquisa da página principal do NCBI. Para várias sequências, os números são colocados com a palavra "OR" entre eles, por exemplo, AJ487842 OR AJ487843. Finalmente, para uma sequência de números de acesso, digite: AJ487842::AJ487851[ACCN].
+
+Direcionamos a Pesquisa com Limites. Por exemplo, se eu quiser pesquisar as sequências de mRNA curadas relacionadas a um tipo de câncer em humanos, posso realizar a seguinte pesquisa: na janela de busca, digito "COLON CANCER AND NONPOLYPOSIS" e pesquiso no banco de dados de nucleotídeos. Então, em "Limits", seleciono a molécula de mRNA e em "only from" escolho RefSeq. Depois, vou para a janela "Preview/Index" acima e, em "Organismos", digito "humanos" e seleciono "AND".
