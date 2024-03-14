@@ -229,7 +229,7 @@ Para obter mais informações sobre o Entrez, você pode acessar o link: http://
 
 ##### Exercícios
 
-1. [exercicio](linux/Figs/f03c15.png) Qual é a classificação taxonômica da alga Chlamydomonas reinhardtii e quais outras plantas estão próximas, que possam ser usadas como fonte de marcadores? Quantas sequências de proteínas estão presentes no GenBank para a espécie Chlamydomonas reinhardtii?
+1. ![exercicio](linux/Figs/f03c15.png) Qual é a classificação taxonômica da alga Chlamydomonas reinhardtii e quais outras plantas estão próximas, que possam ser usadas como fonte de marcadores? Quantas sequências de proteínas estão presentes no GenBank para a espécie Chlamydomonas reinhardtii?
 
 2. Acesse a página do PubMed e obtenha referências que tratam da biologia molecular e/ou genética da mandioca (Manihot esculenta). Quantos artigos foram publicados nos últimos dois anos e de quais laboratórios (ou regiões geográficas) são os autores? Explique como você realizou a pesquisa.
 
