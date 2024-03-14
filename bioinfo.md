@@ -216,3 +216,7 @@ Onde "palavra-chave" é a palavra utilizada para identificar um registro de acor
 * __Unique Identifiers [UID]__ são identificadores únicos atribuídos a cada registro no PubMed.
 
 * __Volume [VI]__ refere-se ao número do volume da revista em que um artigo foi publicado.
+
+Agora, vamos acessar o site onde o ENTREZ está localizado. Para fazer isso, selecione "TODOS OS BANCOS DE DADOS" na janela do banco de dados na página principal. O Entrez é um sistema de busca para sequências armazenadas em bancos de dados. Consultas sofisticadas podem ser feitas para obter um conjunto de sequências de seu interesse. Por exemplo, é possível solicitar a exibição de todas as sequências genômicas de Arabidopsis que foram incluídas no banco de dados entre os anos de 1997 e 1999, e que também contêm anotações (na tabela "features") nas regiões promotoras. A seguinte figura mostra a página de login do servidor Entrez.
+
+![Entrez](linux/Figs/screenshotEntrez.png)
