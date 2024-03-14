@@ -229,11 +229,11 @@ Para obter mais informações sobre o Entrez, você pode acessar o link: http://
 
 ##### Exercícios
 
-1. ![exercicio](linux/Figs/f03c15.png) Qual é a classificação taxonômica da alga Chlamydomonas reinhardtii e quais outras plantas estão próximas, que possam ser usadas como fonte de marcadores? Quantas sequências de proteínas estão presentes no GenBank para a espécie Chlamydomonas reinhardtii?
+1. ![exercicio](linux/Figs/f03c15.png)Qual é a classificação taxonômica da alga Chlamydomonas reinhardtii e quais outras plantas estão próximas, que possam ser usadas como fonte de marcadores? Quantas sequências de proteínas estão presentes no GenBank para a espécie Chlamydomonas reinhardtii?
 
-2. Acesse a página do PubMed e obtenha referências que tratam da biologia molecular e/ou genética da mandioca (Manihot esculenta). Quantos artigos foram publicados nos últimos dois anos e de quais laboratórios (ou regiões geográficas) são os autores? Explique como você realizou a pesquisa.
+2. ![exercicio](linux/Figs/f03c15.png)Acesse a página do PubMed e obtenha referências que tratam da biologia molecular e/ou genética da mandioca (Manihot esculenta). Quantos artigos foram publicados nos últimos dois anos e de quais laboratórios (ou regiões geográficas) são os autores? Explique como você realizou a pesquisa.
 
-3. Utilize o Entrez para encontrar todas as sequências EST (Expressed Sequence Tag) de arroz que foram depositadas no banco de dados.
+3. ![exercicio](linux/Figs/f03c15.png)Utilize o Entrez para encontrar todas as sequências EST (Expressed Sequence Tag) de arroz que foram depositadas no banco de dados.
 
 #### Quais bancos de dados encontramos no NCBI?
 
@@ -270,3 +270,13 @@ Também existem bancos de dados específicos para:
 - __HTC (High Throughput cDNA)__: Sequências de cDNA geradas em alta escala, úteis para estudos de expressão gênica e identificação de novos genes.
 
 - __PAT (Patent)__: Sequências relacionadas a patentes, incluindo informações genéticas e biotecnológicas importantes para a propriedade intelectual e o desenvolvimento de novas tecnologias.
+
+##### RefSeq
+
+Queremos dar ênfase especial a um banco de dados do NCBI chamado RefSeq. Esse banco de dados foi criado para fornecer uma coleção biologicamente não redundante de sequências de DNA, RNA e proteínas. Cada RefSeq (sequência de referência) representa uma molécula única que ocorre naturalmente em um organismo. Essa base de dados é curada por pesquisadores, onde cada molécula não é um resultado de pesquisa direto, mas sim uma síntese de informações.
+
+Vamos retornar à página principal do NCBI e, na janela de busca, deixando "all databases" selecionado, digite NC_001139. Verificamos que em Nucleotide temos 1 resultado, assim como em Genome, e em Gene temos 631 resultados.
+
+Ao abrir Nucleotide, obtemos um flatfile de sequência que corresponde à sequência completa do cromossomo VII da levedura. Ao examinar o arquivo flatfile, podemos ver que ele contém várias informações. ![exercicio](linux/Figs/f03c15.png)Quais são elas?
+
+É importante notar que os identificadores nesta base de dados mudam e são do tipo 2+6, com duas letras seguidas de 6 números. A tabela a seguir nos mostrará o que essas letras significam:
