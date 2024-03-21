@@ -290,3 +290,57 @@ Se conhecemos o organismo, as buscas no NCBI podem ser mais direcionadas. Acessa
 Se sabemos os números de acesso, podemos inseri-los diretamente na janela de pesquisa da página principal do NCBI. Para várias sequências, os números são colocados com a palavra "OR" entre eles, por exemplo, AJ487842 OR AJ487843. Finalmente, para uma sequência de números de acesso, digite: AJ487842::AJ487851[ACCN].
 
 Direcionamos a Pesquisa com Limites. Por exemplo, se eu quiser pesquisar as sequências de mRNA curadas relacionadas a um tipo de câncer em humanos, posso realizar a seguinte pesquisa: na janela de busca, digito "COLON CANCER AND NONPOLYPOSIS" e pesquiso no banco de dados de nucleotídeos. Então, em "Limits", seleciono a molécula de mRNA e em "only from" escolho RefSeq. Depois, vou para a janela "Preview/Index" acima e, em "Organismos", digito "humanos" e seleciono "AND".
+
+
+## EMBOSS
+
+[EMBOSS](https://emboss.sourceforge.net/), "The European Molecular Biology Open Software Suite", é um pacote de código aberto gratuito composto por centenas de aplicativos desenvolvidos especificamente para as necessidades da comunidade de biologia molecular. As áreas abrangidas pelas aplicações EMBOSS incluem alinhamento de sequências, pesquisa em bancos de dados usando padrões, identificação de motivos proteicos e análise de uso de códons. 
+
+Você encontra descricoes dos pacotes de EMBOSS neste [link](https://emboss.sourceforge.net/apps/release/6.6/emboss/apps/).￼
+
+###  Recuperando sequências de bancos de dados
+
+A recuperação de sequências de um banco de dados depende dos bancos disponíveis.
+
+Vamos recuperar a sequência do gene ANAC092 do banco de dados de proteínas UniProt. Para isso  é necessário acessar o site do [UniProt](https://www.uniprot.org/) e localizar o identificador correto. 
+
+![Busca no Uniprot](linux/Figs/uniprot.png)
+
+![Registro em Uniprot](linux/Figs/get_seq_link.png)
+
+Com o identificador apropriado, também podemos baixar a sequência em formato .txt, utilizando o comando wget.
+
+```bash
+wget https://www.uniprot.org/uniprot/D7MJK1.txt
+```
+
+Na sua tela deve aparecer algo semelhante ao seguinte quadro:
+
+```
+--2022-04-06 14:23:06-- https://www.uniprot.org/uniprot/D7MJK1.txt
+3 Resolving www.uniprot.org (www.uniprot.org)... 193.62.193.81
+4 Connecting to www.uniprot.org (www.uniprot.org)|193.62.193.81|:443... connected.
+5 HTTP request sent, awaiting response... 200
+6 Length: 4570 (4,5K) [text/plain]
+7 Saving to: ‘D7MJK1.txt’
+8 D7MJK1.txt 100%[===================>] 4,46K --.-KB/s in 0s
+9 2022-04-06 14:23:08 (275 MB/s) - ‘D7MJK1.txt’ saved [4570/4570]
+```
+
+Em seguida, usaremos um programa da suíte EMBOSS para alterar o formato do registro baixado do UniProt. O programa utilizado será o "seqret". Você pode usar o comando "wossname" para procurar programas do EMBOSS que contenham em sua descrição uma palavra-chave específica. Antes de usar os programas do EMBOSS, é necessário ativar o ambiente que contém o software instalado em seu computador.
+
+```bash
+conda activate emboss
+```
+
+Note que seu prompt mudiou, agora exibindo o nome do ambiente ativado, neste caso, emboss. Lembre-se de desativar o ambiente quando terminar de usá-lo, para retornar ao estado original do seu sistema, usando o comando:
+
+```bash
+conda deactivate
+```
+
+￼
+￼
+￼
+￼
+
