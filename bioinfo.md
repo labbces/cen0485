@@ -359,3 +359,4 @@ Ao realizar certos tipos de análise, por exemplo, a busca por sítios de ligaç
 
 ![exercicio](linux/Figs/f03c15.png) Use o "shuffleseq" para gerar duas sequências aleatórias a partir do rRNA encontrado no arquivo [FN566965.fasta](https://raw.githubusercontent.com/labbces/cen0485/main/files/FN566965.fasta). ![exercicio](linux/Figs/f03c15.png) Calcule as frequências de dímeros da sequência original e das duas sequências aleatórias. Verifique se há diferenças. As diferenças, se encontradas, podem ser explicadas pela variabilidade aleatória. Explique! [exercicio](linux/Figs/f03c15.png) Descreva o processo.
 
+![exercicio](linux/Figs/f03c15.png) Realize uma busca na literatura e encontre um artigo onde sejam utilizadas sequências aleatórias para testar alguma hipótese. Descreva brevemente o trabalho e como as sequências aleatórias foram utilizadas, deixando uma referência clara do artigo para facilitar sua localização.
