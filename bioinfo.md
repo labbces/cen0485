@@ -339,8 +339,9 @@ Note que seu prompt mudiou, agora exibindo o nome do ambiente ativado, neste cas
 conda deactivate
 ```
 
-￼
-￼
-￼
-￼
+Agora, você pode usar o mesmo programa, "seqret", para converter o arquivo .txt recuperado do UniProt para o formato FASTA. Consulte a pagina de manual do seqret para aprender sua sintaxe. ![exercicio](linux/Figs/f03c15.png) Descreva como pode converte a formato Fasta. 
+
+Após ter sua sequência em formato fasta, para fazer cálculos sobre essas sequências, utilize o programa "compseq" do EMBOSS, que permite calcular a composição de palavras em uma sequência. ![exercicio](linux/Figs/f03c15.png) Calcule a frequência de monômeros e dímeros na sequência do ANAC092.
+
+![exercicio](linux/Figs/f03c15.png) Existe alguma diferença entre o valor observado e o esperado das frequências de dímeros. O valor esperado para cada dímero vem de qual fonte?
 
