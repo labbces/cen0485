@@ -14,7 +14,7 @@ Os exercícios serão realizados nos computadores da sala de computadores da cen
 
 Após adquirir alguma familiaridade com os fundamentos do [sistema operacional Linux](unix.md), vamos explorar como alguns de seus comandos mais básicos podem ser extremamente úteis na área de bioinformática. Você entenderá por que o Linux é o sistema operacional de escolha na bioinformática.
 
-Para realizar esses exercícios, você precisa usar o arquivo [file1.tar.gz](files/file1.tar.gz). Após baixá-lo, o arquivo deve estar na sua pasta "Downloads". Você deve descompactá-lo em seu diretório HOME.
+Para realizar esses exercícios, você precisa usar o arquivo [file1.tar.gz](https://github.com/labbces/cen0485/raw/main/files/file1.tar.gz). Após baixá-lo, o arquivo deve estar na sua pasta "Downloads". Você deve descompactá-lo em seu diretório HOME.
 
 ```
 cd
@@ -351,4 +351,11 @@ Um quadro de leitura aberta (ou [ORF de "Open Reading Frame"](https://en.wikiped
 
 Os programas __getorf__ e __plotorf__ identificam ORFs em sequências de nucleotídeos. Um QLA é uma sequência (ou subsequência) de um comprimento mínimo especificado, delimitada por códons de parada ou por um códon de início e um de parada. iA pesar da universalidade do código genético, existem variações entre alguns grupos de organismos, por isso é crucial especificar o código genético utilizado para a tradução da sequência ou os códons de início e parada permitidos.
 
-![exercicio](linux/Figs/f03c15.png) Use os programas getorf e plotorf para identificar o quadro de leitura aberto correto da sequência "[ANAC092_cDNA.fa](files/ANAC092_cDNA.fa)". Verifique se existe alguma diferença nos resultados fornecidos por ambos os programas. Descreva o processo que realizou.
+![exercicio](linux/Figs/f03c15.png) Use os programas getorf e plotorf para identificar o quadro de leitura aberto correto da sequência "[ANAC092_cDNA.fa](https://raw.githubusercontent.com/labbces/cen0485/main/files/ANAC092_cDNA.fa)". Verifique se existe alguma diferença nos resultados fornecidos por ambos os programas. Descreva o processo que realizou.
+
+### Embaralhar/misturar Sequências
+
+Ao realizar certos tipos de análise, por exemplo, a busca por sítios de ligação a fatores de transcrição em sequências de promotores (TFBS), é essencial ter um grupo de sequências como controle negativo, i.e., onde não é esperado encontrar o sitio de ligação. Uma prática comum é gerar sequências aleatórias que mantenham a composição monomérica das sequências originais. O programa "shuffleseq" realiza essa tarefa, embaralhando os monômeros de uma sequência "real" para produzir uma sequência aleatória. Geralmente, são geradas 1000 sequências aleatórias para cada sequência original.
+
+![exercicio](linux/Figs/f03c15.png) Use o "shuffleseq" para gerar duas sequências aleatórias a partir do rRNA encontrado no arquivo [FN566965.fasta](https://raw.githubusercontent.com/labbces/cen0485/main/files/FN566965.fasta). ![exercicio](linux/Figs/f03c15.png) Calcule as frequências de dímeros da sequência original e das duas sequências aleatórias. Verifique se há diferenças. As diferenças, se encontradas, podem ser explicadas pela variabilidade aleatória. Explique! [exercicio](linux/Figs/f03c15.png) Descreva o processo.
+
