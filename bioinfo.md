@@ -367,17 +367,17 @@ As matrizes de pontos (“Dot Plot”) são ferramentas exploratórias para comp
 
 Nesta seção, usaremos a implementação de matrizes de pontos do Instituto Suı́ço de Bioinformática, conhecida como [Dot Let](http://myhits.isb-sib.ch/cgi-bin/dotlet), que vemos na seguinte figura:
 
-![dotlet](linux/Figs/DotLet1.jpeg)
+![dotlet](Figs/DotLet-1.png)
 
 Vamos a comparar a sequencia [FN566965](https://raw.githubusercontent.com/labbces/cen0485/main/files/FN566965.fasta) contra ela mesma. A figura abaixo mostra como dar um nome à sequência e colá-la na caixa correspondente:
 
-![dotlet-seqs](linux/Figs/inputDotLet.png)
+![dotlet-seqs](Figs/DotLet-2.png)
 
 De volta à janela Dot Let vemos que encontramos dois botões habilitados, eles agora aparecem com o nome da sequência que você acabou de adicionar. Uma delas representa a sequência que aparece na direção horizontal, a outra a sequência que aparece na direção vertical:
 
 ![dotlet-buttons](linux/Figs/DotLetBotones.png)
 
-À direita dos botões/listas que identificam as sequências, encontramos uma lista suspensa atualmente desabilitada, que permite selecionar a matriz de substituição. Em seguida, há uma lista suspensa com os tamanhos de janela que serão utilizados para a comparação das duas sequências. O botão seguinte permite realizar um zoom, e, por fim, encontramos o botão "Calcular", que preenche a matriz de pontos. 
+À direita dos botões/listas que identificam as sequências, encontramos dois parametros importantes, o tamanho de janela e matriz de substituição/pontoação. O que significam esses parametros? ![exercicio](linux/Figs/f03c15.png) Descreva o que você entendeu sobre eles.
 
 Uma vez calculada a matriz de pontos, observamos duas seções de resultados. A região à esquerda mostra a própria matriz, em que pixels escuros representam pontuações baixas, ou seja, indesejáveis. À esquerda, visualizamos um histograma da frequência de cada pontuação. Manipulando este histograma, por meio das barras de rolagem horizontais, é possível ajustar a exibição da matriz de pontos.
 
