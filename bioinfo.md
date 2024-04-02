@@ -363,12 +363,13 @@ Ao realizar certos tipos de análise, por exemplo, a busca por sítios de ligaç
 
 ## Comparação de Sequências I -Matrizes de pontos
 
-As matrizes de pontos (“Dot Plot”) são ferramentas exploratórias para comparar strings de texto, ou seja, sequências. Entre outros, eles nos permitem encontrar facilmente regiões repetidas em uma sequência comparando-a com ela mesma. Também podemos ter uma boa ideia da estruturade um gene comparando a sequência de sua região de codificação com a sequência do locus onde se encontra.
-Nesta seção, usaremos a implementação de matrizes de pontos do Instituto Suı́ço de Bioinformática, conhecida como [Dot Let](http://myhits.isb-sib.ch/cgi-bin/dotlet) , que vemos na seguinte figura:
+As matrizes de pontos (“Dot Plot”) são ferramentas exploratórias para comparar strings de texto, ou seja, sequências. Entre outros, eles nos permitem encontrar facilmente regiões repetidas em uma sequência comparando-a com ela mesma. Também podemos ter uma boa ideia da estrutura de um gene comparando a sequência de sua região de codificação com a sequência do locus onde se encontra. 
+
+Nesta seção, usaremos a implementação de matrizes de pontos do Instituto Suı́ço de Bioinformática, conhecida como [Dot Let](http://myhits.isb-sib.ch/cgi-bin/dotlet), que vemos na seguinte figura:
 
 ![dotlet](linux/Figs/DotLet1.jpeg)
 
-A figura abaixo mostra como dar um nome à sequência e colá-la na caixa correspondente:
+Vamos a comparar a sequencia [FN566965](https://raw.githubusercontent.com/labbces/cen0485/main/files/FN566965.fasta) contra ela mesma. A figura abaixo mostra como dar um nome à sequência e colá-la na caixa correspondente:
 
 ![dotlet-seqs](linux/Figs/inputDotLet.png)
 
@@ -385,4 +386,4 @@ Uma vez calculada a matriz de pontos, observamos duas seções de resultados. A 
 - ![exercicio](linux/Figs/f03c15.png) Explique como o tamanho da janela afeta a exibição na matriz de pontos.
 - ![exercicio](linux/Figs/f03c15.png) Qual é o significado da linha rosa no histograma de pontuação?
 - ![exercicio](linux/Figs/f03c15.png) Que interpretação você pode fazer das repetições invertidas que podem ser detectadas na matriz de pontos?
-- ![exercicio](linux/Figs/f03c15.png) Compare a sequência de cDNA e sua contraparte genômica de ANAC092 2 . Descreva os resultados.
+- ![exercicio](linux/Figs/f03c15.png) Compare a sequência de [cDNA](https://raw.githubusercontent.com/labbces/cen0485/main/files/ANAC092_cDNA.fa) e sua contraparte [genômica de ANAC092](https://raw.githubusercontent.com/labbces/cen0485/main/files/ANAC092_genomic.fasta) . Descreva os resultados.
