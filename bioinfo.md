@@ -361,7 +361,7 @@ Ao realizar certos tipos de análise, por exemplo, a busca por sítios de ligaç
 
 ![exercicio](linux/Figs/f03c15.png) Realize uma busca na literatura e encontre um artigo onde sejam utilizadas sequências aleatórias para testar alguma hipótese. Descreva brevemente o trabalho e como as sequências aleatórias foram utilizadas, deixando uma referência clara do artigo para facilitar sua localização.
 
-## Comparação de Sequências I -Matrizes de pontos
+## Comparação de Sequências I - Matrizes de pontos
 
 As matrizes de pontos (“Dot Plot”) são ferramentas exploratórias para comparar strings de texto, ou seja, sequências. Entre outros, eles nos permitem encontrar facilmente regiões repetidas em uma sequência comparando-a com ela mesma. Também podemos ter uma boa ideia da estrutura de um gene comparando a sequência de sua região de codificação com a sequência do locus onde se encontra. 
 
