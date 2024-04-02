@@ -373,15 +373,13 @@ Vamos a comparar a sequencia [FN566965](https://raw.githubusercontent.com/labbce
 
 ![dotlet-seqs](Figs/DotLet-2.png)
 
-De volta à janela Dot Let vemos que encontramos dois botões habilitados, eles agora aparecem com o nome da sequência que você acabou de adicionar. Uma delas representa a sequência que aparece na direção horizontal, a outra a sequência que aparece na direção vertical:
-
-![dotlet-buttons](linux/Figs/DotLetBotones.png)
+De volta à janela Dot Let vemos que encontramos dois botões habilitados, eles agora aparecem com o nome da sequência que você acabou de adicionar. Uma delas representa a sequência que aparece na direção horizontal, a outra a sequência que aparece na direção vertical.
 
 À direita dos botões/listas que identificam as sequências, encontramos dois parametros importantes, o tamanho de janela e matriz de substituição/pontoação. O que significam esses parametros? ![exercicio](linux/Figs/f03c15.png) Descreva o que você entendeu sobre eles.
 
 Uma vez calculada a matriz de pontos, observamos duas seções de resultados. A região à esquerda mostra a própria matriz, em que pixels escuros representam pontuações baixas, ou seja, indesejáveis. À esquerda, visualizamos um histograma da frequência de cada pontuação. Manipulando este histograma, por meio das barras de rolagem horizontais, é possível ajustar a exibição da matriz de pontos.
 
-![dotlet-buttons](linux/Figs/DotLetResultado1.png)
+![dotlet-results](Figs/DotLet-3.png)
 
 - ![exercicio](linux/Figs/f03c15.png) Explique como o tamanho da janela afeta a exibição na matriz de pontos.
 - ![exercicio](linux/Figs/f03c15.png) Qual é o significado da linha rosa no histograma de pontuação?
