@@ -360,3 +360,29 @@ Ao realizar certos tipos de análise, por exemplo, a busca por sítios de ligaç
 ![exercicio](linux/Figs/f03c15.png) Use o "shuffleseq" para gerar duas sequências aleatórias a partir do rRNA encontrado no arquivo [FN566965.fasta](https://raw.githubusercontent.com/labbces/cen0485/main/files/FN566965.fasta). ![exercicio](linux/Figs/f03c15.png) Calcule as frequências de dímeros da sequência original e das duas sequências aleatórias. Verifique se há diferenças. As diferenças, se encontradas, podem ser explicadas pela variabilidade aleatória. Explique! [exercicio](linux/Figs/f03c15.png) Descreva o processo.
 
 ![exercicio](linux/Figs/f03c15.png) Realize uma busca na literatura e encontre um artigo onde sejam utilizadas sequências aleatórias para testar alguma hipótese. Descreva brevemente o trabalho e como as sequências aleatórias foram utilizadas, deixando uma referência clara do artigo para facilitar sua localização.
+
+## Comparação de Sequências I -Matrizes de pontos
+
+As matrizes de pontos (“Dot Plot”) são ferramentas exploratórias para comparar strings de texto, ou seja, sequências. Entre outros, eles nos permitem encontrar facilmente regiões repetidas em uma sequência comparando-a com ela mesma. Também podemos ter uma boa ideia da estruturade um gene comparando a sequência de sua região de codificação com a sequência do locus onde se encontra.
+Nesta seção, usaremos a implementação de matrizes de pontos do Instituto Suı́ço de Bioinformática, conhecida como [Dot Let](http://myhits.isb-sib.ch/cgi-bin/dotlet) , que vemos na seguinte figura:
+
+![dotlet](linux/Figs/DotLet1.jpeg)
+
+A figura abaixo mostra como dar um nome à sequência e colá-la na caixa correspondente:
+
+![dotlet-seqs](linux/Figs/inputDotLet.png)
+
+De volta à janela Dot Let vemos que encontramos dois botões habilitados, eles agora aparecem com o nome da sequência que você acabou de adicionar. Uma delas representa a sequência que aparece na direção horizontal, a outra a sequência que aparece na direção vertical:
+
+![dotlet-buttons](linux/Figs/DotLetBotones.png)
+
+À direita dos botões/listas que identificam as sequências, encontramos uma lista suspensa atualmente desabilitada, que permite selecionar a matriz de substituição. Em seguida, há uma lista suspensa com os tamanhos de janela que serão utilizados para a comparação das duas sequências. O botão seguinte permite realizar um zoom, e, por fim, encontramos o botão "Calcular", que preenche a matriz de pontos. 
+
+Uma vez calculada a matriz de pontos, observamos duas seções de resultados. A região à esquerda mostra a própria matriz, em que pixels escuros representam pontuações baixas, ou seja, indesejáveis. À esquerda, visualizamos um histograma da frequência de cada pontuação. Manipulando este histograma, por meio das barras de rolagem horizontais, é possível ajustar a exibição da matriz de pontos.
+
+![dotlet-buttons](linux/Figs/DotLetResultado1.png)
+
+- ![exercicio](linux/Figs/f03c15.png) Explique como o tamanho da janela afeta a exibição na matriz de pontos.
+- ![exercicio](linux/Figs/f03c15.png) Qual é o significado da linha rosa no histograma de pontuação?
+- ![exercicio](linux/Figs/f03c15.png) Que interpretação você pode fazer das repetições invertidas que podem ser detectadas na matriz de pontos?
+- ![exercicio](linux/Figs/f03c15.png) Compare a sequência de cDNA e sua contraparte genômica de ANAC092 2 . Descreva os resultados.
