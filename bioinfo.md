@@ -412,3 +412,17 @@ conda deactivate
 
 - ![exercicio](linux/Figs/f03c15.png) Explique como o tamanho da janela afeta a exibição na matriz de pontos.
 - ![exercicio](linux/Figs/f03c15.png) Qual é o significado das linhas azuis e vermelhas na matriz de pontos?
+
+Encontre quais programas do EMBOSS conseguem criar dotplots. Pode usar o pacote wossname para fazer buscas com palavras-chave na descrição dos programas de EMBOSS. Lembre-se de ativar o ambiente de EMBOSS.
+
+```bash
+conda activate emboss
+```
+
+Recupere do [NCBI](https://www.ncbi.nlm.nih.gov/) as sequencias NM_214647 e NW_732498. Crie um dotplot com as sequências de cDNA (NM_214647) e genômica (NW_732498) e ![exercicio](linux/Figs/f03c15.png): descreva as sequências, por exemplo, em qual banco de dados estavam disponiveis, o organismo de origem, seus comprimentos; em seguida, descreva o procedimento para realizar o dotplot, como a seleção de parâmetros e, finalmente, descreva seus resultados.
+
+Não esqueça de desativar o ambiente de EMBOSS.
+
+```bash
+conda deactivate
+```
