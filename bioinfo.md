@@ -365,7 +365,7 @@ Ao realizar certos tipos de análise, por exemplo, a busca por sítios de ligaç
 
 As matrizes de pontos (“Dot Plot”) são ferramentas exploratórias para comparar strings de texto, ou seja, sequências. Entre outros, eles nos permitem encontrar facilmente regiões repetidas em uma sequência comparando-a com ela mesma. Também podemos ter uma boa ideia da estrutura de um gene comparando a sequência de sua região de codificação com a sequência do locus onde se encontra. 
 
-Nesta seção, usaremos a implementação de matrizes de pontos do Instituto Suı́ço de Bioinformática, conhecida como [Dot Let](http://myhits.isb-sib.ch/cgi-bin/dotlet), que vemos na seguinte figura:
+Nesta seção, usaremos a implementação de matrizes de pontos do Instituto Suı́ço de Bioinformática, conhecida como [Dot Let](https://dotlet.vital-it.ch/), que vemos na seguinte figura:
 
 ![dotlet](linux/Figs/DotLet1.jpeg)
 
