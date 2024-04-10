@@ -484,4 +484,19 @@ Responda:
 No alinhamento global, o objetivo é comparar duas sequências ao longo de toda a sua extensão. Portanto, é apropriado quando esperamos que a semelhança entre as duas sequências se estenda por toda a sequência. No pacote EMBOSS, você encontrará o aplicativo 'needle', que implementa rigorosamente o algoritmo de [Needleman e Wunsch (1970)](https://doi.org/10.1016/0022-2836(70)90057-4) para obter o alinhamento global ideal por meio de programação dinâmica. Esta implementação pode demorar algum tempo para obter o alinhamento quando as sequências são longas.
 
 - ![exercicio](linux/Figs/f03c15.png) Quais outros aplicativos no EMBOSS permitem que você faça alinhamentos globais? 
-- ![exercicio](linux/Figs/f03c15.png)O que os torna diferentes de 'needle'?
+- ![exercicio](linux/Figs/f03c15.png) O que os torna diferentes de 'needle'?
+- ![exercicio](linux/Figs/f03c15.png) Faça um alinhamento global entre o [cDNA](https://raw.githubusercontent.com/labbces/cen0485/main/files/ANAC092_cDNA.fa) e a sequência [genômica](https://raw.githubusercontent.com/labbces/cen0485/main/files/ANAC092_genomic.fasta) do gene ANAC092.
+- ![exercicio](linux/Figs/f03c15.png) Qual matriz de substituições e penalidades para abrir e estender GAPs que você usou? Ex-
+plicar.
+- ![exercicio](linux/Figs/f03c15.png) Qual é a pontuação do alinhamento, seu comprimento e as porcentagens de identidade e
+semelhança?
+- ![exercicio](linux/Figs/f03c15.png) Explique a diferença entre semelhança e identidade.
+- ![exercicio](linux/Figs/f03c15.png) O que significam os sı́mbolos? :, . y |?
+
+Compare as sequências de aminoácidos das proteinas [ANAC092_pep.fasta](https://raw.githubusercontent.com/labbces/cen0485/main/files/ANAC092_pep.fasta) e [Pp3c6_27690](https://phytozome-next.jgi.doe.gov/report/gene/Ppatens_v3_3/Pp3c6_27690), codificadas por dois genes da família NAC de fatores de transcrição, em _Arabidopsis lyrata_ e no musgo _Physcomitrella patens_, respectivamente.
+
+- ![exercicio](linux/Figs/f03c15.png)  Realize um alinhamento global entre as sequências de aminoácidos das proteínas NAC de _Arabidopsis lyrata_ e do musgo _Physcomitrella patens_.
+- ![exercicio](linux/Figs/f03c15.png) Qual matriz de substituições e de penalidades utilizadas para abrir e estender gaps usou? Por favor, explique sua escolha.
+- ![exercicio](linux/Figs/f03c15.png) Qual é a pontuação do alinhamento, seu comprimento, e quais são os percentuais de identidade e semelhança obtidos?
+- ![exercicio](linux/Figs/f03c15.png) É possível melhorar o alinhamento ajustando outros parâmetros? Discuta suas opções.
+
