@@ -500,3 +500,64 @@ Compare as sequências de aminoácidos das proteinas [ANAC092_pep.fasta](https:/
 - ![exercicio](linux/Figs/f03c15.png) Qual é a pontuação do alinhamento, seu comprimento, e quais são os percentuais de identidade e semelhança obtidos?
 - ![exercicio](linux/Figs/f03c15.png) É possível melhorar o alinhamento ajustando outros parâmetros? Discuta suas opções.
 
+### Alinhamento local
+
+Conforme mencionado na seção anterior, o alinhamento global compara sequências ao longo de todo o seu comprimento. É necessário decidir se essa estratégia é a mais adequada para cada caso específico. O que aconteceria se você comparasse duas proteínas multidomínio que compartilham apenas um domínio entre si?
+
+O objetivo do alinhamento local é identificar regiões de similaridade localizada, sem a necessidade de incluir as sequências completas. Esse tipo de alinhamento é particularmente útil para pesquisar em bancos de dados ou quando a semelhança entre a sequência de interesse e as sequências disponíveis no banco de dados não é conhecida.
+
+Dentro do pacote EMBOSS, você encontrará a aplicação 'water', que implementa o algoritmo de [Smith e Waterman (1981)](https://doi.org/10.1016/0022-2836(81)90087-5) para obter o alinhamento local exacto através de programação dinâmica. Esta implementação pode demorar algum tempo para alcançar o alinhamento, especialmente quando as sequências são longas.
+
+- ![exercicio](linux/Figs/f03c15.png) Que outros aplicativos no EMBOSS permitem que você faça alinhamentos locais? O que os
+torna diferentes de water?
+- ![exercicio](linux/Figs/f03c15.png) Faça um alinhamento local entre as sequências de aminoácidos das proteı́nas NAC de _Arabidopsis lyrata_ e do musgo _Physcomitrella patens_, que você usou na seção anterior.
+- ![exercicio](linux/Figs/f03c15.png) Qual a matriz de subtituição e penalidades para abrir e estender gaps que você usou? Explicar.
+- ![exercicio](linux/Figs/f03c15.png) Quais são as diferenças entre o alinhamento global e local dessas duas sequências?
+
+### Significado dos alinhamentos
+
+Independentemente das sequências fornecidas aos programas de alinhamento, eles sempre produzirão um alinhamento. Utilize as sequências de aminoácidos [ANAC092](https://raw.githubusercontent.com/labbces/cen0485/main/files/ANAC092_pep.fasta) e empregue o programa 'shuffleseq' para gerar duas sequências aleatórias com a mesma composição monomérica que ANAC092. Realize um alinhamento global e local com essas duas sequências aleatórias.
+
+- ![exercicio](linux/Figs/f03c15.png) Qual é a pontuação do alinhamento, seu comprimento, e quais são os percentuais de identidade e semelhança?
+
+Prossiga realizando um alinhamento local e global entre a sequência de aminoácidos de ANAC092 e uma das versões aleatórias.
+
+- ![exercicio](linux/Figs/f03c15.png) Qual é a pontuação do alinhamento, seu comprimento, e quais são os percentuais de identidade e semelhança?
+- ![exercicio](linux/Figs/f03c15.png) Discurse sobre seus resultados.
+
+## Basic Local Alignment Search Tool - BLAST
+
+A seguinte figura mostra os sabores de BLAST disponiveis no NCBI. Na primeira parte deste tutorial, realizaremos alguns exercícios utilizando esta interface gráfica do BLAST.
+
+![BLAST home](Figs/BLAST_flavours.png)
+
+O arquivo [desconocido.nuc.fa](https://raw.githubusercontent.com/labbces/cen0485/main/files/desconocido.nuc.fa), contém a sequência nucleotídica de um transcrito descoberta por você ao realizar uma análise de expressão diferencial em _A. thaliana_ sob tratamento com luz ultravioleta (UV-A), condição que induziu este transcrito. Copie a sequência da transcrição e acesse o site http://blast.ncbi.nlm.nih.gov/ através do se navegador navegador web. Vamos conduzir uma pesquisa BLAST básica; procure na página a busca com o programa 'blastx'. ![exercicio](linux/Figs/f03c15.png) Por que escolher 'blastx'?
+
+No 'blastx', cole sua sequência desconhecida no campo “Enter query sequence” e digite Viridiplantae no campo “Organism” para restringir a busca a sequências de plantas verdes. Certifique-se de que o banco de dados selecionado seja o banco de dados não redundante de sequências proteicas.
+
+![BLASTx input](linux/Figs/blastx_input.png)
+
+Em buscas que envolvem a tradução online de uma sequência de DNA, você pode escolher o código genético a ser utilizado na tradução. Assegure-se de que o código genético selecionado seja o “Standard”. Mais abaixo, clique no link “Algorithm parameters”, o que revelará uma série de opções. Na seção “General parameters”, encontre o limiar esperado ou valor E. O valor E é o número esperado de alinhamentos com uma pontuação igual ou maior que a obtida que apareceriam por acaso. Ao selecionar alinhamentos significativos, este é o parâmetro mais importante; geralmente, alinhamentos com um valor E menor que 1 × 10^−5 representam sequências homólogas. No entanto, se estiver alinhando sequências muito curtas, por exemplo, de 20 resíduos, você deve permitir alinhamentos com um valor E muito alto, cerca de 100. Na seção “Scoring parameters”, você pode selecionar a matriz de substituição (escolha BLOSUM80) e a penalidade por inserir gaps no alinhamento. Observe que existe uma diferença entre o custo de introduzir um gap e o de estendê-lo. Por que essa diferença ocorre? As opções para abrir e estender gaps dependem da matriz de substituição escolhida.
+
+![BLASTx input](linux/Figs/blastx_parameters.png)
+
+Certifique-se de que a opção Filter na seção Filters and Masking esteja selecionada, a fim de reduzir o número de alinhamentos com sequências evolutivamente não relacionadas. 
+
+Agora clique no botão BLAST e aguarde os resultados.
+
+Os resultados fornecidos pelo BLAST vêm em diferentes apresentações. Primeiro encopntrará uma tabela com os melhores resultados (hits), mostrando o identificador (Número de Acesso) da sequência encontrada, uma parte de sua descrição, a pontoacão do alinhamento entre sua sequência desconhecida (_query_) e a sequência do banco de dados (_subject_), o percentual da sequência _query_ que está representado no alinhamento, a identidade e o valor E. É possível reordenar os dados nesta tabela clicando nos nomes das colunas. 
+
+![BLASTx results 1](Figs/BLASTx_results1.png)
+
+Também tem acesso a um resumo grafico dos _hits_. Este gráfico é uma representação dos melhores alinhamentos com um código de cores que indica o comprimento do alinhamento. 
+
+![BLASTx results 2](Figs/BLASTx_results2.png)
+
+Finalmente, você chega aos próprios alinhamentos. Aqui, encontrará novamente o escore e o valor E do alinhamento. Além disso, são apresentados o número de posições em que as duas sequências eram idênticas e similares (conforme a matriz de substituição) e o número de lacunas (gaps).
+
+![BLASTx results 3](Figs/BLASTx_results3.png)
+
+- ![exercicio](linux/Figs/f03c15.png) O que indicam as regiões dos alinhamentos que aparecem em cinza e em minúsculas? 
+- ![exercicio](linux/Figs/f03c15.png) O que você pode dizer sobre a função do seu transcrito? Qual informação foi relevante para realizar essa inferência?
+
+A interface web do NCBI BLAST é bastante intuitiva e amigável, entretanto, enfrenta algumas limitações ao se trabalhar com genômica e proteômica: (i) não é possível efetuar buscas em bancos de dados personalizados ou privados e (ii) existe uma limitação no número de sequências que podem ser utilizadas como consulta em cada busca. A solução mais eficiente para superar esses obstáculos é instalar o NCBI BLAST em um computador pessoal e configurar os bancos de dados específicos nos quais se deseja pesquisar. Este processo, no entanto, será abordado em outra ocasião.
