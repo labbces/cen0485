@@ -525,7 +525,7 @@ Prossiga realizando um alinhamento local e global entre a sequência de aminoác
 - ![exercicio](linux/Figs/f03c15.png) Qual é a pontuação do alinhamento, seu comprimento, e quais são os percentuais de identidade e semelhança?
 - ![exercicio](linux/Figs/f03c15.png) Discurse sobre seus resultados.
 
-## Basic Local Alignment Search Tool - BLAST
+### Basic Local Alignment Search Tool - BLAST
 
 A seguinte figura mostra os sabores de BLAST disponiveis no NCBI. Na primeira parte deste tutorial, realizaremos alguns exercícios utilizando esta interface gráfica do BLAST.
 
