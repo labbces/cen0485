@@ -426,3 +426,62 @@ Não esqueça de desativar o ambiente de EMBOSS.
 ```bash
 conda deactivate
 ```
+
+## Comparação de Sequências II - Alinhamentos de pares de sequências
+
+Algumas partes deste capı́tulo vêm do tutorial disponivel neste [link](http://emboss.sourceforge.net/docs/emboss_tutorial/emboss_tutorial.pdf).
+
+Para realizar os exercícios deste capítulo, lembre-se de ativar o ambiente conda do EMBOSS, conforme demonstrado na linha a seguir.
+
+```bash
+conda activate emboss
+```
+
+Quando terminar os exercícios, ou antes de ativar outro ambiente, lembre-se de desativar o ambiente atualmente ativo:
+
+```bash
+conda deactivate
+```
+### Matrizes de substituição
+
+Vamos procurar, dentro da suíte do EMBOSS, o arquivo com a matriz de substituição PAM250. Para isso, você pode executar o seguinte comando:
+
+```bash
+embossdata EPAM250
+```
+
+Você obterá uma saída na sua tela semelhante à seguinte:
+
+```
+Find and retrieve EMBOSS data files
+# The following directories can contain EMBOSS data files.
+# They are searched in the following order until the file is found.
+# If the directory does not exist, then this is noted below.
+# '.' is the UNIX name for your current working directory.
+
+File ./EPAM250                                                    Does not exist
+File .embossdata/EPAM250                                          Does not exist
+File /home/diriano/EPAM250                                        Does not exist
+File /home/diriano/.embossdata/EPAM250                            Does not exist
+File /usr/share/EMBOSS/data/EPAM250                               Exists
+```
+
+O que esperamos encontrar é o caminho onde o arquivo EPAM250 está armazenado. Observe que, em uma das linhas, a última palavra é 'Exists', indicando que o arquivo se encontra naquele local. Selecione o caminho do arquivo e visualize-o com o comando 'less':
+
+```
+less /usr/share/EMBOSS/data/EPAM250 
+```
+
+Responda:
+
+- ![exercicio](linux/Figs/f03c15.png) Quem, e como, criou a famı́lia PAM de matrizes de substituição?
+- ![exercicio](linux/Figs/f03c15.png) Onde estão as maiores pontuações? Explicar.
+- ![exercicio](linux/Figs/f03c15.png) Qual é a substituição com a maior pontuação?
+- ![exercicio](linux/Figs/f03c15.png) Por que as identidades não têm sempre a mesma pontuação?
+
+### Alinhamento Global
+
+No alinhamento global, o objetivo é comparar duas sequências ao longo de toda a sua extensão. Portanto, é apropriado quando esperamos que a semelhança entre as duas sequências se estenda por toda a sequência. No pacote EMBOSS, você encontrará o aplicativo 'needle', que implementa rigorosamente o algoritmo de [Needleman e Wunsch (1970)](https://doi.org/10.1016/0022-2836(70)90057-4) para obter o alinhamento global ideal por meio de programação dinâmica. Esta implementação pode demorar algum tempo para obter o alinhamento quando as sequências são longas.
+
+- ![exercicio](linux/Figs/f03c15.png) Quais outros aplicativos no EMBOSS permitem que você faça alinhamentos globais? 
+- ![exercicio](linux/Figs/f03c15.png)O que os torna diferentes de 'needle'?
