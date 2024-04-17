@@ -93,3 +93,5 @@ BiocManager::install("Rgraphviz",update = FALSE,ask = FALSE)
 
 install.packages(c('pheatmap','mclust','reshape2','ggplot2','readr'))
 install.packages(c("ggVennDiagram","mclust"))
+
+conda create -y -n compseqiii jalview muscle
