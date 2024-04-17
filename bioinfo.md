@@ -589,6 +589,8 @@ O programa completa o procedimento de alinhamento em alguns segundos e grava o a
 jalview primatesAA_muscle.afa
 ```
 
+![JalView screenshot](Figs/jalview_primates.png)
+
 - ![exercicio](linux/Figs/f03c15.png) Consegue identificar regiões de baixa qualidade no alinhamento? O que permite identificar essas regiões? Mostre um screenshot de algumas delas.
 
 Muitas vezes, as regiões variáveisno alinhamento podem apresentar uma grande incerteza associada, e pode ser desejável descartá-las antes de prosseguir com as análises. O Trimal é uma ferramenta que facilita, entre outras funções, a tarefa de 'trimagem' do alinhamento de acordo com vários critérios selecionados pelo usuário. Em seguida, vamos usar o Trimal com a opção de remoção automática de regiões com muitos gaps, _-gappyout_. No entanto, repare que o software é muito flexível, e você pode especificar outros critérios que se adaptem melhor ao seu caso específico.
