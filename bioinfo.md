@@ -565,7 +565,65 @@ A interface web do NCBI BLAST é bastante intuitiva e amigável, entretanto, enf
 ## Comparação de Sequências III - Alinhamento Múltiplo de Sequências
 
 Na teoria, os algoritmos de programação dinâmica descritos acima para alinhamentos de pares de sequências podem ser estendidos para o caso de um número arbitrário de sequências. Na prática, isso é computacionalmente muito caro, o que levou ao desenvolvimento de outros algoritmos que implementam atalhos na busca por alinhamentos ideais (heurísticos). O desenvolvimento de algoritmos para alinhamento de múltiplas sequências é uma área muito dinâmica na bioinformática. Atualmente, existem dezenas de programas que implementam diferentes algoritmos (ver [Notredame, 2007](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.0030123), e [Lemey et al., 2009](
-https://doi.org/10.1017/CBO9780511819049), para uma revisão recente do tópico).Avanços recentes têm um foco especial dedicado à análise de milhões de sequências ([Santus et al., 2023](https://doi.org/10.1016/j.sbi.2023.102577)).
+https://doi.org/10.1017/CBO9780511819049), para uma revisão recente do tópico). Avanços recentes têm um foco especial dedicado à análise de milhões de sequências ([Santus et al., 2023](https://doi.org/10.1016/j.sbi.2023.102577)).
 
 Nesta sessão, vamos desenvolver parte da prática apresentada no [capítulo 3 (página 100)](https://www.cambridge.org/core/books/phylogenetic-handbook/multiple-sequence-alignment/8625BB5832B90E7D5548928E8820E9B8) de [Lemey et al., 2009](
-https://doi.org/10.1017/CBO9780511819049). Vamos alinhar as sequências dos genes TRIM5&alpha; de diferentes espécies de primatas. O TRIM5&alpha; é um fator de restrição viral que protege a maioria dos macacos do Velho Mundo (Cercopithecidae) da infecção pelo HIV. Esses dados foram originalmente analisados por [Sawyer et al., 2005](https://doi.org/10.1073/pnas.0409853102). Usaremos métodos de refinamento iterativo (Muscle) para criar vários alinhamentos proteicos e, em seguida, comparar os resultados usando JalView. Vamos criar os alinhamentos das sequências proteicas e gerar o alinhamento correspondente no nível de nucleotídeo, terminando com a inspeção manual e o refinamento do alinhamento.
+https://doi.org/10.1017/CBO9780511819049). Vamos alinhar as sequências dos genes TRIM5&alpha; de diferentes espécies de primatas. O TRIM5&alpha; é um fator de restrição viral que protege a maioria dos macacos do Velho Mundo (Cercopithecidae) da infecção pelo HIV. Esses dados foram originalmente analisados por [Sawyer et al., 2005](https://doi.org/10.1073/pnas.0409853102). Usaremos métodos de refinamento iterativo (Muscle) para criar alinhamentos proteicos e, em seguida, visualizar os resultados usando JalView. A partir do alinhamento das sequências proteicas vamos gerar o alinhamento correspondente no nível de nucleotídeo, terminando com a inspeção manual e o refinamento do alinhamento.
+
+### Alinhando as sequências de aminoácidos de TRIM5&alpha; de primatas com Muscle
+
+Para obter o alinhamento das sequências no arquivo [primatesAA.fasta](https://raw.githubusercontent.com/labbces/cen0485/main/files/primatesAA.fasta) pelo método de refinamento iterativo, usaremos o programa Muscle ([Edgar, 2004](https://doi.org/10.1186/1471-2105-5-113)). Este programa está instalado localmente em seu computador dentro do ambiente de conda compseqiii.
+
+```
+conda activate compseqiii 
+cd
+mkdir trim5alpha
+cd trim5alpha
+wget https://raw.githubusercontent.com/labbces/cen0485/main/files/primatesAA.fasta
+muscle -align primatesAA.fasta -output primatesAA_muscle.afa
+```
+
+O programa completa o procedimento de alinhamento em alguns segundos e grava o arquivo de saída em formato fasta ("primatesAA_muscle.afa"). Você pode visualizar o alinhamento com o programa JalView, que possui uma interface gráfica muito intuitiva.
+
+```
+jalview primatesAA_muscle.afa
+```
+
+- ![exercicio](linux/Figs/f03c15.png) Consegue identificar regiões de baixa qualidade no alinhamento? O que permite identificar essas regiões? Mostre um screenshot de algumas delas.
+
+Muitas vezes, as regiões variáveisno alinhamento podem apresentar uma grande incerteza associada, e pode ser desejável descartá-las antes de prosseguir com as análises. O Trimal é uma ferramenta que facilita, entre outras funções, a tarefa de 'trimagem' do alinhamento de acordo com vários critérios selecionados pelo usuário. Em seguida, vamos usar o Trimal com a opção de remoção automática de regiões com muitos gaps, _-gappyout_. No entanto, repare que o software é muito flexível, e você pode especificar outros critérios que se adaptem melhor ao seu caso específico.
+
+```
+trimal  -in primatesAA_muscle.afa -out primatesAA_muscle.trim.afa -gappyout
+```
+
+- ![exercicio](linux/Figs/f03c15.png) Usando o jalview compare os dois alinhamentos *primatesAA_muscle.afa* e *primatesAA_muscle.trim.afa*. Descreva suas observações.
+
+### TRIM5&alpha; do alinhemento de proteinas ao alinhamento de nucletídeos.
+
+A degeneração do código genético leva a que um alinhamento de ácidos nucleicos forneça mais informações do que um alinhamento de proteínas. ![exercicio](linux/Figs/f03c15.png) Pode explicar por que isso acontece? No entanto, alinhar ácidos nucleicos de forma precisa é consideravelmente mais desafiador do que alinhar sequências de aminoácidos, principalmente devido às diferenças nos tamanhos dos alfabetos usados por essas macromoléculas: 4 nucleotídeos versus 20 aminoácidos.
+
+Idealmente, alinhamentos em nível de nucleotídeos de sequências codificantes (CDS) deveriam respeitar as posições dos códons para manter a integridade funcional das proteínas codificadas. No entanto, programas como Muscle, MAFFT e ClustalX não consideram essa estrutura de códons, o que pode resultar em alinhamentos incorretos.
+
+Para obter um alinhamento acurado em nível de nucleotídeos, é crucial utilizar ferramentas que integrem a análise de códons ou ajustar manualmente os alinhamentos para garantir que as trincas de nucleotídeos correspondam corretamente aos códons. Isso pode ser feito através de softwares especializados ou de abordagens complementares que focam em preservar a estrutura de códons durante o processo de alinhamento.
+
+Nesta sessão prática, vamos empregar dois programas diferentes para obter o alinhamento em nível de nucleotídeos, informado pelo alinhamento das sequências de proteínas. Um desses programas é o [TranslatorX](http://translatorx.co.uk/), que possui uma interface web. Nele, você vai precisar do alinhamento das proteínas sem trimagem, e das [sequências de nucleotídeos correspondentes](https://raw.githubusercontent.com/labbces/cen0485/main/files/primatesNuc.fasta). ![exercicio](linux/Figs/f03c15.png) Descreva os passos para gerar esse alinhamento.
+
+O outro programa que vamos usar é o Trimal, que já usamos para trimar as sequências. O Trimal consegue realizar dois passos simultaneamente: remover regiões duvidosas do alinhamento seguindo a especificação do usuário e obter o alinhamento de nucleotídeos compatível/informado com o alinhamento das proteínas. Vale a pena conferir a [documentação](http://trimal.cgenomics.org/) do Trimal para entender melhor as opções que ele oferece.
+
+```
+cd
+cd trim5alpha
+wget https://raw.githubusercontent.com/labbces/cen0485/main/files/primatesNuc.fasta
+trimal  -in primatesAA_muscle.afa -out primatesAA_muscle.trim.nuc.afa -gappyout -backtrans primatesNuc.fasta
+```
+
+Realize um alihnamento das sequenciuas de nucleotidos ignorando completamente a estrutura de códons usando mucle:
+
+```
+cd
+cd trim5alpha
+muscle -align primatesNuc.fasta -output primatesNuc_muscle.afa
+```
+
+- ![exercicio](linux/Figs/f03c15.png) Compare os alinhamentos *primatesNuc_muscle.afa* e *primatesAA_muscle.trim.nuc.afa* e descreva os resultados.
