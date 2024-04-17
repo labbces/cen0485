@@ -644,3 +644,34 @@ Siga o [link](https://jaspar.elixir.no/matrix/MA0265.3/) da PSSM que representa 
 - ![exercicio](linux/Figs/f03c15.png) Qual é o tamanho do alfabeto usado na matriz?
 • ![exercicio](linux/Figs/f03c15.png) Qual é a largura da matriz?
 • ![exercicio](linux/Figs/f03c15.png) Quantos sitios de ligação Abf1 estão armazenados no Jaspar? Qual cromossomo tem o maior número de sitios de ligação? Dica: examine o arquivo BED.
+
+As PSSM podem ser representadas graficamente como Logos de Sequências (Sequence Logos). Esse tipo de representação foi concebido por [Schneider e Stephens](https://doi.org/10.1093/nar/18.20.6097) em 1990. A seguir, encontra-se o sequence logo que representa a matriz MA0265.3 do fator de transcrição ABF1:
+
+![SeqLogo ABF1](Figs/SeqLogoABF1.png)
+
+- ![exercicio](linux/Figs/f03c15.png) Explique brevemente o que está representado no sequence logo. O que está representado pelo eixo _y_? Como o conteúdo de informação de cada posição é calculado?
+
+### Modelos ocultos de Markov: HMMs
+
+Mesmo que você não encontre proteínas homólogas ao realizar uma busca com BLAST, ainda existem outras opções. A principal razão pela qual ele não encontra homólogos triviais é que pesquisas com sequências usando ferramentas como BLAST têm baixa sensibilidade. O BLAST normalmente não encontra proteínas homólogas que tenham menos de 30% de identidade. No entanto, algumas proteínas podem ter a mesma estrutura tridimensional e apresentar apenas 10% de identidade. Uma estratégia muito útil para encontrar ortólogos distantes é baseada no uso de Modelos de Hidden Markov (HMMs). Um HMM é essencialmente uma maneira probabilistica de definir motivos ou domínios.
+
+Para criar um HMM, tudo o que você precisa é de um alinhamento múltiplo, que será usado para criar uma representação probabilística. Esta, por sua vez, pode ser utilizada para procurar sequências relacionadas. Os bancos de dados como o Pfam ([Mistry et al., 2021](https://doi.org/10.1093/nar/gkaa913)) são coleções de alinhamentos múltiplos para os quais os HMMs foram desenvolvidos. Estes modelos são utilizados para anotar sequências proteicas. A maior parte do trabalho dos curadores desses bancos de dados consiste em criar esses alinhamentos múltiplos. Recentemente o banco de dados PFAM foi integrado dentro do [InterPro](https://www.ebi.ac.uk/interpro/).
+
+Vamos usar a seguinte proteı́na para fazer uma pesquisa no Pfam usando o Interpro:
+
+```
+>seq
+MEYWHYVETTSSGQPLLREGEKDIFIDQSVGLYHGKSKILQRQRGRIFLTSQRIIYIDDAKPTQ
+NSLGLELDDLAYVNYSSGFLTRSPRLILFFKDPSSKDELGKSAETASADVVSTWVCPICMVSNE
+TQGEFTKDTLPTPICINCGVPADYELTKSSINCSNAIDPNANPRNQFGVNSENICPACTFANHP
+QIGNCEICGHRLPNASKVRSKLNRLNFHDSRVHIELEKNSLARNKSSHSALSSSSSTGSSTEFV
+QLSFRKSDGVLFSQATERALENILTEKNKHIFN
+```
+
+Vá para o site do [InterPro](https://www.ebi.ac.uk/interpro/), certifique-se de selecionar apenas a aplicação PFAM na seção de Advanced Options -> Applications, conforme mostra a figura:
+
+![Interpro PFAM](Figs/InterProPFAM.png)
+
+Discuta os resultados obtidos:
+
+![InterPro PFAM results](Figs/InterProPFAMres.png)
