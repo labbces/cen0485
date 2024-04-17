@@ -620,7 +620,7 @@ wget https://raw.githubusercontent.com/labbces/cen0485/main/files/primatesNuc.fa
 trimal  -in primatesAA_muscle.afa -out primatesAA_muscle.trim.nuc.afa -gappyout -backtrans primatesNuc.fasta
 ```
 
-Realize um alihnamento das sequenciuas de nucleotidos ignorando completamente a estrutura de códons usando mucle:
+Realize um alihnamento das sequências de nucleotidos ignorando completamente a estrutura de códons usando mucle:
 
 ```
 cd
@@ -629,3 +629,18 @@ muscle -align primatesNuc.fasta -output primatesNuc_muscle.afa
 ```
 
 - ![exercicio](linux/Figs/f03c15.png) Compare os alinhamentos *primatesNuc_muscle.afa* e *primatesAA_muscle.trim.nuc.afa* e descreva os resultados.
+
+### Position-specific scoring matrices
+
+As matrizes de pontuação específicas da posição (Position-specific scoring matrices, PSSMs) oferecem uma maneira sensível de representar a variabilidade em um alinhamento. Os PSSMs são construídos com base em alinhamentos múltiplos, por exemplo, dos sítios de ligação de fatores de transcrição. Abaixo está uma matriz que foi obtida a partir da base de dados de promotores de Saccharomyces cerevisiae e construída usando um alinhamento de 12 sítios de ligação do fator de transcrição [Pho4p](http://www.yeastract.com/view.php?existing=protein&proteinname=Pho4p) de levedura
+
+![PSSM Pho4p](Figs/PSSM_Pho4p.png)
+
+Cada linha representa um resíduo (A, C, G ou T) e cada coluna uma posição no conjunto de sequências alinhadas. Algumas posições são perfeitamente preservadas em todas as sequências, enquanto outras apresentam algumas alternativas. Ao utilizar esses tipos de matrizes para pesquisas, as posições mais conservadas impõem restrições mais fortes do que aquelas em que qualquer resíduo pode ser encontrado.
+
+Siga o [link](https://jaspar.elixir.no/matrix/MA0265.3/) da PSSM que representa o sitio de ligação do fator de transcricão ABF1 de _Saccharomyces cerevisiae_ no banco de dados Jaspar.
+
+- ![exercicio](linux/Figs/f03c15.png) Que tipo de informações estao armazenadas no banco de dados Jaspar?
+- ![exercicio](linux/Figs/f03c15.png) Qual é o tamanho do alfabeto usado na matriz?
+• ![exercicio](linux/Figs/f03c15.png) Qual é a largura da matriz?
+• ![exercicio](linux/Figs/f03c15.png) Quantos sitios de ligação Abf1 estão armazenados no Jaspar? Qual cromossomo tem o maior número de sitios de ligação? Dica: examine o arquivo BED.
