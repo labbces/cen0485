@@ -675,3 +675,75 @@ Vá para o site do [InterPro](https://www.ebi.ac.uk/interpro/), certifique-se de
 Discuta os resultados obtidos:
 
 ![InterPro PFAM results](Figs/InterProPFAMres.png)
+
+## Montagem de genomas
+
+O processo de montagem de genomas consiste na reconstrução da sequência original de um genoma a partir dos fragmentos de DNA produzidos pelo sequenciador. Lembre-se de que os instrumentos de sequenciamento atuais não conseguem ler cromossomos inteiros na maioria dos casos, especialmente para genomas grandes, ou seja, de dezenas de Mbp ou maiores.
+
+Hoje, vamos montar o genoma de _Komagataeibacter rhaeticus_ a partir de leituras produzidas por duas tecnologias, ou seja, Illumina e PacBio. 
+
+Descarregue o arquivo **MontagemGenomas.tar.gz** do e-Disciplinas e descompacte/descomprima o arquivo em sua máquina, com isso criará a pasta "PRÁTICA DE ENSAMBLAGEM DE GENOMAS".
+
+```bash
+cd ~/Downloads
+mv MontagemGenomas.tar.gz ~/
+cd
+tar xvzf MontagemGenomas.tar.gz
+rm xvzf MontagemGenomas.tar.gz
+cd PRATICA_ENSAMBLAGEM_DE_GENOMAS
+```
+
+## Limpar sequências de Illumina
+
+As tecnologias de segunda geração, como Illumina, produzem leituras que devem ser filtradas por critérios de qualidade de leitura, comprimento, presença de adaptadores, barcodes, contaminantes e artefatos. Em contraste, os sequenciadores e/ou montadores de tecnologias de terceira geração, como PacBio, geralmente já fazem automaticamente esse processo.
+
+Na pasta *PRATICA_ENSAMBLAGEM_DE_GENOMAS/* encontra dois arquivos fastq com leituras pareadas de Illumina, i.e., *illumina_R1.fq* e *illumina_R2.fq*. Vamos usar o programa [FastQC](FASTQC) para visualizar a qualidades das leituras brutas.
+
+- ![exercicio](linux/Figs/f03c15.png) O que são leituras pareadas?
+- ![exercicio](linux/Figs/f03c15.png) Explique a organização do formato FASTQ.
+
+```bash
+conda activate fastqc
+fastqc --nogroup --threads 2 illumina_R1.fq illumina_R2.fq
+conda deactivate
+```
+
+O programa FastQC gerou dois arquivos *.html* que voce pode visualizar no seu navegador favorito. Discuta os resultados com o professor.
+
+Agora, utilizaremos o [BBduk](https://jgi.doe.gov/data-and-tools/software-tools/bbtools/bb-tools-user-guide/bbduk-guide/) para a limpeza dos dados. O BBduk é capaz de realizar aprimoramentos na qualidade através de quality trimming, filtragem, remoção de adaptadores e filtragem de contaminantes utilizando correspondência por k-mer.
+
+```bash
+bbduk.sh in1=illumina_R1.fq in2=illumina_R2.fq out1=./bbduk/bbduk.R1.fq \
+out2=./bbduk/bbduk.R2.fq minlength=75 qtrim=w trimq=20 ref=adapters stats=stats.txt
+conda deactivate
+```
+
+- ![exercicio](linux/Figs/f03c15.png) Qual é o significado das opções **qtrim=w** e **trimq=20**?
+
+O BBduk vai gerar dois arquivos filtrados, *bbduk.R1.fq* e *bbduk.R2.fq*, na pasta *bbduk*. Esses arquivos serão usados na montagem de novo do genoma. Antes de montar o genoma, vamos usar o programa FASTQC para visualizar o efeito da filtragem do BBduk nas nossas leituras de Illumina.
+
+- ![exercicio](linux/Figs/f03c15.png) Explique as diferenças no item "Per base quality" do relatório do FASTQC das leituras de Illumina antes e depois da filtragem com o bbduk.
+
+## Limpar sequências de PacBio HiFi
+
+Apesar de as leituras de PacBio HiFi normalmente não conterem adaptadores, pois estes são removidos durante o processamento dos dados de sequenciamento, sempre vale a pena conferir com um programa adicional. Neste caso, usaremos o [HiFiAdapterFilt](https://github.com/sheinasim/HiFiAdapterFilt).
+
+```bash
+cd 
+cd PRATICA_ENSAMBLAGEM_DE_GENOMAS
+conda activate hifiadapterfilt
+git clone https://github.com/sheinasim/HiFiAdapterFilt.git
+export PATH=$PATH:~/PRATICA_ENSAMBLAGEM_DE_GENOMAS/HiFiAdapterFilt
+export PATH=$PATH:~/PRATICA_ENSAMBLAGEM_DE_GENOMAS/HiFiAdapterFilt/DB
+bash hifiadapterfilt.sh -l 44 -m 97 -t 4 -o HiFiAdapterFilt_res -p PacBio
+```
+
+O processo anterior vai gerar o arquivo *HiFiAdapterFilt_res/PacBio.filt.fastq.gz*, que será usado na montagem do genoma.
+
+## Montagem de genoma usando dados Illumina
+
+Vamos montar o genoma com o software [SPAdes](https://currentprotocols.onlinelibrary.wiley.com/doi/abs/10.1002/cpbi.102), um montador de genomas baseados nos grafos de [_de Bruijin_](https://www.nature.com/articles/nbt.2023).
+
+```bash
+spades.py --isolate -o  KRAE_spades -1 bbduk/bbduk.R1.fq  -2 bbduk/bbduk.R2.fq --threads 4
+```
