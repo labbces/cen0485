@@ -97,3 +97,7 @@ install.packages(c('pheatmap','mclust','reshape2','ggplot2','readr'))
 install.packages(c("ggVennDiagram","mclust"))
 
 conda create -y -n compseqiii jalview muscle trimal
+
+conda create -y -n hifiadapterfilt bamtools blast
+
+conda create -y -n spades spades
