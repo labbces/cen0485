@@ -47,6 +47,7 @@ wget https://www.bioinformatics.babraham.ac.uk/projects/redotable/redotable_v1.2
 unzip redotable_v1.2.zip
 cd redotable
 mv redotable ~/miniconda3/envs/redotable/bin/
+chmod a+x ~/miniconda3/envs/redotable/bin/redotable
 mv uk/ ~/miniconda3/envs/redotable/bin/
 cd ..
 rm redotable_v1.2.zip
