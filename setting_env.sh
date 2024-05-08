@@ -3,7 +3,7 @@ sudo usermod -a -G sudo cen0485
 
 sudo apt -y update
 sudo apt -y upgrade
-sudo apt-get install -y libcurl4-openssl-dev zlib1g-dev libbz2-dev build-essential libudunits2-dev libgdal-dev gdal-bin
+sudo apt-get install -y libcurl4-openssl-dev zlib1g-dev libbz2-dev build-essential libudunits2-dev libgdal-dev gdal-bin libfontconfig1-dev libharfbuzz-dev libfribidi-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev
 
 #R - From https://cran.r-project.org/bin/linux/ubuntu/#install-r
 sudo apt -y update -qq
@@ -39,6 +39,7 @@ conda create -y -n quast -c bioconda quast
 conda create -y -n genomescope2 -c bioconda genomescope2
 conda activate genomescope2
 R -e 'install.packages("viridis", repos="https://brieger.esalq.usp.br/CRAN/")'
+R -e 'install.packages("devtools", repos="https://brieger.esalq.usp.br/CRAN/")'
 conda deactivate
 
 conda create -y -n redotable -c bioconda java-jdk
@@ -101,3 +102,9 @@ conda create -y -n compseqiii jalview muscle trimal
 conda create -y -n hifiadapterfilt bamtools blast
 
 conda create -y -n spades spades
+
+conda activate genomescope2
+conda install r-curl -c conda-forge
+sudo apt-get install libfontconfig1-dev libharfbuzz-dev libfribidi-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev
+R -e 'install.packages("devtools", repos="https://brieger.esalq.usp.br/CRAN/")'
+conda deactivate
