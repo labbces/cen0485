@@ -779,3 +779,30 @@ Em seguida, aperte no botão "Draw Graph". As figuras a seguir têm os grafos da
 ![Bandage Flye](Figs/Bandage_003_flye.png)
 
 ![Bandage SPAdes](Figs/Bandage_004_spades.png)
+
+## Métricas das montagens
+
+### Contiguidade
+
+Iremos calcular métricas de contiguidade com o software [Quast](https://academic.oup.com/bioinformatics/article/29/8/1072/228832), como número de contigs produzidos, N50, L50, tamanho do maior contig, etc., para as duas montagens com o intuito de compará-las.
+
+```bash
+conda activate quast
+quast --labels "KRAE_flye, KRAE_spades" --threads 3 KRAE_flye/assembly.fasta KRAE_spades/scaffolds.fasta
+conda deactivate
+```
+
+O Quast gera um arquivo em formato HTML que pode ser facilmente visualizado no seu navegador preferido. 
+
+### Completude do espaco gênico
+
+Além da avaliação da contiguidade, é comum questionar-se se a montagem consegue capturar todos os genes que deveriam estar presentes na espécie. Isso normalmente é chamado de análise de completude do espaço gênico e pode ser conferido com softwares como [BUSCO](https://academic.oup.com/mbe/article/38/10/4647/6329644) ou [Compleasm(https://academic.oup.com/bioinformatics/article/39/10/btad595/7284108)]. O BUSCO (Benchmarking Universal Single-Copy Orthologs) e o compleasem, avaliam a qualidade das montagens de genomas e anotações de genes comparando-os a conjuntos de genes ortólogos esperados universalmente em um determinado clado. O software fornece medidas de completude com base na presença de genes essenciais conservados, ajudando a identificar possíveis deficiências na montagem ou na anotação.
+
+```bash
+conda activate compleasm
+compleasm  run  -a KRAE_flye/assembly.fasta -o compleasem_KRAE_flye -l rhodospirillales_odb10 
+compleasm  run  -a KRAE_spades/scaffolds.fasta -o compleasem_KRAE_spades -l rhodospirillales_odb10 
+conda deactrivate
+```
+
+- ![exercicio](linux/Figs/f03c15.png) Comparar os resultados de completude e contiguidade para as duas montagens.
