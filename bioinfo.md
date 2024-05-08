@@ -726,7 +726,7 @@ O BBduk vai gerar dois arquivos filtrados, *bbduk.R1.fq* e *bbduk.R2.fq*, na pas
 
 ## Limpar sequências de PacBio HiFi
 
-Apesar de as leituras de PacBio HiFi normalmente não conterem adaptadores, pois estes são removidos durante o processamento dos dados de sequenciamento, sempre vale a pena conferir com um programa adicional. Neste caso, usaremos o [HiFiAdapterFilt](https://github.com/sheinasim/HiFiAdapterFilt).
+Apesar das leituras de PacBio HiFi normalmente não conterem adaptadores, pois estes são removidos durante o processamento dos dados de sequenciamento, sempre vale a pena conferir com um programa adicional. Neste caso, usaremos o [HiFiAdapterFilt](https://github.com/sheinasim/HiFiAdapterFilt).
 
 ```bash
 cd 
@@ -745,5 +745,37 @@ O processo anterior vai gerar o arquivo *HiFiAdapterFilt_res/PacBio.filt.fastq.g
 Vamos montar o genoma com o software [SPAdes](https://currentprotocols.onlinelibrary.wiley.com/doi/abs/10.1002/cpbi.102), um montador de genomas baseados nos grafos de [_de Bruijin_](https://www.nature.com/articles/nbt.2023).
 
 ```bash
+conda activate spades
 spades.py --isolate -o  KRAE_spades -1 bbduk/bbduk.R1.fq  -2 bbduk/bbduk.R2.fq --threads 4
+conda deactivate
 ```
+
+## Montagem de genoma usando dados PacBio
+
+Existem montadores especializados em explorar dados de leituras longas de alta qualidade, como o PacBio HiFi. Entre eles está o Flye. [Flye](https://www.nature.com/articles/s41587-019-0072-8), o [HiFiAsm](https://www.nature.com/articles/s41592-020-01056-5), o [HiCanu](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7545148/) e o [IPA](https://github.com/PacificBiosciences/pbipa). Hoje vamos usar o Flye.
+
+```bash
+conda activate flye
+flye --pacbio-hifi HiFiAdapterFilt_res/PacBio.filt.fastq.gz  -o KRAE_flye --threads 5 --min-overlap 1000
+conda deactivate
+```
+
+## Visualizando o grafo de montagem.
+
+Os dois montadores que usamos geraram um grafo com a montagem. Para Illumina, o [grafo](https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)) está no arquivo *assembly_graph_with_scaffolds.gfa* e para o Flye, o grafo está no arquivo *assembly_graph.gfa*. Podemos visualizar esses grafos com o software [Bandage](https://academic.oup.com/bioinformatics/article/31/20/3350/196114).
+
+```bash
+conda activate bandage
+Bandage
+```
+Primeiro carregue o grafo da sua montagem:
+
+![Bandage 1](Figs/Bandage_001.png)
+
+![Bandage 2](Figs/Bandage_002.png)
+
+Em seguida, aperte no botão "Draw Graph". As figuras a seguir têm os grafos das montagens resultantes do Flye e do SPAdes, respectivamente.
+
+![Bandage Flye](Figs/Bandage_003_flye.png)
+
+![Bandage SPAdes](Figs/Bandage_004_spades.png)
