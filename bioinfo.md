@@ -713,6 +713,7 @@ O programa FastQC gerou dois arquivos *.html* que voce pode visualizar no seu na
 Agora, utilizaremos o [BBduk](https://jgi.doe.gov/data-and-tools/software-tools/bbtools/bb-tools-user-guide/bbduk-guide/) para a limpeza dos dados. O BBduk é capaz de realizar aprimoramentos na qualidade através de quality trimming, filtragem, remoção de adaptadores e filtragem de contaminantes utilizando correspondência por k-mer.
 
 ```bash
+conda activate bbmap
 bbduk.sh in1=illumina_R1.fq in2=illumina_R2.fq out1=./bbduk/bbduk.R1.fq \
 out2=./bbduk/bbduk.R2.fq minlength=75 qtrim=w trimq=20 ref=adapters stats=stats.txt
 conda deactivate
