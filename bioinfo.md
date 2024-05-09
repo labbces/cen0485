@@ -805,7 +805,7 @@ FastK -v -t4 -k51 -M16 -T4 HiFiAdapterFilt_res/PacBio.filt.fastq.gz -NKRHAE_pacb
 Histex -G KRHAE_pacbio_k51 > KRHAE_pacbio_51.histo
 conda deactivate
 ```
-Assim, teremos dois arquivos com a extensão .histo. Agora, você pode ir ao site do [GenomeScope2 ](http://genomescope.org/genomescope2.0/) e carregar esses arquivos, um de cada vez. Verifique, após carregar o arquivo, se informou o valor de k usado e a ploidia do organismo, neste caso, 1.
+Assim, teremos dois arquivos com a extensão .histo. Agora, você pode ir ao site do [GenomeScope2 ](http://genomescope.org/genomescope2.0/) e carregar esses arquivos, um de cada vez (caso tenha problema gerando os arquivo, pode usar esses: [illumina](files/KRHAE_k17.histo.gz), [pacbio](files/KRHAE_PB_k51.histo.gz)). Verifique, após carregar o arquivo, se informou o valor de k usado e a ploidia do organismo, neste caso, 1.
 
 - ![exercicio](linux/Figs/f03c15.png) Descreva o espectro de k-mers para os dois conjuntos de dados e o tipo de informações que podem ser extraídas desse espectro.
 
