@@ -878,7 +878,7 @@ Além da avaliação da contiguidade, é comum questionar-se se a montagem conse
 conda activate compleasm
 compleasm  run  -a KRHAE_flye/assembly.fasta -o compleasem_KRHAE_flye -l rhodospirillales_odb10 
 compleasm  run  -a KRHAE_spades/scaffolds.fasta -o compleasem_KRHAE_spades -l rhodospirillales_odb10 
-conda deactrivate
+conda deactivate
 ```
 
 - ![exercicio](linux/Figs/f03c15.png) Comparar os resultados de completude e contiguidade para as duas montagens.
