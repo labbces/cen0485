@@ -103,6 +103,8 @@ conda create -y -n hifiadapterfilt bamtools blast
 
 conda create -y -n spades spades
 
+conda create -y -n dotplotly r-base minimap2 r-ggplot2 r-optparse r-plotly
+
 conda activate genomescope2
 conda install r-curl -c conda-forge
 sudo apt-get install libfontconfig1-dev libharfbuzz-dev libfribidi-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev
