@@ -740,6 +740,76 @@ bash hifiadapterfilt.sh -l 44 -m 97 -t 4 -o HiFiAdapterFilt_res -p PacBio
 
 O processo anterior vai gerar o arquivo *HiFiAdapterFilt_res/PacBio.filt.fastq.gz*, que será usado na montagem do genoma.
 
+## Análise do espectro de k-mers
+
+Os [k-mer](https://en.wikipedia.org/wiki/K-mer) são sequências de DNA de tamanho _k_ encontradas em uma sequência maior. É importante observar que para obter todos os k-mer de uma sequência, você começa no primeiro nucleotídeo da sequência e pega os próximos k nucleotídeos. Em seguida, você desloca-se um nucleotídeo à frente e pega os k nucleotídeos, repete o processo até chegar no fim da sequencia, i.e., até não conseguir pegar k nucleotídeos. Vamos a listar todos os k-mer, com k=3, isto é vamos gerar o catálogo de k-mers da sequência abaixo:
+
+```
+Sequência:   ACGTAGCGTAGGT
+3-mer 1:     ACG
+3-mer 2:      CGT
+3-mer 3:       GTA
+3-mer 4:        TAG
+3-mer 5:         TGC
+3-mer 6:          GCG
+3-mer 7:           CGT
+3-mer 8:            GTA
+3-mer 9:             TAG
+3-mer 10:             AGG
+3-mer 11:              GGT
+
+```
+
+Observe que a quantidade de k-mers distintos corresponde a 4 elevado à k potência (__4^k__). Ao analisar estatísticas relacionadas aos k-mers em dados brutos de sequenciamento, é viável adquirir _insights_ sobre as características do genoma em estudo, mesmo antes de iniciar o processo de montagem. Além disso, muitas dessas estimativas, obtidas por meio das estatísticas dos k-mers, podem informar e influenciar os procedimentos de montagem e anotação do genoma. Através do catálogo de k-mers, é possível calcular as frequências empíricas dos k-mers em um conjunto de dados, ou até mesmo em um genoma montado, resultando no espectro de k-mers desses dados. A frequência empírica dos k-mers na sequência acima é a seguinte:
+
+```
+k-mer	Freq
+ACG	1
+AGG	1
+CGT	2
+GCG	1
+GTA	2
+GGT	1
+TAG	2
+TGC	1
+TTG	1
+```
+
+A partir da frequência empírica de k-mers, podemos calcular o espectro de k-mers, que nada mais é do que um histograma da coluna _Freq_ da tabela acima. Ou seja, o espectro de k-mers informa quantos k-mers distintos aparecem com uma frequência _x_ (multiplicidade ou profundidade), da seguinte maneira:
+
+```
+Número kmers	Multiplicidade
+6		1
+3		2
+```
+
+A partir das frequências empíricas dos k-mers e do espectro de k-mers, é possível estimar várias características do genoma, incluindo tamanho, heterozigosidade, fração do genoma composta por sequências repetitivas e ploidia. Para realizar essas estimativas, podemos utilizar ferramentas como o [GenomeScope2 e o SmudgePlots](https://www.nature.com/articles/s41467-020-14998-3/). Nesta pratica usaremos só o GenomeScope.
+
+Vamos proceder com a instalação de uma ferramenta muito rápida para catalogar e contar k-mers, o FastK, para os dados de Illumina e de PacBio HiFi:
+
+```bash
+conda activate genomescope2
+cd ~/PRATICA_ENSAMBLAGEM_DE_GENOMAS
+git clone https://github.com/thegenemyers/FastK
+cd FastK && make
+install -c FastK Fastrm Fastmv Fastcp Fastmerge Histex Tabex Profex Logex Vennex Symmex Haplex Homex Fastcat /home/cen0485/miniconda3/envs/genomescope2/bin/
+cd ~/PRATICA_ENSAMBLAGEM_DE_GENOMAS
+```
+
+O espectro de k-mers para Illumina será calculado com k=17, e para PacBio com k=51
+
+```bash
+FastK -v -t4 -k17 -M16 -T4 bbduk/bbduk.R[12].fq -NKRHAE_illumina_k17
+Histex -G KRHAE_illumina_k17 > KRHAE_illumina_k17.histo
+FastK -v -t4 -k51 -M16 -T4 HiFiAdapterFilt_res/PacBio.filt.fastq.gz -NKRHAE_pacbio_k51
+Histex -G KRHAE_pacbio_k51 > KRHAE_pacbio_51.histo
+conda deactivate
+```
+Assim, teremos dois arquivos com a extensão .histo. Agora, você pode ir ao site do [GenomeScope2 ](http://genomescope.org/genomescope2.0/) e carregar esses arquivos, um de cada vez. Verifique, após carregar o arquivo, se informou o valor de k usado e a ploidia do organismo, neste caso, 1.
+
+- ![exercicio](linux/Figs/f03c15.png) Descreva o espectro de k-mers para os dois conjuntos de dados e o tipo de informações que podem ser extraídas desse espectro.
+
+
 ## Montagem de genoma usando dados Illumina
 
 Vamos montar o genoma com o software [SPAdes](https://currentprotocols.onlinelibrary.wiley.com/doi/abs/10.1002/cpbi.102), um montador de genomas baseados nos grafos de [_de Bruijin_](https://www.nature.com/articles/nbt.2023).
@@ -780,6 +850,9 @@ Em seguida, aperte no botão "Draw Graph". As figuras a seguir têm os grafos da
 
 ![Bandage SPAdes](Figs/Bandage_004_spades.png)
 
+
+- ![exercicio](linux/Figs/f03c15.png) Explique as diferenças dos grafos das montagens gerados pelo Flye e pelo SPAdes.
+- 
 ## Métricas das montagens
 
 ### Contiguidade
@@ -793,6 +866,8 @@ conda deactivate
 ```
 
 O Quast gera um arquivo em formato HTML que pode ser facilmente visualizado no seu navegador preferido. 
+
+- ![exercicio](linux/Figs/f03c15.png) As métricas de contiguidade permitem diferenciar as duas montagens? Quais métricas oferecem maior informação relevante para avaliar a qualidade das montagens?
 
 ### Completude do espaco gênico
 
