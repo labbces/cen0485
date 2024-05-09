@@ -693,7 +693,7 @@ rm xvzf MontagemGenomas.tar.gz
 cd PRATICA_ENSAMBLAGEM_DE_GENOMAS
 ```
 
-## Limpar sequências de Illumina
+### Limpar sequências de Illumina
 
 As tecnologias de segunda geração, como Illumina, produzem leituras que devem ser filtradas por critérios de qualidade de leitura, comprimento, presença de adaptadores, barcodes, contaminantes e artefatos. Em contraste, os sequenciadores e/ou montadores de tecnologias de terceira geração, como PacBio, geralmente já fazem automaticamente esse processo.
 
@@ -725,7 +725,7 @@ O BBduk vai gerar dois arquivos filtrados, *bbduk.R1.fq* e *bbduk.R2.fq*, na pas
 
 - ![exercicio](linux/Figs/f03c15.png) Explique as diferenças no item "Per base quality" do relatório do FASTQC das leituras de Illumina antes e depois da filtragem com o bbduk.
 
-## Limpar sequências de PacBio HiFi
+### Limpar sequências de PacBio HiFi
 
 Apesar das leituras de PacBio HiFi normalmente não conterem adaptadores, pois estes são removidos durante o processamento dos dados de sequenciamento, sempre vale a pena conferir com um programa adicional. Neste caso, usaremos o [HiFiAdapterFilt](https://github.com/sheinasim/HiFiAdapterFilt).
 
@@ -741,7 +741,7 @@ bash hifiadapterfilt.sh -l 44 -m 97 -t 4 -o HiFiAdapterFilt_res -p PacBio
 
 O processo anterior vai gerar o arquivo *HiFiAdapterFilt_res/PacBio.filt.fastq.gz*, que será usado na montagem do genoma.
 
-## Análise do espectro de k-mers
+### Análise do espectro de k-mers
 
 Os [k-mer](https://en.wikipedia.org/wiki/K-mer) são sequências de DNA de tamanho _k_ encontradas em uma sequência maior. É importante observar que para obter todos os k-mer de uma sequência, você começa no primeiro nucleotídeo da sequência e pega os próximos k nucleotídeos. Em seguida, você desloca-se um nucleotídeo à frente e pega os k nucleotídeos, repete o processo até chegar no fim da sequencia, i.e., até não conseguir pegar k nucleotídeos. Vamos a listar todos os k-mer, com k=3, isto é vamos gerar o catálogo de k-mers da sequência abaixo:
 
@@ -811,7 +811,7 @@ Assim, teremos dois arquivos com a extensão .histo. Agora, você pode ir ao sit
 - ![exercicio](linux/Figs/f03c15.png) Descreva o espectro de k-mers para os dois conjuntos de dados e o tipo de informações que podem ser extraídas desse espectro.
 
 
-## Montagem de genoma usando dados Illumina
+### Montagem de genoma usando dados Illumina
 
 Vamos montar o genoma com o software [SPAdes](https://currentprotocols.onlinelibrary.wiley.com/doi/abs/10.1002/cpbi.102), um montador de genomas baseados nos grafos de [_de Bruijin_](https://www.nature.com/articles/nbt.2023).
 
@@ -821,7 +821,7 @@ spades.py --isolate -o  KRAE_spades -1 bbduk/bbduk.R1.fq  -2 bbduk/bbduk.R2.fq -
 conda deactivate
 ```
 
-## Montagem de genoma usando dados PacBio
+### Montagem de genoma usando dados PacBio
 
 Existem montadores especializados em explorar dados de leituras longas de alta qualidade, como o PacBio HiFi. Entre eles está o Flye. [Flye](https://www.nature.com/articles/s41587-019-0072-8), o [HiFiAsm](https://www.nature.com/articles/s41592-020-01056-5), o [HiCanu](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7545148/) e o [IPA](https://github.com/PacificBiosciences/pbipa). Hoje vamos usar o Flye.
 
@@ -831,7 +831,7 @@ flye --pacbio-hifi HiFiAdapterFilt_res/PacBio.filt.fastq.gz  -o KRAE_flye --thre
 conda deactivate
 ```
 
-## Visualizando o grafo de montagem.
+### Visualizando o grafo de montagem.
 
 Os dois montadores que usamos geraram um grafo com a montagem. Para Illumina, o [grafo](https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)) está no arquivo *assembly_graph_with_scaffolds.gfa* e para o Flye, o grafo está no arquivo *assembly_graph.gfa*. Podemos visualizar esses grafos com o software [Bandage](https://academic.oup.com/bioinformatics/article/31/20/3350/196114).
 
@@ -854,9 +854,9 @@ Em seguida, aperte no botão "Draw Graph". As figuras a seguir têm os grafos da
 
 - ![exercicio](linux/Figs/f03c15.png) Explique as diferenças dos grafos das montagens gerados pelo Flye e pelo SPAdes.
 - 
-## Métricas das montagens
+### Métricas das montagens
 
-### Contiguidade
+#### Contiguidade
 
 Iremos calcular métricas de contiguidade com o software [Quast](https://academic.oup.com/bioinformatics/article/29/8/1072/228832), como número de contigs produzidos, N50, L50, tamanho do maior contig, etc., para as duas montagens com o intuito de compará-las.
 
@@ -870,7 +870,7 @@ O Quast gera um arquivo em formato HTML que pode ser facilmente visualizado no s
 
 - ![exercicio](linux/Figs/f03c15.png) As métricas de contiguidade permitem diferenciar as duas montagens? Quais métricas oferecem maior informação relevante para avaliar a qualidade das montagens?
 
-### Completude do espaco gênico
+#### Completude do espaco gênico
 
 Além da avaliação da contiguidade, é comum questionar-se se a montagem consegue capturar todos os genes que deveriam estar presentes na espécie. Isso normalmente é chamado de análise de completude do espaço gênico e pode ser conferido com softwares como [BUSCO](https://academic.oup.com/mbe/article/38/10/4647/6329644) ou [Compleasm(https://academic.oup.com/bioinformatics/article/39/10/btad595/7284108)]. O BUSCO (Benchmarking Universal Single-Copy Orthologs) e o compleasem, avaliam a qualidade das montagens de genomas e anotações de genes comparando-os a conjuntos de genes ortólogos esperados universalmente em um determinado clado. O software fornece medidas de completude com base na presença de genes essenciais conservados, ajudando a identificar possíveis deficiências na montagem ou na anotação.
 
