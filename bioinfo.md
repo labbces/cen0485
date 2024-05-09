@@ -885,11 +885,22 @@ conda deactrivate
 
 ### Comparacao das duas montagens com matriz de pontos
 
+[DotPlotly](https://github.com/tpoorten/dotPlotly) é uma ferramenta interativa de visualização que facilita a comparação de estruturas de genoma através de dotplots. Aqui está uma sessão prática dividida em etapas. 
+
+Na primeima etapa precisamos alinhar as duas montagens, para isso usaremos o programa [minimap2](https://academic.oup.com/bioinformatics/article/34/18/3094/4994778). O Minimap2 é uma ferramenta de alinhamento rápida e versátil, frequentemente usada para o alinhamento de sequências longas de DNA ou RNA, como as produzidas por tecnologias de sequenciamento de terceira geração (PacBio ou Oxford Nanopore). Ele é projetado para ser eficiente tanto em termos de velocidade quanto de uso de memória, o que o torna ideal para lidar com grandes genomas ou conjuntos de dados de sequenciamento em grande escala. Minimap2 realiza alinhamentos aproximados e é capaz de lidar com sequências completas de cromossomos ou mesmo genomas inteiros. Ele utiliza uma estratégia baseada em "sketching" (esboço), que simplifica as sequências em conjuntos de substrings (k-mers), para rapidamente identificar regiões candidatas a alinhamento antes de realizar alinhamentos mais detalhados. Isso permite ao Minimap2 identificar rapidamente correspondências locais entre sequências, o que é fundamental para montagens de genomas, mapeamento de reads e comparações genômicas em larga escala.
+
 ```bash
 conda activate dotplotly
-git clone https://github.com/tpoorten/dotPlotly.git
 minimap2 KRHAE_flye/assembly.fasta KRHAE_spades/scaffolds.fasta -x asm5  > flye_vs_illumina.paf
-./dotPlotly/./pafCoordsDotPlotly.R -i flye_vs_illumina.paf -o flye_vs_illumina -s -t -m 500 -q 500 -k 7 -l
+```
+
+Na segunda etapa usaremos o arquivo de alinhamento gerado pelo Minimap2 para a criação da matriz de pontos com DotPlotly. O DotPlotly lerá o arquivo de alinhamento PAF e gerará um plot interativo baseado nas informações de alinhamento, mostrando as similaridades e diferenças entre as montagens no navegador.
+
+```bash
+git clone https://github.com/tpoorten/dotPlotly.git
+./dotPlotly/pafCoordsDotPlotly.R -i flye_vs_illumina.paf -o flye_vs_illumina -s -t -m 500 -q 500 -k 7 -l
 google-chrome flye_vs_illumina.html
 conda deactivate
 ```
+
+- ![exercicio](linux/Figs/f03c15.png) Descreva cada um dos argumentos usados na execução do minimap2 e do pafCoordsDotPlotly.R. Discuta como esses parâmetros podem afetar a análise.
