@@ -689,7 +689,7 @@ cd ~/Downloads
 mv MontagemGenomas.tar.gz ~/
 cd
 tar xvzf MontagemGenomas.tar.gz
-rm xvzf MontagemGenomas.tar.gz
+rm MontagemGenomas.tar.gz
 cd PRATICA_ENSAMBLAGEM_DE_GENOMAS
 ```
 
@@ -704,7 +704,7 @@ Na pasta *PRATICA_ENSAMBLAGEM_DE_GENOMAS/* encontra dois arquivos fastq com leit
 
 ```bash
 conda activate fastqc
-fastqc --nogroup --threads 2 illumina_R1.fq illumina_R2.fq
+fastqc --nogroup --threads 2 illumina_R1.fq.gz illumina_R2.fq.gz
 conda deactivate
 ```
 
@@ -714,8 +714,8 @@ Agora, utilizaremos o [BBduk](https://jgi.doe.gov/data-and-tools/software-tools/
 
 ```bash
 conda activate bbmap
-bbduk.sh in1=illumina_R1.fq in2=illumina_R2.fq out1=./bbduk/bbduk.R1.fq \
-out2=./bbduk/bbduk.R2.fq minlength=75 qtrim=w trimq=20 ref=adapters stats=stats.txt
+bbduk.sh in1=illumina_R1.fq.gz in2=illumina_R2.fq.gz out1=./bbduk/bbduk.R1.fq.gz \
+out2=./bbduk/bbduk.R2.fq.gz minlength=75 qtrim=w trimq=20 ref=adapters stats=stats.txt
 conda deactivate
 ```
 
