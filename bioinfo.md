@@ -800,7 +800,7 @@ cd ~/PRATICA_ENSAMBLAGEM_DE_GENOMAS
 O espectro de k-mers para Illumina será calculado com k=17, e para PacBio com k=51
 
 ```bash
-FastK -v -t4 -k17 -M16 -T4 bbduk/bbduk.R[12].fq -NKRHAE_illumina_k17
+FastK -v -t4 -k17 -M16 -T4 bbduk/bbduk.R[12].fq.gz -NKRHAE_illumina_k17
 Histex -G KRHAE_illumina_k17 > KRHAE_illumina_k17.histo
 FastK -v -t4 -k51 -M16 -T4 HiFiAdapterFilt_res/PacBio.filt.fastq.gz -NKRHAE_pacbio_k51
 Histex -G KRHAE_pacbio_k51 > KRHAE_pacbio_51.histo
@@ -817,17 +817,17 @@ Vamos montar o genoma com o software [SPAdes](https://currentprotocols.onlinelib
 
 ```bash
 conda activate spades
-spades.py --isolate -o  KRAE_spades -1 bbduk/bbduk.R1.fq  -2 bbduk/bbduk.R2.fq --threads 4
+spades.py --isolate -o  KRHAE_spades -1 bbduk/bbduk.R1.fq.gz  -2 bbduk/bbduk.R2.fq.gz --threads 8
 conda deactivate
 ```
 
 ### Montagem de genoma usando dados PacBio
 
-Existem montadores especializados em explorar dados de leituras longas de alta qualidade, como o PacBio HiFi. Entre eles está o Flye. [Flye](https://www.nature.com/articles/s41587-019-0072-8), o [HiFiAsm](https://www.nature.com/articles/s41592-020-01056-5), o [HiCanu](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7545148/) e o [IPA](https://github.com/PacificBiosciences/pbipa). Hoje vamos usar o Flye.
+Existem montadores especializados em explorar dados de leituras longas de alta qualidade, como as leituras  PacBio HiFi. Entre esses montadores está o Flye. [Flye](https://www.nature.com/articles/s41587-019-0072-8), o [HiFiAsm](https://www.nature.com/articles/s41592-020-01056-5), o [HiCanu](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7545148/) e o [IPA](https://github.com/PacificBiosciences/pbipa). Hoje vamos usar o Flye.
 
 ```bash
 conda activate flye
-flye --pacbio-hifi HiFiAdapterFilt_res/PacBio.filt.fastq.gz  -o KRAE_flye --threads 5 --min-overlap 1000
+flye --pacbio-hifi HiFiAdapterFilt_res/PacBio.filt.fastq.gz  -o KRHAE_flye --threads 8 --min-overlap 1000
 conda deactivate
 ```
 
@@ -862,7 +862,7 @@ Iremos calcular métricas de contiguidade com o software [Quast](https://academi
 
 ```bash
 conda activate quast
-quast --labels "KRAE_flye, KRAE_spades" --threads 3 KRAE_flye/assembly.fasta KRAE_spades/scaffolds.fasta
+quast --labels "KRHAE_flye, KRHAE_spades" --threads 3 KRHAE_flye/assembly.fasta KRHAE_spades/scaffolds.fasta
 conda deactivate
 ```
 
@@ -876,9 +876,20 @@ Além da avaliação da contiguidade, é comum questionar-se se a montagem conse
 
 ```bash
 conda activate compleasm
-compleasm  run  -a KRAE_flye/assembly.fasta -o compleasem_KRAE_flye -l rhodospirillales_odb10 
-compleasm  run  -a KRAE_spades/scaffolds.fasta -o compleasem_KRAE_spades -l rhodospirillales_odb10 
+compleasm  run  -a KRHAE_flye/assembly.fasta -o compleasem_KRHAE_flye -l rhodospirillales_odb10 
+compleasm  run  -a KRHAE_spades/scaffolds.fasta -o compleasem_KRHAE_spades -l rhodospirillales_odb10 
 conda deactrivate
 ```
 
 - ![exercicio](linux/Figs/f03c15.png) Comparar os resultados de completude e contiguidade para as duas montagens.
+
+### Comparacao das duas montagens com matriz de pontos
+
+```bash
+conda activate dotplotly
+git clone https://github.com/tpoorten/dotPlotly.git
+minimap2 KRHAE_flye/assembly.fasta KRHAE_spades/scaffolds.fasta -x asm5  > flye_vs_illumina.paf
+./dotPlotly/./pafCoordsDotPlotly.R -i flye_vs_illumina.paf -o flye_vs_illumina -s -t -m 500 -q 500 -k 7 -l
+google-chrome flye_vs_illumina.html
+conda deactivate
+```
