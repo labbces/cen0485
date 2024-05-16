@@ -971,11 +971,11 @@ Primeiro, temos que descarregar todas as proteínas do gênero disponíveis no N
 
 ![KRHAE proteins NCBI](Figs/KRHAE_proteins_NCBI.png)
 
-Vamos descarregá-las. Clique no número 259.511 e, na página de resultados, clique em "Send to" e, em seguida, em "File". Selecione o formato "FASTA" e clique em "Create File". Isso vai descarregar um arquivo chamado `sequence.fasta` que contém todas as proteínas do gênero _Komagataeibacter_ disponíveis no NCBI. Troque o nome do arquivo para `KRHAE_prots_NCBI.fasta`
+Vamos descarregá-las. Clique no número 259.511 e, na página de resultados, clique em "Send to" e, em seguida, em "File". Selecione o formato "FASTA" e clique em "Create File". Isso vai descarregar um arquivo chamado `sequence.fasta` que contém todas as proteínas do gênero _Komagataeibacter_ disponíveis no NCBI. Troque o nome do arquivo para `Komagataeibacter_prots_NCBI.fasta`
 
 ```bash
 cd ~/ANOTACAO_DE_GENOMAS
-mv ~/Downloads/sequence.fasta KRHAE_prots_NCBI.fasta
+mv ~/Downloads/sequence.fasta Komagataeibacter_prots_NCBI.fasta
 ```
 
 Alternativamente, você pode descarregar uma cópia desse arquivo (em formato .gz) do e-Disciplinas. Lembre-se de descompactá-lo primeiro antes de continuar.
@@ -984,6 +984,26 @@ Agora podemos usar essa colecao de proteínas para comparar com as proteínas pr
 
 ```bash
 conda activate hifiadapterfilt
-makeblastdb -in KRHAE_prots_NCBI.fasta -dbtype prot
+makeblastdb -in Komagataeibacter_prots_NCBI.fasta -dbtype prot -out Komagataeibacter_prots_NCBI
+```
 
+Com o banco de dados formatado, podemos realizar a busca com `blastp`. Vamos conservar apenas o melhor hit e pedir para o software produzir os resultados em formato tabular 7 (com comentários), acrescentando a informação do tamanho da sequência `query` e `subject` na tabela. Em seguida, vamos remover os comentários do arquivo, produzindo um arquivo novo, que posteriormente será importado no LivreOffice Calc para realizar algumas operações.
+
+```bash
+blastp -query KRHAE_Prokka/PROKKA_05162024.faa -db Komagataeibacter_prots_NCBI \
+ -num_threads 8 -outfmt '7 std qlen slen'  -max_target_seqs 1 \
+ -qcov_hsp_perc 0.9 -evalue 1e-5 -out blastp_results.tab
+grep -v "#" blastp_results.tab > blastp_results_noHash.tab
+conda deactivate
+```
+
+- ![exercicio](linux/Figs/f03c15.png) O que significa cada uma das colunas do arquivo `blastp_results_noHash.tab`? O que significa o valor de `e-value`? O que significa o valor de `qcov_hsp_perc`?
+
+Agora vamos visualizar a anotacao de genoma, junto com as leituras de PacBio  mapeadas no genoma. Para isso, vamos usar o [IGV](https://software.broadinstitute.org/software/igv/). Teremos que gerar os arquivos de alinhamento das leituras com o genoma primeiro.
+
+```bash
+conda activate jupiterplot
+minimap2 -t 8 -ax map-hifi assembly.fasta ~/PRATICA_ENSAMBLAGEM_DE_GENOMAS/HiFiAdapterFilt_res/PacBio.filt.fastq.gz | samtools view -b | samtools sort --threads 4 -o PacBio_KRHAE_sorted.bam && samtools index PacBio_KRHAE_sorted.bam
+samtools faidx assembly.fasta
+conda deactivate
 ```
