@@ -944,7 +944,7 @@ Agora podemos executar o trabalho do Prokka que irá anotar os genes do genoma d
  conda deactivate
  ```
 
-Vamos ver um resumo dos resultados gerados pelo Prokka. Abra o arquivo `KRHAE_Prokka/PROKKA_05162024.txt` com seu visualizador de texto preferido. O conteúdo é semelhante ao que aparece abaixo:"
+Vamos ver um resumo dos resultados gerados pelo Prokka. Abra o arquivo `KRHAE_Prokka/PROKKA_05162024.txt` com seu visualizador de texto preferido. O conteúdo é semelhante ao que aparece abaixo:
 
 ```
 organism: Komagataeibacter rhaeticus strain
@@ -964,3 +964,26 @@ tmRNA: 1
 Mas onde estão os genes preditos? Vamos olhar o arquivo `KRHAE_Prokka/PROKKA_05162024.gff` com o visualizador de texto. Este é um arquivo de texto tabular que contém informações sobre regiões genômicas (cada linha) em 9 colunas. Este formato recebe o nome de [Generic Feature Format (GFF)](https://www.ensembl.org/info/website/upload/gff3.html) e é muito usado na anotação de genomas, mas não é o único. Na pasta de resultados, há outros arquivos onde a mesma informação de predição de genes aparece em outros formatos. O arquivo `.ffn` tem a sequência em formato FASTA de todos os transcritos preditos. O arquivo `.faa` contém as sequências de proteínas preditas.
 
 - ![exercicio](linux/Figs/f03c15.png) O que está armazenado em cada uma das colunas do arquivo GFF? Na coluna de fase (oitava coluna), por que existem pontos ou os números 0, 1 e 2? O que significa cada um deles?
+
+Agora vamos comparar as sequências das proteínas preditas com as sequências das proteínas do gênero _Komagataeibacter_ disponíveis no NCBI. Para isso, vamos usar o [BLAST](https://www.ncbi.nlm.nih.gov/books/NBK279690/) a partir da linha de comandos.
+
+Primeiro, temos que descarregar todas as proteínas do gênero disponíveis no NCBI. Para isso, vá ao banco de dados de [taxonomia](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi) e procure pelo nome do gênero. Na página de resultados, clique no nome do gênero, isso deve levá-lo a uma página semelhante à que aparece abaixo. Repare que aparecem 259.511 proteínas disponíveis no banco de dados de proteínas do NCBI. 
+
+![KRHAE proteins NCBI](Figs/KRHAE_proteins_NCBI.png)
+
+Vamos descarregá-las. Clique no número 259.511 e, na página de resultados, clique em "Send to" e, em seguida, em "File". Selecione o formato "FASTA" e clique em "Create File". Isso vai descarregar um arquivo chamado `sequence.fasta` que contém todas as proteínas do gênero _Komagataeibacter_ disponíveis no NCBI. Troque o nome do arquivo para `KRHAE_prots_NCBI.fasta`
+
+```bash
+cd ~/ANOTACAO_DE_GENOMAS
+mv ~/Downloads/sequence.fasta KRHAE_prots_NCBI.fasta
+```
+
+Alternativamente, você pode descarregar uma cópia desse arquivo (em formato .gz) do e-Disciplinas. Lembre-se de descompactá-lo primeiro antes de continuar.
+
+Agora podemos usar essa colecao de proteínas para comparar com as proteínas preditas pelo Prokka. Vamos usar o BLAST para isso. Mas primeiro temos que formatar o banco de dados de proteínas do gênero _Komagataeibacter_ para que o BLAST possa usá-lo.
+
+```bash
+conda activate hifiadapterfilt
+makeblastdb -in KRHAE_prots_NCBI.fasta -dbtype prot
+
+```
