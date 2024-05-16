@@ -904,3 +904,63 @@ conda deactivate
 ```
 
 - ![exercicio](linux/Figs/f03c15.png) Descreva cada um dos argumentos usados na execução do minimap2 e do pafCoordsDotPlotly.R. Discuta como esses parâmetros podem afetar a análise.
+
+## Anotação de genomas
+
+Depois de ter montado o genoma da _Komagataeibacter rhaeticus_ na seção anterior, normalmente a seguinte pergunta em um projeto de genômica é: E onde estão os genes? O processo de identificá-los no genoma é o que é chamado de anotação do genoma, ou predição de genes, ou anotação estrutural do genoma. Nesta seção, vamos usar o genoma montado com os dados de PacBio na seção anterior.
+
+A previsão de genes em organismos procariotos é bem mais simples que em eucariotos, principalmente porque a estrutura dos genes é mais simples; por exemplo, normalmente os genes não têm introns.
+
+Nesta seção, vamos usar o software [Prokka](https://pubmed.ncbi.nlm.nih.gov/24642063/) para realizar a previsão de genes no genoma de _K. rhaeticus_.
+
+Agora vamos a preparar o ambiente para a anotação do genoma. Primeiro vamos a criar uma pasta no seu HOME com a sequencia do genome e onde serao armazenados os resultados da anotação.
+
+```bash
+cd 
+mkdir ANOTACAO_DE_GENOMAS
+cd  ANOTACAO_DE_GENOMAS
+cp ~/PRATICA_ENSAMBLAGEM_DE_GENOMAS/KRHAE_flye/assembly.fasta .
+```
+
+Desta vez, vamos usar o software de uma forma um pouco diferente. Até agora, a maioria dos pacotes que utilizamos na linha de comandos foram instalados em seus computadores, junto com todas as suas dependências. Para ter uma ideia do que foi instalado e como, podem conferir o arquivo [setting_env.sh][setting_env.sh]. No entanto, o Prokka é um software que possui muitas dependências e, para facilitar a instalação e o uso, vamos utilizar um container do [Singularity](https://docs.sylabs.io/guides/3.5/user-guide/introduction.html). O container funciona de maneira semelhante a uma máquina virtual, onde todo o software e suas dependências já vêm instaladas e prontas para uso.
+
+Para descarregar o container, primeiro temos que ativar o ambiente que possui o Singularity e, em seguida, podemos descarregar a imagem. Isso é feito com o comando 'build' do Singularity, que irá descarregar várias partes da imagem da internet e criará um arquivo .sif na sua pasta de trabalho. Esse arquivo é o contêiner que usaremos depois para anotar o genoma.
+
+```bash
+conda activate singularitycew
+singularity build prokka.sif docker://staphb/prokka:latest
+```
+
+Agora podemos executar o trabalho do Prokka que irá anotar os genes do genoma de _K. rhaeticus_. Isso vai levar aproximadamente 5 minutos.
+
+```bash
+ singularity exec prokka.sif prokka --outdir KRHAE_Prokka --addgenes --addmrna --genus  Komagataeibacter --species rhaeticus --locustag KRHAE --cpus 8 --rnammer --rfam assembly.fasta
+ ```
+
+- ![exercicio](linux/Figs/f03c15.png)  Quando terminar, confira a ajuda do Prokka para entender o que cada um dos argumentos usados está fazendo. Em seguida, desative o ambiente do Singularity.
+
+```bash
+ singularity exec prokka.sif prokka -h
+ conda deactivate
+ ```
+
+Vamos ver um resumo dos resultados gerados pelo Prokka. Abra o arquivo `KRHAE_Prokka/PROKKA_05162024.txt` com seu visualizador de texto preferido. O conteúdo é semelhante ao que aparece abaixo:"
+
+```
+organism: Komagataeibacter rhaeticus strain
+contigs: 1
+bases: 3597563
+CDS: 3252
+gene: 3322
+mRNA: 3322
+misc_RNA: 18
+rRNA: 3
+tRNA: 48
+tmRNA: 1
+```
+
+- ![exercicio](linux/Figs/f03c15.png) O que significa cada um desses nomes que aparecem nesse resumo? Por que o número de CDS não corresponde ao número de mRNAs?
+
+Mas onde estão os genes preditos? Vamos olhar o arquivo `KRHAE_Prokka/PROKKA_05162024.gff` com o visualizador de texto. Este é um arquivo de texto tabular que contém informações sobre regiões genômicas (cada linha) em 9 colunas. Este formato recebe o nome de [Generic Feature Format (GFF)](https://www.ensembl.org/info/website/upload/gff3.html) e é muito usado na anotação de genomas, mas não é o único. Na pasta de resultados, há outros arquivos onde a mesma informação de predição de genes aparece em outros formatos. O arquivo `.ffn` tem a sequência em formato FASTA de todos os transcritos preditos. O arquivo `.faa` contém as sequências de proteínas preditas.
+
+- ![exercicio](linux/Figs/f03c15.png) O que está armazenado em cada uma das colunas do arquivo GFF? Na coluna de fase (oitava coluna), por que existem pontos ou os números 0, 1 e 2? O que significa cada um deles?
