@@ -941,10 +941,17 @@ Agora podemos executar o trabalho do Prokka que irá anotar os genes do genoma d
 
 ```bash
  singularity exec prokka.sif prokka -h
- conda deactivate
+ conda deactivate 
+ ls -l KRHAE_Prokka
+ BASEPROKKA=`basename KRHAE_Prokka/*.gff`
+ BASEPROKKA=${BASEPROKKA/.gff}
  ```
 
-Vamos ver um resumo dos resultados gerados pelo Prokka. Abra o arquivo `KRHAE_Prokka/PROKKA_05162024.txt` com seu visualizador de texto preferido. O conteúdo é semelhante ao que aparece abaixo:
+Vamos ver um resumo dos resultados gerados pelo Prokka. Abra o arquivo `KRHAE_Prokka/${BASEPROKKA}.txt` com seu visualizador de texto preferido. Repare que o número que aparece no nome do arquivo pode ser diferente para você. O conteúdo é semelhante ao que aparece abaixo:
+
+```bash
+cat KRHAE_Prokka/${BASEPROKKA}.txt
+```
 
 ```
 organism: Komagataeibacter rhaeticus strain
@@ -961,7 +968,7 @@ tmRNA: 1
 
 - ![exercicio](linux/Figs/f03c15.png) O que significa cada um desses nomes que aparecem nesse resumo? Por que o número de CDS não corresponde ao número de mRNAs?
 
-Mas onde estão os genes preditos? Vamos olhar o arquivo `KRHAE_Prokka/PROKKA_05162024.gff` com o visualizador de texto. Este é um arquivo de texto tabular que contém informações sobre regiões genômicas (cada linha) em 9 colunas. Este formato recebe o nome de [Generic Feature Format (GFF)](https://www.ensembl.org/info/website/upload/gff3.html) e é muito usado na anotação de genomas, mas não é o único. Na pasta de resultados, há outros arquivos onde a mesma informação de predição de genes aparece em outros formatos. O arquivo `.ffn` tem a sequência em formato FASTA de todos os transcritos preditos. O arquivo `.faa` contém as sequências de proteínas preditas.
+Mas onde estão os genes preditos? Vamos olhar o arquivo `KRHAE_Prokka/${BASEPROKKA}.gff` com o visualizador de texto. Este é um arquivo de texto tabular que contém informações sobre regiões genômicas (cada linha) em 9 colunas. Este formato recebe o nome de [Generic Feature Format (GFF)](https://www.ensembl.org/info/website/upload/gff3.html) e é muito usado na anotação de genomas, mas não é o único. Na pasta de resultados, há outros arquivos onde a mesma informação de predição de genes aparece em outros formatos. O arquivo `.ffn` tem a sequência em formato FASTA de todos os transcritos preditos. O arquivo `.faa` contém as sequências de proteínas preditas.
 
 - ![exercicio](linux/Figs/f03c15.png) O que está armazenado em cada uma das colunas do arquivo GFF? Na coluna de fase (oitava coluna), por que existem pontos ou os números 0, 1 e 2? O que significa cada um deles?
 
@@ -990,7 +997,7 @@ makeblastdb -in Komagataeibacter_prots_NCBI.fasta -dbtype prot -out Komagataeiba
 Com o banco de dados formatado, podemos realizar a busca com `blastp`. Vamos conservar apenas o melhor hit e pedir para o software produzir os resultados em formato tabular 7 (com comentários), acrescentando a informação do tamanho da sequência `query` e `subject` na tabela. Em seguida, vamos remover os comentários do arquivo, produzindo um arquivo novo, que posteriormente será importado no LivreOffice Calc para realizar algumas operações.
 
 ```bash
-blastp -query KRHAE_Prokka/PROKKA_05162024.faa -db Komagataeibacter_prots_NCBI \
+blastp -query KRHAE_Prokka/${BASEPROKKA}.faa -db Komagataeibacter_prots_NCBI \
  -num_threads 8 -outfmt '7 std qlen slen'  -max_target_seqs 1 \
  -qcov_hsp_perc 0.9 -evalue 1e-5 -out blastp_results.tab
 grep -v "#" blastp_results.tab > blastp_results_noHash.tab
@@ -999,7 +1006,7 @@ conda deactivate
 
 - ![exercicio](linux/Figs/f03c15.png) O que significa cada uma das colunas do arquivo `blastp_results_noHash.tab`? O que significa o valor de `e-value`? O que significa o valor de `qcov_hsp_perc`?
 
-Agora vamos visualizar a anotacao de genoma, junto com as leituras de PacBio  mapeadas no genoma. Para isso, vamos usar o [IGV](https://software.broadinstitute.org/software/igv/). Teremos que gerar os arquivos de alinhamento das leituras com o genoma primeiro.
+Agora vamos visualizar a anotacao de genoma, junto com as leituras de PacBio  mapeadas no genoma. Para isso, vamos usar o [Integrated Genomics Viewer - IGV](https://software.broadinstitute.org/software/igv/). Teremos que gerar os arquivos de alinhamento das leituras com o genoma primeiro.
 
 ```bash
 conda activate jupiterplot
@@ -1007,3 +1014,12 @@ minimap2 -t 8 -ax map-hifi assembly.fasta ~/PRATICA_ENSAMBLAGEM_DE_GENOMAS/HiFiA
 samtools faidx assembly.fasta
 conda deactivate
 ```
+
+Agora, temos que ativa o ambiente do IGV e carregar os arquivos `assembly.fasta`, `PacBio_KRHAE_sorted.bam` e `KRHAE_Prokka/${BASEPROKKA}.gff` 
+
+```bash
+conda activate igv
+igv
+```
+
+![IGV](Figs/IGV.png)
