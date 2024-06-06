@@ -1046,8 +1046,9 @@ Os dados de sequenciamento deste estudo estão disponíveis no Short Read Archiv
 
 ```bash
 cd ~/Downloads
-wget https://labbces.cena.usp.br/shared/PRATICA_RNASEQ.tar.gz
+wget https://labbces.cena.usp.br/shared/PRATICA_RNASEQ/PRATICA_RNASEQ.tar.gz
 mv PRATICA_RNASEQ.tar.gz ~/
+cd
 tar xvzf PRATICA_RNASEQ.tar.gz
 ```
 
@@ -1101,6 +1102,7 @@ conda activate transcriptomics
 conda install -y -c bioconda salmon
 cd ~/PRATICA_RNASEQ/
 wget https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_46/gencode.v46.transcripts.fa.gz
+wget https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_46/gencode.v46.annotation.gtf.gz
 salmon index --gencode -t gencode.v46.transcripts.fa.gz -i salmon_index --threads 6
 ```
 
@@ -1159,7 +1161,7 @@ Essas abas tornam o RStudio uma ferramenta versátil e eficaz para o desenvolvim
 
 ### Análise de Expressão Diferencial 
 
-Realizaremos a identificação de genes diferencialmente expressos inteiramente no R usando o IDE RStudio.
+Realizaremos a identificação de genes diferencialmente expressos inteiramente no R usando o IDE RStudio. Todo o código desta seção deve ser executado no RStudio.
 
 Primeiro, precisamos instalar um pacote que está faltando no momento. Este pacote entende o output do Salmon e pode importar automaticamente a quantificação de transcritos para o R. Além disso, ele conhece o genoma humano. O pacote é o tximeta.
 
@@ -1170,3 +1172,180 @@ if (!requireNamespace("BiocManager", quietly = TRUE))
   install.packages("BiocManager")
 BiocManager::install("tximeta",update = FALSE, ask = FALSE)
 ```	
+
+Agora vamos carregar os pacotes que vamos usar para a detecção de genes diferencialmente expressos e para a visualização dos resultados.
+
+```R
+library(DESeq2)
+library(ggplot2)
+library(tximeta)
+library(pheatmap)
+library(viridis)
+setwd("~/PRATICA_RNASEQ/")
+```
+
+Carregue as informações sobre o experimento, nomes de amostras e condição
+
+```R	
+targets<-read.table("metadata.csv",
+header=F,
+sep = ",",
+stringsAsFactors=FALSE,
+col.names = c("names", "condition", "cell"))
+targets$names<-as.factor(targets$names)
+targets$cell<-as.factor(targets$cell)
+targets
+```
+Vamos fazer uma lista dos arquivos de quantificação criados pelo Salmon. Observe que os arquivos do Salmon estão em pastas que têm os mesmos nomes das amostras, ou seja, a primeira coluna do objeto targets acima. Por favor, note que estes são apenas 'strings'. Depois de criar essa lista, vamos verificar se de fato eles existem no disco.
+
+```R
+files<-file.path(paste0("Quantification/",targets$names,"/quant.sf",se =""))
+file.exists(files)
+```
+
+A resposta ao comando anterior deve ter sido uma colecao de TRUE, um para cada um dos arquivos, se algúm deles for FALSE, você terá que verificar o que aconteceu com o arquivo.
+
+Agora vamos adicionar o nome do arquivo no objeto de metadados `targets`
+
+```R
+targets$files<-files
+row.names(targets)<-targets$names
+targets
+```	
+
+Importaremos a quantificação da transcrição gerada pelo Salmon e a descrição do experimento usando o tximeta. Para mais detalhes, consulte o manual do [tximeta](https://bioconductor.org/packages/3.14/bioc/vign
+ettes/tximeta/inst/doc/tximeta.html).
+
+É importante notar que o Salmon realiza a quantificação no nível de transcrito. Lembre-se de que um locus gênico, ou seja, um gene, pode produzir mais de um transcrito através do processo de splicing alternativo. No entanto, a análise que vamos realizar será no nível de gene. O tximeta agregará a quantificação no nível de transcrito para o nível de gene.
+
+Antes de carregar nossos dados, crie o objeto transcriptome. Isso facilitará várias operações, como resumir os níveis de expressão da transcrição no nível genético, obter informações funcionais sobre os genes, entre outras.
+
+```R	
+makeLinkedTxome(indexDir="salmon_index",
+  source="LocalEnsembl",
+  organism="Homo sapiens",
+  release="46",
+  genome="GRCh38.p14",
+  fasta="./gencode.v46.transcripts.fa.gz",
+  gtf="./gencode.v46.annotation.gtf.gz",
+  write=FALSE)
+```
+
+Agora, crie o objeto tximeta, que incluirá os dados do Salmon, a descrição do experimento e acesso às informações do transcriptoma. Este objeto é chamado [SummarizedExperiment](https://bioconductor.org/packages/release/bioc/vignettes/SummarizedExperiment/inst/doc/SummarizedExperiment.html).
+
+```R
+se <- tximeta(targets)
+dim(se)
+```
+
+O último comando informa que quantificamos 253.181 transcritos do genoma humano. Vamos ver os nomes desses transcritos, mostrando os primeiros seis. Note como o identificador do transcrito começa com o prefixo `ENST`. 
+
+```R
+head(rownames(se))
+```
+
+Agora vamos resumir essa quantificação no nível de transcrito para o nível de gene e, em seguida, vamos imprimir os nomes dos primeiros genes. Note que agora os identificadores têm o prefixo `ENSG`.
+
+```R
+gse <- summarizeToGene(se)
+dim(gse)
+head(rownames(gse))
+```
+
+Repare também que o número de genes quantificados é menor que o número de transcritos. Isso ocorre porque um gene pode ter mais de um transcrito, mas um transcrito pertence a um único gene. Quantificamos 62.646 genes.
+
+Com o objeto `gse`, podemos agora iniciar a análise diferencial de expressão genética. Para isso, existem muitos pacotes diferentes no R que poderiam ser usados; hoje, vamos utilizar o pacote DESeq2. Primeiramente, precisamos transformar nosso objeto SummarizedExperiment (gse) em um objeto nativo do DESeq2, o DESeqDataSet. Além dos dados, o DESeqDataSet requer uma descrição do design experimental, onde especificamos os fatores de interesse no estudo e/ou os fatores que devem ser fontes de variação e como lidar com eles. Isso é feito usando uma fórmula, com a mesma sintaxe dos modelos lineares simples (lm) no R.
+
+Neste exemplo particular, temos pelo menos duas fontes de variação conhecidas. Primeiro, a condição: amostras tratadas ou não com Dexametasona. Segundo, a linha celular: as células ASM primárias foram obtidas de quatro doadores, que foram divididos em grupos tratados e não tratados. Portanto, podemos ter um efeito do doador. Verifique os alvos para confirmar isso. Usaremos esses dois fatores em nossas análises. Queremos testar o efeito da Dexametasona, enquanto controlamos o efeito das diferentes linhas celulares. Note que este é um design experimental emparelhado, pois cada amostra (cellLine) foi tratada e não tratada. Nesse caso, especificaremos a fórmula como ~ cellLine + condição.
+
+```R
+dds <- DESeqDataSet(gse, design = ~cell+condition)
+```
+
+É comum que alguns genes no conjunto de dados não sejam expressos ou sejam expressos em níveis muito baixos. É uma boa prática remover esses genes de análises adicionais.
+
+```R
+nrow(dds) # Numero de genes antes da filtragem
+keep <- rowSums(counts(dds)) > 1 #Manter genes que tenham pelo menos uma contagem na soma do gene
+dds <- dds[keep,]
+nrow(dds) # Numero de genes depois da filtragem
+```	
+
+Em seguida temos que realizar a [normalização](https://hbctraining.github.io/DGE_workshop/lessons/02_DGE_count_normalization.html) das contagems de leituras. O DESeq2 usa um método de normalização chamado "size factors" para ajustar as contagens de leituras para a profundidade de sequenciamento. Isso é feito para que as contagens de leituras possam ser comparadas entre amostras. O DESeq2 também aplica uma transformação de dados para estabilizar a variância em relação à média. Isso é feito para que os dados possam ser comparados de forma mais confiável.
+
+E vamos também remover os genes que não estejam expressos em pelo menos quatro das amostras.
+
+```R
+dds <- estimateSizeFactors(dds)
+keep <- rowSums(counts(dds) > 0) >= 4
+dds <- dds[keep,]
+nrow(dds) # Number of genes, that have counts in at least 4 samples
+```
+
+Agora que os dados estão no formato adequado e filtrados, podemos realizar algumas análises exploratórias para verificar se os dados parecem consistentes.
+
+Muitas das análises exploratórias requerem dados homocedásticos. Nossas contagens, no entanto, não são homocedásticas. No DESeq2, as funções vst (variance-stabilizing transformation) e rlog (regularized log transformation) podem normalizar os dados para torná-los mais homocedásticos. Como regra, a função vst é recomendada quando você tem mais de 30 amostras.
+
+Vamos examinar a similaridade entre as amostras calculando a distância euclidiana entre elas usando a função `dist`. Esta função pressupõe que as amostras são as linhas, então devemos primeiro transpor a matriz. Em seguida, vamos visualizar as distâncias euclidianas entre as amostras em um mapa de calor.
+
+```R
+rld <- rlog(dds, blind = TRUE)
+sampleDists <- dist(t(assay(rld)))
+sampleDistMatrix <- as.matrix( sampleDists )
+rownames(sampleDistMatrix) <- paste( rld$condition, rld$cell, sep = " - " )
+colnames(sampleDistMatrix) <- NULL
+colors <- inferno(250)
+pheatmap(sampleDistMatrix,
+  clustering_distance_rows = sampleDists,
+  clustering_distance_cols = sampleDists,
+  col = colors)
+```
+
+![sample_dist_heatmap.png](Figs/sample_dist_heatmap.png)
+
+E agora com o coeficiente de correlação de Pearson.
+
+```R
+samplecor <- as.dist((1-(cor(assay(rld), method='pearson')))*100)
+sampleCorMatrix <- as.matrix( samplecor )
+rownames(sampleCorMatrix) <- paste( rld$condition, rld$cell, sep = " - " )
+colnames(sampleCorMatrix) <- NULL
+pheatmap(sampleCorMatrix,
+  clustering_distance_rows = samplecor,
+  clustering_distance_cols = samplecor,
+  col=colors)
+```
+
+![sample_dist_heatmap_pearson.png](Figs/sample_dist_heatmap_pearson.png)
+
+Uma boa alternativa é também realizar uma análise de componentes principais (PCA) com os genes que mais variam no conjunto de dados e observar se as amostras se agrupam conforme o esperado.
+
+```R
+pcaData <- plotPCA(rld, intgroup = c( "condition","cell"), returnData = TRUE)
+percentVar <- round(100 * attr(pcaData, "percentVar"))
+ggplot(pcaData, aes(x = PC1, y = PC2, color = condition, shape = cell)) +
+  geom_point(size =3) +
+  xlab(paste0("PC1: ", percentVar[1], "% variance")) +
+  ylab(paste0("PC2: ", percentVar[2], "% variance")) +
+  coord_fixed() +
+  ggtitle("PCA with RLOG data")
+```
+É claro como a principal fonte de variação é a condição experimental, enquanto a linha celular parece ter um efeito menor, mais não despecivel.
+
+![PCA.png](Figs/PCA.png)
+
+Ao que parece, os dados estão em ordem, então podemos prosseguir com a análise de expressão diferencial. Vamos identificar todos aqueles genes que mudam pelo menos 2 vezes, para cima (up-regulated) ou para baixo (down-regulated) em sua expressão entre as amostras tratadas e não tratadas. Como estaremos realizando milhares de testes, precisamos lidar com o problema de [múltiplos testes](https://en.wikipedia.org/wiki/Multiple_comparisons_problem). O DESeq2 usa o método de correção de Benjamini-Hochberg para controlar a taxa de falsas descobertas.
+
+```R
+dds <- DESeq(dds)
+res <- results(dds, lfcThreshold = 1, altHypothesis = "greaterAbs", parallel = T)
+summary(res)
+```
+
+Desta forma podemos ver que identificamos 72 genes up-regulated, ou seja induzidos pela dexametazona, e outros 135 genes down-regulated, ou seja reprimidos pela dexometasona. Um dos principais genes identificados no artigo original foi o **CRISPLD2**, que tem o identificador `ENSG00000103196.12`. Vamos procurá-lo na nossa lista de resultados e plotar seus níveis de expressão nas condições do experimento.
+
+```R
+res["ENSG00000103196.12",]
+plotCounts(dds, gene = "ENSG00000103196.12", normalized = TRUE)
+```
+![CRISPLD2_expression.png](Figs/CRISPLD2_expression.png)
