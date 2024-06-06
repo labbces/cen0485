@@ -13,7 +13,7 @@ Os exercícios serão realizados nos computadores da sala de computadores da cen
 ### Ferramentas do Unix úteis na bioinformática.
 
 Após adquirir alguma familiaridade com os fundamentos do [sistema operacional Linux](unix.md), vamos explorar como alguns de seus comandos mais básicos podem ser extremamente úteis na área de bioinformática. Você entenderá por que o Linux é o sistema operacional de escolha na bioinformática.
-
+Usaremos os dados do PMID: 249266651, especificamente os conjuntos de dados mostrados na Tabela 1. Para gerar que o RNA total de dados foi extra´ ıdo das c´elulas humanas prim´arias do m´ usculo liso das vias a´ereas (ASM) de quatro doadores diferentes. As c´elulas de cada doador foram tratadas com 1 µM DEX ou com controle ve´ıculo por 18 h. Aproximadamente 1 µg de RNA de cada amostra foi usado para gerar RNA-Seq cDNA bibliotecas para sequenciamento usando o TruSeq RNA Sample Prep Kit v2. O sequenciamento foi realizado em um instrumento HiSeq2000 gerando leituras pareadas (2x75bp). O principal objetivo do estudo foi obter ideias de como os glicocorticoides suprimem a inflama¸ c˜ao no ASM.
 Para realizar esses exercícios, você precisa usar o arquivo [file1.tar.gz](https://github.com/labbces/cen0485/raw/main/files/file1.tar.gz). Após baixá-lo, o arquivo deve estar na sua pasta "Downloads". Você deve descompactá-lo em seu diretório HOME.
 
 ```
@@ -1023,3 +1023,18 @@ igv
 ```
 
 ![IGV](Figs/IGV.png)
+
+## Transcriptômica
+
+RNA-Seq é uma técnica de sequenciamento que utiliza tecnologias modernas de sequenciamento para revelar a presença e a quantidade de RNA em uma amostra biológica em um dado momento. Usaremos os dados do artigo [PMID: 24926665](https://pubmed.ncbi.nlm.nih.gov/24926665/), especificamente os conjuntos de dados mostrados na tabela abaixo. O RNA total foi extraído de cultivos primários de células humanas do músculo liso das vias aéreas (ASM) de quatro doadores diferentes, as células de cada doador foram tratadas com 1 µM DEX ou com controle por 18 horas. Aproximadamente 1 µg de RNA de cada amostra foi usado para gerar bibliotecas de cDNA de RNA-Seq para sequenciamento utilizando o [TruSeq RNA Sample Prep Kit v2](https://www.illumina.com/products/by-type/sequencing-kits/library-prep-kits/truseq-rna-v2.html). O sequenciamento foi realizado em um instrumento HiSeq2000, gerando leituras pareadas (2x75bp). O principal objetivo do estudo foi obter insights sobre como os glicocorticoides suprimem a inflamação no ASM.
+
+| Accession   | Sample        | Cell    |
+|-------------|---------------|---------|
+| SRR1039508  | Untreated     | N61311  |
+| SRR1039509  | Dexamethasone | N61311  |
+| SRR1039512  | Untreated     | N052611 |
+| SRR1039516  | Dexamethasone | N052611 |
+| SRR1039520  | Untreated     | N080611 |
+| SRR1039517  | Dexamethasone | N080611 |
+| SRR1039521  | Untreated     | N061011 |
+| SRR1039522  | Dexamethasone | N061011 |
