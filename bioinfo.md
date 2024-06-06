@@ -1033,8 +1033,8 @@ RNA-Seq é uma técnica de sequenciamento que utiliza tecnologias modernas de se
 | SRR1039508  | Untreated     | N61311  |
 | SRR1039509  | Dexamethasone | N61311  |
 | SRR1039512  | Untreated     | N052611 |
-| SRR1039516  | Dexamethasone | N052611 |
-| SRR1039520  | Untreated     | N080611 |
+| SRR1039513  | Dexamethasone | N052611 |
+| SRR1039516  | Untreated     | N080611 |
 | SRR1039517  | Dexamethasone | N080611 |
 | SRR1039521  | Untreated     | N061011 |
 | SRR1039522  | Dexamethasone | N061011 |
