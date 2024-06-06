@@ -90,6 +90,7 @@ conda create -y -n transcriptomics -c conda-forge -c bioconda ffq python r-base 
 if (!requireNamespace("BiocManager", quietly = TRUE))
   install.packages("BiocManager")
 BiocManager::install("tximport",update = FALSE, ask = FALSE)
+BiocManager::install("tximeta",update = FALSE, ask = FALSE)
 BiocManager::install("DESeq2",update = FALSE, ask = FALSE)
 BiocManager::install("topGO",update = FALSE,ask = FALSE)
 BiocManager::install("Rgraphviz",update = FALSE,ask = FALSE)

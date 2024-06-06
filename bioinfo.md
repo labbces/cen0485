@@ -1036,5 +1036,137 @@ RNA-Seq é uma técnica de sequenciamento que utiliza tecnologias modernas de se
 | SRR1039513  | Dexamethasone | N052611 |
 | SRR1039516  | Untreated     | N080611 |
 | SRR1039517  | Dexamethasone | N080611 |
-| SRR1039521  | Untreated     | N061011 |
-| SRR1039522  | Dexamethasone | N061011 |
+| SRR1039520  | Untreated     | N061011 |
+| SRR1039521  | Dexamethasone | N061011 |
+
+
+### Recuperando os Dados de Repositórios Públicos
+
+Os dados de sequenciamento deste estudo estão disponíveis no Short Read Archive (SRA), um banco de dados do NCBI dedicado a armazenar dados de sequenciamento massivo obtidos com tecnologias modernas. Precisamos baixar os dados de lá. Este passo pode demorar consideravelmente, pois o volume de dados é considerável. Por isso, os dados também estão disponíveis em um servidor próprio.
+
+```bash
+cd ~/Downloads
+wget https://labbces.cena.usp.br/shared/PRATICA_RNASEQ.tar.gz
+mv PRATICA_RNASEQ.tar.gz ~/
+tar xvzf PRATICA_RNASEQ.tar.gz
+```
+
+### Pre-Processamento de Dados
+
+Primeiro, você deve verificar a qualidade das suas leituras com o FastQC para decidir se precisa realizar algum filtro de qualidade. O comando a seguir executa o FastQC para cada um dos seus arquivos, um por um, mas de forma automática. Esse processo pode levar algum tempo.
+
+```bash
+cd ~/PRATICA_RNASEQ
+mkdir -p QC
+conda activate fastqc
+for file_R1 in $(ls -1 RAW/*_1.fastq.gz); do file_R2=${file_R1/_1/_2}; fastqc --noextract \
+--threads 2 --nogroup -o QC $file_R1 $file_R2; done
+conda deactivate
+```	
+
+Verifique a qualidade abrindo o arquivo .html gerado pelo FastQC para cada um dos arquivos de leitura no seu navegador web favorito. ![exercicio](linux/Figs/f03c15.png) Como está a qualidade desse sequenciamento?
+
+Agora utilizamos o BBDuk para limpar nossas sequências.
+
+```bash
+cd ~/PRATICA_RNASEQ
+conda activate bbmap
+mkdir -p CLEAN
+cd CLEAN
+for sample in $(cut -f1 -d"," ../metadata.csv | grep SRR); \
+ do file_R1=${sample}_1.fastq.gz ;file_R2=${sample}_2.fastq.gz; \
+ echo $file_R1 $file_R2 ; \
+ bbduk.sh in1=../RAW/$file_R1\
+ in2=../RAW/$file_R2\
+ out1=./$file_R1\ out2=./$file_R2\
+ minlength=50\
+ qtrim=w threads=6\
+ trimq=20;
+ done
+conda deactivate
+```
+
+![exercicio](linux/Figs/f03c15.png)  Qual porcentagem de leituras foi removida no total?
+
+Agora, você pode rodar o FASTQC novamente e verificar as estatísticas de qualidade dos arquivos gerados pelo BBDuk. Faça isso por conta própria. ![exercicio](linux/Figs/f03c15.png)  A qualidade das leituras melhorou?
+
+### Quantificação de Expressão Gênica
+
+Vamos quantificar a expressão gênica utilizando a versão [GRCh38.p14(https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_46/gencode.v46.transcripts.fa.gz)] do genoma humano. Para isso, usaremos o [Salmon](https://salmon.readthedocs.io/en/latest/salmon.html) para a quantificação da expressão gênica.
+
+Primeiro, precisamos criar um índice com o nosso genoma de referência. O seguinte comando deve criar uma pasta chamada "salmon_index" em `~/PRATICA_RNASEQ/salmon_index`.
+
+```bash	
+conda activate transcriptomics
+conda install -y -c bioconda salmon
+cd ~/PRATICA_RNASEQ/
+wget https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_46/gencode.v46.transcripts.fa.gz
+salmon index --gencode -t gencode.v46.transcripts.fa.gz -i salmon_index --threads 6
+```
+
+Agora podemos quantificar nossas leituras usando o índice gerado com o genoma de referência. O comando a seguir executa o Salmon para todos os arquivos de cada amostra (R1 e R2) sequencialmente.
+
+```bash
+mkdir -p Quantification
+cd Quantification
+for sample in $(cut -f1 -d"," ../metadata.csv | grep SRR); do
+echo Processing sample $sample
+  salmon quant --validateMappings --seqBias --posBias \
+  --softclip --index ../salmon_index --libType A \
+  -1 ../CLEAN/${sample}_1.fastq.gz -2 ../CLEAN/${sample}_2.fastq.gz \
+  -p 6 -o $sample > ${sample}.log  2>&1
+echo Done sample $sample
+done
+```
+
+O processo de quantificação com o Salmon pode levar algum tempo. Os arquivos resultantes da quantificação podem ser encontrados na pasta `~/PRATICA_RNASEQ/Quantification`.
+
+Lá, há uma pasta para cada amostra, e dentro de cada pasta, vários arquivos. O arquivo com a informação de quantificação é o quant.sf. ![exercicio](linux/Figs/f03c15.png) O que significa cada uma das colunas do arquivo quant.sf?
+
+Neste ponto, podemos apagar as leituras de sequenciamento para liberar espaço no computador. Certifique-se de que todos os dados necessários foram processados e salvos adequadamente antes de apagar as leituras de sequenciamento, para evitar a perda de informações importantes.
+
+```bash 
+rm -rf ~/PRATICA_RNASEQ/RAW
+rm -rf ~/PRATICA_RNASEQ/CLEAN
+```
+
+Agora que concluímos a quantificação, podemos começar a formular perguntas sobre os dados. Vamos usar o R para analisar como os níveis de expressão dos genes mudam em cada condição experimental. R é um software livre para computação estatística e criação de gráficos.
+
+Para tornar nossa interação com o R mais amigável, utilizaremos o RStudio, que é um ambiente de desenvolvimento integrado (IDE) para R. Se o comando `rstudio` não estiver instalado, terá que instala-lo manualmente. 
+
+Caso tenha que instalar Rstudio, vai na pagina: https://posit.co/download/rstudio-desktop/, e descarregue o arquivo `RSTUDIO-2024.04.1-748-AMD64-DEBIAN.TAR.GZ`.
+
+```bash
+cd ~/PRATICA_RNASEQ
+wget https://download1.rstudio.org/electron/focal/amd64/rstudio-2024.04.1-748-amd64-debian.tar.gz
+tar xvf rstudio-2024.04.1-748-amd64-debian.tar.gz
+echo "PATH=$PATH:~/PRATICA_RNASEQ/rstudio-2024.04.1-748/bin" >> ~/.bashrc
+echo "export PATH" >> ~/.bashrc
+. ~/.bashrc
+rstudio
+```
+
+![RStudio](Figs/rstudio.png)
+
+A grosso modo, podemos dividir a área de trabalho do RStudio em quatro regiões:
+
+- Na área superior esquerda, você encontrará abas que hospedam seus scripts e projetos. Isso permite que você organize e acesse facilmente seu código-fonte e trabalhe em diferentes projetos de análise de dados.
+- Na área inferior esquerda, estão localizadas as abas Console, Terminal e Background Jobs, que permitem interagir com o ambiente do R. O Console é onde você pode executar comandos e ver a saída imediata. O Terminal permite interações mais avançadas com o sistema operacional, enquanto as Tarefas em Segundo Plano rastreiam e gerenciam tarefas em execução.
+- A área superior direita exibe as abas Environment, History, Connections e Tutorial. São abas que fornecem informações e recursos adicionais. O Ambiente mostra os objetos em sua sessão R atual. O Histórico registra comandos anteriores. Conexões permitem a integração com outros serviços e tutoriais fornecem orientações úteis.
+- A área inferior direita inclui as abas Files, Plots, Packages, Help, Viewer e Presentation. Arquivos gerencia seus arquivos e diretórios. Gráficos exibe gráficos gerados durante sua análise. Pacotes ajuda a gerenciar pacotes R. Ajuda fornece informações detalhadas sobre funções e pacotes. O Visualizador permite visualizar conjuntos de dados e gráficos interativamente. Apresentação ajuda a criar apresentações R Markdown.
+
+Essas abas tornam o RStudio uma ferramenta versátil e eficaz para o desenvolvimento e análise de projetos em R.
+
+### Análise de Expressão Diferencial 
+
+Realizaremos a identificação de genes diferencialmente expressos inteiramente no R usando o IDE RStudio.
+
+Primeiro, precisamos instalar um pacote que está faltando no momento. Este pacote entende o output do Salmon e pode importar automaticamente a quantificação de transcritos para o R. Além disso, ele conhece o genoma humano. O pacote é o tximeta.
+
+Para instalar e carregar o tximeta, siga os passos abaixo no RStudio:
+
+```R
+if (!requireNamespace("BiocManager", quietly = TRUE))
+  install.packages("BiocManager")
+BiocManager::install("tximeta",update = FALSE, ask = FALSE)
+```	
