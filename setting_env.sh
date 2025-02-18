@@ -108,6 +108,8 @@ conda create -y -n dotplotly r-base minimap2 r-ggplot2 r-optparse r-plotly
 
 conda activate genomescope2
 conda install r-curl -c conda-forge
+conda install conda-forge::r-xml2
+
 sudo apt-get install libfontconfig1-dev libharfbuzz-dev libfribidi-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev
 R -e 'install.packages("devtools", repos="https://brieger.esalq.usp.br/CRAN/")'
 conda deactivate
