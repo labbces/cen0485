@@ -114,4 +114,6 @@ conda deactivate
 
 #Clean caches should be done at the beggning and end of the script.
 conda clean -y --all
+conda activate singularitycew
 singularity cache clean -f
+rm -rf .local/share/Trash/
