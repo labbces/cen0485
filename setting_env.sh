@@ -111,3 +111,7 @@ conda install r-curl -c conda-forge
 sudo apt-get install libfontconfig1-dev libharfbuzz-dev libfribidi-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev
 R -e 'install.packages("devtools", repos="https://brieger.esalq.usp.br/CRAN/")'
 conda deactivate
+
+#Clean caches should be done at the beggning and end of the script.
+conda clean -y --all
+singularity cache clean -f
