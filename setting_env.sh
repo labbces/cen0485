@@ -41,7 +41,7 @@ conda create -y -n quast -c bioconda quast
 conda create -y -n genomescope2 -c bioconda genomescope2
 conda activate genomescope2
 sudo apt -y install libfontconfig1-dev libharfbuzz-dev libfribidi-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev
-conda install r-curl -c conda-forge
+conda install -y r-curl -c conda-forge
 conda install -y conda-forge::r-devtools
 R -e 'require(remotes);install_version("Matrix", version = "1.6-1",repos="https://cloud.r-project.org/")'
 R -e 'require(remotes);install_version("MASS", version = "7.3-60",repos="https://cloud.r-project.org/")'
