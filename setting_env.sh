@@ -16,6 +16,8 @@ sudo apt -y install --no-install-recommends r-base
 sudo su - cen0485
 #logout and login as new user
 gsettings set org.gnome.desktop.background picture-uri file:////usr/share/backgrounds/FondoCENA.png
+gsettings set org.gnome.shell favorite-apps "$(gsettings get org.gnome.shell favorite-apps | sed s/.$//), 'google-chrome.desktop']"
+gsettings set org.gnome.shell favorite-apps "$(gsettings get org.gnome.shell favorite-apps | sed s/.$//), 'org.gnome.Terminal.desktop']"
 
 #miniconda3
 mkdir -p ~/miniconda3
@@ -38,8 +40,12 @@ conda create -y -n bandage -c bioconda bandage
 conda create -y -n quast -c bioconda quast
 conda create -y -n genomescope2 -c bioconda genomescope2
 conda activate genomescope2
+conda install r-curl -c conda-forge
+sudo apt-get install libfontconfig1-dev libharfbuzz-dev libfribidi-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev
+conda install -y conda-forge::r-devtools
+R -e 'require(remotes);install_version("Matrix", version = "1.6-1",repos="https://cloud.r-project.org/")'
+R -e 'require(remotes);install_version("MASS", version = "7.3-60",repos="https://cloud.r-project.org/")'
 R -e 'install.packages("viridis", repos="https://brieger.esalq.usp.br/CRAN/")'
-R -e 'install.packages("devtools", repos="https://brieger.esalq.usp.br/CRAN/")'
 conda deactivate
 
 conda create -y -n redotable -c bioconda java-jdk
@@ -105,14 +111,6 @@ conda create -y -n hifiadapterfilt bamtools blast
 conda create -y -n spades spades
 
 conda create -y -n dotplotly r-base minimap2 r-ggplot2 r-optparse r-plotly
-
-conda activate genomescope2
-conda install r-curl -c conda-forge
-conda install conda-forge::r-xml2 conda-forge::zlib conda-forge::libpng conda-forge::libtiff
-
-sudo apt-get install libfontconfig1-dev libharfbuzz-dev libfribidi-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev
-R -e 'install.packages("devtools", repos="https://brieger.esalq.usp.br/CRAN/")'
-conda deactivate
 
 #Clean caches should be done at the beggning and end of the script.
 conda clean -y --all
