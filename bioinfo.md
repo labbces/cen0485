@@ -292,11 +292,11 @@ Se sabemos os números de acesso, podemos inseri-los diretamente na janela de pe
 Direcionamos a Pesquisa com Limites. Por exemplo, se eu quiser pesquisar as sequências de mRNA curadas relacionadas a um tipo de câncer em humanos, posso realizar a seguinte pesquisa: na janela de busca, digito "COLON CANCER AND NONPOLYPOSIS" e pesquiso no banco de dados de nucleotídeos. Então, em "Limits", seleciono a molécula de mRNA e em "only from" escolho RefSeq. Depois, vou para a janela "Preview/Index" acima e, em "Organismos", digito "humanos" e seleciono "AND".
 
 
-## EMBOSS
+## Bioinfo 2 - EMBOSS
 
 [EMBOSS](https://emboss.sourceforge.net/), "The European Molecular Biology Open Software Suite", é um pacote de código aberto gratuito composto por centenas de aplicativos desenvolvidos especificamente para as necessidades da comunidade de biologia molecular. As áreas abrangidas pelas aplicações EMBOSS incluem alinhamento de sequências, pesquisa em bancos de dados usando padrões, identificação de motivos proteicos e análise de uso de códons. 
 
-Você encontra descricoes dos pacotes de EMBOSS neste [link](https://emboss.sourceforge.net/apps/release/6.6/emboss/apps/).￼
+Você encontra descrições dos pacotes de EMBOSS neste [link](https://emboss.sourceforge.net/apps/release/6.6/emboss/apps/).￼
 
 ###  Recuperando sequências de bancos de dados
 
@@ -361,7 +361,7 @@ Ao realizar certos tipos de análise, por exemplo, a busca por sítios de ligaç
 
 ![exercicio](linux/Figs/f03c15.png) Realize uma busca na literatura e encontre um artigo onde sejam utilizadas sequências aleatórias para testar alguma hipótese. Descreva brevemente o trabalho e como as sequências aleatórias foram utilizadas, deixando uma referência clara do artigo para facilitar sua localização.
 
-## Comparação de Sequências I - Matrizes de pontos
+## Bioinfo 3 - Comparação de Sequências I - Matrizes de pontos
 
 As matrizes de pontos (“Dot Plot”) são ferramentas exploratórias para comparar strings de texto, ou seja, sequências. Entre outros, eles nos permitem encontrar facilmente regiões repetidas em uma sequência comparando-a com ela mesma. Também podemos ter uma boa ideia da estrutura de um gene comparando a sequência de sua região de codificação com a sequência do locus onde se encontra. 
 
@@ -427,7 +427,7 @@ Não esqueça de desativar o ambiente de EMBOSS.
 conda deactivate
 ```
 
-## Comparação de Sequências II - Alinhamentos de pares de sequências
+## Bioinfo 4 - Comparação de Sequências II - Alinhamentos de pares de sequências
 
 Algumas partes deste capı́tulo vêm do tutorial disponivel neste [link](http://emboss.sourceforge.net/docs/emboss_tutorial/emboss_tutorial.pdf).
 
@@ -562,7 +562,7 @@ Finalmente, você chega aos próprios alinhamentos. Aqui, encontrará novamente 
 
 A interface web do NCBI BLAST é bastante intuitiva e amigável, entretanto, enfrenta algumas limitações ao se trabalhar com genômica e proteômica: (i) não é possível efetuar buscas em bancos de dados personalizados ou privados e (ii) existe uma limitação no número de sequências que podem ser utilizadas como consulta em cada busca. A solução mais eficiente para superar esses obstáculos é instalar o NCBI BLAST em um computador pessoal e configurar os bancos de dados específicos nos quais se deseja pesquisar. Este processo, no entanto, será abordado em outra ocasião.
 
-## Comparação de Sequências III - Alinhamento Múltiplo de Sequências
+## Bioinfo 5 - Comparação de Sequências III - Alinhamento Múltiplo de Sequências
 
 Na teoria, os algoritmos de programação dinâmica descritos acima para alinhamentos de pares de sequências podem ser estendidos para o caso de um número arbitrário de sequências. Na prática, isso é computacionalmente muito caro, o que levou ao desenvolvimento de outros algoritmos que implementam atalhos na busca por alinhamentos ideais (heurísticos). O desenvolvimento de algoritmos para alinhamento de múltiplas sequências é uma área muito dinâmica na bioinformática. Atualmente, existem dezenas de programas que implementam diferentes algoritmos (ver [Notredame, 2007](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.0030123), e [Lemey et al., 2009](
 https://doi.org/10.1017/CBO9780511819049), para uma revisão recente do tópico). Avanços recentes têm um foco especial dedicado à análise de milhões de sequências ([Santus et al., 2023](https://doi.org/10.1016/j.sbi.2023.102577)).
@@ -676,7 +676,7 @@ Discuta os resultados obtidos:
 
 ![InterPro PFAM results](Figs/InterProPFAMres.png)
 
-## Montagem de genomas
+## Bioinfo 6 - Montagem de genomas
 
 O processo de montagem de genomas consiste na reconstrução da sequência original de um genoma a partir dos fragmentos de DNA produzidos pelo sequenciador. Lembre-se de que os instrumentos de sequenciamento atuais não conseguem ler cromossomos inteiros na maioria dos casos, especialmente para genomas grandes, ou seja, de dezenas de Mbp ou maiores.
 
@@ -905,7 +905,7 @@ conda deactivate
 
 - ![exercicio](linux/Figs/f03c15.png) Descreva cada um dos argumentos usados na execução do minimap2 e do pafCoordsDotPlotly.R. Discuta como esses parâmetros podem afetar a análise.
 
-## Anotação de genomas
+## Bioinfo 7 - Anotação de genomas
 
 Depois de ter montado o genoma da _Komagataeibacter rhaeticus_ na seção anterior, normalmente a seguinte pergunta em um projeto de genômica é: E onde estão os genes? O processo de identificá-los no genoma é o que é chamado de anotação do genoma, ou predição de genes, ou anotação estrutural do genoma. Nesta seção, vamos usar o genoma montado com os dados de PacBio na seção anterior.
 
@@ -1024,7 +1024,7 @@ igv
 
 ![IGV](Figs/IGV.png)
 
-## Transcriptômica
+## Bioinfo 8 - Transcriptômica
 
 RNA-Seq é uma técnica de sequenciamento que utiliza tecnologias modernas de sequenciamento para revelar a presença e a quantidade de RNA em uma amostra biológica em um dado momento. Usaremos os dados do artigo [PMID: 24926665](https://pubmed.ncbi.nlm.nih.gov/24926665/), especificamente os conjuntos de dados mostrados na tabela abaixo. O RNA total foi extraído de cultivos primários de células humanas do músculo liso das vias aéreas (ASM) de quatro doadores diferentes, as células de cada doador foram tratadas com 1 µM DEX ou com controle por 18 horas. Aproximadamente 1 µg de RNA de cada amostra foi usado para gerar bibliotecas de cDNA de RNA-Seq para sequenciamento utilizando o [TruSeq RNA Sample Prep Kit v2](https://www.illumina.com/products/by-type/sequencing-kits/library-prep-kits/truseq-rna-v2.html). O sequenciamento foi realizado em um instrumento HiSeq2000, gerando leituras pareadas (2x75bp). O principal objetivo do estudo foi obter insights sobre como os glicocorticoides suprimem a inflamação no ASM.
 
