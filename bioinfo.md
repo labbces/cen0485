@@ -1024,6 +1024,17 @@ igv
 
 ![IGV](Figs/IGV.png)
 
+### Gene Ortólogos
+Os genes ortólogos são genes que evoluíram de um ancestral comum e estão presentes em diferentes espécies. Eles desempenham um papel fundamental na compreensão da evolução, pois ajudam a identificar funções conservadas entre organismos distintos. A identificação de genes ortólogos é crucial para estudos comparativos, permitindo inferir funções genéticas e processos biológicos comuns entre espécies.
+
+Vamos agora explorar com mais profundidade o uso de genes ortólogos. Para isso, utilizaremos o [OMA (Orthologous Matrix)](https://oma-stage.vital-it.ch/oma/home/) no seu navegador. O projeto OMA é uma ferramenta e banco de dados para a inferência de ortólogos entre genomas completos.
+
+O algoritmo de inferência do OMA envolve três etapas principais. Primeiro, ele calcula alinhamentos Smith-Waterman entre todas as sequências para identificar correspondências significativas, inferindo sequências homólogas. Em seguida, ele determina pares ortólogos, que são homólogos relacionados por eventos de especiação, levando em conta distâncias evolutivas e a incerteza na inferência de distâncias. Por fim, os ortólogos são agrupados de duas maneiras: em "grupos OMA" que servem como genes marcadores para reconstrução filogenética e em "HOGs" que representam grupos de genes comuns em niveis taxonômicos específicos.
+
+Nesta sessão, vamos resolver os exercícios do [Módulo 1 do treinamento do OMA](https://omabrowser.org/oma/academy/module/BGA_session). 
+
+Para resolver esses exercícios, é muito recomendado consultar regularmente as páginas de ajuda do OMA: "[Orthology Basics](https://omabrowser.org/oma/type/)," "[Types of homologs](https://omabrowser.org/oma/homologs/)," "[Access the OMA Data](https://omabrowser.org/oma/uses/)," "[Catalog of Tools](https://omabrowser.org/oma/tools/)," e "[Glossary](https://omabrowser.org/oma/glossary/)." Elas fornecerão informações valiosas para concluir com êxito os exercícios do Módulo 1.
+
 ## Bioinfo 8 - Transcriptômica
 
 RNA-Seq é uma técnica de sequenciamento que utiliza tecnologias modernas de sequenciamento para revelar a presença e a quantidade de RNA em uma amostra biológica em um dado momento. Usaremos os dados do artigo [PMID: 24926665](https://pubmed.ncbi.nlm.nih.gov/24926665/), especificamente os conjuntos de dados mostrados na tabela abaixo. O RNA total foi extraído de cultivos primários de células humanas do músculo liso das vias aéreas (ASM) de quatro doadores diferentes, as células de cada doador foram tratadas com 1 µM DEX ou com controle por 18 horas. Aproximadamente 1 µg de RNA de cada amostra foi usado para gerar bibliotecas de cDNA de RNA-Seq para sequenciamento utilizando o [TruSeq RNA Sample Prep Kit v2](https://www.illumina.com/products/by-type/sequencing-kits/library-prep-kits/truseq-rna-v2.html). O sequenciamento foi realizado em um instrumento HiSeq2000, gerando leituras pareadas (2x75bp). O principal objetivo do estudo foi obter insights sobre como os glicocorticoides suprimem a inflamação no ASM.
